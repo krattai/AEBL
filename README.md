@@ -7,6 +7,16 @@ For more information, read the wiki:  https://github.com/krattai/AEBL/wiki
 
 Related video:  https://www.youtube.com/embed/_NEA02NtI4E?rel=0
 
+Features
++ Video or Audio kiosk (standalone or network)
++ Personal, portable audio and video player
++ Streaming content video and audio player
++ Social media aware and interactive
++ Zeroconf / bounjour device
++ Channel content playing and sharing
++ Integrated Emergency Broadcast. 611 info, and other features
++ and Much, much more, doesn't even begin to explain it! :)
+
 AEBL Mobile Media Player, changing how we consume media. AEBL is a media player and a digital media platform in use in the IHDN XPO network media system ( http://www.ihdn.ca/Xpo_VI.html ).
 
 AEBL is foremost a mobile media distribution and playback framework.  It was created to be the core technology that is used in a television ad insertion and digital sign, and further development has opened up many more applications.  It currently is designed to run on a raspberry Pi, although it is being ported to other systems.
