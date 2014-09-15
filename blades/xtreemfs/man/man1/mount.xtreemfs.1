@@ -1,0 +1,189 @@
+.TH mount.xtreemfs 1 "July 2011" "The XtreemFS Distributed File System" "XtreemFS client"
+.SH NAME
+mount.xtreemfs \- mounts an XtreemFS volume
+.SH SYNOPSIS
+\fBmount.xtreemfs [\fIoptions\fB] [pbrpc[g|s]://]\fIdir-host\fR[:\fIport\fR]/\fIvolume mountpoint
+.br
+
+.SH DESCRIPTION
+.I mount.xtreemfs
+mounts the volume \fIvolume\fR registered at the Directory Service \fIdir-host\fR:\fIport\fR to the local directory \fImountpoint\fR. \fImount.xtreemfs\fR is implemented as a FUSE user-level file system driver.
+
+.SH EXAMPLE USAGE
+.TP
+Mount the volume "MyVolume" (which is registered at the DIR server "remote.dirservice.machine") to the mount point "/mnt":
+.TP
+.B "mount.xtreemfs remote.dirservice.machine/MyVolume /mnt"
+
+.SH OPTIONS
+
+.TP
+Fuse Options:
+.TP
+.B "-f, --foreground"
+Do not fork into background.
+.TP
+.BI "-o, --fuse_option " option
+Passes -o=<\fIoption\fR> to Fuse.
+
+.TP
+ACL and extended attributes Support:
+.TP
+.B "-o xtreemfs_acl"
+Enable the correct evaluation of XtreemFS ACLs. (Note that you cannot use the system tools getfattr and setfattr; use
+.BR xtfsutil (1)
+instead to set and retrieve ACLs.)
+.TP
+.B "-o user_xattr"
+Enable user defined extended attributes.
+
+.TP
+General Options:
+.TP
+.BI "-d, --log-level " EMERG|ALERT|CRIT|ERR|WARNING|NOTICE|INFO|DEBUG
+The log level of the XtreemFS client.
+.TP
+.B "-h, --help"
+Print help and exit.
+.TP
+.BI "-l, --log-file-path " log_file_path
+Path to log file.
+.TP
+.BI "-V, --version"
+Shows the version number.
+
+.TP
+Optimizations:
+.TP
+.BI "--metadata-cache-size " size
+Number of entries which will be cached. (Set to 0 to disable the cache.)
+.TP
+.BI "--metadata-cache-ttl-s " ttl
+Time to live after which cached entries will expire.
+.TP
+.BI "--enable-async-writes"
+Enables asynchronous writes.
+.TP
+.BI "--async-writes-max-reqs " count
+Maximum number of pending write requests per file. Asynchronous writes will block if this limit is reached first.
+.TP
+.BI "--readdir-chunk-size " size
+Number of directory entries which will be fetched from the MRC per readdir request. Do not set this value too high - otherwise the MRC will spent too much time generating the response containing thousands of directory entries. In general, you should not have directories with multiple thousands of entries. If you stick to this, all directory entries are fetched with one request as long as this value is lower than the number of entries.
+
+.TP
+Error Handling options:
+.TP
+.BI "--max-tries " attempts
+Maximum number of
+.I attempts
+to send a request (0 means infinite).
+.TP
+.BI "--max-read-tries " attempts
+Maximum number of
+.I attempts
+to send a
+.I read
+request (0 means infinite).
+.TP
+.BI "--max-write-tries " attempts
+Maximum number of
+.I attempts
+to send a
+.I write
+request (0 means infinite).
+.TP
+.BI "--retry-delay " delay
+Wait time after a request failed until next attempt (in seconds).
+.TP
+.BI "--connect-timeout " connection-timeout
+Timeout after which a connection attempt will be retried (in seconds).
+.TP
+.BI "--request-timeout " timeout
+Timeout after which a request will be retried (in seconds).
+.TP
+.BI "--linger-timeout " linger-time
+Time after which idle connections will be closed (in seconds).
+
+.TP
+SSL Options:
+.TP
+.BI "--pem-certificate-file-path " certfile
+Path to PEM certificate file (for SSL installations only).
+.TP
+.BI "--pem-private-key-file-path " file
+Path to PEM private key file (for SSL installations only).
+.TP
+.BI "--pem-private-key-passphrase " pass
+Passphrase for PEM private key file (for SSL installations only). If the argument \fIpass\fR is set to "-", the user will be prompted for the passphrase.
+.TP
+.BI "--pkcs12-file-path " file
+Path to PKCS#12 file (for SSL installations only).
+.TP
+.BI "--pkcs12-passphrase " pass
+Passphrase for PKCS#12 file (for SSL installations only). If the argument \fIpass\fR is set to "-", the user will be prompted for the passphrase.
+
+.TP
+Grid Support options:
+.TP
+.B "--grid-ssl "
+Explicitily use the XtreemFS Grid-SSL mode. Same as specifying pbrpcg:// in the volume URL.
+.TP
+.B "--globus-gridmap"
+Authorize using globus gridmap file.
+.TP
+.B "--unicore-gridmap"
+Authorize using unicore gridmap file.
+.TP
+.BI "--gridmap-location " path
+Location of the gridmap file. If this option is not set, the default path will be used, depending on the chosen gridmap file:
+.RS
+Unicore default: /etc/grid-security/d-grid_uudb
+Globus default: /etc/grid-security/grid-mapfile
+.RE
+.TP
+.BI "--gridmap-reload-interval-m " interval
+Interval (in minutes) after which the gridmap file will be checked for changes and reloaded if necessary. 60 minutes by default.
+
+.TP
+Vivaldi options:
+.TP
+.B "--vivaldi-enable"
+Enables the vivaldi coordinate calculation for the client.
+.TP
+.B "--vivaldi-enable-dir-updates"
+Enables sending the coordinates to the DIR after each recalculation. This is only needed to add the clients to the vivaldi visualization at the cost of some additional traffic between client and DIR.
+.TP
+.B "--vivaldi-filename " path
+The file where the vivaldi coordinates should be saved after each recalculation.
+.TP
+.BI "--vivaldi-recalculation-interval " seconds
+The interval between coordinate recalculations in seconds. Also see vivaldi-recalculation-epsilon.
+.TP
+.BI "--vivaldi-recalculation-epsilon " seconds
+The recalculation interval will be randomly chosen from vivaldi-recalculation-inverval +/- vivaldi-recalculation-epsilon.
+.TP
+.BI "--vivaldi-max-iterations-before-updating " count
+Number of coordinate recalculations before updating the list of OSDs.
+.TP
+.BI "--vivaldi-max-request-retries " retries
+Maximal number of retries when requesting coordinates from another vivaldi node.
+
+.SH "SEE ALSO"
+.BR lsfs.xtreemfs (1),
+.BR mkfs.xtreemfs (1),
+.BR rmfs.xtreemfs (1),
+.BR umount.xtreemfs (1),
+.BR xtfsutil (1)
+.BR
+
+.SH "KNOWN ISSUES"
+FUSE does not support mmap in connection with direct I/O. In order to get applications running on XtreemFS that rely on mmap, volumes have to be mounted without using the FUSE option
+.BR "-o direct_io" .
+However, this might lead to inconsistencies if different clients access a file concurrently, as requests might be serviced from the local page cache.
+
+If
+.B "-o xtreemfs_acl"
+or a gridmap file is used, the Fuse default permissions check will be disabled. In consequence, the Fuse Option "-o default_permissions" will not be sent to Fuse. In these cases, the content of the metadata cache may be spoofed by users although they are not allowed to list the directory or retrieve the stat information of a file.
+
+.SH AVAILABILITY
+The mount.xtreemfs command is part of the XtreemFS-client package and is available from \fIhttp://www.xtreemfs.org\fP.
