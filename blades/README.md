@@ -7,4 +7,4 @@ These might include backend services such as web interfaces, messaging services,
 
 This is a great way for people to help with and add to the project, which enhances the device in innovative ways.
 
-It is important to note that we have tested owncloud on AEBL and it does work.  Also, xtreemfs is known to work on the Raspberry Pi platform.
+It is important to note that we have tested owncloud on AEBL and it does work.  Also, xtreemfs is known to work on the Raspberry Pi platform.  Just found that seafile also has been ported to Raspbian, so any of the cloud options could work.
