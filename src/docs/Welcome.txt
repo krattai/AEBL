@@ -1,0 +1,99 @@
+Welcome
+
+Welcome to the AEBL world of mobile media.
+
+This is v1.0 of this document.
+
+~~~~~~~~~~~~~~~~
+
+Table of Contents (by topic):
+
+Quick Overview
+The autoplay (play list) Folder
+The control (system management) Folder
+Channels
+Legal Info (important: guarantees, copyright, and reverse engineering)
+
+~~~~~~~~~~~~~~~~
+
+Quick Overview
+
+The function of this hardware/software appliance is to allow the distribution and consumption of both internet and local content.  It can also make use of a channel system which is described later in this document.
+
+This device is intended to self configure, although there are certain aspects that can be user configured, beginning with the shared autoplay folder.
+
+~~~~~~~~~~~~~~~~
+
+The autoplay (play list) Folder
+
+The autoplay folder is intended to store files (audio - mp3 and video - mp4, at this time) which will play through in ASCII sort order, when the system is powered up.  In other words, it will begin playback of files that start 0 - 9 and then A - Z and finally a - z.  For more information on ASCII and sort orders (including possible special characters and <space>, go here:
+
+http://en.wikipedia.org/wiki/ASCII
+
+NB:  Audio should be in MP3 compliant format (with .mp3 extension) and video should be H.264 / AAC compliant (with .mp4 extension).  Files which are not compliant, likely will not play back on the device (although you can always try).
+
+WARNING:  IF THERE ARE NO FILES IN THE autoplay FOLDER, THE SYSTEM WILL NOT PLAY ANY CONTENT IF NOT ONLINE AND NOT SUBSCRIBED TO CHANNELS!
+
+Simply copy files that you want the device to play, into the autoplay folder.  Although the device plays both audio and video files, priority is on video files, so sorted video files play first, then sorted audio files.
+
+Setting a user defined playlist is on the wish list, but is currently unavailable.
+
+As the warning above, in this topic, indicates, files can be deleted from the autoplay folder, if you do not wish those files to play.  It is, of course, possible to remove ALL the files from the autoplay folder.  If that happens, then the device WILL power up, but it will not play any content, and so may appear to be "broken".  Please check that there are files in the autoplay folder, or alternately, read the Channel topic, below.
+
+~~~~~~~~~~~~~~~~
+
+The control (system management) Folder
+
+The control folder is a shared device folder and is used to manage the device via a network connection.
+
+At present, the control folder allows for rebooting and halting the system.
+
+If a document labelled "halt" or "reboot" (no quotes on file name) is placed into this folder, the system will subsequently halt or reboot.
+
+The halt function is to power off the device, in a clean manner.  Powering off the device by unplugging the power MAY cause the device to corrupt and be unusable.  The halt file function is intended to prevent corruption.
+
+The reboot function is intended to reboot the device, in the event that the system is updated with new media files, or to start the playlist from the beginning.  Like halt, this is a cleaner and safer method to reboot the system, rather than unplugging and plugging the power, which will help prevent possible file corruption.
+
+~~~~~~~~~~~~~~~~
+
+Other Control Files
+
+Are there other, undocumented control files?  No.
+
+That said, there ARE possible control files which you might stumble upon, such as "noauto".  DO NOT attempt to use other control files, unless you are absolutely certain of their availability and use.  Failure to heed this warning MAY result in an unusable device and can, in fact, cause the media drive (SD card) to be formatted.
+
+IF you inadvertently use the "noauto" control file, the device will power up, but will not play any media, at all.  Thankfully, we have kindly added the "auto" control file function.  This COULD be used as a locking feature, but we DO NOT recommend it.
+
+IF the device powers up but does not play any media (after waiting at least 5 minutes, to be sure the system isn't just delayed), placing a file labelled "auto" (without the quotes) will cause the system to reboot within approximately a 15 minute time span, and the system should resume normal media playback.  If it does not, then the failure of the device to playback was not the result of prior use of the "noauto" control file.
+
+~~~~~~~~~~~~~~~~
+
+Channels
+
+One of the key features of this device is the use of Channels.
+
+While the device is intended to work without a channel subscription, some devices can and are pre-defined with channel content.
+
+The devices which are configured to playback channel content will do so, automatically, although ONLY if connected to the internet.  The channel feature DOES NOT work if the device does not have a functional internet connection.
+
+If the device is known to be subscribed to channels, but is not playing back channel content, be sure to check that it is connected to a network which allows internet availability.
+
+NB-1:  As mentioned above in the pl folder topic, it is possible to have no content in the autoplay folder.  If that is the case, the device SHOULD play channel content, if the device is subscribed to channel content, although it may take a while to begin to play the Channel content, as the device needs to do a number of self checks, as well as to establish a connection with the Channel server and retrieve the channel listing, before it can begin to play.  As a result, it is good practice to have at least 1 (one) file in the autoplay folder, so that you will have an indication that the device IS working, and you have some content to play, while the channel content is being retrieved.
+
+NB-2:  If there is content in the autoplay folder, channel content will not begin playback until AFTER the internal content has gone through at least one rotation.  Therefore, if there is 1 hour of content in the autoplay folder, it will be AT LEAST one hour before channel content begins playback.
+
+NB-3:  It can take time to retrieve channel content and channel playback to begin.  If there is only 3 minutes of content in the autoplay folder, then it will rotate playback until channel content becomes available.  Although channel content playback should begin relatively quickly, there are varying factors which could delay playback.  Be patient, and if channel content does not begin after a half hour, or after the first rotation of your content, whichever is longer, check the network connection on the device.
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Legal Info (important: guarantees, copyright, and reverse engineering)
+
+We state this with slight humour, although the intent and presentation is serious:  The AEBL device and software is considered beta for legal reasons and therefore carries no implicit nor implied guarantees nor warranties, whatsoever, regardless of legal jurisdiction, anywhere and everywhere on earth, or otherwise within the universe, with or without a support contract.  Further, we do not condone nor support the use of media content on this device, for which the user of this device does not have appropriate copyright.
+
+That said, the next, important legal bit is regarding reverse engineering or investigating this technology and its operation.  If you choose to black box, reverse engineer, open, tamper with, modify or copy or redistribute or otherwise investigate the software or hardware associated with and contained within this device, you are thus considered doing so with intent and with knowledge of your legal obligation and are therefore legally obliged to follow all copyright and IP law in accordance with said software and hardware and are otherwise obliged to notify copyright and IP holders, accordingly.
+
+In other words, we do expect some people will attempt to crack the AEBL system.  Certain portions of this technology is under specific copyright and IP obligation.  Please notify us of your intentions @ aeblmobile@gmail.com and we can possibly support and direct you.
+
+We are obligated to indicate that certain portions of this hardware and software ARE in fact proprietary, copyright, or under open source or other copyright / copyleft.  We will provide necessary disclosure of such IP and copyright constraints and information on request.
+
+Cheers!  B)

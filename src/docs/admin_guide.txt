@@ -1,0 +1,84 @@
+This is an administrative guide for this device.
+
+This is v1.0 of this document.
+
+Please note that depending on the device type and / or vendor, certain control methods may not be available or may only be accessed using the proper, authorized admin password.
+
+~~~~~~~~~~~~~~~~
+
+Table of Contents (by topic):
+
+Quick Overview
+Advancing to next play item
+Turning system off
+Rebooting the system
+Set system to not auto play (with power cycle)
+Set system to auto play (with power cycle)
+
+~~~~~~~~~~~~~~~~
+
+Quick Overview
+
+General use of the control file, consists of placing files, with appropriate file names, and possible content with the file, as function parameters, into the Control folder.
+
+What that means is, copy to, or create in the control folder, a file with the appropriate file name, according to the function that you wish to perform.
+
+~~~~~~~~~~~~~~~~
+
+Advancing to next play item
+
+next :-  Advance playback to the next track.
+
+Create a file in the control folder with the file name "next" (without quotes).  This will stop the current video or audio track playback and begin playback of the next track.
+
+This function currently advances only one track at a time.  No parameters in the file, the file can be empty.
+
+~~~~~~~~~~~~~~~~
+
+Turning system off
+
+halt :-  This function safely turns the system off.
+
+Create a file in the control folder with the file name "halt" (without quotes).  This will safely turn the system off.
+
+While it is possible to simply unplug the device from the power source, that can cause the data on the device to become corrupt.  Whenever possible, use the halt function.
+
+No parameters in the file, the file can be empty.
+
+~~~~~~~~~~~~~~~~
+
+Rebooting the system
+
+reboot :-  This function safely power cycels the device.
+
+Create a file in the control folder with the file name "reboot" (without quotes).  This will safely reboot the system.
+
+While it is possible to simply unplug the device from the power source and then plug it back into the power source, that can cause the data on the device to become corrupt.  Whenever possible, use the reboot function.  This is a good way to solve a problem where the system stops playback, for some reason.
+
+If the system is not performing "normal" playback, do not use this function repeatedly, in quick succession.  Allow some time (as much as 5 minutes before rebooting, to see if the system resumes "normal" playback), before using the reboot feature or otherwise power cycling the device.  Repeated power cycling MAY cause the system to become corrupt and stop working, completely.
+
+No parameters in the file, the file can be empty.
+
+~~~~~~~~~~~~~~~~
+
+Set system to not auto play (with power cycle)
+
+noauto :-  This function power cycles the device and once powered up, the device will not automatically play any content.
+
+Create a file in the control folder with the file name "noauto" (without quotes).  This will reboot the system in lock mode.
+
+WARNING!  This is a special feature of the device which, while available on all systems, is not recommended (or otherwise useful) without understanding why this function exists.  A side benefit of this feature, though, might be to lock a device, preventing it from being used by anyone who does not know how or is unable to re-enable the device.
+
+No parameters in the file, the file can be empty.
+
+~~~~~~~~~~~~~~~~
+
+Set system to auto play (with power cycle)
+
+auto :-  This function power cycles the device and once powered up, the device will (after a noauto setting) automatically play content.
+
+Create a file in the control folder with the file name "auto" (without quotes).  This will reboot the system in auto mode.
+
+Note : This is the "restore normal function" state of the device, if the device has been placed in noauto mode.  The noauto mode can appear as though the system is not working, you can attempt to use the auto function to possible re-enable the device.  If the system is actually not working for some other reasone, this will not cause the system to start working again.
+
+No parameters in the file, the file can be empty.
