@@ -1,13 +1,12 @@
 #!/bin/bash
 # This script sets up airtime for AEBL use
 # It adds the AEBL controller scripts to airtime installation and sets up
-#   zerconf and IPv6 capacity
+#   zerconf and IPv6 capacity.  The VM will be pre-created, so env known.
 #
 # Copyright (C) 2014 Uvea I. S., Kevin Rattai
 #
 # Useage:
-# Need to run as root
-# This is a standalone script
+# No useage, this is a standalone script
 
 LOCAL_SYS="local"
 NETWORK_SYS="network"
@@ -119,7 +118,22 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     sudo apt-get update
 
-    sudo apt-get -y install fbi samba samba-common-bin libnss-mdns lsof gogoc
+# install samba avahi/zerconf lsof for smb share checking and gogoc for ipv6 tun
+    sudo apt-get -y install samba samba-common-bin avahi-daemon avahi-discover libnss-mdns lsof gogoc
+
+# make ctrl dir and set it to read/write/execute
+    mkdir ${CTRL_DIR}
+    mkdir ${BIN_DIR}
+
+    chmod 777 ${CTRL_DIR}
+    chmod 777 ${BIN_DIR}
+
+# set smb and avahi, need to get files from server
+    sudo rm /etc/samba/smb.conf
+    sudo mv ${TEMP_DIR}/smb.conf /etc/samba
+    sudo mv ${TEMP_DIR}/samba.service  /etc/avahi/services/
+
+
 
     # running rpi-wiggle in background so script has chance to
     # end gracefully
