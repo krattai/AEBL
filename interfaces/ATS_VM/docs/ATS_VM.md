@@ -17,7 +17,7 @@ ATS_VM.vdi is an Airtime Virtual Machine installation.  This virtual machine is 
 Of course, it requires virtualbox to use:
 https://www.virtualbox.org/
 
-It will run with 384MB of RAM but that can be increased if you have the resources, as well, it should probably have sound enabled in VM and set network to bridge on VM.
+It will run with 384MB of RAM but that can be increased if you have the resources, as well, it should probably have sound enabled in VM and set network to bridge on VM.  Also, in system -> processor, PAE/NX should be checked.
 
 The install is:
 Ubuntu 14.04 32bit server - bare bones with openssh
