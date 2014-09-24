@@ -1,7 +1,7 @@
 #!/bin/bash
 # Shell script to pull channel control files off server
 #
-# Copyright (C) 2014 IHDN, Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 Uvea I. S., Kevin Rattai
 #
 # curl sftp upload example
 #
@@ -45,6 +45,8 @@ done
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f "${LOCAL_SYS}" ]; then
 
+        echo y | rm mc/chan0/*
+
         # change chan and folder according to known IHDN_TEST sys
         wget -N -nd -w 3 -P mc/chan0 --limit-rate=50k "http://192.168.200.6/files/ihdn.m3u"
         mv mc/chan0/ihdn.m3u mc/chan0/upload.txt
@@ -70,14 +72,14 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
 #     curl -o "chan25/upload.txt" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000025/chan25.m3u"
 #     curl -o "chan25/playlist.txt" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000025/chan25.pl"
-    pscp -pw password -P 8022 videouser@184.71.76.158:videos/000025/chan25.m3u mc/chan25/upload.txt
-    pscp -pw password -P 8022 videouser@184.71.76.158:videos/000025/chan25.pl mc/chan25/playlist.txt
-    pscp -pw password -P 8022 videouser@184.71.76.158:videos/000026/chan26.m3u mc/chan26/upload.txt
-    pscp -pw password -P 8022 videouser@184.71.76.158:videos/000026/chan26.pl mc/chan26/playlist.txt
-    pscp -pw password -P 8022 videouser@184.71.76.158:videos/000027/chan27.m3u mc/chan27/upload.txt
-    pscp -pw password -P 8022 videouser@184.71.76.158:videos/000027/chan27.pl mc/chan27/playlist.txt
-    pscp -pw password -P 8022 videouser@184.71.76.158:videos/000028/chan28.m3u mc/chan28/upload.txt
-    pscp -pw password -P 8022 videouser@184.71.76.158:videos/000028/chan28.pl mc/chan28/playlist.txt
+    pscp -v -pw password -P 8022 mc/chan25/upload.txt videouser@184.71.76.158:videos/000025/chan25.m3u
+    pscp -v -pw password -P 8022 mc/chan25/playlist.txt videouser@184.71.76.158:videos/000025/chan25.pl
+    pscp -pw password -P 8022 mc/chan26/upload.txt videouser@184.71.76.158:videos/000026/chan26.m3u
+    pscp -pw password -P 8022 mc/chan26/playlist.txt videouser@184.71.76.158:videos/000026/chan26.pl
+    pscp -pw password -P 8022 mc/chan27/upload.txt videouser@184.71.76.158:videos/000027/chan27.m3u
+    pscp -pw password -P 8022 mc/chan27/playlist.txt videouser@184.71.76.158:videos/000027/chan27.pl
+    pscp -pw password -P 8022 mc/chan28/upload.txt videouser@184.71.76.158:videos/000028/chan28.m3u
+    pscp -pw password -P 8022 mc/chan28/playlist.txt videouser@184.71.76.158:videos/000028/chan28.pl
 
 fi
 

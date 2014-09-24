@@ -299,13 +299,13 @@ if($compress) $encoding="yes"; else $encoding="no";
 
 if ($_GET['pull']) {
   # This code will run if ?pull=true is set.
-  shell_exec('sudo -u kevin .././pull.sh');
+  shell_exec('sudo -u aebl .././pull.sh');
 #   shell_exec('touch button');
 }
 
 if ($_GET['push']) {
   # This code will run if ?pull=true is set.
-  shell_exec('sudo -u kevin .././push.sh');
+  shell_exec('sudo -u aebl .././push.sh');
 }
 
 print"<table cellspacing=0 width=100%>";
