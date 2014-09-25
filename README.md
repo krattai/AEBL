@@ -12,7 +12,7 @@ Features
 + Personal, portable audio and video player
 + Streaming content video and audio player
 + Social media aware and interactive
-+ Zeroconf / bounjour device
++ Zeroconf / bonjour device
 + Channel content playing and sharing
 + Integrated Emergency Broadcast. 611 info, and other features
 + and Much, much more, doesn't even begin to explain it! :)
