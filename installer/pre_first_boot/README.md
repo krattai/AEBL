@@ -4,4 +4,4 @@ Slightly modified means that the the image has software installed to allow for t
 
 These were installed on the image simply to test the features and were not removed, as that would simply require them to be installed once again on the first boot install procedure, waisting code and user time.
 
-The bootup.sh script on the pre-boot image also contains the bootup.sh script as noted in the pre_first_boot source directory, which starts the core AEBL install script create-sys.sh, which is also noted in the pre_first_boot source directory.
+The /etc/init.d direcotry on the pre-boot image also contains the bootup.sh script as noted in the pre_first_boot source directory, which does some housekeeping functions (in the event they are necessary to remove original testing) and starts the core AEBL install script create-sys.sh, which is also noted in the pre_first_boot source directory.
