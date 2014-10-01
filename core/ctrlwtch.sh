@@ -48,6 +48,44 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         ls -al > "${HOME}/ctrl/playlist.txt"
     fi
 
+    # Set stand alone AEBL playlist
+    # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
+    if [ -f "${HOME}/ctrl/newpl" ]; then
+        cp "${HOME}/ctrl/newpl" "${HOME}/ctrl/pltmp"
+        PL_FILES="${HOME}/ctrl/pltmp"
+        touch $T_STO/plfiles
+        while [ -f "${T_STO}/plfiles" ]; do
+            # Do nothing if no remove file
+            if [ ! -f "ctrl/${PL_FILES}" ]; then
+                echo "File ${PL_FILES} not found"
+                continue
+            fi
+            # Get the top of the remove list
+            file=$(cat "ctrl/${PL_FILES}" | head -n1)
+            # And strip it off the playlist file
+            cat "ctrl/${PL_FILES}" | tail -n+2 > "ctrl/${PL_FILES}.new"
+            mv "ctrl/${PL_FILES}.new" "ctrl/${PL_FILES}"
+            # Skip if this is empty
+            if [ -z "${file}" ]; then
+                echo "Remove file empty or bumped into an empty entry"
+                rm $T_STO/plfiles
+                continue
+            fi
+            # Check that the file exists
+            if [ ! -f "pl/${file}" ]; then
+                echo "File ${file} not found"
+                continue
+            fi
+            # move the file
+            mv "pl/${file}" "mp4/${file}"
+        done
+        rm "ctrl/${PL_FILES}"
+        rm "ctrl/${PL_FILES}.new"
+        # This is on faith, I have absolutely no idea where mkplay.sh is called
+        mv "${HOME}/ctrl/newpl" "${T_STO}/mynew.pl"
+        fi
+    fi
+
     # Process request to remove content from pl folder
     # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/rmfiles" ]; then
