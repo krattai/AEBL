@@ -1,0 +1,9 @@
+The most important aspect to working with the AEBL, is the control folder.
+
+The AEBL framework is being developed as a FBP (Flow Based Programming) methodology.  That means that there is a primary focus on data and flow, rather than the more traditional process focus.  As such, AEBL makes significant use of messaging, and the control folder is the main I/O for this message system.
+
+In order to handle this messaging, a program, at this point a bash script called ctrlwtch.sh, runs at AEBL start and stays resident, watching the control folder for input messages, which then triggers the path the input will follow.
+
+One can consider the combination of control folder and ctrlwtch.sh as the API, by which all interaction with AEBL will occur and which can be used for external, add on application developers.  ie.  AEBL can be controlled by manually placing triggers into the control folder and receive responses in the control folder, and therefore, so can an application.
+
+As AEBL is further developed, the control folder and how to interact with AEBL, will be documented.
