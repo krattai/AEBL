@@ -42,6 +42,12 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         rm "${HOME}/ctrl/patch"
     fi
 
+    # Process request to display the contents of the pl folder
+    if [ -f "${HOME}/ctrl/showpl" ]; then
+        rm "${HOME}/ctrl/playlist.txt"
+        ls -al > "${HOME}/ctrl/playlist.txt"
+    fi
+
     # check channel change present
     # eventually want to put in a channel file which will consist of:
     #     add channel :- +26
