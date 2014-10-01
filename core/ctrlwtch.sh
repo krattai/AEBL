@@ -7,8 +7,8 @@
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
-IHDN_TEST="/home/pi/.ihdntest"
-IHDN_SYS="/home/pi/.ihdnsys"
+# IHDN_TEST="/home/pi/.ihdntest"
+# IHDN_SYS="/home/pi/.ihdnsys"
 TEMP_DIR="/home/pi/tmp"
 
 T_STO="/run/shm"
@@ -94,6 +94,9 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         touch "${HOME}/ctrl/reboot"
     fi
 
+# Need to be sure that ctrlwtch does not fire certain functions if
+#  it is NOT an .aebltest or .aeblsys appliance.
+
     # Do features not part of IHDN systems
     if [ ! -f "${IHDN_SYS}" ]; then
 
@@ -117,21 +120,21 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     fi
 
     # Do features specific to IHDN
-    if [ -f "${IHDN_SYS}" ] && [ -f "${HOME}/ctrl/password" ]; then
+#     if [ -f "${IHDN_SYS}" ] && [ -f "${HOME}/ctrl/password" ]; then
 
-        if [ -f "${HOME}/ctrl/noauto" ]; then
-            rm "${HOME}/ctrl/noauto"
-            touch "${HOME}/.noauto"
-            touch "${HOME}/ctrl/reboot"
-        fi
+#         if [ -f "${HOME}/ctrl/noauto" ]; then
+#             rm "${HOME}/ctrl/noauto"
+#             touch "${HOME}/.noauto"
+#             touch "${HOME}/ctrl/reboot"
+#         fi
 
-        if [ -f "${HOME}/ctrl/auto" ]; then
-            rm "${HOME}/ctrl/auto"
-            rm "${HOME}/.noauto"
-            touch "${HOME}/ctrl/reboot"
-        fi
+#         if [ -f "${HOME}/ctrl/auto" ]; then
+#             rm "${HOME}/ctrl/auto"
+#             rm "${HOME}/.noauto"
+#             touch "${HOME}/ctrl/reboot"
+#         fi
 
-    fi
+#     fi
 
     sleep 1s
 
