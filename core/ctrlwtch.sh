@@ -48,6 +48,40 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         ls -al > "${HOME}/ctrl/playlist.txt"
     fi
 
+    # Process request to remove content from pl folder
+    # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
+    if [ -f "${HOME}/ctrl/rmfiles" ]; then
+        REMOVE_FILES="${HOME}/ctrl/rmfiles"
+        touch $T_STO/rmfiles
+        while [ -f "${T_STO}/rmfiles" ]; do
+            # Do nothing if no remove file
+            if [ ! -f "ctrl/${REMOVE_FILES}" ]; then
+                echo "File ${REMOVE_FILES} not found"
+                continue
+            fi
+            # Get the top of the remove list
+            file=$(cat "ctrl/${REMOVE_FILES}" | head -n1)
+            # And strip it off the playlist file
+            cat "ctrl/${REMOVE_FILES}" | tail -n+2 > "ctrl/${REMOVE_FILES}.new"
+            mv "ctrl/${REMOVE_FILES}.new" "ctrl/${REMOVE_FILES}"
+            # Skip if this is empty
+            if [ -z "${file}" ]; then
+                echo "Remove file empty or bumped into an empty entry"
+                rm $T_STO/rmfiles
+                continue
+            fi
+            # Check that the file exists
+            if [ ! -f "pl/${file}" ]; then
+                echo "File ${file} not found"
+                continue
+            fi
+            # remove the file
+            rm "pl/${file}"
+        done
+        rm "ctrl/${REMOVE_FILES}"
+        rm "ctrl/${REMOVE_FILES}.new"
+    fi
+
     # check channel change present
     # eventually want to put in a channel file which will consist of:
     #     add channel :- +26
