@@ -20,3 +20,4 @@ Current functions of the control folder (when file placed in control folder):
 + noauto - a feature that prevents an AEBL from auto playback on startup
 + auto - a feature that causes an AEBL to auto playback on startup
 + next - skips current content for next in playlist
++ rmfiles - for stand alone AEBL, the contents of the file should be file names
