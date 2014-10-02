@@ -128,6 +128,28 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         rm "ctrl/${REMOVE_FILES}.new"
     fi
 
+    # Add blade to AEBL
+    # At the time of code, most blades are simply installed applications
+    #  and we will restrict only one blade install per request, at this time
+    # !! 141002 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
+    if [ -f "${HOME}/ctrl/mkblade" ]; then
+        # Get the top of the remove list
+        blade=$(cat "ctrl/mkblade" | head -n1)
+        sudo apt-get install -y $blade
+        rm ctrl/mkblade
+    fi
+
+    # Remove blade from AEBL
+    # At the time of code, most blades are simply installed applications
+    #  and we will restrict only one blade install per request, at this time
+    # !! 141002 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
+    if [ -f "${HOME}/ctrl/rmblade" ]; then
+        # Get the top of the remove list
+        blade=$(cat "ctrl/rmblade" | head -n1)
+        sudo apt-get remove $blade
+        rm ctrl/rmblade
+    fi
+
     # check channel change present
     # eventually want to put in a channel file which will consist of:
     #     add channel :- +26
