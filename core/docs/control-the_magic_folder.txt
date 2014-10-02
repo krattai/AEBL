@@ -22,3 +22,4 @@ Current functions of the control folder (when file placed in control folder):
 + next - skips current content for next in playlist
 + rmfiles - for stand alone AEBL, the contents of the file should be file names
 + newpl - new playlist, contents of file should be mp4 files, at this time
++ restpl - moves stand alone AEBL files back to pl folder from mp4 and mp3 dirs
