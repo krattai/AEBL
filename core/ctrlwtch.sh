@@ -48,7 +48,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         ls -al > "${HOME}/ctrl/playlist.txt"
     fi
 
-    # Set stand alone AEBL playlist
+    # Set stand alone AEBL playlist, currently only for mp4 content
     # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/newpl" ]; then
         cp "${HOME}/ctrl/newpl" "${HOME}/ctrl/pltmp"
