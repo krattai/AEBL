@@ -86,6 +86,14 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         fi
     fi
 
+    # Reset stand alone AEBL playlist placing content back to pl folder
+    # Waring:  Using this function on channel AEBL could cause errors
+    # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
+    if [ -f "${HOME}/ctrl/resetpl" ]; then
+        mv mp4/* pl
+        mv mp3/* pl
+    fi
+
     # Process request to remove content from pl folder
     # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/rmfiles" ]; then
