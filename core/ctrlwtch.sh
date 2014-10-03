@@ -150,6 +150,14 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         rm ctrl/rmblade
     fi
 
+    # Set wlan
+    # !! 141002 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
+    if [ -f "${HOME}/ctrl/wlan" ]; then
+        # Get the top of the remove list
+        sudo mv "${HOME}/ctrl/wlan" "/etc/network/interfaces"
+        touch ctrl/reboot
+    fi
+
     # check channel change present
     # eventually want to put in a channel file which will consist of:
     #     add channel :- +26
