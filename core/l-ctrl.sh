@@ -14,6 +14,7 @@ AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
 IHDN_SYS="/home/pi/.ihdnsys"
+IHDN_DET="/home/pi/.ihdndet"
 TEMP_DIR="/home/pi/tmp"
 
 T_STO="/run/shm"
@@ -46,6 +47,11 @@ if  [ -f "${IHDN_SYS}" ] ||  [ -f "${IHDN_TEST}" ] && [ ! -f "${HOME}/chan" ]; t
     # check folder
     # accordingly, place channel text into chan file
     # which is chan file label and chan folder number for sftp
+    if [ -f "${HOME}/.ihdnfol-2" ]; then
+        touch /home/pi/chan
+        echo "chan-2" >> /home/pi/chan
+        echo "0000-2" >> /home/pi/chan
+    fi
     if [ -f "${HOME}/.ihdnfol0" ]; then
         touch /home/pi/chan
         echo "chan00" >> /home/pi/chan
@@ -66,12 +72,17 @@ if  [ -f "${IHDN_SYS}" ] ||  [ -f "${IHDN_TEST}" ] && [ ! -f "${HOME}/chan" ]; t
         echo "chan27" >> /home/pi/chan
         echo "000027" >> /home/pi/chan
     fi
+    if [ -f "${HOME}/.ihdnfol28" ]; then
+        touch /home/pi/chan
+        echo "chan28" >> /home/pi/chan
+        echo "000028" >> /home/pi/chan
+    fi
 fi
 
 # try to recover from non-playing system
 
 # check if supposed to be playing, but not
-if [ ! -f "${AUTOOFF_CHECK_FILE}" ] && [ ! "$(pgrep run.sh)" ] && [ ! "$(pgrep omxplayer.bin)" ]; then
+if [ ! -f "${AUTOOFF_CHECK_FILE}" ] && [ ! "$(pgrep run.sh)" ] && [ ! "$(pgrep omxplayer.bin)" ] && [ ! -f "${IHDN_DET}" ]; then
     # wait a minute
     sleep 60
     # check again, we already know it should be
@@ -159,6 +170,10 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
             wget -N -r -nd -l2 -w 3 -o "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/ihdntest.pl
         fi
 
+        if [ -f "${HOME}/.ihdnfol-2" ]; then
+            wget -N -r -nd -l2 -w 3 -o "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/idettest.pl
+        fi
+
     else
 
         echo "no further realtime updates for non-local systems"
@@ -177,6 +192,18 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
         if [ -f "${HOME}/.ihdnfol27" ]; then
             curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000027/chan27.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol28" ]; then
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000028/chan28.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol100" ]; then
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000028/chan100.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol101" ]; then
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000028/chan101.pl"
         fi
 
     fi
