@@ -117,7 +117,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
             if [ -f "${IHDN_DET}" ]; then
                 mv "${TEMP_DIR}/${cont}" $HOME/ad
-                touch /run/shm/.newpl
+                touch /run/shm/.newplay
             else
                 mv "${TEMP_DIR}/${cont}" $HOME/mp4
             fi
