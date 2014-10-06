@@ -71,14 +71,14 @@ while [ -f "${T_STO}/.sysrunning" ]; do
 
     # log .id
 
-    cat .id >> log.txt
+#    cat .id >> log.txt
 
     if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
         $T_SCR/./aebl_play.sh
 
         if [ "${MACe0}" == 'b8:27:eb:37:07:5a' ] && [ -f "${AEBL_SYS}" ]; then
-            echo "MAC is ending :5a so touching .aeblsys_test." >> log.txt
-            echo $(date +"%T") >> log.txt
+#            echo "MAC is ending :5a so touching .aeblsys_test." >> log.txt
+#            echo $(date +"%T") >> log.txt
             touch .aeblsys_test
             touch .aebltest
             rm ${AEBL_SYS}
@@ -89,7 +89,7 @@ while [ -f "${T_STO}/.sysrunning" ]; do
         if [ ! -f "${IHDN_DET}" ]; then
             $T_SCR/./ihdn_play.sh
         fi
-        if [ ! -f "${T_STO}/.syschecks" ] && [ ! "$(pgrep tests.sh)" ]; then
+        if [ ! -f "${T_STO}/.syschecks" ] && [ ! "$(pgrep ihdn_tests.sh)" ]; then
             $T_SCR/./ihdn_tests.sh &
         fi
     fi
@@ -129,8 +129,8 @@ while [ -f "${T_STO}/.sysrunning" ]; do
 #     fi
 
     if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ] && [ ! -f "${NOTHING_NEW}" ]; then
-        echo "Setting system to not check updates with .nonew" >> log.txt
-        echo $(date +"%T") >> log.txt
+#        echo "Setting system to not check updates with .nonew" >> log.txt
+#        echo $(date +"%T") >> log.txt
         touch $T_STO/.nonew
     fi
 
