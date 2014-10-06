@@ -110,7 +110,7 @@ if [ ! -f "${AUTOOFF_CHECK_FILE}" ] && [ ! "$(pgrep run.sh)" ] && [ ! "$(pgrep o
 fi
 
 echo "Running scheduled l-ctrl job" >> log.txt
-echo $(date +"%T") >> log.txt
+# echo $(date +"%T") >> log.txt
 
 # log current IPs
 echo "Current IPs as follows:" >> log.txt
@@ -122,7 +122,7 @@ echo "LAN IP: $IPe0" >> log.txt
 
 # echo $(date +"%y-%m-%d")$(date +"%T")$MACe0$IPw0
 echo $(date +"%y-%m-%d") >> log.txt
-echo $(date +"%T") >> log.txt
+# echo $(date +"%T") >> log.txt
 
 # temp check
 # log host $HOME dirctory
@@ -131,17 +131,17 @@ echo $(date +"%T") >> log.txt
 # echo $(date +"%T") >> log.txt
 # ls -al >> log.txt
 
-echo "Current pl directory" >> log.txt
-echo $(date +"%T") >> log.txt
-ls -al pl >> log.txt
+# echo "Current pl directory" >> log.txt
+# echo $(date +"%T") >> log.txt
+# ls -al pl >> log.txt
 
 
 killall dbus-daemon
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f "${LOCAL_SYS}" ]; then
-        echo "Getting files from scheduled l-ctrl job." >> log.txt
-        echo $(date +"%T") >> log.txt
+#         echo "Getting files from scheduled l-ctrl job." >> log.txt
+#         echo $(date +"%T") >> log.txt
 
         wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/l-ctrl.sh
 
