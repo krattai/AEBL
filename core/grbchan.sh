@@ -9,6 +9,7 @@ AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
 IHDN_SYS="/home/pi/.ihdnsys"
+IHDN_DET="/home/pi/.ihdndet"
 TEMP_DIR="/home/pi/tmp"
 
 T_STO="/run/shm"
@@ -22,6 +23,7 @@ AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
 IHDN_SYS="/home/pi/.ihdnsys"
+IHDN_DET="/home/pi/.ihdndet"
 TEMP_DIR="/home/pi/tmp"
 
 T_STO="/run/shm"
@@ -55,10 +57,15 @@ rm /home/pi/chtmp
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f "${LOCAL_SYS}" ]; then
-
-        # change chan and folder according to known IHDN_TEST sys
-        chan="ihdn"
-        folder="mp4"
+        if [ -f "${IHDN_DET}" ]; then
+            # change chan and folder according to known IHDN_DET sys
+            chan="idettest"
+            folder="mp4"
+        else
+            # change chan and folder according to known IHDN_TEST sys
+            chan="ihdn"
+            folder="mp4"
+        fi
         wget -N -nd -w 3 -P $T_STO --limit-rate=50k "http://192.168.200.6/files/${chan}.m3u"
     else
         curl -o "${T_STO}/${chan}.m3u" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/${folder}/${chan}.m3u"
@@ -98,7 +105,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
         fi
 
         # Check that the file does not exist
-        if [ ! -f "$HOME/mp4/${cont}" ]; then
+        if [ ! -f "$HOME/mp4/${cont}" ] && [ ! -f "$HOME/ad/${cont}" ]; then
 
             # if local, do IHDN_TEST else, do IHDN_SYS
             if [ -f "${LOCAL_SYS}" ]; then
@@ -108,7 +115,11 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
                 curl -o "${TEMP_DIR}/${cont}" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/${folder}/${cont}"
             fi
 
-            mv "${TEMP_DIR}/${cont}" $HOME/mp4
+            if [ -f "${IHDN_DET}" ]; then
+                mv "${TEMP_DIR}/${cont}" $HOME/ad
+            else
+                mv "${TEMP_DIR}/${cont}" $HOME/mp4
+            fi
         fi
     done
 fi
