@@ -83,7 +83,6 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         rm "ctrl/${PL_FILES}.new"
         # This is on faith, I have absolutely no idea where mkplay.sh is called
         mv "${HOME}/ctrl/newpl" "${T_STO}/mynew.pl"
-        fi
     fi
 
     # Reset stand alone AEBL playlist placing content back to pl folder
