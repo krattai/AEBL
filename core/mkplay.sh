@@ -46,9 +46,9 @@ while [ -f "${T_STO}/.mkplayrun" ]; do
     # Check if not currenlty making playlist and newpl exists
 
     if [ ! -f "${T_STO}/mkpl" ] && [ -f "${T_STO}/mynew.pl" ]; then
-        echo "Currently not making playlist." >> log.txt
-        echo "Making running token."  >> log.txt
-        echo $(date +"%T") >> log.txt
+#        echo "Currently not making playlist." >> log.txt
+#        echo "Making running token."  >> log.txt
+#        echo $(date +"%T") >> log.txt
 
         touch $T_STO/mkpl
 
@@ -150,8 +150,8 @@ while [ -f "${T_STO}/.mkplayrun" ]; do
             #    sudo reboot
 
             if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
-                echo "Setting up stored playlist." >> log.txt
-                echo $(date +"%T") >> log.txt
+#                echo "Setting up stored playlist." >> log.txt
+#                echo $(date +"%T") >> log.txt
             fi
 
             if [ ! -s "${T_STO}/.playlist" ]; then
@@ -168,8 +168,8 @@ while [ -f "${T_STO}/.mkplayrun" ]; do
                 # make playlist
 
                 if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
-                    echo "Creating new playlist." >> log.txt
-                    echo $(date +"%T") >> log.txt
+#                    echo "Creating new playlist." >> log.txt
+#                    echo $(date +"%T") >> log.txt
                 fi
 
                 $T_SCR/./playlist.sh $HOME/pl/*.mp4
