@@ -225,6 +225,10 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     $T_SCR/./synfilz.sh &
 
+    if [ ! -f "${HOME}/.getchan" ]; then
+        $T_SCR/./grbchan.sh &
+    fi
+
 fi
 
 if [ ! -f "${OFFLINE_SYS}" ] && [ ! -f "${HOME}/.patched_too" ]; then
