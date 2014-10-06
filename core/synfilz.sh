@@ -71,13 +71,13 @@ if [ -f "${NETWORK_SYS}" ]; then
     echo "$(date +"%y-%m-%d")" >> $T_STO/test.log
     echo "$(date +"%T")" >> $T_STO/test.log
 
-    echo "#!~~ free ~~~!#" >> $T_STO/test.log
-    free >> $T_STO/test.log
-    echo "#!~~ ps x ~~~!#" >> $T_STO/test.log
-    ps x >> $T_STO/test.log
+#     echo "#!~~ free ~~~!#" >> $T_STO/test.log
+#     free >> $T_STO/test.log
+#    echo "#!~~ ps x ~~~!#" >> $T_STO/test.log
+#     ps x >> $T_STO/test.log
 
-    echo "#!~~ ls -al ~~~!#" >> $T_STO/test.log
-    ls -al >> $T_STO/test.log
+#     echo "#!~~ ls -al ~~~!#" >> $T_STO/test.log
+#     ls -al >> $T_STO/test.log
 
 #     echo "#!~~ cronttab -l ~~~!#" >> test.log
 
@@ -90,32 +90,32 @@ if [ -f "${NETWORK_SYS}" ]; then
 
 #     echo "#!~~~~~!#" >> test.log
 
-    echo "#!~~ ls -al pl ~~~!#" >> $T_STO/test.log
-    ls -al pl >> $T_STO/test.log
+#     echo "#!~~ ls -al pl ~~~!#" >> $T_STO/test.log
+#     ls -al pl >> $T_STO/test.log
 
-    echo "#!~~~~~!#" >> $T_STO/test.log
+#     echo "#!~~~~~!#" >> $T_STO/test.log
 
-    echo "#!~~ cat .newpl ~~~!#" >> $T_STO/test.log
-    cat $T_STO/.newpl >> $T_STO/test.log
+#     echo "#!~~ cat .newpl ~~~!#" >> $T_STO/test.log
+#     cat $T_STO/.newpl >> $T_STO/test.log
 
-    echo "#!~~~~~!#" >> $T_STO/test.log
+#     echo "#!~~~~~!#" >> $T_STO/test.log
 
-    echo "#!~~ ls -al mp4 ~~~!#" >> $T_STO/test.log
-    ls -al mp4 >> $T_STO/test.log
+#     echo "#!~~ ls -al mp4 ~~~!#" >> $T_STO/test.log
+#     ls -al mp4 >> $T_STO/test.log
 
-    echo "#!~~ df -h ~~~!#" >> $T_STO/test.log
-    df -h >> $T_STO/test.log
+#     echo "#!~~ df -h ~~~!#" >> $T_STO/test.log
+#     df -h >> $T_STO/test.log
 
-    echo "#!#!#!#!#" >> $T_STO/test.log
+#     echo "#!#!#!#!#" >> $T_STO/test.log
 
     # put to dropbox if not running (overrunning for some reason)
     # will need to check if testing happening too often
     # but log doesn't seem to be, just playing faster than doing upload
-    if [ ! "$(pgrep dropbox_uploader.sh)" ]; then
+#     if [ ! "$(pgrep dropbox_uploader.sh)" ]; then
 
-        $HOME/scripts/./dropbox_uploader.sh upload $T_STO/test.log /${MACe0}_up.txt &
+#         $HOME/scripts/./dropbox_uploader.sh upload $T_STO/test.log /${MACe0}_up.txt &
 
-        $HOME/scripts/./dropbox_uploader.sh upload log.txt /${MACe0}_log.txt &
+#         $HOME/scripts/./dropbox_uploader.sh upload log.txt /${MACe0}_log.txt &
 
         # upload to sftp server
 #         curl -T "$HOME/log.txt" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000000_uploads/ihdnpi_logs/${MACe0}_log.txt" &
@@ -152,26 +152,26 @@ if [ -f "${NETWORK_SYS}" ]; then
 fi
 
 if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
-    echo "Check if MAC is ending :5a" >> log.txt
+#     echo "Check if MAC is ending :5a" >> log.txt
     echo "MAC Address is created as: $MACe0"
-    echo $(date +"%T") >> log.txt
+#     echo $(date +"%T") >> log.txt
     if [ "${MACe0}" == 'b8:27:eb:37:07:5a' ] && [ -f "${AEBL_SYS}" ]; then
-        echo "MAC is ending :5a and has .aeblsys but should not, so removing .aeblsys and .aeblsys_test." >> log.txt
+#         echo "MAC is ending :5a and has .aeblsys but should not, so removing .aeblsys and .aeblsys_test." >> log.txt
         rm .aeblsys
         rm .aeblsys_test
     fi
 fi
 
 if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
-    echo "Running sync filz." >> log.txt
-    echo $(date +"%T") >> log.txt
+#     echo "Running sync filz." >> log.txt
+#     echo $(date +"%T") >> log.txt
 fi
 
 if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
-    echo "!*******************!" >> log.txt
-    echo "Posting log" >> log.txt
-    echo $(date +"%T") >> log.txt
-    echo "!*******************!" >> log.txt
+#     echo "!*******************!" >> log.txt
+#     echo "Posting log" >> log.txt
+#     echo $(date +"%T") >> log.txt
+#     echo "!*******************!" >> log.txt
 
     # put to dropbox
 #    $HOME/scripts/./dropbox_uploader.sh upload log.txt /${MACe0}_log.txt &
@@ -216,9 +216,9 @@ if [ -f "${LOCAL_SYS}" ]; then
     # should append syncing to syncing file and dump it to dropbox
 
     if [ ! -f "${T_STO}/syncing" ]; then
-        echo "Currently not syncing." >> log.txt
-        echo "Making running token."  >> log.txt
-        echo $(date +"%T") >> log.txt
+#         echo "Currently not syncing." >> log.txt
+#         echo "Making running token."  >> log.txt
+#         echo $(date +"%T") >> log.txt
 
         touch "${T_STO}/syncing"
 
@@ -344,9 +344,9 @@ if [ -f "${LOCAL_SYS}" ]; then
 #         wget -r -nd -nc -l 2 -w 3 -A mp3 -P $HOME/aud http://192.168.200.6/files/
 
 
-        echo "Done syncing." >> log.txt
-        echo "Removing running token."  >> log.txt
-        echo $(date +"%T") >> log.txt
+#         echo "Done syncing." >> log.txt
+#         echo "Removing running token."  >> log.txt
+#         echo $(date +"%T") >> log.txt
         rm "${T_STO}/syncing"
 
     # Else do nothing files
@@ -355,8 +355,8 @@ if [ -f "${LOCAL_SYS}" ]; then
     fi
 
     if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
-        echo "Done sync filz." >> log.txt
-        echo $(date +"%T") >> log.txt
+#         echo "Done sync filz." >> log.txt
+#         echo $(date +"%T") >> log.txt
     fi
 
 fi
