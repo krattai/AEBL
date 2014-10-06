@@ -41,6 +41,7 @@ AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
 IHDN_SYS="/home/pi/.ihdnsys"
+IHDN_DET="/home/pi/.ihdndet"
 TEMP_DIR="/home/pi/tmp"
 
 T_STO="/run/shm"
@@ -85,8 +86,10 @@ while [ -f "${T_STO}/.sysrunning" ]; do
     fi
 
     if [ -f "${IHDN_TEST}" ] || [ -f "${IHDN_SYS}" ]; then
-        $T_SCR/./ihdn_play.sh
-        if [ ! -f "${T_STO}/.syschecks" ]; then
+        if [ ! -f "${IHDN_DET}" ]; then
+            $T_SCR/./ihdn_play.sh
+        fi
+        if [ ! -f "${T_STO}/.syschecks" ] && [ ! "$(pgrep tests.sh)" ]; then
             $T_SCR/./ihdn_tests.sh &
         fi
     fi
