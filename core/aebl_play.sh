@@ -3,6 +3,8 @@
 #
 # Copyright (C) 2014 Uvea I. S., Kevin Rattai
 #
+# This script sets the AEBL to play content.
+#
 # This file will be superceded by the l-ctrl file as far as
 # control of the system, as l-ctrl will be a cron job.  This
 # script may become depricated, although it might continue a
@@ -97,14 +99,15 @@ cd $HOME
 # fi
 
 if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
-    echo "Starting the following playlist set." >> log.txt
-    cat .playlist >> log.txt
-    echo $(date +"%T") >> log.txt
+    echo "Starting the following playlist set."
+#     echo "Starting the following playlist set." >> log.txt
+#     cat .playlist >> log.txt
+#     echo $(date +"%T") >> log.txt
 fi
 
 if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ] && [ ! -f "${NOTHING_NEW}" ]; then
-    echo "Setting system to not check updates with .nonew" >> log.txt
-    echo $(date +"%T") >> log.txt
+#     echo "Setting system to not check updates with .nonew" >> log.txt
+#     echo $(date +"%T") >> log.txt
     touch $NOTHING_NEW
 fi
 
