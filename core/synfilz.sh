@@ -163,12 +163,14 @@ if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
 fi
 
 if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
+    echo "Running sync filz."
 #     echo "Running sync filz." >> log.txt
 #     echo $(date +"%T") >> log.txt
 fi
 
 if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
 #     echo "!*******************!" >> log.txt
+    echo "Posting log"
 #     echo "Posting log" >> log.txt
 #     echo $(date +"%T") >> log.txt
 #     echo "!*******************!" >> log.txt
