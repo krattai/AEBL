@@ -38,7 +38,7 @@ if [ ! "$(pgrep ctrlwtch.sh)" ]; then
 fi
 
 # check irot or idet and remove aeblsys
-if [ -f "${IHDN_TEST}" ] ||  [ -f "${IHDN_SYS}" ] && [ -f "${AEBL_SYS}" ]; then
+if [ -f "${IHDN_TEST}" ] ||  [ -f "${IHDN_SYS}" ] && [ -f "${IHDN_DET}" ]; then
     rm /home/pi/.aeblsys
 fi
 
@@ -145,29 +145,32 @@ killall dbus-daemon
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f "${LOCAL_SYS}" ]; then
+
+# don't get any more script updates from non-patch system
+
 #         echo "Getting files from scheduled l-ctrl job." >> log.txt
 #         echo $(date +"%T") >> log.txt
 
-        wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/l-ctrl.sh
+#         wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/l-ctrl.sh
 
-        cp $HOME/.scripts/l-ctrl.sh $T_SCR
+#         cp $HOME/.scripts/l-ctrl.sh $T_SCR
 
 #         wget -N -r -nd -l2 -w 3 -P $HOME/scripts --limit-rate=50k http://192.168.200.6/files/synfilz.sh
 
 #         cp $HOME/scripts/synfilz.sh $HOME/.scripts
 #         cp $HOME/scripts/synfilz.sh $T_SCR
 
-        wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/mkplay.sh
+#         wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/mkplay.sh
 
-        cp $HOME/.scripts/mkplay.sh $T_SCR
+#         cp $HOME/.scripts/mkplay.sh $T_SCR
 
-        wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/aebl_play.sh
+#         wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/aebl_play.sh
 
-        cp $HOME/.scripts/aebl_play.sh $T_SCR
+#         cp $HOME/.scripts/aebl_play.sh $T_SCR
 
-        wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/ihdn_play.sh
+#         wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/ihdn_play.sh
 
-        cp $HOME/.scripts/ihdn_play.sh $T_SCR
+#         cp $HOME/.scripts/ihdn_play.sh $T_SCR
 
         if [ -f "${AEBL_TEST}" ]; then
             wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/aebltest.pl
@@ -223,10 +226,10 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     fi
 
-    chmod 777 $HOME/.scripts/l-ctrl.sh
-    chmod 777 $T_SCR/synfilz.sh
+#     chmod 777 $HOME/.scripts/l-ctrl.sh
+#     chmod 777 $T_SCR/synfilz.sh
 #     chmod 777 $HOME/scripts/synfilz.sh
-    chmod 777 $HOME/scripts/mkplay.sh
+#     chmod 777 $HOME/scripts/mkplay.sh
 
     $T_SCR/./synfilz.sh &
 
