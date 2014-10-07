@@ -155,10 +155,12 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
 #         cp $HOME/.scripts/l-ctrl.sh $T_SCR
 
-#         wget -N -r -nd -l2 -w 3 -P $HOME/scripts --limit-rate=50k http://192.168.200.6/files/synfilz.sh
 
-#         cp $HOME/scripts/synfilz.sh $HOME/.scripts
-#         cp $HOME/scripts/synfilz.sh $T_SCR
+#  Do want this one, as not all installs include this file
+        wget -N -r -nd -l2 -w 3 -P $HOME/scripts --limit-rate=50k http://192.168.200.6/files/synfilz.sh
+
+        cp $HOME/scripts/synfilz.sh $HOME/.scripts
+        cp $HOME/scripts/synfilz.sh $T_SCR
 
 #         wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/mkplay.sh
 
@@ -227,8 +229,9 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
     fi
 
 #     chmod 777 $HOME/.scripts/l-ctrl.sh
-#     chmod 777 $T_SCR/synfilz.sh
-#     chmod 777 $HOME/scripts/synfilz.sh
+     chmod 777 $T_SCR/synfilz.sh
+     chmod 777 $HOME/scripts/synfilz.sh
+     chmod 777 $HOME/.scripts/synfilz.sh
 #     chmod 777 $HOME/scripts/mkplay.sh
 
     $T_SCR/./synfilz.sh &
