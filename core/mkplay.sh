@@ -150,6 +150,7 @@ while [ -f "${T_STO}/.mkplayrun" ]; do
             #    sudo reboot
 
             if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
+                echo "Setting up stored playlist."
 #                echo "Setting up stored playlist." >> log.txt
 #                echo $(date +"%T") >> log.txt
             fi
@@ -168,6 +169,7 @@ while [ -f "${T_STO}/.mkplayrun" ]; do
                 # make playlist
 
                 if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
+                    echo "Creating new playlist."
 #                    echo "Creating new playlist." >> log.txt
 #                    echo $(date +"%T") >> log.txt
                 fi
