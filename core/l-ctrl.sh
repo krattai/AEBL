@@ -43,7 +43,7 @@ if [ -f "${IHDN_TEST}" ] ||  [ -f "${IHDN_SYS}" ] && [ -f "${AEBL_SYS}" ]; then
 fi
 
 # As of 141007 ihdn_tests.sh not standard run by detector, so run here
-if  [ -f "${IHDN_DET}" ]
+if  [ -f "${IHDN_DET}" ]; then
     $T_SCR/./ihdn_tests.sh
 fi
 
