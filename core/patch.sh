@@ -3,8 +3,8 @@
 #
 # Copyright (C) 2014 Uvea I. S., Kevin Rattai
 #
-# patches are accumulated, so second patch includes first patch
-# and contents of patch will make it into next version / upgrade
+# patches are accumulated, so second patch happens after first patch
+# and contents of patches will make it into next version / upgrade
 # system will patch once a day if available
 #
 # generally, patches precede upgrades, upgrades supersede patches
