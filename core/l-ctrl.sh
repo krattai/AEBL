@@ -115,19 +115,14 @@ if [ ! -f "${AUTOOFF_CHECK_FILE}" ] && [ ! "$(pgrep run.sh)" ] && [ ! "$(pgrep o
 fi
 
 echo "Running scheduled l-ctrl job" >> log.txt
-# echo $(date +"%T") >> log.txt
+echo $(date +"%T") >> log.txt
 
 # log current IPs
 echo "Current IPs as follows:" >> log.txt
 echo "WAN IP: $IPw0" >> log.txt
 echo "LAN IP: $IPe0" >> log.txt
 
-# echo $(date +"%y-%m-%d")
-# echo $(date +"%T")
-
-# echo $(date +"%y-%m-%d")$(date +"%T")$MACe0$IPw0
 echo $(date +"%y-%m-%d") >> log.txt
-# echo $(date +"%T") >> log.txt
 
 # temp check
 # log host $HOME dirctory
@@ -148,32 +143,13 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
 # don't get any more script updates from non-patch system
 
-#         echo "Getting files from scheduled l-ctrl job." >> log.txt
-#         echo $(date +"%T") >> log.txt
-
-#         wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/l-ctrl.sh
-
-#         cp $HOME/.scripts/l-ctrl.sh $T_SCR
-
-
-#  Do want this one, as not all installs include this file
+#  Except!  Do want this one, as not all installs include this file
         wget -N -r -nd -l2 -w 3 -P $HOME/scripts --limit-rate=50k http://192.168.200.6/files/synfilz.sh
 
         cp $HOME/scripts/synfilz.sh $HOME/.scripts
         cp $HOME/scripts/synfilz.sh $T_SCR
 
-#         wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/mkplay.sh
-
-#         cp $HOME/.scripts/mkplay.sh $T_SCR
-
-#         wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/aebl_play.sh
-
-#         cp $HOME/.scripts/aebl_play.sh $T_SCR
-
-#         wget -N -r -nd -l2 -w 3 -P $HOME/.scripts --limit-rate=50k http://192.168.200.6/files/ihdn_play.sh
-
-#         cp $HOME/.scripts/ihdn_play.sh $T_SCR
-
+        # Get playlists from local server
         if [ -f "${AEBL_TEST}" ]; then
             wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/aebltest.pl
         fi
@@ -197,9 +173,6 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
     else
 
         echo "no further realtime updates for non-local systems"
-#         wget -N -r -nd -l2 -w 3 -P $HOME/scripts --limit-rate=50k "https://www.dropbox.com/s/k1ifbgmvhjh83na/l-ctrl.sh"
-
-#         cp $HOME/scripts/l-ctrl.sh $T_SCR
 
         # but DO get playlists
         if [ -f "${HOME}/.ihdnfol25" ]; then
@@ -228,11 +201,9 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     fi
 
-#     chmod 777 $HOME/.scripts/l-ctrl.sh
      chmod 777 $T_SCR/synfilz.sh
      chmod 777 $HOME/scripts/synfilz.sh
      chmod 777 $HOME/.scripts/synfilz.sh
-#     chmod 777 $HOME/scripts/mkplay.sh
 
     $T_SCR/./synfilz.sh &
 
