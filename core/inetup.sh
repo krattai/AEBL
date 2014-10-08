@@ -1,5 +1,9 @@
 #!/bin/bash
-
+#
+# This script is a cron job script
+# It checks for network and internet connectivity
+# It should attempt to recover from network errors if possible.
+#
 # wget useful parameters
 #
 # -c count  ie. 1
@@ -31,34 +35,6 @@ fi
 
 # Discover network availability
 #
-# This was the old way of checking network up
-#
-# wget -q --tries=5 --timeout=20 http://google.com
-#
-# if [[ $? -eq 0 ]]; then
-#     touch .network
-#     echo "Internet available."
-# else
-#     rm .network
-# fi
-#
-# The following is the newer, cleaner, faster way
-#
-# for i in $@
-# do
-# ping -c 1 $i &> /dev/null
-#
-# if [ $? -ne 0 ]; then
-# 	echo "`date`: ping failed, $i host is down!" | mail -s "$i host is down!" my@email.address 
-# fi
-# done
-#
-# For right now, just checking once per cron and should probably keep
-# it that way to ensure low bandwidth use, although once per minute
-# should be standard way to check up or down.  Alternately from cron,
-# a sleep -s 60 could be added to script and simply have script load on
-# boot and keep running in a daemon like way
-
 # should have a way to periodically check if no network for a long time
 # perhaps a network SHOULD be available, so attempt to establish
 # thus:
@@ -75,6 +51,7 @@ if [ -f "${OFFLINE_SYS}" ]; then
     sleep 10
 fi
 
+# Check internet availability against master control IP
 ping -c 1 184.71.76.158
 
 if [ $? -eq 0 ]; then
@@ -84,6 +61,7 @@ else
     rm $NETWORK_SYS
 fi
 
+# Check local network availability against local server
 ping -c 1 192.168.200.6
 
 if [[ $? -eq 0 ]]; then
@@ -100,7 +78,7 @@ else
     rm $OFFLINE_SYS
 fi
 
-# check IPv6 tun up and if not, start/restart
+# check IPv6 tun vs native assigned IPV6 up and if not, start/restart
 if [ -f "${NETWORK_SYS}" ]; then
     if [ ! -L /sys/class/net/tun ]; then
         sudo /etc/init.d/gogoc restart
