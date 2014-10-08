@@ -38,7 +38,7 @@ if [ ! "$(pgrep ctrlwtch.sh)" ]; then
 fi
 
 # check irot or idet and remove aeblsys
-if [ -f "${IHDN_TEST}" ] ||  [ -f "${IHDN_SYS}" ] && [ -f "${IHDN_DET}" ]; then
+if [ -f "${IHDN_TEST}" ] ||  [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ]; then
     rm /home/pi/.aeblsys
 fi
 
