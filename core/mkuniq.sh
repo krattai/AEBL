@@ -1,7 +1,8 @@
 #!/bin/sh
-# make unique id
 #
 # Copyright (C) 2014 Uvea I. S., Kevin Rattai
+#
+# make unique id
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
@@ -53,19 +54,14 @@ echo $(date +"%T")
 if [ ! -f "${ID_FILE}" ]; then
 
     # create uid
-#    U_ID="${HOME}/$(date +"%y-%m-%d")$(date +"%T")$MACe0$IPw0"
     U_ID="$(date +"%y-%m-%d")$(date +"%T")$MACe0$IPw0"
 
     # create file
-#    touch ${U_ID}
-#    echo ${U_ID} > ${U_ID}
-#    echo $(date +"%y-%m-%d")$(date +"%T")$MACe0$IPw0 > ${ID_FILE}
     echo ${U_ID} > ${ID_FILE}
 
     $T_SCR/./macip.sh >> ${ID_FILE}
 
     # create local store id file
-#    echo $(date +"%y-%m-%d")$(date +"%T")$MACe0$IPw0 > ${ID_FILE}
 
     # put to dropbox
     $T_SCR/./dropbox_uploader.sh upload ${ID_FILE} /${U_ID}
@@ -80,5 +76,3 @@ else
 fi
 
 exit
- 
-# EndOfFile
