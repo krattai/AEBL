@@ -19,5 +19,3 @@ echo $(date +"%T")
 echo $(date +"%y-%m-%d")$(date +"%T")$MACe0$IPw0
  
 exit
-
-# EndOfFile
