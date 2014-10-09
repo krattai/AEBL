@@ -84,7 +84,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     cd ${TEMP_DIR}
 
-    unzip asys0091.zip
+    unzip -o asys0091.zip
 
     rm asys0091.zip
 
