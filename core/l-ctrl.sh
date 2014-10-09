@@ -43,9 +43,9 @@ if [ -f "${IHDN_TEST}" ] ||  [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ]; then
 fi
 
 # As of 141007 ihdn_tests.sh not standard run by detector, so run here
-if  [ -f "${IHDN_DET}" ]; then
-    $T_SCR/./ihdn_tests.sh
-fi
+# if  [ -f "${IHDN_DET}" ]; then
+#     $T_SCR/./ihdn_tests.sh
+# fi
 
 # create channel file if not exist
 if  [ -f "${IHDN_SYS}" ] ||  [ -f "${IHDN_TEST}" ] && [ ! -f "${HOME}/chan" ]; then
