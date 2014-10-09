@@ -23,6 +23,7 @@ AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
 IHDN_SYS="/home/pi/.ihdnsys"
+IHDN_DET="/home/pi/.ihdndet"
 TEMP_DIR="/home/pi/tmp"
 
 T_STO="/run/shm"
@@ -50,7 +51,7 @@ if [ ! -f "${T_STO}/.optimized" ]; then
 
 fi
 
-if [ ! -f "${T_STO}/.mkplayrun" ]; then
+if [ ! -f "${T_STO}/.mkplayrun" ] && [ ! -f "${IHDN_DET}" ]; then
     $T_SCR/./mkplay.sh &
 fi
 
@@ -94,7 +95,7 @@ if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ] && [ ! -f "${OFFLINE_SYS
 
 fi
 
-if [ ! -f "${OFFLINE_SYS}" ]; then
+if [ ! -f "${OFFLINE_SYS}" ] && [ ! -f "${IHDN_DET}" ]; then
     $T_SCR/./mkuniq.sh &
 
     ID_FILE="${HOME}/ctrl/ip.txt"
