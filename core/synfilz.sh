@@ -71,80 +71,13 @@ if [ -f "${NETWORK_SYS}" ]; then
     echo "$(date +"%y-%m-%d")" >> $T_STO/test.log
     echo "$(date +"%T")" >> $T_STO/test.log
 
-#     echo "#!~~ free ~~~!#" >> $T_STO/test.log
-#     free >> $T_STO/test.log
-#    echo "#!~~ ps x ~~~!#" >> $T_STO/test.log
-#     ps x >> $T_STO/test.log
-
-#     echo "#!~~ ls -al ~~~!#" >> $T_STO/test.log
-#     ls -al >> $T_STO/test.log
-
-#     echo "#!~~ cronttab -l ~~~!#" >> test.log
-
-#     crontab -l >> test.log
-
-#     echo "#!~~~~~!#" >> test.log
-
-#     echo "#!~~ ls -al scripts ~~~!#" >> test.log
-#     ls -al scripts >> test.log
-
-#     echo "#!~~~~~!#" >> test.log
-
-#     echo "#!~~ ls -al pl ~~~!#" >> $T_STO/test.log
-#     ls -al pl >> $T_STO/test.log
-
-#     echo "#!~~~~~!#" >> $T_STO/test.log
-
-#     echo "#!~~ cat .newpl ~~~!#" >> $T_STO/test.log
-#     cat $T_STO/.newpl >> $T_STO/test.log
-
-#     echo "#!~~~~~!#" >> $T_STO/test.log
-
-#     echo "#!~~ ls -al mp4 ~~~!#" >> $T_STO/test.log
-#     ls -al mp4 >> $T_STO/test.log
-
-#     echo "#!~~ df -h ~~~!#" >> $T_STO/test.log
-#     df -h >> $T_STO/test.log
-
-#     echo "#!#!#!#!#" >> $T_STO/test.log
-
-    # put to dropbox if not running (overrunning for some reason)
-    # will need to check if testing happening too often
-    # but log doesn't seem to be, just playing faster than doing upload
-#     if [ ! "$(pgrep dropbox_uploader.sh)" ]; then
-
-#         $HOME/scripts/./dropbox_uploader.sh upload $T_STO/test.log /${MACe0}_up.txt &
-
-#         $HOME/scripts/./dropbox_uploader.sh upload log.txt /${MACe0}_log.txt &
-
-        # upload to sftp server
-#         curl -T "$HOME/log.txt" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000000_uploads/ihdnpi_logs/${MACe0}_log.txt" &
-
     fi
-
-#     if [ "${MACe0}" == 'b8:27:eb:a7:23:94' ]; then
-
-#         wget -N -nd -w 3 -P $HOME/scripts --limit-rate=50k "https://www.dropbox.com/s/s9jv5gi0ybr3ura/process_playlist.sh"
-#         chmod 755 $HOME/scripts/process_playlist.sh
-
-#     fi
-#     if [ "${MACe0}" == 'b8:27:eb:a7:23:94' ] && [ ! -f "${HOME}/.rblt" ]; then
-
-#         touch $HOME/.rblt
-
-#         $HOME/scripts/./create-ihdn.sh
-
-#     fi
 
     if [ "${MACe0}" == 'b8:27:eb:a7:23:94' ] && [ -f "${HOME}/.rblt" ]; then
 
 #         touch $HOME/.rblt
 
         rm $HOME/.rblt
-
-#         cp "$HOME/mp4/ihdn mrkt 14051500.mp4" $HOME/pl
-#         rm $HOME/mp4/*
-#         cp $HOME/pl/*.mp4 $HOME/mp4
 
         sudo reboot
 
@@ -174,38 +107,6 @@ if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
 #     echo "Posting log" >> log.txt
 #     echo $(date +"%T") >> log.txt
 #     echo "!*******************!" >> log.txt
-
-    # put to dropbox
-#    $HOME/scripts/./dropbox_uploader.sh upload log.txt /${MACe0}_log.txt &
-
-    # upload to sftp server
-#    curl -T "$HOME/log.txt" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000000_uploads/ihdnpi_logs/${MACe0}_log.txt" &
-
-#        wget -N -nd -w 3 -P $HOME/scripts --limit-rate=50k http://192.168.200.6/files/lctrl.ctab
-
-#        sudo sed -i '/\*\/3 \* \* \* \* \/home\/pi\/scripts\/l-ctrl.sh/d' /var/spool/cron/crontabs/pi
-
-#        wget -N -nd -w 3 -P $HOME/scripts --limit-rate=50k http://192.168.200.6/files/cronadd.sh
-
-#        chmod 777 scripts/cronadd.sh
-
-#        scripts/./cronadd.sh
-
-#        wget -N -r -nd -l2 -w 3 -P $HOME/scripts --limit-rate=50k http://192.168.200.6/files/cronrem.sh
-
-#        chmod 777 scripts/cronrem.sh
-
-#        scripts/./cronrem.sh
-
-#        rm scripts/chkint.ctab
-
-#        wget -N -r -nd -l2 -w 3 -P $HOME/scripts --limit-rate=50k http://192.168.200.6/files/chckint.ctab
-
-#        wget -N -r -nd -l2 -w 3 -P $HOME/scripts --limit-rate=50k http://192.168.200.6/files/cronadd.sh
-
-#        chmod 777 scripts/cronadd.sh
-
-#        scripts/./cronadd.sh
 
 fi
 
