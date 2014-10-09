@@ -144,7 +144,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     cd ${TEMP_DIR}
 
-    unzip ${cur_file}
+    unzip -o ${cur_file}
 
     rm ${cur_file}
 
