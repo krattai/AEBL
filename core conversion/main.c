@@ -120,4 +120,66 @@ rm index*
 
 $T_SCR/./run.sh &
 
+/* What follows is the original source from the run.sh app     */
+/*   Should be part of a main.c function run() or main()       */
+
+NOTHING_NEW="${T_STO}/.nonew"
+NEW_PL="${T_STO}/.newpl"
+
+IPw0=$(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+MACw0=$(ip link show wlan0 | awk '/ether/ {print $2}')
+IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
+
+CRONCOMMFILE="${T_STO}/.tempcron"
+ 
+# set to home directory
+ 
+cd $HOME
+
+touch $T_STO/.sysrunning
+
+while [ -f "${T_STO}/.sysrunning" ]; do
+
+    # log .id
+
+#    cat .id >> log.txt
+
+    if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
+        $T_SCR/./aebl_play.sh
+
+        if [ "${MACe0}" == 'b8:27:eb:37:07:5a' ] && [ -f "${AEBL_SYS}" ]; then
+#            echo "MAC is ending :5a so touching .aeblsys_test." >> log.txt
+#            echo $(date +"%T") >> log.txt
+            touch .aeblsys_test
+            touch .aebltest
+            rm ${AEBL_SYS}
+        fi
+    fi
+
+    if [ -f "${IHDN_TEST}" ] || [ -f "${IHDN_SYS}" ]; then
+        if [ ! -f "${IHDN_DET}" ]; then
+            $T_SCR/./ihdn_play.sh
+        fi
+        if [ ! -f "${T_STO}/.syschecks" ] && [ ! "$(pgrep ihdn_tests.sh)" ]; then
+            $T_SCR/./ihdn_tests.sh &
+        fi
+    fi
+
+    # Check nothing new
+    # This section to watch and react to requested or auto change in system
+
+
+    if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ] && [ ! -f "${NOTHING_NEW}" ]; then
+#        echo "Setting system to not check updates with .nonew" >> log.txt
+#        echo $(date +"%T") >> log.txt
+        touch $T_STO/.nonew
+    fi
+
+done
+
+# if .sysrunning token cleared, loop back to startup.sh
+
+$T_SCR/./startup.sh &
+
 }
