@@ -71,6 +71,8 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
         curl -o "${T_STO}/${chan}.m3u" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/${folder}/${chan}.m3u"
     fi
 
+    dos2unix "${T_STO}/${chan}.m3u"
+
     cp "${T_STO}/${chan}.m3u" $T_STO/synfil
     rm "${T_STO}/${chan}.m3u"
 
