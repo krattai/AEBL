@@ -51,6 +51,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     # Set stand alone AEBL playlist, currently only for mp4 content
     # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/newpl" ]; then
+        dos2unix "${HOME}/ctrl/newpl"
         cp "${HOME}/ctrl/newpl" "${HOME}/ctrl/pltmp"
         PL_FILES="${HOME}/ctrl/pltmp"
         touch $T_STO/plfiles
@@ -96,6 +97,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     # Process request to remove content from pl folder
     # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/rmfiles" ]; then
+        dos2unix "${HOME}/ctrl/rmfiles"
         REMOVE_FILES="${HOME}/ctrl/rmfiles"
         touch $T_STO/rmfiles
         while [ -f "${T_STO}/rmfiles" ]; do
@@ -132,6 +134,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     #  and we will restrict only one blade install per request, at this time
     # !! 141002 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/mkblade" ]; then
+        dos2unix "${HOME}/ctrl/mkblade"
         # Get the top of the remove list
         blade=$(cat "ctrl/mkblade" | head -n1)
         sudo apt-get install -y $blade
@@ -143,6 +146,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     #  and we will restrict only one blade install per request, at this time
     # !! 141002 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/rmblade" ]; then
+        dos2unix "${HOME}/ctrl/rmblade"
         # Get the top of the remove list
         blade=$(cat "ctrl/rmblade" | head -n1)
         sudo apt-get remove $blade
@@ -152,6 +156,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     # Set wlan
     # !! 141002 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/wlan" ]; then
+        dos2unix "${HOME}/ctrl/wlan"
         # Get the top of the remove list
         sudo mv "${HOME}/ctrl/wlan" "/etc/network/interfaces"
         touch ctrl/reboot
