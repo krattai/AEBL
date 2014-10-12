@@ -201,9 +201,11 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     fi
 
-     chmod 777 $T_SCR/synfilz.sh
-     chmod 777 $HOME/scripts/synfilz.sh
-     chmod 777 $HOME/.scripts/synfilz.sh
+    dos2unix "${T_STO}/mynew.pl"
+
+    chmod 777 $T_SCR/synfilz.sh
+    chmod 777 $HOME/scripts/synfilz.sh
+    chmod 777 $HOME/.scripts/synfilz.sh
 
     $T_SCR/./synfilz.sh &
 
