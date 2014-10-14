@@ -83,6 +83,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         rm "ctrl/${PL_FILES}"
         rm "ctrl/${PL_FILES}.new"
         # This is on faith, I have absolutely no idea where mkplay.sh is called
+        # NB: mkplay.sh is daemon run from startup.sh except on detector
         mv "${HOME}/ctrl/newpl" "${T_STO}/mynew.pl"
     fi
 
