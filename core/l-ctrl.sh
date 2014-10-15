@@ -163,11 +163,11 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
         fi
 
         if [ -f "${HOME}/.ihdnfol-1" ]; then
-            wget -N -r -nd -l2 -w 3 -o "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/ihdntest.pl
+            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/ihdntest.pl
         fi
 
         if [ -f "${HOME}/.ihdnfol-2" ]; then
-            wget -N -r -nd -l2 -w 3 -o "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/idettest.pl
+            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/idettest.pl
         fi
 
     else
