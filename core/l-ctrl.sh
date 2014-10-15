@@ -199,6 +199,10 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
             curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000101/chan101.pl"
         fi
 
+        if [ -f "${HOME}/.ihdnfol102" ]; then
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000102/chan102.pl"
+        fi
+
     fi
 
     dos2unix "${T_STO}/mynew.pl"
