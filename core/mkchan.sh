@@ -82,7 +82,7 @@ if [ ! -f "${ID_FILE}" ]; then
     $T_SCR/./dropbox_uploader.sh upload ${ID_FILE} /${U_ID}
 
     # Tweet -> SMS announce
-#     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic To @kratt, #${TYPE_SYS} registered ${U_ID} ${IPw0} ${IPe0} by ifTTT Tweet -> SMS."
+    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic To @kratt, #${TYPE_SYS} channel registered ${U_ID} ${IPw0} ${IPe0} by ifTTT Tweet -> SMS."
 
 else
 
