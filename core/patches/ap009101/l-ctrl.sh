@@ -84,6 +84,16 @@ if  [ -f "${IHDN_SYS}" ] ||  [ -f "${IHDN_TEST}" ] && [ ! -f "${HOME}/chan" ]; t
         echo "chan101" >> /home/pi/chan
         echo "000101" >> /home/pi/chan
     fi
+    if [ -f "${HOME}/.ihdnfol102" ]; then
+        touch /home/pi/chan
+        echo "chan102" >> /home/pi/chan
+        echo "000102" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol101" ]; then
+        touch /home/pi/chan
+        echo "chan103" >> /home/pi/chan
+        echo "000103" >> /home/pi/chan
+    fi
 fi
 
 # try to recover from non-playing system
