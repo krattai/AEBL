@@ -67,6 +67,11 @@ chmod 777 $HOME/.scripts/synfilz.sh
 cp $HOME/.scripts/synfilz.sh $HOME/.backup/scripts
 cp $HOME/.scripts/synfilz.sh /run/shm/scripts
 
+mv l-ctrl.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/l-ctrl.sh
+cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
+cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
+
 sleep 5
 
 GRAB_FILE="pv"
