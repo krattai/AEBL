@@ -50,6 +50,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
 
     # Set stand alone AEBL playlist, currently only for mp4 content
     # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
+    # !? Why can this not just cp ctrl/newpl to /run/shm/mynew.pl ?!
     if [ -f "${HOME}/ctrl/newpl" ]; then
         dos2unix "${HOME}/ctrl/newpl"
         cp "${HOME}/ctrl/newpl" "${HOME}/ctrl/pltmp"
