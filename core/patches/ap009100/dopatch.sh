@@ -62,18 +62,10 @@ touch ${AEBL_SYS}
 
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
-mv patch.sh $HOME/scripts
-chmod 777 $HOME/scripts/patch.sh
-cp $HOME/scripts/patch.sh /run/shm/scripts
-
-mv upgrade.sh $HOME/scripts
-chmod 777 $HOME/scripts/upgrade.sh
-cp $HOME/scripts/upgrade.sh /run/shm/scripts
-
-sleep 5
-
-chmod 777 cronadd.sh
-./cronadd.sh
+mv patch.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/patch.sh
+cp $HOME/.scripts/patch.sh $HOME/backup/scripts
+cp $HOME/.scripts/patch.sh /run/shm/scripts
 
 sleep 5
 
