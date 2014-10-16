@@ -95,6 +95,11 @@ if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ] && [ ! -f "${OFFLINE_SYS
 
 fi
 
+# Always check and perform patching on startup, if internet available
+if [ ! -f "${NETWORK_SYS}" ]; then
+    /run/shm/scripts/patch.sh &
+fi
+
 if [ ! -f "${OFFLINE_SYS}" ] && [ ! -f "${IHDN_DET}" ]; then
     $T_SCR/./mkuniq.sh &
 
