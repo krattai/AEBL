@@ -1,12 +1,9 @@
 #!/bin/bash
-# gets update scripts
+# keeps systems up to date
 #
 # Copyright (C) 2014 Uvea I. S., Kevin Rattai
 #
-# This eventually is the control script.  It will be a cron job
-# that will check with Master Control and grab the control file.
-# The control file will contain all the relevant information that
-# will allow the box to manage its local operations.
+# This will eventually co-ordinate with Master Control.
 
 AUTOOFF_CHECK_FILE="/home/pi/.noauto"
 FIRST_RUN_DONE="/home/pi/.firstrundone"
@@ -41,11 +38,6 @@ fi
 if [ -f "${IHDN_TEST}" ] ||  [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ]; then
     rm /home/pi/.aeblsys
 fi
-
-# As of 141007 ihdn_tests.sh not standard run by detector, so run here
-# if  [ -f "${IHDN_DET}" ]; then
-#     $T_SCR/./ihdn_tests.sh
-# fi
 
 # create channel file if not exist
 if  [ -f "${IHDN_SYS}" ] ||  [ -f "${IHDN_TEST}" ] && [ ! -f "${HOME}/chan" ]; then
@@ -95,7 +87,6 @@ if  [ -f "${IHDN_SYS}" ] ||  [ -f "${IHDN_TEST}" ] && [ ! -f "${HOME}/chan" ]; t
 fi
 
 # try to recover from non-playing system
-
 # check if supposed to be playing, but not
 if [ ! -f "${AUTOOFF_CHECK_FILE}" ] && [ ! "$(pgrep run.sh)" ] && [ ! "$(pgrep omxplayer.bin)" ] && [ ! -f "${IHDN_DET}" ]; then
     # wait a minute
@@ -124,30 +115,10 @@ echo "LAN IP: $IPe0" >> log.txt
 
 echo $(date +"%y-%m-%d") >> log.txt
 
-# temp check
-# log host $HOME dirctory
-
-# echo "Current home directory" >> log.txt
-# echo $(date +"%T") >> log.txt
-# ls -al >> log.txt
-
-# echo "Current pl directory" >> log.txt
-# echo $(date +"%T") >> log.txt
-# ls -al pl >> log.txt
-
-
 killall dbus-daemon
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f "${LOCAL_SYS}" ]; then
-
-# don't get any more script updates from non-patch system
-
-#  Except!  Do want this one, as not all installs include this file
-        wget -N -r -nd -l2 -w 3 -P $HOME/scripts --limit-rate=50k http://192.168.200.6/files/synfilz.sh
-
-        cp $HOME/scripts/synfilz.sh $HOME/.scripts
-        cp $HOME/scripts/synfilz.sh $T_SCR
 
         # Get playlists from local server
         if [ -f "${AEBL_TEST}" ]; then
@@ -215,38 +186,12 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     dos2unix "${T_STO}/mynew.pl"
 
-    chmod 777 $T_SCR/synfilz.sh
-    chmod 777 $HOME/scripts/synfilz.sh
-    chmod 777 $HOME/.scripts/synfilz.sh
-
     $T_SCR/./synfilz.sh &
 
     if [ ! -f "${HOME}/.getchan" ]; then
         $T_SCR/./grbchan.sh &
     fi
 
-fi
-
-if [ ! -f "${OFFLINE_SYS}" ] && [ ! -f "${HOME}/.patched_too" ]; then
-    rm $HOME/.ap009*
-    rm $HOME/.patched
-fi
-
-# this needs to stay!  to ensure that systems are good to patch
-if [ ! -f "${OFFLINE_SYS}" ] && [ ! -f "${HOME}/.patched" ]; then
-    if [ -f "${LOCAL_SYS}" ]; then
-        wget -N -nd -w 3 -P ${HOME}/.scripts --limit-rate=50k http://192.168.200.6/files/patch.sh
-    else
-        wget -N -nd -w 3 -P ${HOME}/.scripts --limit-rate=50k "https://www.dropbox.com/s/vznou2g9dxc74lm/patch.sh"
-    fi
-    chmod 777 $HOME/.scripts/patch.sh
-    cp $HOME/.scripts/patch.sh $T_SCR
-    cp $HOME/.scripts/patch.sh $HOME/.scripts
-
-    $T_SCR/./patch.sh &
-
-    touch $HOME/.patched
-    touch $HOME/.patched_too
 fi
 
 exit
