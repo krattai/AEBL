@@ -1,5 +1,5 @@
 #!/bin/bash
-# Performs patch
+# Installs raspctl blade
 #
 # Copyright (C) 2014 Uvea I. S., Kevin Rattai
 #
@@ -61,6 +61,25 @@ fi
 touch ${AEBL_SYS}
 
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
+
+mkdir blade
+
+# Get raspctl package, must wget using ?raw=true
+wget -N -r -nd -l2 -w 3 -O "/home/pi/blade/raspctl.zip" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/raspctl.zip?raw=true
+
+cd blade
+unzip raspctl.zip
+rm raspctl.zip
+
+~~~~~~~~~~~~~ good to this point ~~~~~~~~
+
+chmod 777 dopatch.sh
+sleep 5
+./dopatch.sh
+rm *
+cd ..
+touch $HOME/.${cont}
+sleep 30
 
 mv synfilz.sh $HOME/.scripts
 chmod 777 $HOME/.scripts/synfilz.sh
