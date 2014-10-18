@@ -107,7 +107,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
         fi
 
         # Check that the file does not exist
-        if [ ! -f "$HOME/mp4/${cont}" ] && [ ! -f "$HOME/ad/${cont}" ]; then
+        if [ ! -f "$HOME/mp4/${cont}" ] || [ ! -f "$HOME/ad/${cont}" ]; then
 
             # if local, do IHDN_TEST else, do IHDN_SYS
             if [ -f "${LOCAL_SYS}" ]; then
@@ -117,6 +117,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
                 curl -o "${TEMP_DIR}/${cont}" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/${folder}/${cont}"
             fi
 
+            # This check was for when detector not getting mynew.pl
             if [ -f "${IHDN_DET}" ]; then
                 mv "${TEMP_DIR}/${cont}" $HOME/ad
                 touch /run/shm/.newplay
