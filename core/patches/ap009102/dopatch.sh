@@ -62,15 +62,10 @@ touch ${AEBL_SYS}
 
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
-mv synfilz.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/synfilz.sh
-cp $HOME/.scripts/synfilz.sh $HOME/.backup/scripts
-cp $HOME/.scripts/synfilz.sh /run/shm/scripts
-
-mv l-ctrl.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/l-ctrl.sh
-cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
-cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
+mv grbchan.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/grbchan.sh
+cp $HOME/.scripts/grbchan.sh $HOME/.backup/scripts
+cp $HOME/.scripts/grbchan.sh /run/shm/scripts
 
 sleep 5
 
