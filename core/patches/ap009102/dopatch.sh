@@ -68,6 +68,9 @@ if [ -f "/home/pi/.ihdndet" ]; then
     cp $HOME/.scripts/det.sh $HOME/.bin
     cp $HOME/.scripts/det.sh $HOME/.backup/scripts
     cp $HOME/.scripts/det.sh /run/shm/scripts
+
+    # wait 5 minutes, then reboot
+    sudo shutdown -r +5 &
 fi
 
 sleep 5
