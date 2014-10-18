@@ -107,7 +107,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
         fi
 
         # Check that the file does not exist
-        if [ ! -f "$HOME/mp4/${cont}" ] || [ ! -f "$HOME/ad/${cont}" ]; then
+        if [ ! -f "$HOME/mp4/${cont}" ] && [ ! -f "$HOME/ad/${cont}" ]; then
 
             # if local, do IHDN_TEST else, do IHDN_SYS
             if [ -f "${LOCAL_SYS}" ]; then
