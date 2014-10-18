@@ -14,3 +14,68 @@ echo ${string//[-._]/}
 
 this removes all instances
 echo "8%2%%%" | sed 's/%//g'
+
+~~~~
+
+Notes on web interfaces:
+
+First part from:
+http://raspberrywebserver.com/cgiscripting/setting-up-nginx-and-uwsgi-for-cgi-scripting.html
+
+sudo apt-get install nginx
+
+sudo nano /etc/nginx/sites-enabled/default
+
+I don't believe I actually made changes to default, but eventually it started, although not sure if before or after:
+
+sudo service nginx restart
+
+Apparently, this doesn't work properly due to not cgi configed:
+sudo apt-get install uWSGI
+
+so:
+curl http://uwsgi.it/install | bash -s cgi /home/pi/uwsgi
+
+This will probably take about 20 or more minutes as it builds,
+may want to do this process post install, during video looping
+
+Which means this may not be required:
+sudo mkdir /usr/lib/cgi-bin
+
+OK, should clean up from curl and install, so this might be necessary:
+rm  uwsgi_latest_from_installer.tar.gz
+rm -rf uwsgi_latest_from_installer
+
+/home/pi/uwsgi_config.ini:
+[uwsgi]
+plugins = cgi
+socket = 127.0.0.1:9000
+chdir = /usr/lib/cgi-bin/
+module = pyindex
+cgi=/cgi-bin=/usr/lib/cgi-bin/
+cgi-helper =.py=python
+
+And this may be invalid, as uwsgi may now be ./uwsgi:
+First did not work, second did:
+sudo -u www-data ./uwsgi ./uwsgi_config.ini
+sudo -u www-data uwsgi ./uwsgi_config.ini
+
+And taking cue from raspCTL, make the app basically into daemon:
+nohup sudo -u www-data ./uwsgi ./uwsgi_config.ini &
+
+sudo nano /usr/lib/cgi-bin/hello.py
+
+sudo chmod +x /usr/lib/cgi-bin/hello.py
+
+ejabberd working
+http://www.process-one.net/docs/ejabberd/guide_en.html
+
+jabberpi working
+http://www.softcognito.org/Raspberry_Pi_Communication_Bot.html
+https://code.google.com/p/jhub1-xmpp/wiki/JabberPiUsage
+http://www.raspberrypi.org/oracle-java-on-raspberry-pi/
+http://elinux.org/RPi_Java_JDK_Installation
+
+make sure users created:
+bawt@irotsys.local - password
+pi@irotsys.local - password
