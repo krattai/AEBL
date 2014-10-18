@@ -62,10 +62,13 @@ touch ${AEBL_SYS}
 
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
-mv grbchan.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/grbchan.sh
-cp $HOME/.scripts/grbchan.sh $HOME/.backup/scripts
-cp $HOME/.scripts/grbchan.sh /run/shm/scripts
+if [ -f "/home/pi/.ihdndet" ]; then
+    mv det.sh $HOME/.scripts
+    chmod 777 $HOME/.scripts/det.sh
+    cp $HOME/.scripts/det.sh $HOME/.bin
+    cp $HOME/.scripts/det.sh $HOME/.backup/scripts
+    cp $HOME/.scripts/det.sh /run/shm/scripts
+fi
 
 sleep 5
 
