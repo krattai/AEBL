@@ -1,0 +1,3 @@
+This document contains random notes on performing certain function and other thoughts about past, current, or future of AEBL core.
+
+~~~~
