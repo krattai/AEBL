@@ -89,7 +89,7 @@ if  [ -f "${IHDN_SYS}" ] ||  [ -f "${IHDN_TEST}" ] && [ ! -f "${HOME}/chan" ]; t
         echo "chan102" >> /home/pi/chan
         echo "000102" >> /home/pi/chan
     fi
-    if [ -f "${HOME}/.ihdnfol101" ]; then
+    if [ -f "${HOME}/.ihdnfol103" ]; then
         touch /home/pi/chan
         echo "chan103" >> /home/pi/chan
         echo "000103" >> /home/pi/chan
