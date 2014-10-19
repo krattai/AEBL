@@ -79,3 +79,137 @@ http://elinux.org/RPi_Java_JDK_Installation
 make sure users created:
 bawt@irotsys.local - password
 pi@irotsys.local - password
+
+~~~~
+
+Various code snippets of unknown use:
+
+while [ $COUNT -gt 0 ]; do
+	echo "DATE: $CURRENT">> spy.txt
+	
+	ps axo user,pid,comm >> spy.txt  #run command ps to list all process and append it to thelog file
+	
+echo " "
+	
+echo " " > temp.txt
+
+grep DATE spy.txt >> temp.txt
+for array in ${array[at symbol]} #it will not let me post with the actual at symbol
+do
+    grep "$array" spy.txt >> temp.txt
+done
+	let COUNT=COUNT-1 #count down mechanism for loop
+	sleep $TIME  #argument to wait so many seconds between iterationso fo main loop
+done
+
+
+~~~~~~~~~~~~~~~~~~~~~
+
+
+iterations=3
+delay=10
+
+while getopts n:t: o
+do   case "$o" in
+     n)   iterations="$OPTARG";;
+     t)   delay="$OPTARG";;
+     [?]) echo "Usage: $0 [-n iterations] [-t delay] cmd" >&2
+          exit 1;;
+     esac
+done
+let 'shifter=OPTIND-1'
+shift $shifter
+
+rm -f out.last out.curr
+
+loop=1
+while test $loop -le $iterations
+do
+   "$@" 2>/dev/null > out.curr
+   if test $loop -gt 1
+   then
+      if ! diff out.last out.curr >/dev/null
+      then
+        date
+        diff out.last out.curr
+        echo
+      fi
+   fi
+   sleep $delay
+   mv out.curr out.last
+   let 'loop=loop+1'
+done
+
+rm -f out.last out.curr
+
+
+~~~~~~~~~~~~~~~~
+
+
+#!/bin/bash
+trap "rm psmonitor.txt; echo Interupt encountered, exiting;  exit 1" SIGHUP SIGINT SIGTERM #trap to catch interupts , deletes output and prompts user with exit condition
+CURRENT=$(date) 
+	
+usage(){
+	echo "usage $0 -t[tseconds] -n[count]"
+} #this function will print out the correct usage when the shell is run incorrectly 
+
+COUNT=5
+TIME=1
+
+until [[ $1 == -* ]]
+do
+   array+=( "$1" )
+   shift
+done
+
+while getopts :t:n: option #getopts to pass arguments to the script
+do 
+	case "${option}"
+	 in 
+		t) TIME="$OPTARG";;
+		n) COUNT="$OPTARG";;
+		
+		\?) case "$OPTARG" in
+			t) echo " missing time parameter." ;;
+			n) echo " missing count parameter." ;;
+			\?) echo "Error: unknown option -$option";;  #catch all error message
+			esac
+			usage #print usage to screen
+			exit 0
+			;;
+	esac 
+done
+
+echo "DATE: $CURRENT" > spy.txt
+ps axo user,pid,comm >> spy.txt
+echo " " 
+
+echo " " > temp.txt
+grep DATE spy.txt >> temp.txt
+
+for array in ${array[@]} 
+do
+    grep "$array" spy.txt | sed "s/^/Started:/">> temp.txt
+done
+
+let COUNT=COUNT-1
+
+
+while [ $COUNT -gt 0 ]; do
+	echo "DATE: $CURRENT"> spy.txt
+	
+	ps axo user,pid,comm >> spy.txt  #run command ps -e to list all process and append it to thelog file
+	
+echo " "
+	
+
+echo " " > temp1.txt
+grep DATE spy.txt >> temp1.txt
+for array in ${array[@]} 
+do
+    grep "$array" spy.txt >> temp1.txt
+done
+	let COUNT=COUNT-1 #count down mechanism for loop
+	sleep $TIME  #argument to wait so many seconds between iterationso fo main loop
+done
