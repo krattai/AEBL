@@ -34,7 +34,7 @@ MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
 cd $HOME
 
-touch .getchan
+touch "$T_STO/.getchan"
 
 cp /home/pi/chan /home/pi/chtmp
 
@@ -133,7 +133,7 @@ rm "$GRAB_FILE"
 # if [ -f "${HOME}/.newchan0" ]; then
 #     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic #IHDNpi Robert E. Steen channel 26 updated." &
 
-rm /home/pi/.getchan
+rm "$T_STO/.getchan"
 
 # tput clear
 exit 0
