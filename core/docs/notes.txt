@@ -88,6 +88,43 @@ http://tldp.org/LDP/abs/html/string-manipulation.html
 
 http://www.thegeekstuff.com/2010/07/bash-string-manipulation/
 
+Manipulating strings, character by character, with sed, from:
+http://stackoverflow.com/questions/10551981/how-to-perform-a-for-loop-on-each-character-in-a-string-in-bash
+
+```
+$ echo "Hello world" | sed -e 's/\(.\)/\1\n/g'
+H
+e
+l
+l
+o
+
+w
+o
+r
+l
+d
+```
+
+String manipulation in loop, one char at a time:
+
+```
+foo=string
+for (( i=0; i<${#foo}; i++ )); do
+  echo ${foo:$i:1}
+done
+```
+
+and
+
+```
+while test -n "$words"; do
+   c=${words:0:1}     # Get the first character
+   echo character is $c
+   words=${words:1}   # trim the first character
+done
+```
+
 ~~~~
 
 Various code snippets of unknown use:
