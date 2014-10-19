@@ -77,6 +77,11 @@ chmod 777 $HOME/.scripts/grbchan.sh
 cp $HOME/.scripts/grbchan.sh $HOME/.backup/scripts
 cp $HOME/.scripts/grbchan.sh /run/shm/scripts
 
+sudo rm /etc/init.d/bootup.sh
+sudo mv bootup.sh /etc/init.d/bootup.sh
+sudo chmod 755 /etc/init.d/bootup.sh
+sudo update-rc.d bootup.sh defaults
+
 sleep 5
 
 GRAB_FILE="pv"
