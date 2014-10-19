@@ -67,10 +67,15 @@ chmod 777 $HOME/.scripts/startup.sh
 cp $HOME/.scripts/startup.sh $HOME/.backup/scripts
 cp $HOME/.scripts/startup.sh /run/shm/scripts
 
-mv l-ctrl.sh.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/l-ctrl.sh.sh
-cp $HOME/.scripts/l-ctrl.sh.sh $HOME/.backup/scripts
-cp $HOME/.scripts/l-ctrl.sh.sh /run/shm/scripts
+mv l-ctrl.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/l-ctrl.sh
+cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
+cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
+
+mv grbchan.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/grbchan.sh
+cp $HOME/.scripts/grbchan.sh $HOME/.backup/scripts
+cp $HOME/.scripts/grbchan.sh /run/shm/scripts
 
 sleep 5
 

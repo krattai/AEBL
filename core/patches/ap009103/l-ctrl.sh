@@ -198,7 +198,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     $T_SCR/./synfilz.sh &
 
-    if [ ! -f "${HOME}/.getchan" ]; then
+    if [ ! -f "{$T_STO}/.getchan" ]; then
         $T_SCR/./grbchan.sh &
     fi
 
