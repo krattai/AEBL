@@ -82,6 +82,14 @@ pi@irotsys.local - password
 
 ~~~~
 
+String manipulation with bash:
+
+http://tldp.org/LDP/abs/html/string-manipulation.html
+
+http://www.thegeekstuff.com/2010/07/bash-string-manipulation/
+
+~~~~
+
 Various code snippets of unknown use:
 
 while [ $COUNT -gt 0 ]; do
