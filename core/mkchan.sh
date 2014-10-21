@@ -31,18 +31,6 @@ IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 #  add leading 0s between : and take second IPv6 as channel
 IP6e0=$(ip addr show eth0 | sed 's/://g' | sed 's/\/64//' | awk '/inet6 / {print $2}')
 
-# some other sed examples
-# sed 's/%//' file > newfile
-# echo "68%" | sed "s/%$//" #assume % is always at the end.
-# echo "82%%%" | sed 's/%*$//'
-# echo "/this/is/my/path////" | sed 's!/*$!!'
-# echo $string | sed 's/[\._-]//g'
-# echo ${string//[-._]/}
-
-# this removes all instances
-# echo "8%2%%%" | sed 's/%//g'
-
-
 if [ -f "${AEBL_TEST}" ]; then
     TYPE_SYS="AEBLtest"
 fi
@@ -58,7 +46,6 @@ fi
 if [ -f "${IHDN_SYS}" ]; then
     TYPE_SYS="IHDNpi"
 fi
-
 
 echo "MAC Address: $MACe0"
 
