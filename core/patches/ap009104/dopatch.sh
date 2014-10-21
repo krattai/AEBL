@@ -75,7 +75,7 @@ if [ -f "/home/pi/.ihdndet" ]; then
     sudo update-rc.d bootup.sh defaults
 
     # wait 5 minutes, then reboot
-    sudo shutdown -r +5 &
+    sudo shutdown -r +1 &
 fi
 
 sleep 5
