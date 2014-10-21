@@ -62,13 +62,13 @@ touch ${AEBL_SYS}
 
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
-if [ -f "/home/pi/.ihdndet" ]; then
-    mv det.sh $HOME/.scripts
-    chmod 777 $HOME/.scripts/det.sh
-    cp $HOME/.scripts/det.sh $HOME/bin
-    cp $HOME/.scripts/det.sh $HOME/.backup/scripts
-    cp $HOME/.scripts/det.sh /run/shm/scripts
+# mv det.sh $HOME/.scripts
+# chmod 777 $HOME/.scripts/det.sh
+# cp $HOME/.scripts/det.sh $HOME/bin
+# cp $HOME/.scripts/det.sh $HOME/.backup/scripts
+# cp $HOME/.scripts/det.sh /run/shm/scripts
 
+if [ -f "/home/pi/.ihdndet" ]; then
     sudo rm /etc/init.d/bootup.sh
     sudo mv ihdn_det_bootup.sh /etc/init.d/bootup.sh
     sudo chmod 755 /etc/init.d/bootup.sh
