@@ -2,6 +2,17 @@ This document contains random notes on performing certain function and other tho
 
 ~~~~
 
+Wishlist and other, non-code notes:
+
+Set beta system to test code in field, without affecting production systems.
++ and patch them every hour.
+
+Find way to automate things by text / email.
+
+~~~~
+
+Code examples:
+
 sed examples:
 ip addr show eth0 | sed 's/://g' | sed 's/\/64//' | awk '/inet6 / {print $2}'
 
