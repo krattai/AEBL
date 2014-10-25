@@ -1,0 +1,23 @@
+unique number - this might be the IPv6, or just a number within town
+town / rm / sub-division / biz / etc - rural town or RM or city biz
+sub region - area within a province, ie south east, northern, central or corp
+province - as expected
+region - of a country, western, northern, central, etc. or national companies
+country - as expected
+global - regions such as america, south america, Europe, Asia, or int companies
+
+global - 00 - ZZ
+Country - 00 - ZZ
+Region - 00 - ZZ
+Province - 00 - ZZ
+sub-region - 00 - ZZ
+town - 00 - ZZ
+Unique number - 000 - ZZZ
+
+So as noo-ebs, channel is described as:
+00|00|00|00|00|00|000
+
+Would look like:
+01Z2B49qJx0A3cH
+
+
