@@ -33,6 +33,9 @@ IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 # echo ${var:15}
 # echo ${var:15:4}
 
+# with the above, could potentially use to get and strip from var
+# when used with a "find" like operation 
+
 # $ ./substr.sh
 # AEBLstuff
 # AEBL
@@ -42,6 +45,10 @@ IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 
 # replace all pattern with value
 # echo "After Replacement:" ${filename//bash/sh}
+
+# fe80::ba27:ebff:fee3:df8
+# expands to
+# fe80:0000:0000:0000:ba27:ebff:fee3:0df8
 
 # This doesn't work if there is a network assigned or public IPv6 as well
 #  add leading 0s between : and take second IPv6 as channel
