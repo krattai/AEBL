@@ -27,6 +27,16 @@ IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 
 # MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
+# echo var from position for length
+# var="Welcome to the AEBLstuff"
+
+# echo ${var:15}
+# echo ${var:15:4}
+
+# $ ./substr.sh
+# AEBLstuff
+# AEBL
+
 # This doesn't work if there is a network assigned or public IPv6 as well
 #  add leading 0s between : and take second IPv6 as channel
 IP6e0=$(ip addr show eth0 | sed 's/://g' | sed 's/\/64//' | awk '/inet6 / {print $2}')
