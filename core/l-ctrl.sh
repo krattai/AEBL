@@ -104,6 +104,11 @@ if  [ -f "${IHDN_SYS}" ] ||  [ -f "${IHDN_TEST}" ] && [ ! -f "${HOME}/chan" ]; t
         echo "chan106" >> /home/pi/chan
         echo "000106" >> /home/pi/chan
     fi
+    if [ -f "${HOME}/.ihdnfol107" ]; then
+        touch /home/pi/chan
+        echo "chan107" >> /home/pi/chan
+        echo "000107" >> /home/pi/chan
+    fi
 fi
 
 # try to recover from non-playing system
@@ -204,6 +209,10 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
         if [ -f "${HOME}/.ihdnfol106" ]; then
             curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000106/chan106.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol107" ]; then
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000107/chan107.pl"
         fi
 
     fi
