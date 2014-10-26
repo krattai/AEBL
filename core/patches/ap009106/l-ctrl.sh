@@ -188,31 +188,31 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
         fi
 
         if [ -f "${HOME}/.ihdnfol100" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000100/chan100.pl"
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000100/chan100.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol101" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000101/chan101.pl"
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000101/chan101.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol102" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000102/chan102.pl"
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000102/chan102.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol103" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000103/chan103.pl"
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000103/chan103.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol105" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000105/chan105.pl"
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000105/chan105.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol106" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000106/chan106.pl"
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000106/chan106.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol107" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/0000107/chan107.pl"
+            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000107/chan107.pl"
         fi
 
     fi
