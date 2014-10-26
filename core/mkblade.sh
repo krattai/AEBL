@@ -23,6 +23,16 @@ MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
 cd $HOME
 
+#  simply call mkblade.sh and carry on
+dos2unix "${HOME}/ctrl/mkblade"
+# Get the top of the remove list
+blade=$(cat "ctrl/mkblade" | head -n1)
+if [ "$blade" == "raspctl" ]; then
+    wget -N -r -nd -l2 -w 3 -O "${T_SCR}/raspctl.sh" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/raspctl.sh?raw=true
+    chmod 777 $T_SCR/raspctl.sh
+    $T_SCR/raspctl.sh &
+fi
+
 # Should check for current version and use that as reference to patches.
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f "${LOCAL_SYS}" ]; then
