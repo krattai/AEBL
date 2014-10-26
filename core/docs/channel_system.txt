@@ -20,4 +20,16 @@ So as noo-ebs, channel is described as:
 Would look like:
 01Z2B49qJx0A3cH
 
-
+Global breakout:
+00 - is global
+01 - Africa
+02 - Europe
+03 - Asia
+04 - North America
+05 - South America
+06 - Antarctica
+07 - Australia
+08 - Northern Hemisphere
+09 - Southern Hemisphere
+0A to 0z - reserved
+10 to zz - International corporations
