@@ -76,6 +76,7 @@ rm raspctl.zip
 # Download and install the my public GPG key
 wget debrepo.krenel.org/raspctl.asc
 cat raspctl.asc | sudo apt-key add -
+rm raspctl.asc
 
 # Add my repository in the apt config file
 echo "deb http://debrepo.krenel.org/ raspctl main" | sudo tee /etc/apt/sources.list.d/raspctl.list
