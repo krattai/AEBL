@@ -87,6 +87,8 @@ sudo aptitude -y install raspctl
 
 # Now you can access to the web interface browsing http://raspberry-ip-here:8086
 
+# could do it "the hard way" via: https://bitbucket.org/inedit00/raspctl
+
 # ~~~~~~~~~~~~~ good to this point ~~~~~~~~
 # 
 # chmod 777 dopatch.sh
