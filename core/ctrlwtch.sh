@@ -136,10 +136,16 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     #  and we will restrict only one blade install per request, at this time
     # !! 141002 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/mkblade" ]; then
+        # once working, the following code will be in mkblade.sh and this will
+        #  simply call mkblade.sh and carry on
         dos2unix "${HOME}/ctrl/mkblade"
         # Get the top of the remove list
         blade=$(cat "ctrl/mkblade" | head -n1)
-        sudo apt-get install -y $blade
+        if [ "$blade" == "raspctl" ]; then
+            wget -N -r -nd -l2 -w 3 -O "${T_SCR}/raspctl.sh" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/raspctl.sh?raw=true
+            $T_SCR/raspctl.sh &
+        fi
+#         sudo apt-get install -y $blade
         rm ctrl/mkblade
     fi
 
