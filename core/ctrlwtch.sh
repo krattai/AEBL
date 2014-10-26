@@ -145,6 +145,8 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
             wget -N -r -nd -l2 -w 3 -O "${T_SCR}/raspctl.sh" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/raspctl.sh?raw=true
             chmod 777 $T_SCR/raspctl.sh
             $T_SCR/raspctl.sh &
+            mkdir /home/pi/blades
+            touch /home/pi/blades/raspctl
         fi
 #         sudo apt-get install -y $blade
 
