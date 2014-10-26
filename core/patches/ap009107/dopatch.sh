@@ -62,25 +62,10 @@ touch ${AEBL_SYS}
 
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
-mv startup.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/startup.sh
-cp $HOME/.scripts/startup.sh $HOME/.backup/scripts
-cp $HOME/.scripts/startup.sh /run/shm/scripts
-
-mv l-ctrl.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/l-ctrl.sh
-cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
-cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
-
-mv grbchan.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/grbchan.sh
-cp $HOME/.scripts/grbchan.sh $HOME/.backup/scripts
-cp $HOME/.scripts/grbchan.sh /run/shm/scripts
-
-sudo rm /etc/init.d/bootup.sh
-sudo mv bootup.sh /etc/init.d/bootup.sh
-sudo chmod 755 /etc/init.d/bootup.sh
-sudo update-rc.d bootup.sh defaults
+mv ctrlwtch.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/ctrlwtch.sh
+cp $HOME/.scripts/ctrlwtch.sh $HOME/.backup/scripts
+cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
 
 sleep 5
 
