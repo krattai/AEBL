@@ -149,6 +149,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
 #         sudo apt-get install -y $blade
 
         # this should only remove mkblade once mkblade.sh no longer running
+        # ie.  if ! ps aux | grep mkblade.sh then mkblade.sh rm mkblade fi
         rm ctrl/mkblade
     fi
 
