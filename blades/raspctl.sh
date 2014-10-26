@@ -71,33 +71,48 @@ cd blade
 unzip raspctl.zip
 rm raspctl.zip
 
-~~~~~~~~~~~~~ good to this point ~~~~~~~~
+# For test purposes, went through above process but will install deb pckg
+#  process documented here:  http://raspctl.com/
+# Download and install the my public GPG key
+wget debrepo.krenel.org/raspctl.asc
+cat raspctl.asc | sudo apt-key add -
 
-chmod 777 dopatch.sh
-sleep 5
-./dopatch.sh
-rm *
-cd ..
-touch $HOME/.${cont}
-sleep 30
+# Add my repository in the apt config file
+echo "deb http://debrepo.krenel.org/ raspctl main" | sudo tee /etc/apt/sources.list.d/raspctl.list
 
-mv synfilz.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/synfilz.sh
-cp $HOME/.scripts/synfilz.sh $HOME/.backup/scripts
-cp $HOME/.scripts/synfilz.sh /run/shm/scripts
+# Update you repository and install the package
+sudo aptitude update
+sudo aptitude -y install raspctl
 
-mv l-ctrl.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/l-ctrl.sh
-cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
-cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
+# Now you can access to the web interface browsing http://raspberry-ip-here:8086
 
-sleep 5
+# ~~~~~~~~~~~~~ good to this point ~~~~~~~~
+# 
+# chmod 777 dopatch.sh
+# sleep 5
+# ./dopatch.sh
+# rm *
+# cd ..
+# touch $HOME/.${cont}
+# sleep 30
 
-GRAB_FILE="pv"
-pv=$(cat "${GRAB_FILE}" | head -n1)
+# mv synfilz.sh $HOME/.scripts
+# chmod 777 $HOME/.scripts/synfilz.sh
+# cp $HOME/.scripts/synfilz.sh $HOME/.backup/scripts
+# cp $HOME/.scripts/synfilz.sh /run/shm/scripts
+
+# mv l-ctrl.sh $HOME/.scripts
+# chmod 777 $HOME/.scripts/l-ctrl.sh
+# cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
+# cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
+
+# sleep 5
+
+# GRAB_FILE="pv"
+# pv=$(cat "${GRAB_FILE}" | head -n1)
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
-    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} patched to ${pv}." &
+    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} installed raspctl blade." &
 fi
 
 exit
