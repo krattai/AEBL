@@ -146,6 +146,8 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
             $T_SCR/raspctl.sh &
         fi
 #         sudo apt-get install -y $blade
+
+        # this should only remove mkblade once mkblade.sh no longer running
         rm ctrl/mkblade
     fi
 
