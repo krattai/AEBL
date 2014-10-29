@@ -67,6 +67,9 @@ chmod 777 $HOME/.scripts/patch.sh
 cp $HOME/.scripts/patch.sh $HOME/.backup/scripts
 cp $HOME/.scripts/patch.sh /run/shm/scripts
 
+# Current systems taking these patches are v0091, therefore need to update
+mv /home/pi/v0090p /home/pi/v0091p
+
 sleep 5
 
 GRAB_FILE="pv"
