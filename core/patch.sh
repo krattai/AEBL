@@ -14,10 +14,13 @@ AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
 IHDN_SYS="/home/pi/.ihdnsys"
-TEMP_DIR="/home/pi/tmp"
 
 T_STO="/run/shm"
 T_SCR="/run/shm/scripts"
+
+TEMP_DIR="${T_STO}/tmp"
+
+mkdir "${TEMP_DIR}"
 
 LOCAL_SYS="${T_STO}/.local"
 NETWORK_SYS="${T_STO}/.network"
