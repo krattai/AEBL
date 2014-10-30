@@ -147,23 +147,23 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
         # Get playlists from local server
         if [ -f "${AEBL_TEST}" ]; then
-            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/aebltest.pl
+            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.tmp" --limit-rate=50k http://192.168.200.6/files/aebltest.pl
         fi
 
         if [ -f "${AEBL_SYS}" ]; then
-            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/aebltest.pl
+            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.tmp" --limit-rate=50k http://192.168.200.6/files/aebltest.pl
         fi
 
         if [ -f "${IHDN_TEST}" ]; then
-            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/ihdntest.pl
+            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.tmp" --limit-rate=50k http://192.168.200.6/files/ihdntest.pl
         fi
 
         if [ -f "${HOME}/.ihdnfol-1" ]; then
-            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/ihdntest.pl
+            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.tmp" --limit-rate=50k http://192.168.200.6/files/ihdntest.pl
         fi
 
         if [ -f "${HOME}/.ihdnfol-2" ]; then
-            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.pl" --limit-rate=50k http://192.168.200.6/files/idettest.pl
+            wget -N -r -nd -l2 -w 3 -O "${T_STO}/mynew.tmp" --limit-rate=50k http://192.168.200.6/files/idettest.pl
         fi
 
     else
@@ -172,52 +172,53 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
         # but DO get playlists
         if [ -f "${HOME}/.ihdnfol25" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000025/chan25.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000025/chan25.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol26" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000026/chan26.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000026/chan26.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol27" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000027/chan27.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000027/chan27.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol28" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000028/chan28.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000028/chan28.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol100" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000100/chan100.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000100/chan100.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol101" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000101/chan101.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000101/chan101.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol102" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000102/chan102.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000102/chan102.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol103" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000103/chan103.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000103/chan103.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol105" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000105/chan105.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000105/chan105.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol106" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000106/chan106.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000106/chan106.pl"
         fi
 
         if [ -f "${HOME}/.ihdnfol107" ]; then
-            curl -o "${T_STO}/mynew.pl" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000107/chan107.pl"
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000107/chan107.pl"
         fi
 
     fi
 
-    dos2unix "${T_STO}/mynew.pl"
+    dos2unix "${T_STO}/mynew.tmp"
+    mv "${T_STO}/mynew.tmp" "${T_STO}/mynew.pl"
 
     $T_SCR/./synfilz.sh &
 
