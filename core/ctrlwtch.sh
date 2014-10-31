@@ -134,7 +134,6 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     # Add blade to AEBL
     # At the time of code, most blades are simply installed applications
     #  and we will restrict only one blade install per request, at this time
-    # !! 141002 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/mkblade" ]; then
         # once working, the following code will be in mkblade.sh and this will
         #  simply call mkblade.sh and carry on
