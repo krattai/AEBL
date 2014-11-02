@@ -80,6 +80,11 @@ chmod 777 $HOME/.scripts/rmfile.sh
 cp $HOME/.scripts/rmfile.sh $HOME/.backup/scripts
 cp $HOME/.scripts/rmfile.sh /run/shm/scripts
 
+mv ctrlwtch.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/ctrlwtch.sh
+cp $HOME/.scripts/ctrlwtch.sh $HOME/.backup/scripts
+cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
+
 sleep 5
 
 GRAB_FILE="pv"
