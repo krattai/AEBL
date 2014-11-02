@@ -57,26 +57,33 @@ rm /home/pi/chtmp
 # also fails if network was available but drops
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
-    if [ -f "${LOCAL_SYS}" ]; then
-        if [ -f "${IHDN_DET}" ]; then
-            # change chan and folder according to known IHDN_DET sys
-            chan="idettest"
-            folder="mp4"
+    if [ ! -f "${HOME}/ctrl/rmfiles" ]; then
+        if [ -f "${LOCAL_SYS}" ]; then
+            if [ -f "${IHDN_DET}" ]; then
+                # change chan and folder according to known IHDN_DET sys
+                chan="idettest"
+                folder="mp4"
+            else
+                # change chan and folder according to known IHDN_TEST sys
+                chan="ihdn"
+                folder="mp4"
+            fi
+            wget -N -nd -w 3 -P $T_STO --limit-rate=50k "http://192.168.200.6/files/${chan}.del"
         else
-            # change chan and folder according to known IHDN_TEST sys
-            chan="ihdn"
-            folder="mp4"
+            curl -o "${T_STO}/${chan}.del" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/${folder}/${chan}.del"
         fi
-        wget -N -nd -w 3 -P $T_STO --limit-rate=50k "http://192.168.200.6/files/${chan}.del"
+
+        dos2unix "${T_STO}/${chan}.del"
+
+        cp "${T_STO}/${chan}.del" $T_STO/delfil
+        rm "${T_STO}/${chan}.del"
+
     else
-        curl -o "${T_STO}/${chan}.del" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/${folder}/${chan}.del"
+        dos2unix "${HOME}/ctrl/rmfiles"
+
+        cp "${HOME}/ctrl/rmfiles" $T_STO/delfil
+        rm "${HOME}/ctrl/rmfiles"
     fi
-
-    dos2unix "${T_STO}/${chan}.del"
-
-    cp "${T_STO}/${chan}.del" $T_STO/delfil
-    rm "${T_STO}/${chan}.del"
-
 
     RM_FILE="${T_STO}/delfil"
     x=1

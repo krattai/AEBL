@@ -97,39 +97,43 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     fi
 
     # Process request to remove content from pl folder
-    # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
-    if [ -f "${HOME}/ctrl/rmfiles" ]; then
-        dos2unix "${HOME}/ctrl/rmfiles"
-        REMOVE_FILES="${HOME}/ctrl/rmfiles"
-        touch $T_STO/rmfiles
-        while [ -f "${T_STO}/rmfiles" ]; do
-            # Do nothing if no remove file
-            if [ ! -f "ctrl/${REMOVE_FILES}" ]; then
-                echo "File ${REMOVE_FILES} not found"
-                continue
-            fi
-            # Get the top of the remove list
-            file=$(cat "ctrl/${REMOVE_FILES}" | head -n1)
-            # And strip it off the playlist file
-            cat "ctrl/${REMOVE_FILES}" | tail -n+2 > "ctrl/${REMOVE_FILES}.new"
-            mv "ctrl/${REMOVE_FILES}.new" "ctrl/${REMOVE_FILES}"
-            # Skip if this is empty
-            if [ -z "${file}" ]; then
-                echo "Remove file empty or bumped into an empty entry"
-                rm $T_STO/rmfiles
-                continue
-            fi
-            # Check that the file exists
-            if [ ! -f "pl/${file}" ]; then
-                echo "File ${file} not found"
-                continue
-            fi
-            # remove the file
-            rm "pl/${file}"
-        done
-        rm "ctrl/${REMOVE_FILES}"
-        rm "ctrl/${REMOVE_FILES}.new"
+    # !! 141101 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
+    if [ -f "${HOME}/ctrl/rmfiles" ] && [ ! -f "{$T_STO}/.delfile" ]; then
+        $T_SCR/./rmfile.sh &
+        # make sure wait long enough for rmfile.sh to mark .delfile token
+        sleep 2
     fi
+#         dos2unix "${HOME}/ctrl/rmfiles"
+#         REMOVE_FILES="${HOME}/ctrl/rmfiles"
+#         touch $T_STO/rmfiles
+#         while [ -f "${T_STO}/rmfiles" ]; do
+#             # Do nothing if no remove file
+#             if [ ! -f "ctrl/${REMOVE_FILES}" ]; then
+#                 echo "File ${REMOVE_FILES} not found"
+#                 continue
+#             fi
+            # Get the top of the remove list
+#             file=$(cat "ctrl/${REMOVE_FILES}" | head -n1)
+            # And strip it off the playlist file
+#             cat "ctrl/${REMOVE_FILES}" | tail -n+2 > "ctrl/${REMOVE_FILES}.new"
+#             mv "ctrl/${REMOVE_FILES}.new" "ctrl/${REMOVE_FILES}"
+            # Skip if this is empty
+#             if [ -z "${file}" ]; then
+#                 echo "Remove file empty or bumped into an empty entry"
+#                 rm $T_STO/rmfiles
+#                 continue
+#             fi
+            # Check that the file exists
+#             if [ ! -f "pl/${file}" ]; then
+#                 echo "File ${file} not found"
+#                 continue
+#             fi
+            # remove the file
+#             rm "pl/${file}"
+#         done
+#         rm "ctrl/${REMOVE_FILES}"
+#         rm "ctrl/${REMOVE_FILES}.new"
+#     fi
 
     # Add blade to AEBL
     # At the time of code, most blades are simply installed applications
