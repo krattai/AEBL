@@ -1,0 +1,96 @@
+<map version="freeplane 1.2.0">
+<!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
+<node TEXT="AEBL system" ID="Freemind_Link_1043402355" CREATED="1269462110846" MODIFIED="1414923521684">
+<icon BUILTIN="gohome"/>
+<hook NAME="MapStyle">
+
+<map_styles>
+<stylenode LOCALIZED_TEXT="styles.root_node">
+<stylenode LOCALIZED_TEXT="styles.predefined" POSITION="right">
+<stylenode LOCALIZED_TEXT="default" MAX_WIDTH="600" COLOR="#000000" STYLE="as_parent">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.details"/>
+<stylenode LOCALIZED_TEXT="defaultstyle.note"/>
+<stylenode LOCALIZED_TEXT="defaultstyle.floating">
+<edge STYLE="hide_edge"/>
+<cloud COLOR="#f0f0f0" SHAPE="ROUND_RECT"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.user-defined" POSITION="right">
+<stylenode LOCALIZED_TEXT="styles.topic" COLOR="#18898b" STYLE="fork">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subtopic" COLOR="#cc3300" STYLE="fork">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subsubtopic" COLOR="#669900">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.important">
+<icon BUILTIN="yes"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.AutomaticLayout" POSITION="right">
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level.root" COLOR="#000000">
+<font SIZE="18"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,1" COLOR="#0033ff">
+<font SIZE="16"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,2" COLOR="#00b439">
+<font SIZE="14"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,3" COLOR="#990000">
+<font SIZE="12"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,4" COLOR="#111111">
+<font SIZE="10"/>
+</stylenode>
+</stylenode>
+</stylenode>
+</map_styles>
+</hook>
+<node TEXT="AEBL core" POSITION="right" ID="_" CREATED="1269462169926" MODIFIED="1414923607537" VSHIFT="-81">
+<node TEXT="Prototype Development" ID="Freemind_Link_1948237358" CREATED="1269462283400" MODIFIED="1269462296310"/>
+<node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023"/>
+<node TEXT="Develop production units" ID="Freemind_Link_708908499" CREATED="1269462320545" MODIFIED="1269462346329"/>
+<node TEXT="Produce units" ID="Freemind_Link_1563224284" CREATED="1269462352243" MODIFIED="1269462356611"/>
+<node TEXT="Distribute units" ID="Freemind_Link_1715343041" CREATED="1269462359555" MODIFIED="1269462366089"/>
+<node TEXT="Document AEBL" ID="Freemind_Link_1252698133" CREATED="1269623451636" MODIFIED="1414923667622"/>
+</node>
+<node TEXT="Network" POSITION="left" ID="Freemind_Link_809364370" CREATED="1269462184478" MODIFIED="1269462534971" HGAP="21" VSHIFT="-39">
+<node TEXT="Establish initial server" ID="Freemind_Link_1907216706" CREATED="1269462370428" MODIFIED="1269462383029">
+<node TEXT="Created and delivered LAMP server" ID="Freemind_Link_45362831" CREATED="1269623333309" MODIFIED="1269623351412"/>
+</node>
+<node TEXT="Create failover servers" ID="Freemind_Link_299699653" CREATED="1269462387789" MODIFIED="1269462396883">
+<node TEXT="R&amp;D failover server solution" ID="Freemind_Link_730764016" CREATED="1269623374839" MODIFIED="1269623386673"/>
+</node>
+<node TEXT="Establish streaming server" ID="Freemind_Link_1877115724" CREATED="1269462403102" MODIFIED="1269462411102">
+<node TEXT="R&amp;D streaming server" ID="Freemind_Link_709334703" CREATED="1269623392800" MODIFIED="1269623399787"/>
+</node>
+<node TEXT="Document network" ID="Freemind_Link_255179581" CREATED="1269623464453" MODIFIED="1269623470263"/>
+</node>
+<node TEXT="Streaming" POSITION="right" ID="Freemind_Link_1631455944" CREATED="1269462208469" MODIFIED="1269462529530" HGAP="21" VSHIFT="-36">
+<node TEXT="Prototype Development" ID="Freemind_Link_1676396090" CREATED="1269462453360" MODIFIED="1269462459716">
+<node TEXT="Develop 1.0 prototype" ID="Freemind_Link_765523027" CREATED="1269622478219" MODIFIED="1269622488005"/>
+</node>
+<node TEXT="Prototype Showcasing" ID="Freemind_Link_1973894088" CREATED="1269462463298" MODIFIED="1269462469942"/>
+<node TEXT="Develop production units" ID="Freemind_Link_627391337" CREATED="1269462472707" MODIFIED="1269462478302"/>
+<node TEXT="Produce units" ID="Freemind_Link_1917493285" CREATED="1269462481154" MODIFIED="1269462484358"/>
+<node TEXT="Distribute units" ID="Freemind_Link_370975554" CREATED="1269462487059" MODIFIED="1269462491952"/>
+<node TEXT="Integrate with AEBL" ID="Freemind_Link_18800446" CREATED="1269622497279" MODIFIED="1414923571878"/>
+<node TEXT="Document streaming system" ID="Freemind_Link_1629211406" CREATED="1269623475575" MODIFIED="1269623483257"/>
+</node>
+<node TEXT="Web Site" POSITION="left" ID="Freemind_Link_652055776" CREATED="1269462222165" MODIFIED="1269462539051" VSHIFT="-50">
+<node TEXT="Transfer initial web site" ID="Freemind_Link_699812499" CREATED="1269462424407" MODIFIED="1269462431980"/>
+<node TEXT="Develop new site" ID="Freemind_Link_1263945894" CREATED="1269462434712" MODIFIED="1269462438861"/>
+<node TEXT="Make new site live" ID="Freemind_Link_448151585" CREATED="1269462441424" MODIFIED="1269462445879"/>
+<node TEXT="Document web site" ID="Freemind_Link_393349995" CREATED="1269623492981" MODIFIED="1269623499084"/>
+</node>
+<node TEXT="Standard Installations" POSITION="left" ID="Freemind_Link_1871331892" CREATED="1269462240317" MODIFIED="1269462557628"/>
+<node TEXT="Institution" POSITION="left" ID="Freemind_Link_1365930935" CREATED="1269462270230" MODIFIED="1269462838668" VSHIFT="35"/>
+<node TEXT="Marketing / promotion" POSITION="left" ID="Freemind_Link_578657518" CREATED="1269545354524" MODIFIED="1414923871632" HGAP="-280" VSHIFT="40"/>
+<node TEXT="Custom / corporate" POSITION="right" ID="ID_836554520" CREATED="1414923790930" MODIFIED="1414923803521"/>
+</node>
+</map>
