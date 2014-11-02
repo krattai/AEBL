@@ -226,6 +226,10 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
         $T_SCR/./grbchan.sh &
     fi
 
+    if [ ! -f "{$T_STO}/.delfile" ]; then
+        $T_SCR/./rmfile.sh &
+    fi
+
 fi
 
 exit
