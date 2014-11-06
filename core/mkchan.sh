@@ -53,6 +53,7 @@ IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 # This doesn't work if there is a network assigned or public IPv6 as well
 #  add leading 0s between : and take second IPv6 as channel
 #  This may get more than one IPv6, will want to decide which to use, if so
+#  Most likely want second one, or specifically, the one that start fe80
 IP6e0=$(ip addr show eth0 | sed 's/://g' | sed 's/\/64//' | awk '/inet6 / {print $2}')
 
 if [ -f "${AEBL_TEST}" ]; then
