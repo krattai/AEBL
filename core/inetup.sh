@@ -79,6 +79,25 @@ else
 fi
 
 # check IPv6 tun vs native assigned IPV6 up and if not, start/restart
+#
+# Might want to add something like:
+# if [ "$(pgrep ctrlwtch.sh)" ]; then
+#     kill $(pgrep ctrlwtch.sh)
+# fi
+# 
+# with the logic and function in a form similar to:
+# if [ "$(pgrep gogoc)" ]; then
+#     sudo /etc/init.d/gogoc restart
+#
+#     if [[ $? -eq 0 ]]; then
+#         kill $(pgrep gogoc)
+#         sudo /etc/init.d/gogoc start
+#     fi
+# else
+#     sudo /etc/init.d/gogoc start
+# fi
+
+
 if [ -f "${NETWORK_SYS}" ]; then
     if [ ! -L /sys/class/net/tun ]; then
         sudo /etc/init.d/gogoc restart
