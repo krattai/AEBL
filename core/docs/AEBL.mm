@@ -58,7 +58,9 @@
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
 <node TEXT="to be conducted via alpha and beta releases" ID="ID_1607155208" CREATED="1416163797345" MODIFIED="1416163811358"/>
 </node>
-<node TEXT="Develop production units" ID="Freemind_Link_708908499" CREATED="1269462320545" MODIFIED="1269462346329"/>
+<node TEXT="Develop production units" ID="Freemind_Link_708908499" CREATED="1269462320545" MODIFIED="1269462346329">
+<node TEXT="integration of prototypes to core releases" ID="ID_944038600" CREATED="1416163874561" MODIFIED="1416163896554"/>
+</node>
 <node TEXT="Produce units" ID="Freemind_Link_1563224284" CREATED="1269462352243" MODIFIED="1269462356611"/>
 <node TEXT="Distribute units" ID="Freemind_Link_1715343041" CREATED="1269462359555" MODIFIED="1269462366089"/>
 <node TEXT="Document AEBL" ID="Freemind_Link_1252698133" CREATED="1269623451636" MODIFIED="1414923667622">
