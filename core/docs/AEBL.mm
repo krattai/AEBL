@@ -56,6 +56,7 @@
 <node TEXT="specific to any new functions not already part of the core" ID="ID_1064129376" CREATED="1416163700225" MODIFIED="1416163749904"/>
 <node TEXT="config file" ID="ID_481148730" CREATED="1417693184022" MODIFIED="1417693192228">
 <node TEXT="include network config" ID="ID_863184324" CREATED="1417693307702" MODIFIED="1417693317647"/>
+<node TEXT="include server IP if relevant" ID="ID_1712947505" CREATED="1417697064537" MODIFIED="1417697087479"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
