@@ -60,6 +60,7 @@
 </node>
 <node TEXT="configuration manager tool" ID="ID_1709308848" CREATED="1417779944197" MODIFIED="1417780010739">
 <node TEXT="raspCTL performs this function" ID="ID_424310803" CREATED="1417780057991" MODIFIED="1417780080850"/>
+<node TEXT="if raspCTL, then trim down to just configure and install blades" ID="ID_1781409653" CREATED="1417780137760" MODIFIED="1417780167298"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
