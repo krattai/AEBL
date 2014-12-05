@@ -58,6 +58,7 @@
 <node TEXT="include network config" ID="ID_863184324" CREATED="1417693307702" MODIFIED="1417693317647"/>
 <node TEXT="include server IP if relevant" ID="ID_1712947505" CREATED="1417697064537" MODIFIED="1417697087479"/>
 </node>
+<node TEXT="configuration manager tool" ID="ID_1709308848" CREATED="1417779944197" MODIFIED="1417780010739"/>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
 <node TEXT="to be conducted via alpha and beta releases" ID="ID_1607155208" CREATED="1416163797345" MODIFIED="1416163811358"/>
