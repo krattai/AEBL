@@ -60,11 +60,10 @@
 </node>
 <node TEXT="configuration manager tool" ID="ID_1709308848" CREATED="1417779944197" MODIFIED="1417780010739">
 <node TEXT="raspCTL performs this function" ID="ID_424310803" CREATED="1417780057991" MODIFIED="1417780080850">
-<node TEXT="if raspCTL, then trim down to just configure and install blades" ID="ID_1781409653" CREATED="1417780137760" MODIFIED="1417780167298">
+<node TEXT="if raspCTL, then trim down to just configure and install blades" ID="ID_1781409653" CREATED="1417780137760" MODIFIED="1417780167298"/>
 <node TEXT="default raspCTL features" ID="ID_20353327" CREATED="1418076501892" MODIFIED="1418076527770"/>
 <node TEXT="should install as core" ID="ID_1413625358" CREATED="1418190661790" MODIFIED="1418190679608"/>
 <node TEXT="include network config" ID="ID_495836027" CREATED="1418275798497" MODIFIED="1418275853784"/>
-</node>
 </node>
 </node>
 </node>
