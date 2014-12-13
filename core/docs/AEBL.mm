@@ -72,6 +72,7 @@
 <node TEXT="wifi flag off" ID="ID_569295448" CREATED="1418496292412" MODIFIED="1418496301059"/>
 <node TEXT="generic values for wifi" ID="ID_1278297705" CREATED="1418496336604" MODIFIED="1418496379254"/>
 </node>
+<node TEXT="Allow for open and encrypted" ID="ID_396991568" CREATED="1418496428245" MODIFIED="1418496447509"/>
 </node>
 </node>
 </node>
