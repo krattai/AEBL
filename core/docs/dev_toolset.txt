@@ -1,4 +1,6 @@
 Using github project located here:
 https://github.com/krattai/AEBL
 
+using git
+
 Using (now current) Eclipse 4.4 Lua, though not imperitive
