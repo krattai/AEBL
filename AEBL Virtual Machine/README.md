@@ -5,3 +5,5 @@ There are a number of reasons why a person or organization may want a virtual ma
 The AEBL Virtual Machine will have most of the AEBL features, except those that can not function if due to the virtual machines inability to connect directly to a video or audio presentation device.
 
 !* THIS IS THE WORKING DIRECTORY FOR AEBL VM CORE CODE AND UPDATES *!
+
+NB:  AEBL VM _MIGHT_ install to a linux / ubuntu distribution with the installer script.  This was not the intention and we will not be responsible for any losses that could occur if installed onto a system that is already being used for any other purpose.
