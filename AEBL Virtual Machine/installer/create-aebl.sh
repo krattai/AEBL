@@ -103,11 +103,13 @@ sudo sed -i "s/${hostn}/${newhost}/g" /etc/hostname
 
 sudo hostname ${newhost}
 
-# set IPv6 enabled
+# set IPv6 enabled; already enabled on aeblvm
 
-sudo chown pi:pi /etc/modules
-echo "ipv6" >> /etc/modules
-sudo chown root:root /etc/modules
+if [ ! -f "$HOME/aeblvm" ]; then
+    sudo chown pi:pi /etc/modules
+    echo "ipv6" >> /etc/modules
+    sudo chown root:root /etc/modules
+fi
 
 mkdir ${TEMP_DIR}
 mkdir ${MP3_DIR}
