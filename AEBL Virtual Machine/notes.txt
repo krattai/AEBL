@@ -1,3 +1,7 @@
+In order to keep the base AEBL Virtual Machine file size as small as possible. it is not completely set up with all updates for the operating system and AEBL system.  This has the added capability to ensure that each new install is current with system and AEBL files at the time of installation.
+
+For this reason, the first boot of an AEBL VM will take some time to get, update and install all relevant files and will not immediately be ready for use, until the process is completed.  In some cases, this may take as much as 1/2 an hour or more.
+
 The AEBL VM has a default user of pi and password of password
 
 In order to shut down and power off the AEBL VM, log into the VM with username and password and type:
