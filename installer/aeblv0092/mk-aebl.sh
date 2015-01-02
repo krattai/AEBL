@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script makes the AEBL framework
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
 # Useage:
 
@@ -79,18 +79,21 @@ mv ${TEMP_DIR}/create-atyp.sh scripts
 chmod 777 scripts/create-atyp.sh
 
 # rpi-wiggle MUST be last item, as it reboots the system
+# not applicable if aeblvm
 
-cat ${TEMP_DIR}/rpi-wiggle.lic
+if [ ! -f "$HOME/aeblvm" ]; then
+    cat ${TEMP_DIR}/rpi-wiggle.lic
 
-chmod 777 ${TEMP_DIR}/rpi-wiggle.sh
+    chmod 777 ${TEMP_DIR}/rpi-wiggle.sh
 
-# sleep 5 seconds to ensure system ready for reboot
-echo "Processing files.  Please wait."
-sleep 5
+    # sleep 5 seconds to ensure system ready for reboot
+    echo "Processing files.  Please wait."
+    sleep 5
 
-# running rpi-wiggle in background so script has chance to
-# end gracefully
-sudo ${TEMP_DIR}/./rpi-wiggle.sh
+    # running rpi-wiggle in background so script has chance to
+    # end gracefully
+    sudo ${TEMP_DIR}/./rpi-wiggle.sh
+fi
 
 # system should be in timed reboot state, so clean up and exit
 

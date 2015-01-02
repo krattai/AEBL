@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script makes the AEBL framework
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
 # Useage:
 
