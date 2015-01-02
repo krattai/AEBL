@@ -64,8 +64,11 @@ else
     rm .offline
 fi
 
-touch ${AEBL_SYS}
-
+if [ -f "$HOME/aeblvm" ]; then
+    touch ${AEBL_VM}
+else
+    touch ${AEBL_SYS}
+fi
 export PATH=$PATH:${BIN_DIR}:${SCRPT_DIR}
 
 # Get necessary asys files
@@ -176,9 +179,11 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     cp -p ${SCRPT_DIR}/* /run/shm/scripts
 
-
+if [ -f "$HOME/aeblvm" ]; then
+    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, #AEBLVM ${MACe0} registered." &
+else
     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, #AEBLpi ${MACe0} registered." &
-
+fi
     # sleep 5 seconds to ensure system ready for reboot
     echo "Processing files.  Please wait."
     sleep 5
