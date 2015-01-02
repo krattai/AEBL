@@ -160,8 +160,10 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     sudo apt-get -y install fbi samba samba-common-bin libnss-mdns lsof
 
-# not applicable for AEBL VM
-#    sudo rpi-update
+    # not applicable for AEBL VM
+    if [ ! -f "$HOME/aeblvm" ]; then
+        sudo rpi-update
+    fi
 
     sudo apt-get -y upgrade
 
