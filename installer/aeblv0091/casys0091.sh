@@ -14,6 +14,7 @@ LOCAL_SYS="/home/pi/.local"
 NETWORK_SYS="/home/pi/.network"
 OFFLINE_SYS="/home/pi/.offline"
 AEBL_SYS="/home/pi/.aeblsys"
+AEBL_VM="/home/pi/.aeblvm"
 
 TEMP_DIR="/home/pi/tempdir"
 MP3_DIR="/home/pi/mp3"
