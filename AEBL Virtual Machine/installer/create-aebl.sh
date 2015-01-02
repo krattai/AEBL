@@ -85,6 +85,10 @@ if [ -f "$HOME/aeblsys" ]; then
     newhost="aeblsys"
 fi
 
+if [ -f "$HOME/aeblvm" ]; then
+    newhost="aeblvm"
+fi
+
 if [ -f "$HOME/idetsys" ]; then
     newhost="idetsys"
 fi
