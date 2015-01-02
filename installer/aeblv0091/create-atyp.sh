@@ -66,6 +66,13 @@ if [ -f "$HOME/aeblsys" ]; then
     rm $HOME/aeblsys
 fi
 
+if [ -f "$HOME/aeblvm" ]; then
+    systype="casys0091.sh"
+    sysloc="71aq3kkcs15dosv"
+# do not remove until casys started
+#    rm $HOME/aeblvm
+fi
+
 if [ -f "$HOME/idetsys" ]; then
     systype="cidet0091.sh"
     sysloc="x1i74qtze2gnqib"
