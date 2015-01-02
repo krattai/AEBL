@@ -165,7 +165,9 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
         sudo rpi-update
     fi
 
-    sudo apt-get -y upgrade
+    if [ -f "$HOME/aeblvm" ]; then
+        sudo apt-get -y upgrade
+    fi
 
     # running rpi-wiggle in background so script has chance to
     # end gracefully
