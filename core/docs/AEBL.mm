@@ -106,6 +106,7 @@
 <node TEXT="auto thumbdrive content" ID="ID_228740941" CREATED="1420054092886" MODIFIED="1420054140398"/>
 <node TEXT="OAuth tweeting" ID="ID_175107668" CREATED="1420223500616" MODIFIED="1420223523831" LINK="https://www.bentasker.co.uk/documentation/20-developmentprogramming/23-howto-tweet-from-bash-scripts-using-oauth">
 <node TEXT="bash ready" ID="ID_589979534" CREATED="1420227641286" MODIFIED="1420227653411"/>
+<node TEXT="tcli.zip contains files" ID="ID_1282589937" CREATED="1420227694641" MODIFIED="1420227705798"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
