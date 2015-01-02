@@ -111,6 +111,7 @@
 </node>
 <node TEXT="twython" ID="ID_1318675621" CREATED="1420228047593" MODIFIED="1420228064620" LINK="https://github.com/ryanmcgrath/twython"/>
 <node TEXT="twitterbot instructable" ID="ID_1079604422" CREATED="1420228110753" MODIFIED="1420228134495" LINK="http://www.instructables.com/id/Raspberry-Pi-Twitterbot/?ALLSTEPS"/>
+<node TEXT="twitter monitor" ID="ID_1502800099" CREATED="1420228183097" MODIFIED="1420228195504" LINK="https://learn.sparkfun.com/tutorials/raspberry-pi-twitter-monitor"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
