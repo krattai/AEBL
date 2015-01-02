@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script preps the pi for use on the AEBL framework
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
 # Useage:
 
