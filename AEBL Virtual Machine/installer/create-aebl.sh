@@ -3,7 +3,7 @@
 # The AEBL img is not a pure raspbian image, some unique
 # updates were performed to achieve base img
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
 # Useage:
 # There is no useage, this is a standalone script
