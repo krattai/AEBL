@@ -156,6 +156,8 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     sudo rpi-update
 
+    sudo apt-get -y upgrade
+
     # running rpi-wiggle in background so script has chance to
     # end gracefully
     chmod 777 ${TEMP_DIR}/mk-aebl.sh
