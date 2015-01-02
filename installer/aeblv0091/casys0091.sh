@@ -180,7 +180,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
     cp -p ${SCRPT_DIR}/* /run/shm/scripts
 
 if [ -f "$HOME/aeblvm" ]; then
-    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, #AEBLVM ${MACe0} registered." &
+    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, #AEBL_VM ${MACe0} registered." &
 else
     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, #AEBLpi ${MACe0} registered." &
 fi
