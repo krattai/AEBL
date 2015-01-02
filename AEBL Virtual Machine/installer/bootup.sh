@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
-# Initial bootup.sh included on base AEBL image
+# Initial bootup.sh included on base AEBL VM image
 # starts the new AEBL core install on boot
 #
 # Base AEBL image also includes the following changes from:
