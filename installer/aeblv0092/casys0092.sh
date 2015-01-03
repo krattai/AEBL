@@ -66,9 +66,11 @@ fi
 
 if [ -f "$HOME/aeblvm" ]; then
     touch ${AEBL_VM}
+    rm $HOME/aeblvm
 else
     touch ${AEBL_SYS}
 fi
+
 export PATH=$PATH:${BIN_DIR}:${SCRPT_DIR}
 
 # Get necessary asys files
