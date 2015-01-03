@@ -27,3 +27,9 @@ cp * ~/tmpdir_maintenance
 cd ~
 
 cat /dev/null > ~/.bash_history && history -c && exit
+
+~~~~~~~~~~~~~~~~~~~
+
+Location of base AEBL VM:
+
+https://www.dropbox.com/s/clidd488ag805x1/AEBL.vdi.7z?dl=0
