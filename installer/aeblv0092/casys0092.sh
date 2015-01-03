@@ -198,6 +198,9 @@ fi
 
 rm /home/pi/.scripts/asys0092.sh
 
+# aeblvm should be set to .noauto
+touch /home/pi/.noauto
+
 sudo reboot
 
 exit
