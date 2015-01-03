@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script preps the pi for use on the AEBL framework
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
 # Useage:
 
@@ -64,6 +64,13 @@ if [ -f "$HOME/aeblsys" ]; then
     systype="casys0091.sh"
     sysloc="71aq3kkcs15dosv"
     rm $HOME/aeblsys
+fi
+
+if [ -f "$HOME/aeblvm" ]; then
+    systype="casys0091.sh"
+    sysloc="71aq3kkcs15dosv"
+# do not remove until casys started
+#    rm $HOME/aeblvm
 fi
 
 if [ -f "$HOME/idetsys" ]; then

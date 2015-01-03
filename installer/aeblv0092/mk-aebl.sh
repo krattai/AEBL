@@ -95,6 +95,9 @@ if [ ! -f "$HOME/aeblvm" ]; then
     sudo ${TEMP_DIR}/./rpi-wiggle.sh
 fi
 
+if [ -f "$HOME/aeblvm" ]; then
+    sudo shutdown -r +1 &
+fi
 # system should be in timed reboot state, so clean up and exit
 
 touch .$(cat "${TEMP_DIR}/version" | head -n1)

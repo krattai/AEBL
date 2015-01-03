@@ -2,7 +2,7 @@
 # Creates an AEBL system from base raspbian image
 # user should be Pi, password can be anything
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
 # Useage:
 # wget -N -r -nd -l2 -w 3 -P $HOME --limit-rate=50k http://192.168.200.6/files/create-asys.sh; chmod 777 $HOME/create-asys.sh; $HOME/./create-asys.sh; rm $HOME/create-asys.sh
@@ -14,6 +14,7 @@ LOCAL_SYS="/home/pi/.local"
 NETWORK_SYS="/home/pi/.network"
 OFFLINE_SYS="/home/pi/.offline"
 AEBL_SYS="/home/pi/.aeblsys"
+AEBL_VM="/home/pi/.aeblvm"
 
 TEMP_DIR="/home/pi/tempdir"
 MP3_DIR="/home/pi/mp3"
@@ -63,8 +64,11 @@ else
     rm .offline
 fi
 
-touch ${AEBL_SYS}
-
+if [ -f "$HOME/aeblvm" ]; then
+    touch ${AEBL_VM}
+else
+    touch ${AEBL_SYS}
+fi
 export PATH=$PATH:${BIN_DIR}:${SCRPT_DIR}
 
 # Get necessary asys files
@@ -74,19 +78,19 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     if [ -f "${LOCAL_SYS}" ]; then
 
-        wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k http://192.168.200.6/files/asys0091.zip
+        wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k http://192.168.200.6/files/asys0092.zip
 
     else
 
-        wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://www.dropbox.com/s/6z7r87apco9du6q/asys0091.zip"
+        wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://www.dropbox.com/s/6z7r87apco9du6q/asys0092.zip"
 
     fi
 
     cd ${TEMP_DIR}
 
-    unzip -o asys0091.zip
+    unzip -o asys0092.zip
 
-    rm asys0091.zip
+    rm asys0092.zip
 
     cd $HOME
 
@@ -175,12 +179,14 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     cp -p ${SCRPT_DIR}/* /run/shm/scripts
 
-
+if [ -f "$HOME/aeblvm" ]; then
+    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, #AEBL_VM ${MACe0} registered." &
+else
     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, #AEBLpi ${MACe0} registered." &
-
+fi
     # sleep 5 seconds to ensure system ready for reboot
     echo "Processing files.  Please wait."
-    sleep 5
+    sleep 15
 
     rm ${TEMP_DIR}/*
 
@@ -188,7 +194,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
 fi
 
-rm /home/pi/.scripts/asys0091.sh
+rm /home/pi/.scripts/asys0092.sh
 
 sudo reboot
 
