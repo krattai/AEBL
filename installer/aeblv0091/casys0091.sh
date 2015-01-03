@@ -186,7 +186,7 @@ else
 fi
     # sleep 5 seconds to ensure system ready for reboot
     echo "Processing files.  Please wait."
-    sleep 5
+    sleep 15
 
     rm ${TEMP_DIR}/*
 
