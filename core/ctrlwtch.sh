@@ -151,6 +151,13 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
             mkdir /home/pi/blades
             touch /home/pi/blades/raspctl
         fi
+        if [ "$blade" == "mediatomb" ]; then
+            wget -N -r -nd -l2 -w 3 -O "${T_SCR}/raspctl.sh" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/mediatobm.sh?raw=true
+            chmod 777 $T_SCR/mediatomb.sh
+            $T_SCR/mediatomb.sh &
+            mkdir /home/pi/blades
+            touch /home/pi/blades/mediatomb
+        fi
 #         sudo apt-get install -y $blade
 
         # this should only remove mkblade once mkblade.sh no longer running
