@@ -1,12 +1,10 @@
 #!/bin/bash
 # Installs raspctl blade
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
 # Useage:
-# wget -N -r -nd -l2 -w 3 -P $HOME --limit-rate=50k http://192.168.200.6/files/create-asys.sh; chmod 777 $HOME/create-asys.sh; $HOME/./create-asys.sh; rm $HOME/create-asys.sh
-# or
-# wget -N -r -nd -l2 -w 3 -P $HOME --limit-rate=50k "https://www.dropbox.com/s/1t3ejk4iyzm07u6/create-asys.sh"; chmod 777 $HOME/create-asys.sh; $HOME/./create-asys.sh; rm $HOME/create-asys.sh
+# no useage
 
 
 LOCAL_SYS="/home/pi/.local"
@@ -65,29 +63,16 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 mkdir blade
 
 # Get raspctl package, must wget using ?raw=true
-wget -N -r -nd -l2 -w 3 -O "/home/pi/blade/raspctl.zip" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/raspctl.zip?raw=true
+wget -N -r -nd -l2 -w 3 -O "/home/pi/blade/mediatomb.zip" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/mediatomb.zip?raw=true
 
 cd blade
-unzip raspctl.zip
-rm raspctl.zip
+unzip mediatomb.zip
+rm mediatomb.zip
 
 # For test purposes, went through above process but will install deb pckg
-#  process documented here:  http://raspctl.com/
-# Download and install the my public GPG key
-wget debrepo.krenel.org/raspctl.asc
-cat raspctl.asc | sudo apt-key add -
-rm raspctl.asc
+# NB: mysql and mediatomb need special configuration aside from install
 
-# Add my repository in the apt config file
-echo "deb http://debrepo.krenel.org/ raspctl main" | sudo tee /etc/apt/sources.list.d/raspctl.list
-
-# Update you repository and install the package
-sudo aptitude update
-sudo aptitude -y install raspctl
-
-# Now you can access to the web interface browsing http://raspberry-ip-here:8086
-
-# could do it "the hard way" via: https://bitbucket.org/inedit00/raspctl
+sudo aptitude -y install mediatomb
 
 # ~~~~~~~~~~~~~ good to this point ~~~~~~~~
 # 
@@ -115,7 +100,7 @@ sudo aptitude -y install raspctl
 # pv=$(cat "${GRAB_FILE}" | head -n1)
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
-    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} installed raspctl blade." &
+    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} installed mediatomb blade." &
 fi
 
 exit
