@@ -12,7 +12,12 @@
 LOCAL_SYS="/home/pi/.local"
 NETWORK_SYS="/home/pi/.network"
 OFFLINE_SYS="/home/pi/.offline"
+AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
+AEBL_VM="/home/pi/.aeblvm"
+IHDN_TEST="/home/pi/.ihdntest"
+IHDN_SYS="/home/pi/.ihdnsys"
+IHDN_DET="/home/pi/.ihdndet"
 
 TEMP_DIR="/home/pi/tempdir"
 MP3_DIR="/home/pi/mp3"
