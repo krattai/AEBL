@@ -74,8 +74,13 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 mv startup.sh $HOME/.scripts
 chmod 777 $HOME/.scripts/startup.sh
-cp $HOME/.scripts/patch.sh $HOME/.backup/scripts
-cp $HOME/.scripts/patch.sh /run/shm/scripts
+cp $HOME/.scripts/startup.sh $HOME/.backup/scripts
+cp $HOME/.scripts/startup.sh /run/shm/scripts
+
+mv ctrlwtch.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/ctrlwtch.sh
+cp $HOME/.scripts/ctrlwtch.sh $HOME/.backup/scripts
+cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
 
 sleep 5
 
