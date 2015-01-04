@@ -50,6 +50,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
 
     # Set stand alone AEBL playlist, currently only for mp4 content
     # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
+    # !? Why can this not just cp ctrl/newpl to /run/shm/mynew.pl ?!
     if [ -f "${HOME}/ctrl/newpl" ]; then
         dos2unix "${HOME}/ctrl/newpl"
         cp "${HOME}/ctrl/newpl" "${HOME}/ctrl/pltmp"
@@ -96,49 +97,71 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     fi
 
     # Process request to remove content from pl folder
-    # !! 141001 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
-    if [ -f "${HOME}/ctrl/rmfiles" ]; then
-        dos2unix "${HOME}/ctrl/rmfiles"
-        REMOVE_FILES="${HOME}/ctrl/rmfiles"
-        touch $T_STO/rmfiles
-        while [ -f "${T_STO}/rmfiles" ]; do
-            # Do nothing if no remove file
-            if [ ! -f "ctrl/${REMOVE_FILES}" ]; then
-                echo "File ${REMOVE_FILES} not found"
-                continue
-            fi
-            # Get the top of the remove list
-            file=$(cat "ctrl/${REMOVE_FILES}" | head -n1)
-            # And strip it off the playlist file
-            cat "ctrl/${REMOVE_FILES}" | tail -n+2 > "ctrl/${REMOVE_FILES}.new"
-            mv "ctrl/${REMOVE_FILES}.new" "ctrl/${REMOVE_FILES}"
-            # Skip if this is empty
-            if [ -z "${file}" ]; then
-                echo "Remove file empty or bumped into an empty entry"
-                rm $T_STO/rmfiles
-                continue
-            fi
-            # Check that the file exists
-            if [ ! -f "pl/${file}" ]; then
-                echo "File ${file} not found"
-                continue
-            fi
-            # remove the file
-            rm "pl/${file}"
-        done
-        rm "ctrl/${REMOVE_FILES}"
-        rm "ctrl/${REMOVE_FILES}.new"
+    # !! 141101 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
+    if [ -f "${HOME}/ctrl/rmfiles" ] && [ ! -f "{$T_STO}/.delfile" ]; then
+        $T_SCR/./rmfile.sh &
+        # make sure wait long enough for rmfile.sh to mark .delfile token
+        sleep 2
     fi
+#         dos2unix "${HOME}/ctrl/rmfiles"
+#         REMOVE_FILES="${HOME}/ctrl/rmfiles"
+#         touch $T_STO/rmfiles
+#         while [ -f "${T_STO}/rmfiles" ]; do
+#             # Do nothing if no remove file
+#             if [ ! -f "ctrl/${REMOVE_FILES}" ]; then
+#                 echo "File ${REMOVE_FILES} not found"
+#                 continue
+#             fi
+            # Get the top of the remove list
+#             file=$(cat "ctrl/${REMOVE_FILES}" | head -n1)
+            # And strip it off the playlist file
+#             cat "ctrl/${REMOVE_FILES}" | tail -n+2 > "ctrl/${REMOVE_FILES}.new"
+#             mv "ctrl/${REMOVE_FILES}.new" "ctrl/${REMOVE_FILES}"
+            # Skip if this is empty
+#             if [ -z "${file}" ]; then
+#                 echo "Remove file empty or bumped into an empty entry"
+#                 rm $T_STO/rmfiles
+#                 continue
+#             fi
+            # Check that the file exists
+#             if [ ! -f "pl/${file}" ]; then
+#                 echo "File ${file} not found"
+#                 continue
+#             fi
+            # remove the file
+#             rm "pl/${file}"
+#         done
+#         rm "ctrl/${REMOVE_FILES}"
+#         rm "ctrl/${REMOVE_FILES}.new"
+#     fi
 
     # Add blade to AEBL
     # At the time of code, most blades are simply installed applications
     #  and we will restrict only one blade install per request, at this time
-    # !! 141002 - THIS FUNCTION AND NOT TESTED AT THIS DATE !!
     if [ -f "${HOME}/ctrl/mkblade" ]; then
+        # once working, the following code will be in mkblade.sh and this will
+        #  simply call mkblade.sh and carry on
         dos2unix "${HOME}/ctrl/mkblade"
         # Get the top of the remove list
         blade=$(cat "ctrl/mkblade" | head -n1)
-        sudo apt-get install -y $blade
+        if [ "$blade" == "raspctl" ]; then
+            wget -N -r -nd -l2 -w 3 -O "${T_SCR}/raspctl.sh" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/raspctl.sh?raw=true
+            chmod 777 $T_SCR/raspctl.sh
+            $T_SCR/raspctl.sh &
+            mkdir /home/pi/blades
+            touch /home/pi/blades/raspctl
+        fi
+        if [ "$blade" == "mediatomb" ]; then
+            wget -N -r -nd -l2 -w 3 -O "${T_SCR}/raspctl.sh" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/mediatobm.sh?raw=true
+            chmod 777 $T_SCR/mediatomb.sh
+            $T_SCR/mediatomb.sh &
+            mkdir /home/pi/blades
+            touch /home/pi/blades/mediatomb
+        fi
+#         sudo apt-get install -y $blade
+
+        # this should only remove mkblade once mkblade.sh no longer running
+        # ie.  if ! ps aux | grep mkblade.sh then mkblade.sh rm mkblade fi
         rm ctrl/mkblade
     fi
 
