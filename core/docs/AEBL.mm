@@ -119,7 +119,6 @@
 <node TEXT="get patches from github" ID="ID_1941548697" CREATED="1420402000609" MODIFIED="1420402023981"/>
 <node TEXT="honour old patch system and files" ID="ID_911120548" CREATED="1420402080741" MODIFIED="1420402103764"/>
 </node>
-<node TEXT="owncloud blade" ID="ID_860167699" CREATED="1420416151453" MODIFIED="1420416155829"/>
 <node TEXT="mediatomb blade" ID="ID_243844233" CREATED="1420416284446" MODIFIED="1420416332604">
 <node TEXT="notes on mediatomb" ID="ID_832763002" CREATED="1420416345134" MODIFIED="1420416357157" LINK="http://mediatomb.cc/pages/documentation"/>
 </node>
