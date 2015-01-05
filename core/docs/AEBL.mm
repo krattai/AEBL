@@ -200,6 +200,7 @@
 <node TEXT="owncloud notes" ID="ID_972549851" CREATED="1420416204687" MODIFIED="1420416217357" LINK="https://www.howtoforge.com/how-to-install-owncloud-7-on-ubuntu-14.04"/>
 <node TEXT="first run" ID="ID_1137224168" CREATED="1420467129587" MODIFIED="1420467137958">
 <node TEXT="create user pi password password" ID="ID_1061837574" CREATED="1420467170812" MODIFIED="1420467179592"/>
+<node TEXT="database user root password password" ID="ID_543469846" CREATED="1420467217914" MODIFIED="1420467235986"/>
 </node>
 </node>
 <node TEXT="seafile" ID="ID_121833645" CREATED="1416162353161" MODIFIED="1416162356558"/>
