@@ -62,17 +62,23 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 mkdir blade
 
-# Get raspctl package, must wget using ?raw=true
-wget -N -r -nd -l2 -w 3 -O "/home/pi/blade/mediatomb.zip" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/mediatomb.zip?raw=true
+# Get webmin package, must wget using ?raw=true
+# wget -N -r -nd -l2 -w 3 -O "/home/pi/blade/webmin.zip" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/webmin.zip?raw=true
 
-cd blade
-unzip mediatomb.zip
-rm mediatomb.zip
+# cd blade
+# unzip webmin.zip
+# rm webmin.zip
 
 # For test purposes, went through above process but will install deb pckg
 # NB: mysql and mediatomb need special configuration aside from install
 
-sudo aptitude -y install mediatomb
+echo "deb http://download.webmin.com/download/repository sarge contrib" | sudo tee -a /etc/apt/sources.list
+wget http://www.webmin.com/jcameron-key.asc
+sudo apt-key add jcameron-key.asc
+rm jcameron-key.asc
+
+sudo apt-get update
+sudo apt-get -y install webmin
 
 # ~~~~~~~~~~~~~ good to this point ~~~~~~~~
 # 
@@ -100,7 +106,7 @@ sudo aptitude -y install mediatomb
 # pv=$(cat "${GRAB_FILE}" | head -n1)
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
-    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} installed mediatomb blade." &
+    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} installed webmin blade." &
 fi
 
 exit
