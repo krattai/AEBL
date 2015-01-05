@@ -119,9 +119,6 @@
 <node TEXT="get patches from github" ID="ID_1941548697" CREATED="1420402000609" MODIFIED="1420402023981"/>
 <node TEXT="honour old patch system and files" ID="ID_911120548" CREATED="1420402080741" MODIFIED="1420402103764"/>
 </node>
-<node TEXT="webmin blade" ID="ID_1493368120" CREATED="1420416026228" MODIFIED="1420416029895">
-<node TEXT="notes for ubuntu" ID="ID_1587702566" CREATED="1420416077030" MODIFIED="1420416095574" LINK="http://ubuntuhandbook.org/index.php/2013/12/install-webmin-official-repository-ubuntu/"/>
-</node>
 <node TEXT="owncloud blade" ID="ID_860167699" CREATED="1420416151453" MODIFIED="1420416155829">
 <node TEXT="owncloud notes" ID="ID_972549851" CREATED="1420416204687" MODIFIED="1420416217357" LINK="https://www.howtoforge.com/how-to-install-owncloud-7-on-ubuntu-14.04"/>
 </node>
@@ -207,6 +204,9 @@
 <node TEXT="xtreemfs" ID="ID_325003429" CREATED="1416162390577" MODIFIED="1416162420952"/>
 <node TEXT="Terra Vista" ID="ID_1669515084" CREATED="1416162478521" MODIFIED="1416162483959"/>
 <node TEXT="noo-ebs" ID="ID_346129573" CREATED="1416187485572" MODIFIED="1416187493241"/>
+<node TEXT="webmin blade" ID="ID_1493368120" CREATED="1420416026228" MODIFIED="1420416029895">
+<node TEXT="notes for ubuntu" ID="ID_1587702566" CREATED="1420416077030" MODIFIED="1420416095574" LINK="http://ubuntuhandbook.org/index.php/2013/12/install-webmin-official-repository-ubuntu/"/>
+</node>
 </node>
 </node>
 <node TEXT="AEBL interfaces" POSITION="right" ID="ID_43537905" CREATED="1416159240121" MODIFIED="1416159305836" HGAP="40" VSHIFT="-40">
