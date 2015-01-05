@@ -122,7 +122,9 @@
 <node TEXT="mediatomb blade" ID="ID_243844233" CREATED="1420416284446" MODIFIED="1420416332604">
 <node TEXT="notes on mediatomb" ID="ID_832763002" CREATED="1420416345134" MODIFIED="1420416357157" LINK="http://mediatomb.cc/pages/documentation"/>
 </node>
-<node TEXT="AirTime" ID="ID_1411054759" CREATED="1420484460487" MODIFIED="1420484472476" LINK="https://www.sourcefabric.org/en/airtime/"/>
+<node TEXT="AirTime blade" ID="ID_1411054759" CREATED="1420484460487" MODIFIED="1420484671747" LINK="https://www.sourcefabric.org/en/airtime/">
+<node TEXT="apparently webmin can cause problem" ID="ID_1606606865" CREATED="1420484654643" MODIFIED="1420484679629" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/preparing-the-server/"/>
+</node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
 <node TEXT="to be conducted via alpha and beta releases" ID="ID_1607155208" CREATED="1416163797345" MODIFIED="1416163811358"/>
