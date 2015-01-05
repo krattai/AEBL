@@ -1,5 +1,5 @@
 #!/bin/bash
-# Installs webin blade
+# Installs owncloud blade
 #
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
@@ -63,22 +63,32 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 mkdir blade
 
 # Get webmin package, must wget using ?raw=true
-# wget -N -r -nd -l2 -w 3 -O "/home/pi/blade/webmin.zip" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/webmin.zip?raw=true
+# wget -N -r -nd -l2 -w 3 -O "/home/pi/blade/owncloud.zip" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/owncloud.zip?raw=true
 
 # cd blade
-# unzip webmin.zip
-# rm webmin.zip
+# unzip owncloud.zip
+# rm owncloud.zip
 
 # For test purposes, went through above process but will install deb pckg
-# NB: mysql and mediatomb need special configuration aside from install
 
-echo "deb http://download.webmin.com/download/repository sarge contrib" | sudo tee -a /etc/apt/sources.list
-wget http://www.webmin.com/jcameron-key.asc
-sudo apt-key add jcameron-key.asc
-rm jcameron-key.asc
+# should actually check if mysql
+export DEBIAN_FRONTEND=noninteractive
+# -E passes along environment variables
+sudo -E apt-get -q -y install mysql-server
+mysqladmin -u root password password
+mysql -uroot -ppassword -e "create database owncloud;"
+mysql -uroot -ppassword -e "GRANT ALL ON owncloud.* to 'owncloud'@'localhost' IDENTIFIED BY 'database_password';"
+
+cd /tmp
+wget http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.04/Release.key
+sudo apt-key add - < Release.key
+rm Release.key
+cd ..
+
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_14.04/ /' >> /etc/apt/sources.list.d/owncloud.list"
 
 sudo apt-get update
-sudo apt-get -y install webmin
+sudo apt-get -y install owncloud
 
 # ~~~~~~~~~~~~~ good to this point ~~~~~~~~
 # 
