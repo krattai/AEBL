@@ -124,6 +124,7 @@
 </node>
 <node TEXT="AirTime blade" ID="ID_1411054759" CREATED="1420484460487" MODIFIED="1420484671747" LINK="https://www.sourcefabric.org/en/airtime/">
 <node TEXT="apparently webmin can cause problem" ID="ID_1606606865" CREATED="1420484654643" MODIFIED="1420484679629" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/preparing-the-server/"/>
+<node TEXT="manual installation" ID="ID_4133178" CREATED="1420484775868" MODIFIED="1420484786068" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/manual-installation/"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
