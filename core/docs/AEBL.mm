@@ -127,7 +127,9 @@
 <node TEXT="manual installation" ID="ID_4133178" CREATED="1420484775868" MODIFIED="1420484786068" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/manual-installation/"/>
 <node TEXT="automated installation" ID="ID_315724991" CREATED="1420496058461" MODIFIED="1420496080889" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/automated-installation/"/>
 </node>
-<node TEXT="compression blade" ID="ID_758771392" CREATED="1420496151303" MODIFIED="1420496157544"/>
+<node TEXT="compression blade" ID="ID_758771392" CREATED="1420496151303" MODIFIED="1420496157544">
+<node TEXT="related to NAS" ID="ID_626429105" CREATED="1420496185077" MODIFIED="1420496199436"/>
+</node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
 <node TEXT="to be conducted via alpha and beta releases" ID="ID_1607155208" CREATED="1416163797345" MODIFIED="1416163811358"/>
