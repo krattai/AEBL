@@ -136,7 +136,7 @@
 <node TEXT="sudo apt-get install debconf-utils" ID="ID_895669163" CREATED="1420534866242" MODIFIED="1420534916478" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html"/>
 </node>
 <node TEXT="zentyal blade" ID="ID_1778873261" CREATED="1420571387075" MODIFIED="1420571418089" LINK="http://www.zentyal.org/server/#server-features">
-<node TEXT="sudo apt-get install zentyal-core" ID="ID_611910840" CREATED="1420571454771" MODIFIED="1420571465225"/>
+<node TEXT="sudo apt-get install zentyal-core" ID="ID_611910840" CREATED="1420571454771" MODIFIED="1420571747313" LINK="https://wiki.zentyal.org/wiki/En/4.0/Installation"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
