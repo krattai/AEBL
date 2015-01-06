@@ -131,7 +131,10 @@
 <node TEXT="related to NAS" ID="ID_626429105" CREATED="1420496185077" MODIFIED="1420496199436"/>
 <node TEXT="long term storage archive" ID="ID_808640446" CREATED="1420496226107" MODIFIED="1420496234420"/>
 </node>
-<node TEXT="unattended package installs" ID="ID_1533529031" CREATED="1420499060134" MODIFIED="1420499082714" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html"/>
+<node TEXT="unattended package installs" ID="ID_1533529031" CREATED="1420499060134" MODIFIED="1420499082714" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
+<node TEXT="debconf-utils" ID="ID_771343685" CREATED="1420534833016" MODIFIED="1420534900607" LINK="http://serverfault.com/questions/407317/passing-default-answers-to-apt-get-package-install-questions"/>
+<node TEXT="sudo apt-get install debconf-utils" ID="ID_895669163" CREATED="1420534866242" MODIFIED="1420534916478" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html"/>
+</node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
 <node TEXT="to be conducted via alpha and beta releases" ID="ID_1607155208" CREATED="1416163797345" MODIFIED="1416163811358"/>
