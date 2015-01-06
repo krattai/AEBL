@@ -138,7 +138,9 @@
 <node TEXT="zentyal blade" ID="ID_1778873261" CREATED="1420571387075" MODIFIED="1420571418089" LINK="http://www.zentyal.org/server/#server-features">
 <node TEXT="sudo apt-get install zentyal-core" ID="ID_611910840" CREATED="1420571454771" MODIFIED="1420571747313" LINK="https://wiki.zentyal.org/wiki/En/4.0/Installation"/>
 </node>
-<node TEXT="Ajenti blade" ID="ID_980351936" CREATED="1420573573788" MODIFIED="1420573586892" LINK="http://ajenti.org/"/>
+<node TEXT="Ajenti blade" ID="ID_980351936" CREATED="1420573573788" MODIFIED="1420573586892" LINK="http://ajenti.org/">
+<node TEXT="ajenti gitub" ID="ID_1417673576" CREATED="1420573646245" MODIFIED="1420573662828" LINK="https://github.com/Eugeny/ajenti"/>
+</node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
 <node TEXT="to be conducted via alpha and beta releases" ID="ID_1607155208" CREATED="1416163797345" MODIFIED="1416163811358"/>
