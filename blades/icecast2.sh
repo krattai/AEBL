@@ -71,6 +71,13 @@ mkdir blade
 
 # For test purposes, went through above process but will install deb pckg
 
+# icecast2/icecast-setup  boolean true
+# icecast2/relaypassword  string  hackme
+# icecast2/adminpassword  string  hackme
+# icecast2/hostname       string  localhost
+# icecast2/sourcepassword string  hackme
+
+
 sudo apt-get -y install icecast2
 
 # ~~~~~~~~~~~~~ good to this point ~~~~~~~~
