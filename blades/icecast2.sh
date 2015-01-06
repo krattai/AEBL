@@ -77,6 +77,10 @@ mkdir blade
 # icecast2/hostname       string  localhost
 # icecast2/sourcepassword string  hackme
 
+echo "icecast2 icecast2/relaypassword string hackme" | debconf-set-selections
+echo "icecast2 icecast2/adminpassword string hackme" | debconf-set-selections
+echo "icecast2 icecast2/hostname string localhost" | debconf-set-selections
+echo "icecast2 icecast2/sourcepassword string hackme" | debconf-set-selections
 
 sudo apt-get -y install icecast2
 
