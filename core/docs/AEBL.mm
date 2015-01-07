@@ -138,10 +138,6 @@
 <node TEXT="zentyal blade" ID="ID_1778873261" CREATED="1420571387075" MODIFIED="1420571418089" LINK="http://www.zentyal.org/server/#server-features">
 <node TEXT="sudo apt-get install zentyal-core" ID="ID_611910840" CREATED="1420571454771" MODIFIED="1420571747313" LINK="https://wiki.zentyal.org/wiki/En/4.0/Installation"/>
 </node>
-<node TEXT="Ajenti blade" ID="ID_980351936" CREATED="1420573573788" MODIFIED="1420573586892" LINK="http://ajenti.org/">
-<node TEXT="ajenti gitub" ID="ID_1417673576" CREATED="1420573646245" MODIFIED="1420573662828" LINK="https://github.com/Eugeny/ajenti"/>
-<node TEXT="ajenti dev docs" ID="ID_900331325" CREATED="1420608589734" MODIFIED="1420608611445" LINK="http://docs.ajenti.org/en/latest/"/>
-</node>
 <node TEXT="RSS blade" ID="ID_844970339" CREATED="1420622769432" MODIFIED="1420622775087">
 <node TEXT="An aggregator" ID="ID_692417903" CREATED="1420656012878" MODIFIED="1420656019357"/>
 <node TEXT="RSS distributor" ID="ID_1718329969" CREATED="1420656066019" MODIFIED="1420656096425"/>
@@ -234,6 +230,10 @@
 <node TEXT="noo-ebs" ID="ID_346129573" CREATED="1416187485572" MODIFIED="1416187493241"/>
 <node TEXT="webmin blade" ID="ID_1493368120" CREATED="1420416026228" MODIFIED="1420416029895">
 <node TEXT="notes for ubuntu" ID="ID_1587702566" CREATED="1420416077030" MODIFIED="1420416095574" LINK="http://ubuntuhandbook.org/index.php/2013/12/install-webmin-official-repository-ubuntu/"/>
+</node>
+<node TEXT="Ajenti blade" ID="ID_980351936" CREATED="1420573573788" MODIFIED="1420573586892" LINK="http://ajenti.org/">
+<node TEXT="ajenti gitub" ID="ID_1417673576" CREATED="1420573646245" MODIFIED="1420573662828" LINK="https://github.com/Eugeny/ajenti"/>
+<node TEXT="ajenti dev docs" ID="ID_900331325" CREATED="1420608589734" MODIFIED="1420608611445" LINK="http://docs.ajenti.org/en/latest/"/>
 </node>
 </node>
 </node>
