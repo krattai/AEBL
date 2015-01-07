@@ -140,6 +140,7 @@
 </node>
 <node TEXT="Ajenti blade" ID="ID_980351936" CREATED="1420573573788" MODIFIED="1420573586892" LINK="http://ajenti.org/">
 <node TEXT="ajenti gitub" ID="ID_1417673576" CREATED="1420573646245" MODIFIED="1420573662828" LINK="https://github.com/Eugeny/ajenti"/>
+<node TEXT="ajenti dev docs" ID="ID_900331325" CREATED="1420608589734" MODIFIED="1420608611445" LINK="http://docs.ajenti.org/en/latest/"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
