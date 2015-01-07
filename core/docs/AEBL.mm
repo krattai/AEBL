@@ -142,6 +142,7 @@
 <node TEXT="ajenti gitub" ID="ID_1417673576" CREATED="1420573646245" MODIFIED="1420573662828" LINK="https://github.com/Eugeny/ajenti"/>
 <node TEXT="ajenti dev docs" ID="ID_900331325" CREATED="1420608589734" MODIFIED="1420608611445" LINK="http://docs.ajenti.org/en/latest/"/>
 </node>
+<node TEXT="RSS blade" ID="ID_844970339" CREATED="1420622769432" MODIFIED="1420622775087"/>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
 <node TEXT="to be conducted via alpha and beta releases" ID="ID_1607155208" CREATED="1416163797345" MODIFIED="1416163811358"/>
