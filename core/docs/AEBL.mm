@@ -114,7 +114,10 @@
 <node TEXT="twitterbot instructable" ID="ID_1079604422" CREATED="1420228110753" MODIFIED="1420228134495" LINK="http://www.instructables.com/id/Raspberry-Pi-Twitterbot/?ALLSTEPS"/>
 <node TEXT="twitter monitor" ID="ID_1502800099" CREATED="1420228183097" MODIFIED="1420228195504" LINK="https://learn.sparkfun.com/tutorials/raspberry-pi-twitter-monitor"/>
 <node TEXT="should convert to C" ID="ID_1531200645" CREATED="1420228228457" MODIFIED="1420228241652"/>
-<node TEXT="further investigate tcli.sh" ID="ID_584452145" CREATED="1420835430069" MODIFIED="1420835448124" LINK="https://github.com/livibetter-backup/bash-oauth"/>
+<node TEXT="further investigate tcli.sh" ID="ID_584452145" CREATED="1420835430069" MODIFIED="1420835448124" LINK="https://github.com/livibetter-backup/bash-oauth">
+<node TEXT="can post tweets" ID="ID_912122826" CREATED="1420877793087" MODIFIED="1420877804125"/>
+<node TEXT="" ID="ID_1716518611" CREATED="1420877808654" MODIFIED="1420877808654"/>
+</node>
 </node>
 <node TEXT="patch system upgrade" ID="ID_333515691" CREATED="1420401954862" MODIFIED="1420401963996">
 <node TEXT="get patches from github" ID="ID_1941548697" CREATED="1420402000609" MODIFIED="1420402023981"/>
