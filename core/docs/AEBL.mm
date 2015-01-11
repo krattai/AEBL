@@ -157,6 +157,7 @@
 <node TEXT="Facebook" ID="ID_1394560108" CREATED="1420999287983" MODIFIED="1420999299501" LINK="https://developers.facebook.com/docs/reference/dialogs/oauth/"/>
 <node TEXT="Twitter" ID="ID_1335506789" CREATED="1420999340487" MODIFIED="1420999350567" LINK="https://dev.twitter.com/oauth"/>
 </node>
+<node TEXT="avahi" ID="ID_1941305561" CREATED="1421001749863" MODIFIED="1421001775473" LINK="http://www.avahi.org/wiki/Avahi4Developpers"/>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
 <node TEXT="to be conducted via alpha and beta releases" ID="ID_1607155208" CREATED="1416163797345" MODIFIED="1416163811358"/>
