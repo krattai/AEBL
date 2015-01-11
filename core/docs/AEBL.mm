@@ -155,6 +155,7 @@
 <node TEXT="test console" ID="ID_1677077386" CREATED="1420999213135" MODIFIED="1420999222232" LINK="https://developer.linkedin.com/oauth-test-console"/>
 </node>
 <node TEXT="Facebook" ID="ID_1394560108" CREATED="1420999287983" MODIFIED="1420999299501" LINK="https://developers.facebook.com/docs/reference/dialogs/oauth/"/>
+<node TEXT="Twitter" ID="ID_1335506789" CREATED="1420999340487" MODIFIED="1420999350567" LINK="https://dev.twitter.com/oauth"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
