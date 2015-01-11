@@ -151,7 +151,9 @@
 <node TEXT="REST ful" ID="ID_1740524678" CREATED="1420997822586" MODIFIED="1420997830014"/>
 <node TEXT="OAuth" ID="ID_491102310" CREATED="1420999054784" MODIFIED="1420999063767">
 <node TEXT="Google+" ID="ID_931965743" CREATED="1420999095408" MODIFIED="1420999113200" LINK="https://developers.google.com/+/api/oauth"/>
-<node TEXT="Linkedin" ID="ID_1330430171" CREATED="1420999152346" MODIFIED="1420999166525" LINK="https://developer.linkedin.com/documents/authentication"/>
+<node TEXT="Linkedin" ID="ID_1330430171" CREATED="1420999152346" MODIFIED="1420999166525" LINK="https://developer.linkedin.com/documents/authentication">
+<node TEXT="test console" ID="ID_1677077386" CREATED="1420999213135" MODIFIED="1420999222232" LINK="https://developer.linkedin.com/oauth-test-console"/>
+</node>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
