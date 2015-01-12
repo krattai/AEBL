@@ -55,20 +55,6 @@
 <node TEXT="Prototype Development" ID="Freemind_Link_1948237358" CREATED="1269462283400" MODIFIED="1269462296310">
 <node TEXT="specific to any new functions not already part of the core" ID="ID_1064129376" CREATED="1416163700225" MODIFIED="1416163749904"/>
 <node TEXT="includes major updates to core" ID="ID_511280160" CREATED="1420402268957" MODIFIED="1420402301467"/>
-<node TEXT="tweetbot" ID="ID_1208960364" CREATED="1420227796857" MODIFIED="1420227800073">
-<node TEXT="OAuth tweeting" ID="ID_175107668" CREATED="1420223500616" MODIFIED="1420223523831" LINK="https://www.bentasker.co.uk/documentation/20-developmentprogramming/23-howto-tweet-from-bash-scripts-using-oauth">
-<node TEXT="bash ready" ID="ID_589979534" CREATED="1420227641286" MODIFIED="1420227653411"/>
-<node TEXT="tcli.zip contains files" ID="ID_1282589937" CREATED="1420227694641" MODIFIED="1420227705798"/>
-</node>
-<node TEXT="twython" ID="ID_1318675621" CREATED="1420228047593" MODIFIED="1420228064620" LINK="https://github.com/ryanmcgrath/twython"/>
-<node TEXT="twitterbot instructable" ID="ID_1079604422" CREATED="1420228110753" MODIFIED="1420228134495" LINK="http://www.instructables.com/id/Raspberry-Pi-Twitterbot/?ALLSTEPS"/>
-<node TEXT="twitter monitor" ID="ID_1502800099" CREATED="1420228183097" MODIFIED="1420228195504" LINK="https://learn.sparkfun.com/tutorials/raspberry-pi-twitter-monitor"/>
-<node TEXT="should convert to C" ID="ID_1531200645" CREATED="1420228228457" MODIFIED="1420228241652"/>
-<node TEXT="further investigate tcli.sh" ID="ID_584452145" CREATED="1420835430069" MODIFIED="1420835448124" LINK="https://github.com/livibetter-backup/bash-oauth">
-<node TEXT="can post tweets" ID="ID_912122826" CREATED="1420877793087" MODIFIED="1420877804125"/>
-<node TEXT="can it monitor tweets?" ID="ID_1716518611" CREATED="1420877808654" MODIFIED="1420997817264"/>
-</node>
-</node>
 <node TEXT="patch system upgrade" ID="ID_333515691" CREATED="1420401954862" MODIFIED="1420401963996">
 <node TEXT="get patches from github" ID="ID_1941548697" CREATED="1420402000609" MODIFIED="1420402023981"/>
 <node TEXT="honour old patch system and files" ID="ID_911120548" CREATED="1420402080741" MODIFIED="1420402103764"/>
@@ -166,6 +152,20 @@
 <node TEXT="RSS distributor" ID="ID_1718329969" CREATED="1420656066019" MODIFIED="1420656096425"/>
 </node>
 <node TEXT="NAS" ID="ID_973833354" CREATED="1420054047585" MODIFIED="1420054062836"/>
+<node TEXT="tweetbot" ID="ID_1208960364" CREATED="1420227796857" MODIFIED="1420227800073">
+<node TEXT="OAuth tweeting" ID="ID_175107668" CREATED="1420223500616" MODIFIED="1420223523831" LINK="https://www.bentasker.co.uk/documentation/20-developmentprogramming/23-howto-tweet-from-bash-scripts-using-oauth">
+<node TEXT="bash ready" ID="ID_589979534" CREATED="1420227641286" MODIFIED="1420227653411"/>
+<node TEXT="tcli.zip contains files" ID="ID_1282589937" CREATED="1420227694641" MODIFIED="1420227705798"/>
+</node>
+<node TEXT="twython" ID="ID_1318675621" CREATED="1420228047593" MODIFIED="1420228064620" LINK="https://github.com/ryanmcgrath/twython"/>
+<node TEXT="twitterbot instructable" ID="ID_1079604422" CREATED="1420228110753" MODIFIED="1420228134495" LINK="http://www.instructables.com/id/Raspberry-Pi-Twitterbot/?ALLSTEPS"/>
+<node TEXT="twitter monitor" ID="ID_1502800099" CREATED="1420228183097" MODIFIED="1420228195504" LINK="https://learn.sparkfun.com/tutorials/raspberry-pi-twitter-monitor"/>
+<node TEXT="should convert to C" ID="ID_1531200645" CREATED="1420228228457" MODIFIED="1420228241652"/>
+<node TEXT="further investigate tcli.sh" ID="ID_584452145" CREATED="1420835430069" MODIFIED="1420835448124" LINK="https://github.com/livibetter-backup/bash-oauth">
+<node TEXT="can post tweets" ID="ID_912122826" CREATED="1420877793087" MODIFIED="1420877804125"/>
+<node TEXT="can it monitor tweets?" ID="ID_1716518611" CREATED="1420877808654" MODIFIED="1420997817264"/>
+</node>
+</node>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
