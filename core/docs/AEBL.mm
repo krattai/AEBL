@@ -161,6 +161,7 @@
 <node TEXT="dev docs" ID="ID_1365470076" CREATED="1421001824743" MODIFIED="1421001836087" LINK="http://www.avahi.org/wiki/ProgrammingDocs"/>
 <node TEXT="API" ID="ID_84484300" CREATED="1421001886467" MODIFIED="1421001895381" LINK="http://avahi.org/download/doxygen/"/>
 </node>
+<node TEXT="http server" ID="ID_1035942363" CREATED="1421052305162" MODIFIED="1421052311310"/>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
 <node TEXT="to be conducted via alpha and beta releases" ID="ID_1607155208" CREATED="1416163797345" MODIFIED="1416163811358"/>
