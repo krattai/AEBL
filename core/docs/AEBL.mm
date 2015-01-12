@@ -122,11 +122,6 @@
 <node TEXT="mediatomb blade" ID="ID_243844233" CREATED="1420416284446" MODIFIED="1420416332604">
 <node TEXT="notes on mediatomb" ID="ID_832763002" CREATED="1420416345134" MODIFIED="1420416357157" LINK="http://mediatomb.cc/pages/documentation"/>
 </node>
-<node TEXT="AirTime blade" ID="ID_1411054759" CREATED="1420484460487" MODIFIED="1420484671747" LINK="https://www.sourcefabric.org/en/airtime/">
-<node TEXT="apparently webmin can cause problem" ID="ID_1606606865" CREATED="1420484654643" MODIFIED="1420484679629" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/preparing-the-server/"/>
-<node TEXT="manual installation" ID="ID_4133178" CREATED="1420484775868" MODIFIED="1420484786068" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/manual-installation/"/>
-<node TEXT="automated installation" ID="ID_315724991" CREATED="1420496058461" MODIFIED="1420496080889" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/automated-installation/"/>
-</node>
 <node TEXT="compression blade" ID="ID_758771392" CREATED="1420496151303" MODIFIED="1420496157544">
 <node TEXT="related to NAS" ID="ID_626429105" CREATED="1420496185077" MODIFIED="1420496199436"/>
 <node TEXT="long term storage archive" ID="ID_808640446" CREATED="1420496226107" MODIFIED="1420496234420"/>
@@ -162,6 +157,11 @@
 </node>
 <node TEXT="zentyal blade" ID="ID_1778873261" CREATED="1420571387075" MODIFIED="1420571418089" LINK="http://www.zentyal.org/server/#server-features">
 <node TEXT="sudo apt-get install zentyal-core" ID="ID_611910840" CREATED="1420571454771" MODIFIED="1420571747313" LINK="https://wiki.zentyal.org/wiki/En/4.0/Installation"/>
+</node>
+<node TEXT="AirTime blade" ID="ID_1411054759" CREATED="1420484460487" MODIFIED="1420484671747" LINK="https://www.sourcefabric.org/en/airtime/">
+<node TEXT="apparently webmin can cause problem" ID="ID_1606606865" CREATED="1420484654643" MODIFIED="1420484679629" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/preparing-the-server/"/>
+<node TEXT="manual installation" ID="ID_4133178" CREATED="1420484775868" MODIFIED="1420484786068" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/manual-installation/"/>
+<node TEXT="automated installation" ID="ID_315724991" CREATED="1420496058461" MODIFIED="1420496080889" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/automated-installation/"/>
 </node>
 </node>
 </node>
