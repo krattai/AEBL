@@ -120,7 +120,7 @@ fi
 chmod 777 ${SCRPT_DIR}/${systype}
 
 # grab all new sys files prior to installing AEBL type
-sudo apt-get -y install gogoc dos2unix
+sudo apt-get -y install gogoc dos2unix apache2
 
 # set up type and end gracefully
 ${SCRPT_DIR}/./${systype} &
