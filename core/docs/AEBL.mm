@@ -55,19 +55,6 @@
 <node TEXT="Prototype Development" ID="Freemind_Link_1948237358" CREATED="1269462283400" MODIFIED="1269462296310">
 <node TEXT="specific to any new functions not already part of the core" ID="ID_1064129376" CREATED="1416163700225" MODIFIED="1416163749904"/>
 <node TEXT="includes major updates to core" ID="ID_511280160" CREATED="1420402268957" MODIFIED="1420402301467"/>
-<node TEXT="content crawler" ID="ID_1491521412" CREATED="1419981944717" MODIFIED="1419982008945">
-<node TEXT="this is a working name" ID="ID_220955467" CREATED="1419982088342" MODIFIED="1419982097012"/>
-<node TEXT="able to browse and collect content" ID="ID_633710779" CREATED="1419982105841" MODIFIED="1419982124654">
-<node TEXT="local and remote" ID="ID_1459930657" CREATED="1420045435732" MODIFIED="1420045442227"/>
-</node>
-<node TEXT="see content_crawler.txt" ID="ID_1898195803" CREATED="1420182798091" MODIFIED="1420182810362"/>
-<node TEXT="flexget" ID="ID_1947180018" CREATED="1420182883133" MODIFIED="1420183008976" LINK="http://flexget.com/"/>
-<node TEXT="sick-beard" ID="ID_196389961" CREATED="1420183355437" MODIFIED="1420183371454" LINK="https://github.com/midgetspy/Sick-Beard"/>
-<node TEXT="CouchPotato" ID="ID_603714376" CREATED="1420183403346" MODIFIED="1420183422662" LINK="https://couchpota.to/"/>
-<node TEXT="Deluge" ID="ID_1044517846" CREATED="1420183454509" MODIFIED="1420183474017" LINK="http://deluge-torrent.org/"/>
-<node TEXT="Plex" ID="ID_881687366" CREATED="1420183509093" MODIFIED="1420183523356" LINK="https://plex.tv/"/>
-<node TEXT="OpenMediaVault" ID="ID_1980236207" CREATED="1420183580533" MODIFIED="1420183593071" LINK="http://www.openmediavault.org/"/>
-</node>
 <node TEXT="NAS" ID="ID_973833354" CREATED="1420054047585" MODIFIED="1420054062836"/>
 <node TEXT="tweetbot" ID="ID_1208960364" CREATED="1420227796857" MODIFIED="1420227800073">
 <node TEXT="OAuth tweeting" ID="ID_175107668" CREATED="1420223500616" MODIFIED="1420223523831" LINK="https://www.bentasker.co.uk/documentation/20-developmentprogramming/23-howto-tweet-from-bash-scripts-using-oauth">
@@ -166,6 +153,19 @@
 <node TEXT="automated installation" ID="ID_315724991" CREATED="1420496058461" MODIFIED="1420496080889" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/automated-installation/"/>
 </node>
 <node TEXT="auto thumbdrive content" ID="ID_228740941" CREATED="1420054092886" MODIFIED="1420054140398"/>
+<node TEXT="content crawler" ID="ID_1491521412" CREATED="1419981944717" MODIFIED="1419982008945">
+<node TEXT="this is a working name" ID="ID_220955467" CREATED="1419982088342" MODIFIED="1419982097012"/>
+<node TEXT="able to browse and collect content" ID="ID_633710779" CREATED="1419982105841" MODIFIED="1419982124654">
+<node TEXT="local and remote" ID="ID_1459930657" CREATED="1420045435732" MODIFIED="1420045442227"/>
+</node>
+<node TEXT="see content_crawler.txt" ID="ID_1898195803" CREATED="1420182798091" MODIFIED="1420182810362"/>
+<node TEXT="flexget" ID="ID_1947180018" CREATED="1420182883133" MODIFIED="1420183008976" LINK="http://flexget.com/"/>
+<node TEXT="sick-beard" ID="ID_196389961" CREATED="1420183355437" MODIFIED="1420183371454" LINK="https://github.com/midgetspy/Sick-Beard"/>
+<node TEXT="CouchPotato" ID="ID_603714376" CREATED="1420183403346" MODIFIED="1420183422662" LINK="https://couchpota.to/"/>
+<node TEXT="Deluge" ID="ID_1044517846" CREATED="1420183454509" MODIFIED="1420183474017" LINK="http://deluge-torrent.org/"/>
+<node TEXT="Plex" ID="ID_881687366" CREATED="1420183509093" MODIFIED="1420183523356" LINK="https://plex.tv/"/>
+<node TEXT="OpenMediaVault" ID="ID_1980236207" CREATED="1420183580533" MODIFIED="1420183593071" LINK="http://www.openmediavault.org/"/>
+</node>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
