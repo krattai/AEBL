@@ -72,6 +72,9 @@ fi
 
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
+# install apache for core interface
+sudo apt-get -y install apache2
+
 mv startup.sh $HOME/.scripts
 chmod 777 $HOME/.scripts/startup.sh
 cp $HOME/.scripts/startup.sh $HOME/.backup/scripts
