@@ -55,10 +55,6 @@
 <node TEXT="Prototype Development" ID="Freemind_Link_1948237358" CREATED="1269462283400" MODIFIED="1269462296310">
 <node TEXT="specific to any new functions not already part of the core" ID="ID_1064129376" CREATED="1416163700225" MODIFIED="1416163749904"/>
 <node TEXT="includes major updates to core" ID="ID_511280160" CREATED="1420402268957" MODIFIED="1420402301467"/>
-<node TEXT="patch system upgrade" ID="ID_333515691" CREATED="1420401954862" MODIFIED="1420401963996">
-<node TEXT="get patches from github" ID="ID_1941548697" CREATED="1420402000609" MODIFIED="1420402023981"/>
-<node TEXT="honour old patch system and files" ID="ID_911120548" CREATED="1420402080741" MODIFIED="1420402103764"/>
-</node>
 <node TEXT="unattended package installs" ID="ID_1533529031" CREATED="1420499060134" MODIFIED="1420499082714" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
 <node TEXT="debconf-utils" ID="ID_771343685" CREATED="1420534833016" MODIFIED="1420534900607" LINK="http://serverfault.com/questions/407317/passing-default-answers-to-apt-get-package-install-questions"/>
 <node TEXT="sudo apt-get install debconf-utils" ID="ID_895669163" CREATED="1420534866242" MODIFIED="1420534916478" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
@@ -103,6 +99,10 @@
 <node TEXT="avahi" ID="ID_1941305561" CREATED="1421001749863" MODIFIED="1421001775473" LINK="http://www.avahi.org/wiki/Avahi4Developpers">
 <node TEXT="dev docs" ID="ID_1365470076" CREATED="1421001824743" MODIFIED="1421001836087" LINK="http://www.avahi.org/wiki/ProgrammingDocs"/>
 <node TEXT="API" ID="ID_84484300" CREATED="1421001886467" MODIFIED="1421001895381" LINK="http://avahi.org/download/doxygen/"/>
+</node>
+<node TEXT="patch system upgrade" ID="ID_333515691" CREATED="1420401954862" MODIFIED="1420401963996">
+<node TEXT="get patches from github" ID="ID_1941548697" CREATED="1420402000609" MODIFIED="1420402023981"/>
+<node TEXT="honour old patch system and files" ID="ID_911120548" CREATED="1420402080741" MODIFIED="1420402103764"/>
 </node>
 </node>
 <node TEXT="hold" ID="ID_576626253" CREATED="1421095634798" MODIFIED="1421095639460">
