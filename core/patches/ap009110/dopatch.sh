@@ -75,6 +75,9 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 # install apache for core interface
 sudo apt-get -y install apache2
 
+# From note on apache2 firstrun page
+#  You should replace this file (located at /var/www/html/index.html) before continuing to operate your HTTP server.
+
 mv startup.sh $HOME/.scripts
 chmod 777 $HOME/.scripts/startup.sh
 cp $HOME/.scripts/startup.sh $HOME/.backup/scripts
