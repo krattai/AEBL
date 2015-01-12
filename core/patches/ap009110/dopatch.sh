@@ -64,8 +64,8 @@ else
 fi
 
 # if not AEBL_SYS and previously set to be, then remove
-if [ ! -f "${AEBL_VM}" ] || [ ! -f "${IHDN_TEST}" ] || [ ! -f "${IHDN_SYS}" ] || [ ! -f "${IHDN_DET}" ]; then
-    if [ ! -f "${AEBL_SYS}" ]; then
+if [ -f "${AEBL_VM}" ] || [ -f "${IHDN_TEST}" ] || [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ]; then
+    if [ -f "${AEBL_SYS}" ]; then
         rm ${AEBL_SYS}
     fi
 fi
