@@ -137,9 +137,6 @@
 <node TEXT="debconf-get-selections | grep mysql-server" ID="ID_1833706009" CREATED="1420747586601" MODIFIED="1420747604890"/>
 </node>
 </node>
-<node TEXT="zentyal blade" ID="ID_1778873261" CREATED="1420571387075" MODIFIED="1420571418089" LINK="http://www.zentyal.org/server/#server-features">
-<node TEXT="sudo apt-get install zentyal-core" ID="ID_611910840" CREATED="1420571454771" MODIFIED="1420571747313" LINK="https://wiki.zentyal.org/wiki/En/4.0/Installation"/>
-</node>
 <node TEXT="RSS blade" ID="ID_844970339" CREATED="1420622769432" MODIFIED="1420622775087">
 <node TEXT="An aggregator" ID="ID_692417903" CREATED="1420656012878" MODIFIED="1420656019357"/>
 <node TEXT="RSS distributor" ID="ID_1718329969" CREATED="1420656066019" MODIFIED="1420656096425"/>
@@ -162,6 +159,9 @@
 <node TEXT="AEBL VM" ID="ID_1266306378" CREATED="1419829742817" MODIFIED="1419918421527">
 <node TEXT="video playback" ID="ID_126396039" CREATED="1418967951361" MODIFIED="1418967960322"/>
 <node TEXT="audio playback" ID="ID_8691685" CREATED="1419010492028" MODIFIED="1419010498857"/>
+</node>
+<node TEXT="zentyal blade" ID="ID_1778873261" CREATED="1420571387075" MODIFIED="1420571418089" LINK="http://www.zentyal.org/server/#server-features">
+<node TEXT="sudo apt-get install zentyal-core" ID="ID_611910840" CREATED="1420571454771" MODIFIED="1420571747313" LINK="https://wiki.zentyal.org/wiki/En/4.0/Installation"/>
 </node>
 </node>
 </node>
