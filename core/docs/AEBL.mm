@@ -70,7 +70,6 @@
 <node TEXT="OpenMediaVault" ID="ID_1980236207" CREATED="1420183580533" MODIFIED="1420183593071" LINK="http://www.openmediavault.org/"/>
 </node>
 <node TEXT="NAS" ID="ID_973833354" CREATED="1420054047585" MODIFIED="1420054062836"/>
-<node TEXT="auto thumbdrive content" ID="ID_228740941" CREATED="1420054092886" MODIFIED="1420054140398"/>
 <node TEXT="tweetbot" ID="ID_1208960364" CREATED="1420227796857" MODIFIED="1420227800073">
 <node TEXT="OAuth tweeting" ID="ID_175107668" CREATED="1420223500616" MODIFIED="1420223523831" LINK="https://www.bentasker.co.uk/documentation/20-developmentprogramming/23-howto-tweet-from-bash-scripts-using-oauth">
 <node TEXT="bash ready" ID="ID_589979534" CREATED="1420227641286" MODIFIED="1420227653411"/>
@@ -166,6 +165,7 @@
 <node TEXT="manual installation" ID="ID_4133178" CREATED="1420484775868" MODIFIED="1420484786068" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/manual-installation/"/>
 <node TEXT="automated installation" ID="ID_315724991" CREATED="1420496058461" MODIFIED="1420496080889" LINK="http://sourcefabric.booktype.pro/airtime-25-for-broadcasters/automated-installation/"/>
 </node>
+<node TEXT="auto thumbdrive content" ID="ID_228740941" CREATED="1420054092886" MODIFIED="1420054140398"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
