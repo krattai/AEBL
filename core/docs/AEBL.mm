@@ -167,6 +167,7 @@
 <node TEXT="Facebook" ID="ID_1394560108" CREATED="1420999287983" MODIFIED="1420999299501" LINK="https://developers.facebook.com/docs/reference/dialogs/oauth/"/>
 <node TEXT="Twitter" ID="ID_1335506789" CREATED="1420999340487" MODIFIED="1420999350567" LINK="https://dev.twitter.com/oauth"/>
 </node>
+<node TEXT="bandwidth manager" ID="ID_675777106" CREATED="1421131596911" MODIFIED="1421131600964"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
