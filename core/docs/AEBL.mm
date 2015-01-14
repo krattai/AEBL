@@ -105,6 +105,7 @@
 <node TEXT="get patches from github" ID="ID_1941548697" CREATED="1420402000609" MODIFIED="1420402023981"/>
 <node TEXT="honour old patch system and files" ID="ID_911120548" CREATED="1420402080741" MODIFIED="1420402103764"/>
 <node TEXT="all systems updated to current" ID="ID_1247722413" CREATED="1421260647195" MODIFIED="1421260673955"/>
+<node TEXT="beta system need to be in place" ID="ID_1075125008" CREATED="1421260743195" MODIFIED="1421260750641"/>
 </node>
 <node TEXT="find way to ping unit for response" ID="ID_867125533" CREATED="1421214809265" MODIFIED="1421214820399"/>
 </node>
