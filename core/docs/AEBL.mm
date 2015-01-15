@@ -205,7 +205,9 @@
 <node TEXT="biota.org" ID="ID_1330711263" CREATED="1421342508683" MODIFIED="1421342533305" LINK="http://www.biota.org/">
 <node TEXT="investigate project" ID="ID_1187907610" CREATED="1421342613507" MODIFIED="1421342619640"/>
 </node>
-<node TEXT="digital space" ID="ID_1316366049" CREATED="1421342662011" MODIFIED="1421342687794" LINK="http://www.digitalspace.com/"/>
+<node TEXT="digital space" ID="ID_1316366049" CREATED="1421342662011" MODIFIED="1421342687794" LINK="http://www.digitalspace.com/">
+<node TEXT="Contact Bruce Damer" ID="ID_107076288" CREATED="1421342719682" MODIFIED="1421342797464"/>
+</node>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
