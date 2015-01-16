@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+#
 # This script is a cron job script
 # It checks for network and internet connectivity
 # It should attempt to recover from network errors if possible.
