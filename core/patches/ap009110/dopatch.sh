@@ -87,17 +87,27 @@ else
 fi
 
 # create config file
-touch .config
+C_FILE="${HOME}/.config"
+touch ${C_FILE}
 
 if [ -f .alpha ]; then
-    echo "ALPHA" >> .config
+    echo "ALPHA" >> ${C_FILE}
 fi
 if [ f .beta ]; then
-    echo "BETA" >> .config
+    echo "BETA" >> ${C_FILE}
 fi
 if [ -f .production ]; then
-    echo "PRODUCTION" >> .config
+    echo "PRODUCTION" >> ${C_FILE}
 fi
+
+echo "ETHERNET" >> ${C_FILE}
+IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+echo ${IPe0} >> ${C_FILE}
+echo "WIRELESS" >> ${C_FILE}
+IPw0=$(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+echo ${IPw0} >> ${C_FILE}
+echo "PUBLIC" >> ${C_FILE}
+echo "this will show public facing IP" >> ${C_FILE}
 
 # install apache for core interface
 sudo apt-get -y install apache2
