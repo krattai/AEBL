@@ -86,6 +86,19 @@ else
     fi
 fi
 
+# create config file
+touch .config
+
+if [ -f .alpha ]; then
+    echo "ALPHA" >> .config
+fi
+if [ f .beta ]; then
+    echo "BETA" >> .config
+fi
+if [ -f .production ]; then
+    echo "PRODUCTION" >> .config
+fi
+
 # install apache for core interface
 sudo apt-get -y install apache2
 
