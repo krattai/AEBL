@@ -1,18 +1,9 @@
 #!/bin/bash
 #
+# Script responds to ping requests
+#
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
-# This script is a cron job script
-# It checks for network and internet connectivity
-# It should attempt to recover from network errors if possible.
-#
-# wget useful parameters
-#
-# -c count  ie. 1
-# -I interface  either an address, or an interface name
-# -q  quiet  output.  Nothing is displayed except the summary lines at startup time and when finished
-# --tries=10
-# --timeout=20
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
