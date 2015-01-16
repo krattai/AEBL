@@ -109,6 +109,9 @@ echo ${IPw0} >> ${C_FILE}
 echo "PUBLIC" >> ${C_FILE}
 echo "this will show public facing IP" >> ${C_FILE}
 
+echo "# hardware type" >> ${C_FILE}
+echo "unknown" >> ${C_FILE}
+
 # install apache for core interface
 sudo apt-get -y install apache2
 
