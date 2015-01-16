@@ -56,21 +56,35 @@ else
     rm .local
 fi
 
-if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
+# if not AEBL_SYS and previously set to be, then remove
+if [ -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
     touch .offline
     echo "No network available."
 else
     rm .offline
 fi
 
-# if not AEBL_SYS and previously set to be, then remove
-if [ -f "${AEBL_VM}" ] || [ -f "${IHDN_TEST}" ] || [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ]; then
-    if [ -f "${AEBL_SYS}" ]; then
-        rm ${AEBL_SYS}
+export PATH=$PATH:${BIN_DIR}:$HOME/scripts
+
+# set system version type
+if [ -f "${LOCAL_SYS}" ]; then
+    if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM" ]; then
+        touch .alpha
+    fi
+    if [ -f "${IHDN_SYS}" ]; then
+        touch .beta
+    fi
+    if [ ! -f .alpha ] && [ -! f .beta ]; then
+        touch .production
+    fi
+else
+    if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM" ]; then
+        touch .beta
+    fi
+    if [ ! -f .alpha ] && [ -! f .beta ]; then
+        touch .production
     fi
 fi
-
-export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 # install apache for core interface
 sudo apt-get -y install apache2
@@ -93,8 +107,19 @@ sleep 5
 GRAB_FILE="pv"
 pv=$(cat "${GRAB_FILE}" | head -n1)
 
+# if [ ! -f "${OFFLINE_SYS}" ]; then
+#     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} patched to ${pv}." &
+# fi
 if [ ! -f "${OFFLINE_SYS}" ]; then
-    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} patched to ${pv}." &
+    if [ -f .alpha ]; then
+      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, alpha ${MACe0} patched to ${pv}." &
+    fi
+    if [ -f .beta ]; then
+      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, beta ${MACe0} patched to ${pv}." &
+    fi
+    if [ -f .production ]; then
+      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, production ${MACe0} patched to ${pv}." &
+    fi
 fi
 
 exit
