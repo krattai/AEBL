@@ -213,6 +213,7 @@
 <node TEXT="context variable function" ID="ID_583900534" CREATED="1421476446868" MODIFIED="1421476482926"/>
 <node TEXT="revert to defaults settings" ID="ID_641939403" CREATED="1421476556292" MODIFIED="1421476575993"/>
 <node TEXT="revert to default configuration" ID="ID_1108126703" CREATED="1421476613316" MODIFIED="1421476624050"/>
+<node TEXT="re-install system" ID="ID_347477491" CREATED="1421476671375" MODIFIED="1421476677170"/>
 </node>
 </node>
 </node>
