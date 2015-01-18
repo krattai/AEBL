@@ -67,6 +67,7 @@ fi
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 # set system version type
+
 if [ -f "${LOCAL_SYS}" ]; then
     if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ]; then
         touch .alpha
@@ -74,14 +75,14 @@ if [ -f "${LOCAL_SYS}" ]; then
     if [ -f "${IHDN_SYS}" ]; then
         touch .beta
     fi
-    if [ ! -f .alpha ] && [ -! f .beta ]; then
+    if [ ! -f .alpha ] && [ -! -f .beta ]; then
         touch .production
     fi
 else
     if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ]; then
         touch .beta
     fi
-    if [ ! -f .alpha ] && [ -! f .beta ]; then
+    if [ ! -f .alpha ] && [ -! -f .beta ]; then
         touch .production
     fi
 fi
