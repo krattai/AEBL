@@ -367,6 +367,7 @@
 <node TEXT="AEBL github project" ID="ID_1047986739" CREATED="1414925595972" MODIFIED="1414925735260" LINK="https://github.com/krattai/AEBL"/>
 <node TEXT="AEBL blog" ID="ID_1791992662" CREATED="1414925788574" MODIFIED="1414925811103" LINK="http://aeblm2.blogspot.ca/"/>
 <node TEXT="AEBL Twitter feed" ID="ID_1710510696" CREATED="1414925840608" MODIFIED="1414925894801" LINK="https://twitter.com/aeblm2"/>
+<node TEXT="support forum" ID="ID_1776355854" CREATED="1421679849964" MODIFIED="1421679894652" LINK="https://sourceforge.net/p/aebl/discussion/?source=navbar"/>
 </node>
 <node TEXT="Standard Installations" POSITION="left" ID="Freemind_Link_1871331892" CREATED="1269462240317" MODIFIED="1416174304899" HGAP="40" VSHIFT="-20"/>
 <node TEXT="Marketing / promotion" POSITION="left" ID="Freemind_Link_578657518" CREATED="1269545354524" MODIFIED="1416796948825" HGAP="80" VSHIFT="40">
