@@ -94,7 +94,7 @@ touch ${C_FILE}
 if [ -f .alpha ]; then
     echo "ALPHA" >> ${C_FILE}
 fi
-if [ f .beta ]; then
+if [ -f .beta ]; then
     echo "BETA" >> ${C_FILE}
 fi
 if [ -f .production ]; then
