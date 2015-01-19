@@ -70,20 +70,20 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 if [ -f "${LOCAL_SYS}" ]; then
     if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ]; then
-        touch .alpha
+        touch $HOME/.alpha
     fi
     if [ -f "${IHDN_SYS}" ]; then
-        touch .beta
+        touch $HOME/.beta
     fi
-    if [ ! -f .alpha ] && [ -! -f .beta ]; then
-        touch .production
+    if [ ! -f $HOME/.alpha ] && [ -! -f $HOME/.beta ]; then
+        touch $HOME/.production
     fi
 else
     if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ]; then
-        touch .beta
+        touch $HOME/.beta
     fi
-    if [ ! -f .alpha ] && [ ! -f .beta ]; then
-        touch .production
+    if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ]; then
+        touch $HOME/.production
     fi
 fi
 
@@ -91,13 +91,13 @@ fi
 C_FILE="${HOME}/.config"
 touch ${C_FILE}
 
-if [ -f .alpha ]; then
+if [ -f $HOME/.alpha ]; then
     echo "ALPHA" >> ${C_FILE}
 fi
-if [ -f .beta ]; then
+if [ -f $HOME/.beta ]; then
     echo "BETA" >> ${C_FILE}
 fi
-if [ -f .production ]; then
+if [ -f $HOME/.production ]; then
     echo "PRODUCTION" >> ${C_FILE}
 fi
 
@@ -147,13 +147,13 @@ pv=$(cat "${GRAB_FILE}" | head -n1)
 #     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} patched to ${pv}." &
 # fi
 if [ ! -f "${OFFLINE_SYS}" ]; then
-    if [ -f .alpha ]; then
+    if [ -f $HOME/.alpha ]; then
       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, alpha ${MACe0} patched to ${pv}." &
     fi
-    if [ -f .beta ]; then
+    if [ -f $HOME/.beta ]; then
       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, beta ${MACe0} patched to ${pv}." &
     fi
-    if [ -f .production ]; then
+    if [ -f $HOME/.production ]; then
       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, production ${MACe0} patched to ${pv}." &
     fi
 fi
