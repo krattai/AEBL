@@ -82,7 +82,7 @@ else
     if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ]; then
         touch .beta
     fi
-    if [ ! -f .alpha ] && [ -! -f .beta ]; then
+    if [ ! -f .alpha ] && [ ! -f .beta ]; then
         touch .production
     fi
 fi
