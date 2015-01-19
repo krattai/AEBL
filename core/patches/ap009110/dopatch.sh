@@ -113,7 +113,10 @@ echo "this will show public facing IP" >> ${C_FILE}
 echo "# hardware type" >> ${C_FILE}
 echo "unknown" >> ${C_FILE}
 
-sudo apt-get update
+# check if not AEBL VM and if not, should be raspbian and should update
+if [ ! -f "${AEBL_VM}" ]; then
+    sudo apt-get update
+fi
 
 # install apache for core interface
 sudo apt-get -y install apache2
