@@ -124,14 +124,26 @@ sudo apt-get -y install apache2
 # From note on apache2 firstrun page
 #  You should replace this file (located at /var/www/html/index.html) before continuing to operate your HTTP server.
 
-wget -N -nd -w 3 -P tmp --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/interfaces/base_iface/index.html
-sudo rm /var/www/html/index.html
-sudo mv tmp/index.html /var/www/html/index.html
-sudo mkdir /var/www/html/images
-wget -N -nd -w 3 -P tmp --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/interfaces/base_iface/images/AEBL_thumb_00.png
-sudo mv tmp/AEBL_thumb_00.png /var/www/html/images/AEBL_thumb_00.png
-wget -N -nd -w 3 -P tmp --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/interfaces/base_iface/images/valid-xhtml10.png
-sudo mv tmp/valid-xhtml10.png /var/www/html/images/valid-xhtml10.png
+# check if not AEBL VM and if not, different apache2 dir used
+if [ ! -f "${AEBL_VM}" ]; then
+    wget -N -nd -w 3 -P tmp --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/interfaces/base_iface/index.html
+    sudo rm /var/www/index.html
+    sudo mv tmp/index.html /var/www/index.html
+    sudo mkdir /var/www/images
+    wget -N -nd -w 3 -P tmp --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/interfaces/base_iface/images/AEBL_thumb_00.png
+    sudo mv tmp/AEBL_thumb_00.png /var/www/images/AEBL_thumb_00.png
+    wget -N -nd -w 3 -P tmp --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/interfaces/base_iface/images/valid-xhtml10.png
+    sudo mv tmp/valid-xhtml10.png /var/www/images/valid-xhtml10.png
+else
+    wget -N -nd -w 3 -P tmp --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/interfaces/base_iface/index.html
+    sudo rm /var/www/html/index.html
+    sudo mv tmp/index.html /var/www/html/index.html
+    sudo mkdir /var/www/html/images
+    wget -N -nd -w 3 -P tmp --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/interfaces/base_iface/images/AEBL_thumb_00.png
+    sudo mv tmp/AEBL_thumb_00.png /var/www/html/images/AEBL_thumb_00.png
+    wget -N -nd -w 3 -P tmp --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/interfaces/base_iface/images/valid-xhtml10.png
+    sudo mv tmp/valid-xhtml10.png /var/www/html/images/valid-xhtml10.png
+fi
 
 mv startup.sh $HOME/.scripts
 chmod 777 $HOME/.scripts/startup.sh
