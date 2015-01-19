@@ -8,10 +8,10 @@
 # or
 # wget -N -r -nd -l2 -w 3 -P $HOME --limit-rate=50k "https://www.dropbox.com/s/1t3ejk4iyzm07u6/create-asys.sh"; chmod 777 $HOME/create-asys.sh; $HOME/./create-asys.sh; rm $HOME/create-asys.sh
 
-
-LOCAL_SYS="/home/pi/.local"
-NETWORK_SYS="/home/pi/.network"
-OFFLINE_SYS="/home/pi/.offline"
+# patch system now seeking network info in /run/shm
+LOCAL_SYS=".local"
+NETWORK_SYS=".network"
+OFFLINE_SYS=".offline"
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 AEBL_VM="/home/pi/.aeblvm"
