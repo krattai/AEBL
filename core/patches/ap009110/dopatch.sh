@@ -69,7 +69,7 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 # set system version type
 
 if [ -f "${LOCAL_SYS}" ]; then
-    if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ]; then
+    if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ] || [ -f $HOME/.aebltest ]; then
         touch $HOME/.alpha
     fi
     if [ -f "${IHDN_SYS}" ]; then
@@ -112,6 +112,8 @@ echo "this will show public facing IP" >> ${C_FILE}
 
 echo "# hardware type" >> ${C_FILE}
 echo "unknown" >> ${C_FILE}
+
+sudo apt-get update
 
 # install apache for core interface
 sudo apt-get -y install apache2
