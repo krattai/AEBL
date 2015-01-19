@@ -75,7 +75,7 @@ if [ -f "${LOCAL_SYS}" ]; then
     if [ -f "${IHDN_SYS}" ]; then
         touch $HOME/.beta
     fi
-    if [ ! -f $HOME/.alpha ] && [ -! -f $HOME/.beta ]; then
+    if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ]; then
         touch $HOME/.production
     fi
 else
