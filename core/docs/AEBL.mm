@@ -291,7 +291,9 @@
 </node>
 </node>
 <node TEXT="Create failover servers" ID="Freemind_Link_299699653" CREATED="1269462387789" MODIFIED="1269462396883">
-<node TEXT="R&amp;D failover server solution" ID="Freemind_Link_730764016" CREATED="1269623374839" MODIFIED="1269623386673"/>
+<node TEXT="R&amp;D failover server solution" ID="Freemind_Link_730764016" CREATED="1269623374839" MODIFIED="1269623386673">
+<node TEXT="Automatic failover" ID="ID_742449447" CREATED="1421678491084" MODIFIED="1421678504067"/>
+</node>
 </node>
 <node TEXT="Establish streaming server" ID="Freemind_Link_1877115724" CREATED="1269462403102" MODIFIED="1269462411102">
 <node TEXT="R&amp;D streaming server" ID="Freemind_Link_709334703" CREATED="1269623392800" MODIFIED="1269623399787"/>
