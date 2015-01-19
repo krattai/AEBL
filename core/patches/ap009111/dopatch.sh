@@ -56,7 +56,6 @@ else
     rm .local
 fi
 
-# if not AEBL_SYS and previously set to be, then remove
 if [ -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
     touch .offline
     echo "No network available."
@@ -64,6 +63,10 @@ else
     rm .offline
 fi
 
+# if not AEBL_SYS and previously set to be, then remove
+#  this process may not have been done, yet
+
+# Begin main patch application
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 # set system version type
