@@ -18,6 +18,11 @@ LOCAL_SYS="${T_STO}/.local"
 NETWORK_SYS="${T_STO}/.network"
 OFFLINE_SYS="${T_STO}/.offline"
 
+# Check if should respond
+# if so:
+# + hostname
+# + cat chan
+# + uptime
 
 cd $HOME
 
