@@ -3,6 +3,7 @@
 # Script responds to ping requests
 #
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 
 AEBL_TEST="/home/pi/.aebltest"
