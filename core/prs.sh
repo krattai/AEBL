@@ -28,7 +28,7 @@ OFFLINE_SYS="${T_STO}/.offline"
 
 cd $HOME
 
-if [ -f "${IHDN_SYS}" ] || [ ! -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
+if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
     echo hostname > ping.txt
     echo $(date +"%T") >> ping.txt
     cat chan >> ping.txt
