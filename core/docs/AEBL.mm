@@ -289,6 +289,7 @@
 <node TEXT="unformatted text editor" ID="ID_1344291215" CREATED="1421852427829" MODIFIED="1421852449037"/>
 <node TEXT="OpenDocument format editor" ID="ID_1198932404" CREATED="1421852537298" MODIFIED="1421852550899">
 <node TEXT="LibreOffice" ID="ID_932161909" CREATED="1421852668697" MODIFIED="1421852733593" LINK="http://www.libreoffice.org/"/>
+<node TEXT="OpenOffice" ID="ID_1147981125" CREATED="1421852782313" MODIFIED="1421852850497" LINK="https://www.openoffice.org/"/>
 </node>
 </node>
 </node>
