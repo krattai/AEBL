@@ -1,30 +1,14 @@
-AEBL
-====
+AEBL Business Development
+=========================
 
-AEBL is a mobile multimedia distribution and playback platform.
+While AEBL has been developed as an Open Source project and is ultimately being done as a "labour of love" and for the benefit of everyone, how it is of value for each individual is certainly varied.
 
-For more information, read the wiki:  https://github.com/krattai/AEBL/wiki
+This area is focused on possible business development scenarios and opportunities.
 
-Related video:  https://www.youtube.com/embed/_NEA02NtI4E?rel=0
+There are at least two specific areas to look at:
 
-Features
-+ Video or Audio kiosk (standalone or network)
-+ Personal, portable audio and video player
-+ Streaming content video and audio player
-+ Social media aware and interactive
-+ Zeroconf / bonjour device
-+ Channel content playing and sharing
-+ Integrated Emergency Broadcast. 611 info, and other features
-+ and Much, much more, doesn't even begin to explain it! :)
+1) Opportunity for the project to generate revenue in order to finance some portions of the project resources, perhaps as payment for human effort or perhaps to obtain technology resources to improve the technology of AEBL or support the project in some other ways.
 
-AEBL Mobile Media Player, changing how we consume media. AEBL is a media player and a digital media platform in use in the IHDN XPO network media system ( http://www.ihdn.ca/Xpo_VI.html ).
+2) Providing opportunity for others to use the AEBL platform to advance their own business or individual, financial gains.  This is generally an unspoken benefit and value of Open Source.  To be able to support others with the Open Source tool and knowledge, and to be paid for doing so.
 
-AEBL is foremost a mobile media distribution and playback framework.  It was created to be the core technology that is used in a television ad insertion and digital sign, and further development has opened up many more applications.  It currently is designed to run on a raspberry Pi, although it is being ported to other systems.
-
-The AEBL blog is located here:
-http://aeblm2.blogspot.ca/
-
-For those interested in trying it out, you will need a Raspberry Pi (should be the B series with 512MB) and a SD card (4GB or higher, recommend base 8GB but the larger, the better, for content storage).
-
-The current image is a ~680MB 7zip compressed file of it's original 2.7GB size, located on dropbox, here:
-https://www.dropbox.com/s/lj0r6yia4tsnz8w/140815-aeblpi.img.7z?dl=0
+So, this section will focus on providing resources, tools, and other information and support towards those ends.
