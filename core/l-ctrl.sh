@@ -1,7 +1,7 @@
 #!/bin/bash
 # keeps systems up to date
 #
-# Copyright (C) 2014 - 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 # This will eventually co-ordinate with Master Control.
