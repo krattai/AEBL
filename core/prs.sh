@@ -29,8 +29,10 @@ OFFLINE_SYS="${T_STO}/.offline"
 cd $HOME
 
 if [ -f "${IHDN_SYS}" ] || [ ! -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
-    echo "Checking network status." >> log.txt
-    echo $(date +"%T") >> log.txt
+    echo hostname > ping.txt
+    echo $(date +"%T") >> ping.txt
+    cat chan >> ping.txt
+    echo uptime > ping.txt
 fi
 
 exit
