@@ -2,6 +2,7 @@
 # gets update scripts
 #
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 # This is the first script from clean bootup.  It should immediately
 # put something to screen and audio so that people know it is working,
