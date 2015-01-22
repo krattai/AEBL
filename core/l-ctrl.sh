@@ -10,6 +10,7 @@ AUTOOFF_CHECK_FILE="/home/pi/.noauto"
 FIRST_RUN_DONE="/home/pi/.firstrundone"
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
+AEBL_VM="/home/pi/.aeblvm"
 IHDN_TEST="/home/pi/.ihdntest"
 IHDN_SYS="/home/pi/.ihdnsys"
 IHDN_DET="/home/pi/.ihdndet"
@@ -233,4 +234,15 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
 fi
 
+if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ] && [ ! -f $HOME/.production ]; then
+    if [ -f "${LOCAL_SYS}" ]; then
+        if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ] || [ -f $HOME/.aebltest ]; then
+            touch $HOME/.alpha
+        fi
+        if [ -f "${IHDN_SYS}" ]; then
+            touch $HOME/.beta
+        fi
+fi
+        # upload to sftp server
+#         curl -T "$HOME/log.txt" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000000_uploads/ihdnpi_logs/${MACe0}_log.txt" &
 exit
