@@ -234,15 +234,22 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
 fi
 
-if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ] && [ ! -f $HOME/.production ]; then
-    if [ -f "${LOCAL_SYS}" ]; then
-        if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ] || [ -f $HOME/.aebltest ]; then
-            touch $HOME/.alpha
-        fi
-        if [ -f "${IHDN_SYS}" ]; then
-            touch $HOME/.beta
-        fi
+if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
+
+    cp /home/pi/chan /home/pi/chtmp
+    CHAN_LOC="chtmp"
+    # Get the channel id
+    c_id=$(cat "${CHAN_LOC}" | head -n1)
+    # And strip it off the file
+    cat "${CHAN_LOC}" | tail -n+2 > "${CHAN_LOC}.new"
+    mv "${CHAN_LOC}.new" "${CHAN_LOC}"
+    # Get channel number
+    chan=$(cat "${CHAN_LOC}" | head -n1)
+
+    rm "${CHAN_LOC}"
+
+    # upload ping.txt to sftp server
+    curl -T "$HOME/ping.txt" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000000_uploads/ihdnpi_logs/ping_${chan}.txt" &
+ 
 fi
-        # upload to sftp server
-#         curl -T "$HOME/log.txt" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000000_uploads/ihdnpi_logs/${MACe0}_log.txt" &
 exit
