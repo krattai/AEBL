@@ -236,6 +236,8 @@ fi
 
 if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
 
+    $T_SCR/./prs.sh
+
     cp /home/pi/chan /home/pi/chtmp
     CHAN_LOC="chtmp"
     # Get the channel id
