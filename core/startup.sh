@@ -90,6 +90,12 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~" >> log.txt
 echo $(date +"%T") >> log.txt
 echo "Booted up." >> log.txt
 
+if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
+
+    $T_SCR/./prs.sh
+ 
+fi
+
 # Discover network availability if not previously tested
 if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ] && [ ! -f "${OFFLINE_SYS}" ]; then
 
