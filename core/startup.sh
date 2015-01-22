@@ -90,6 +90,7 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~" >> log.txt
 echo $(date +"%T") >> log.txt
 echo "Booted up." >> log.txt
 
+# create new ping.txt file
 if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
 
     $T_SCR/./prs.sh
