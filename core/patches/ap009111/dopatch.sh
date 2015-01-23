@@ -96,6 +96,8 @@ fi
 
 # create config file
 C_FILE="${HOME}/.config"
+#in case it exists, remove it
+rm ${C_FILE}
 touch ${C_FILE}
 
 if [ -f $HOME/.alpha ]; then
