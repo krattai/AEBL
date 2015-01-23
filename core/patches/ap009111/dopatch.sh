@@ -152,10 +152,15 @@ chmod 777 $HOME/.scripts/startup.sh
 cp $HOME/.scripts/startup.sh $HOME/.backup/scripts
 cp $HOME/.scripts/startup.sh /run/shm/scripts
 
-mv ctrlwtch.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/ctrlwtch.sh
-cp $HOME/.scripts/ctrlwtch.sh $HOME/.backup/scripts
-cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
+mv l-ctrl.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/l-ctrl.sh
+cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
+cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
+
+mv prs.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/prs.sh
+cp $HOME/.scripts/prs.sh $HOME/.backup/scripts
+cp $HOME/.scripts/prs.sh /run/shm/scripts
 
 sleep 5
 
