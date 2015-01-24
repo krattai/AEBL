@@ -64,6 +64,14 @@ else
     rm .offline
 fi
 
+# install on AEBL VM appliances
+if [ ! -f "${AEBL_VM}" ]; then
+    sudo apt-get install build-essential
+fi
+
+# leave temporarily as reference if eventually install php
+# sudo apt-get install php5-common libapache2-mod-php5 php5-cli
+
 # if not AEBL_SYS and previously set to be, then remove
 #  this process may not have been done, yet
 
