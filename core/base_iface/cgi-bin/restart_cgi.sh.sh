@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Script responds to ping requests
+# provides web interface control to restart computer
 #
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
@@ -20,20 +20,8 @@ LOCAL_SYS="${T_STO}/.local"
 NETWORK_SYS="${T_STO}/.network"
 OFFLINE_SYS="${T_STO}/.offline"
 
-# Check if should respond
-# if so:
-# + hostname
-# + cat chan
-# + uptime
 
-cd $HOME
-
-# always ping on these
-if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
-    echo hostname > ping.txt
-    echo $(date +"%T") >> ping.txt
-    cat chan >> ping.txt
-    echo uptime > ping.txt
-fi
+# it is this simple, but MUST be done as user pi
+sudo -u pi touch /home/pi/ctr/restart
 
 exit
