@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# provides web interface control to shut down computer
+# provides web interface control to patch computer
 #
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
@@ -22,6 +22,6 @@ OFFLINE_SYS="${T_STO}/.offline"
 
 
 # it is this simple, but MUST be done as user pi
-sudo -u pi touch /home/pi/ctr/halt
+sudo -u pi touch /home/pi/ctr/patch
 
 exit
