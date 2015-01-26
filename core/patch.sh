@@ -36,6 +36,8 @@ MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 cd $HOME
 
 # Should check for current version and use that as reference to patches.
+# Check patch version now, rather than dropbox location
+
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f "${LOCAL_SYS}" ]; then
         wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k http://192.168.200.6/files/v0091p
