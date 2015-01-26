@@ -143,6 +143,7 @@
 <node TEXT="open money blade" ID="ID_82754132" CREATED="1422226646123" MODIFIED="1422226651219">
 <node TEXT="cclite" ID="ID_177907968" CREATED="1422239401275" MODIFIED="1422239414056" LINK="https://github.com/krattai/cclite"/>
 <node TEXT="oscurrency" ID="ID_1753311689" CREATED="1422239480478" MODIFIED="1422239500607" LINK="http://blog.opensourcecurrency.org/"/>
+<node TEXT="forth corner exchange" ID="ID_995196763" CREATED="1422239567798" MODIFIED="1422239586796" LINK="http://fourthcornerexchange.org/"/>
 </node>
 </node>
 <node TEXT="hold" ID="ID_576626253" CREATED="1421095634798" MODIFIED="1421095639460">
