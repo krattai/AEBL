@@ -44,6 +44,17 @@ cd $HOME
 # Should check for current version and use that as reference to patches.
 # Check patch version type now, rather than dropbox location
 
+# new logic
+# if patch production
+#     all do patch
+# else
+#     if patch beta && not production unit
+#         all remaining do patch
+#     else
+#         alpha do patch
+#     fi
+# fi
+
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f "${LOCAL_SYS}" ]; then
         wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k http://192.168.200.6/files/v0091p
