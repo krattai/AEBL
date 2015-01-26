@@ -8,6 +8,12 @@
 # and contents of patches will make it into next version / upgrade
 # system will patch once a day if available
 #
+# Patch version progresses from alpha to production
+# ie. 009113 - 009115 may be alpha
+#     009116 through 009119 may be beta
+#     009120 may be production
+#     alpha and beta can be various throughout patch progression
+#
 # generally, patches precede upgrades, upgrades supersede patches
 #
 
@@ -37,11 +43,6 @@ cd $HOME
 
 # Should check for current version and use that as reference to patches.
 # Check patch version type now, rather than dropbox location
-# Patche version progresses from alpha to production
-# ie. 009113 - 009115 may be alpha
-#     009116 through 009119 may be beta
-#     009120 may be production
-#     alpha and beta can be various throughout patch progression
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f "${LOCAL_SYS}" ]; then
