@@ -145,6 +145,7 @@
 <node TEXT="oscurrency" ID="ID_1753311689" CREATED="1422239480478" MODIFIED="1422239500607" LINK="http://blog.opensourcecurrency.org/"/>
 <node TEXT="forth corner exchange" ID="ID_995196763" CREATED="1422239567798" MODIFIED="1422239586796" LINK="http://fourthcornerexchange.org/"/>
 </node>
+<node TEXT="p2p lending blade" ID="ID_68476023" CREATED="1422256270652" MODIFIED="1422256444828" LINK="http://en.wikipedia.org/wiki/Peer-to-peer_lending"/>
 </node>
 <node TEXT="hold" ID="ID_576626253" CREATED="1421095634798" MODIFIED="1421095639460">
 <node TEXT="AEBL VM" ID="ID_1266306378" CREATED="1419829742817" MODIFIED="1419918421527">
