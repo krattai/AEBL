@@ -1,7 +1,8 @@
 #!/bin/bash
 # runs patch scripts
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 # patches are accumulated, so second patch happens after first patch
 # and contents of patches will make it into next version / upgrade
