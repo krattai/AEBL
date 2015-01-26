@@ -1,5 +1,6 @@
 freebee economy
 ===============
+Document created Jan. 26, 2015
 
 Freebee is a social experiment of a moneyless, debtless resource transaction system.
 
