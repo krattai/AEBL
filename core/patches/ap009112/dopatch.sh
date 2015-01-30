@@ -65,7 +65,7 @@ else
 fi
 
 # install on AEBL VM appliances and also enable cgi-mod
-if [ ! -f "${AEBL_VM}" ]; then
+if [ -f "${AEBL_VM}" ]; then
     sudo apt-get install build-essential
     sudo a2enmod cgi
     sudo service apache2 restart
