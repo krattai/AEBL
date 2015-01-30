@@ -8,6 +8,7 @@
 # and contents of patches will make it into next version / upgrade
 # system will patch once a day if available
 #
+# 20150129 - Possible patch system path, although may not be viable
 # Patch version progresses from alpha to production
 # ie. 009113 - 009115 may be alpha
 #     009116 through 009119 may be beta
