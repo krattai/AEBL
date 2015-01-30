@@ -80,20 +80,15 @@ fi
 # Begin main patch application
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
-mv startup.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/startup.sh
-cp $HOME/.scripts/startup.sh $HOME/.backup/scripts
-cp $HOME/.scripts/startup.sh /run/shm/scripts
-
-mv l-ctrl.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/l-ctrl.sh
-cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
-cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
-
 mv prs.sh $HOME/.scripts
 chmod 777 $HOME/.scripts/prs.sh
 cp $HOME/.scripts/prs.sh $HOME/.backup/scripts
 cp $HOME/.scripts/prs.sh /run/shm/scripts
+
+mv patch.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/patch.sh
+cp $HOME/.scripts/patch.sh $HOME/.backup/scripts
+cp $HOME/.scripts/patch.sh /run/shm/scripts
 
 sleep 5
 
