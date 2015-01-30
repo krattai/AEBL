@@ -65,11 +65,11 @@ else
 fi
 
 # install on AEBL VM appliances and also enable cgi-mod
-if [ ! -f "${AEBL_VM}" ]; then
-    sudo apt-get install build-essential
-    sudo a2enmod cgi
-    sudo service apache2 restart
-fi
+# if [ ! -f "${AEBL_VM}" ]; then
+#     sudo apt-get install build-essential
+#     sudo a2enmod cgi
+#     sudo service apache2 restart
+# fi
 
 # leave temporarily as reference if eventually install php
 # sudo apt-get install php5-common libapache2-mod-php5 php5-cli
@@ -83,54 +83,54 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 # If not applied in previous patch
 # set system version type
 
-if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ] && [ ! -f $HOME/.production ]; then
-    if [ -f "${LOCAL_SYS}" ]; then
-        if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ] || [ -f $HOME/.aebltest ]; then
-            touch $HOME/.alpha
-        fi
-        if [ -f "${IHDN_SYS}" ]; then
-            touch $HOME/.beta
-        fi
-        if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ]; then
-            touch $HOME/.production
-        fi
-    else
-        if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ]; then
-            touch $HOME/.beta
-        fi
-        if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ]; then
-            touch $HOME/.production
-        fi
-    fi
-fi
+# if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ] && [ ! -f $HOME/.production ]; then
+#     if [ -f "${LOCAL_SYS}" ]; then
+#         if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ] || [ -f $HOME/.aebltest ]; then
+#             touch $HOME/.alpha
+#         fi
+#         if [ -f "${IHDN_SYS}" ]; then
+#             touch $HOME/.beta
+#         fi
+#         if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ]; then
+#             touch $HOME/.production
+#         fi
+#     else
+#         if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ]; then
+#             touch $HOME/.beta
+#         fi
+#         if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ]; then
+#             touch $HOME/.production
+#         fi
+#     fi
+# fi
 
 # create config file
-C_FILE="${HOME}/.config"
+# C_FILE="${HOME}/.config"
 #in case it exists, remove it
-rm ${C_FILE}
-touch ${C_FILE}
+# rm ${C_FILE}
+# touch ${C_FILE}
 
-if [ -f $HOME/.alpha ]; then
-    echo "ALPHA" >> ${C_FILE}
-fi
-if [ -f $HOME/.beta ]; then
-    echo "BETA" >> ${C_FILE}
-fi
-if [ -f $HOME/.production ]; then
-    echo "PRODUCTION" >> ${C_FILE}
-fi
+# if [ -f $HOME/.alpha ]; then
+#     echo "ALPHA" >> ${C_FILE}
+# fi
+# if [ -f $HOME/.beta ]; then
+#     echo "BETA" >> ${C_FILE}
+# fi
+# if [ -f $HOME/.production ]; then
+#     echo "PRODUCTION" >> ${C_FILE}
+# fi
 
-echo "ETHERNET" >> ${C_FILE}
-IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
-echo ${IPe0} >> ${C_FILE}
-echo "WIRELESS" >> ${C_FILE}
-IPw0=$(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
-echo ${IPw0} >> ${C_FILE}
-echo "PUBLIC" >> ${C_FILE}
-echo "this will show public facing IP" >> ${C_FILE}
+# echo "ETHERNET" >> ${C_FILE}
+# IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+# echo ${IPe0} >> ${C_FILE}
+# echo "WIRELESS" >> ${C_FILE}
+# IPw0=$(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+# echo ${IPw0} >> ${C_FILE}
+# echo "PUBLIC" >> ${C_FILE}
+# echo "this will show public facing IP" >> ${C_FILE}
 
-echo "# hardware type" >> ${C_FILE}
-echo "unknown" >> ${C_FILE}
+# echo "# hardware type" >> ${C_FILE}
+# echo "unknown" >> ${C_FILE}
 
 # add new appliance interface content
 if [ ! -f "${AEBL_VM}" ]; then
