@@ -80,30 +80,6 @@ fi
 # Begin main patch application
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
-# If not applied in previous patch
-# set system version type
-
-if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ] && [ ! -f $HOME/.production ]; then
-    if [ -f "${LOCAL_SYS}" ]; then
-        if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ] || [ -f $HOME/.aebltest ]; then
-            touch $HOME/.alpha
-        fi
-        if [ -f "${IHDN_SYS}" ]; then
-            touch $HOME/.beta
-        fi
-        if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ]; then
-            touch $HOME/.production
-        fi
-    else
-        if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_VM}" ]; then
-            touch $HOME/.beta
-        fi
-        if [ ! -f $HOME/.alpha ] && [ ! -f $HOME/.beta ]; then
-            touch $HOME/.production
-        fi
-    fi
-fi
-
 # create config file
 C_FILE="${HOME}/.config"
 #in case it exists, remove it
