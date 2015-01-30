@@ -80,22 +80,6 @@ fi
 # Begin main patch application
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
-# create config file
-C_FILE="${HOME}/.config"
-#in case it exists, remove it
-rm ${C_FILE}
-touch ${C_FILE}
-
-if [ -f $HOME/.alpha ]; then
-    echo "ALPHA" >> ${C_FILE}
-fi
-if [ -f $HOME/.beta ]; then
-    echo "BETA" >> ${C_FILE}
-fi
-if [ -f $HOME/.production ]; then
-    echo "PRODUCTION" >> ${C_FILE}
-fi
-
 echo "ETHERNET" >> ${C_FILE}
 IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 echo ${IPe0} >> ${C_FILE}
