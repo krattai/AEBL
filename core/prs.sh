@@ -33,7 +33,7 @@ if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; the
     echo hostname > ping.txt
     echo $(date +"%T") >> ping.txt
     cat chan >> ping.txt
-    echo uptime > ping.txt
+    uptime >> ping.txt
 fi
 
 exit
