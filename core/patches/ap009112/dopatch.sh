@@ -80,43 +80,6 @@ fi
 # Begin main patch application
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
-echo "ETHERNET" >> ${C_FILE}
-IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
-echo ${IPe0} >> ${C_FILE}
-echo "WIRELESS" >> ${C_FILE}
-IPw0=$(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
-echo ${IPw0} >> ${C_FILE}
-echo "PUBLIC" >> ${C_FILE}
-echo "this will show public facing IP" >> ${C_FILE}
-
-echo "# hardware type" >> ${C_FILE}
-echo "unknown" >> ${C_FILE}
-
-# add new appliance interface content
-if [ ! -f "${AEBL_VM}" ]; then
-    sudo rm /var/www/index.html
-    sudo mv index.html /var/www/index.html
-    sudo rm /var/www/config.html
-    sudo mv config.html /var/www/config.html
-    sudo rm /var/www/blades.html
-    sudo mv blades.html /var/www/blades.html
-    sudo rm /var/www/system.html
-    sudo mv system.html /var/www/system.html
-    sudo rm /var/www/about.html
-    sudo mv about.html /var/www/about.html
-else
-    sudo rm /var/www/html/index.html
-    sudo mv index.html /var/www/html/index.html
-    sudo rm /var/www/html/config.html
-    sudo mv config.html /var/www/html/config.html
-    sudo rm /var/www/html/blades.html
-    sudo mv blades.html /var/www/html/blades.html
-    sudo rm /var/www/html/system.html
-    sudo mv system.html /var/www/html/system.html
-    sudo rm /var/www/html/about.html
-    sudo mv about.html /var/www/html/about.html
-fi
-
 mv startup.sh $HOME/.scripts
 chmod 777 $HOME/.scripts/startup.sh
 cp $HOME/.scripts/startup.sh $HOME/.backup/scripts
