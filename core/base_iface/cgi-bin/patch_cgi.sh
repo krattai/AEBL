@@ -22,6 +22,6 @@ OFFLINE_SYS="${T_STO}/.offline"
 
 
 # it is this simple, but MUST be done as user pi
-sudo -u pi touch /home/pi/ctr/patch
+sudo -u pi touch /home/pi/ctrl/patch
 
 exit
