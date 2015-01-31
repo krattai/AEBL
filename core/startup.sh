@@ -106,7 +106,7 @@ fi
 
 # Always check and perform patching on startup, if internet available
 if [ -f "${NETWORK_SYS}" ]; then
-    /run/shm/scripts/patch.sh &
+    touch /home/pi/patch
 fi
 
 if [ ! -f "${OFFLINE_SYS}" ] && [ ! -f "${IHDN_DET}" ]; then
