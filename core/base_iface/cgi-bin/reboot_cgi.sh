@@ -49,10 +49,10 @@ echo 'system rebooting'
 echo '<br><br>'
 
 # it is this simple, but MUST be done as user pi
-touch /home/pi/ctrl/test
+touch /home/pi/ctrl/reboot
 
 echo '<br><br>'
-echo '<a href="../index.html">Home</a>'
+echo 'please wait a minute or so before trying to access interface again.'
 echo '</body>'
 echo ""
 echo '</html>'
