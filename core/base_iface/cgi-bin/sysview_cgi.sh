@@ -1,39 +1,36 @@
 #!/bin/bash
 #
-# Provides system information and management functions
+# displays system info file
 #
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 
-AEBL_TEST="/home/pi/.aebltest"
-AEBL_SYS="/home/pi/.aeblsys"
-TEMP_DIR="/home/pi/tmp"
-IHDN_TEST="/home/pi/.ihdntest"
-IHDN_SYS="/home/pi/.ihdnsys"
-IHDN_DET="/home/pi/.ihdndet"
+echo "Content-type: text/html"
+echo ""
 
-T_STO="/run/shm"
-T_SCR="/run/shm/scripts"
+echo '<html>'
+echo '<head>'
+echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'
+echo '<link rel="SHORTCUT ICON" href="http://www.megacorp.com/favicon.ico">'
+echo '<link rel="stylesheet" href="http://www.megacorp.com/style.css" type="text/css">'
 
-LOCAL_SYS="${T_STO}/.local"
-NETWORK_SYS="${T_STO}/.network"
-OFFLINE_SYS="${T_STO}/.offline"
+PATH="/bin:/usr/bin:/usr/ucb:/usr/opt/bin"
+export $PATH
 
-# Check if should respond
-# if so:
-# + hostname
-# + cat chan
-# + uptime
+echo '<title>System Uptime</title>'
+echo '</head>'
+echo '<body>'
 
-cd $HOME
+echo '<h3>'
+hostname
+echo '</h3>'
 
-# always ping on these
-if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
-    echo hostname > ping.txt
-    echo $(date +"%T") >> ping.txt
-    cat chan >> ping.txt
-    echo uptime > ping.txt
-fi
+uptime
 
-exit
+echo '<br><br>'
+echo '<a href="../index.html">Home</a>'
+echo '</body>'
+echo '</html>'
+
+exit 0
