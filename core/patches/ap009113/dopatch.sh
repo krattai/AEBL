@@ -157,6 +157,9 @@ else
     sudo mv about.html /var/www/html/about.html
 fi
 
+# reference for proper setting of cgi for http interface
+# sudo chown root:root /usr/lib/cgi-bin/sysview_cgi.sh
+
 sudo mv patch_cgi.sh /usr/lib/cgi-bin/
 sudo chmod 777 /usr/lib/cgi-bin/patch_cgi.sh
 sudo mv reboot_cgi.sh /usr/lib/cgi-bin/
