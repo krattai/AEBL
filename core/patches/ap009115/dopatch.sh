@@ -198,6 +198,10 @@ sleep 5
 # set control file to indicate new ctrlwtch.sh file
 touch /home/pi/ctrl/.newctrl
 
+# clearing log.txt as some are getting extremely large
+#  will address log sizes in a near patch
+rm /home/pi/log.txt
+
 GRAB_FILE="pv"
 pv=$(cat "${GRAB_FILE}" | head -n1)
 
