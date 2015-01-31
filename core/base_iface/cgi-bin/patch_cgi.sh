@@ -34,7 +34,7 @@ echo '<link rel="stylesheet" href="http://www.megacorp.com/style.css" type="text
 PATH="/bin:/usr/bin:/usr/ucb:/usr/opt/bin"
 export $PATH
 
-echo '<title>Rebooting system</title>'
+echo '<title>Patching system</title>'
 echo '</head>'
 echo ""
 echo '<body>'
@@ -45,14 +45,16 @@ echo '</h3>'
 uptime
 
 echo '<br><br>'
-echo 'system rebooting'
+echo 'system patching'
 echo '<br><br>'
 
 # it is this simple, but MUST be done as user pi
 touch /home/pi/ctrl/patch
 
 echo '<br><br>'
-echo 'please wait a minute or so before trying to access interface again.'
+echo 'system should patch within the next 15 minutes.'
+echo '<br><br>'
+echo '<a href="../index.html">Home</a>'
 echo '</body>'
 echo ""
 echo '</html>'
