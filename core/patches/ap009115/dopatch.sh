@@ -195,6 +195,9 @@ cp $HOME/.scripts/prs.sh /run/shm/scripts
 
 sleep 5
 
+# set control file to indicate new ctrlwtch.sh file
+touch /home/pi/ctrl/.newctrl
+
 GRAB_FILE="pv"
 pv=$(cat "${GRAB_FILE}" | head -n1)
 
