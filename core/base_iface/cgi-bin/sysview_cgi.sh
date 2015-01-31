@@ -10,6 +10,7 @@ echo "Content-type: text/html"
 echo ""
 
 echo '<html>'
+echo ""
 echo '<head>'
 echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'
 echo '<link rel="SHORTCUT ICON" href="http://www.megacorp.com/favicon.ico">'
@@ -20,8 +21,8 @@ export $PATH
 
 echo '<title>System Uptime</title>'
 echo '</head>'
+echo ""
 echo '<body>'
-
 echo '<h3>'
 hostname
 echo '</h3>'
@@ -31,6 +32,7 @@ uptime
 echo '<br><br>'
 echo '<a href="../index.html">Home</a>'
 echo '</body>'
+echo ""
 echo '</html>'
 
 exit 0
