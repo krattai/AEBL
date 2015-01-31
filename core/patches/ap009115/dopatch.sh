@@ -172,6 +172,9 @@ sudo chmod 0755 /usr/lib/cgi-bin/showcfg_cgi.sh
 sudo mv shutdown_cgi.sh /usr/lib/cgi-bin/
 sudo chown root:root /usr/lib/cgi-bin/shutdown_cgi.sh
 sudo chmod 0755 /usr/lib/cgi-bin/shutdown_cgi.sh
+sudo mv system_cgi.sh /usr/lib/cgi-bin/
+sudo chown root:root /usr/lib/cgi-bin/system_cgi.sh
+sudo chmod 0755 /usr/lib/cgi-bin/system_cgi.sh
 sudo mv sysview_cgi.sh /usr/lib/cgi-bin/
 sudo chown root:root /usr/lib/cgi-bin/sysview_cgi.sh
 sudo chmod 0755 /usr/lib/cgi-bin/sysview_cgi.sh
