@@ -311,7 +311,7 @@ if [  -f "${HOME}/ctrl/halt" ]; then
     rm "${HOME}/ctrl/halt"
 
     sleep 1s
-    sudo halt &
+    sudo poweroff &
 else
     sleep 1s
     sudo reboot &
