@@ -45,7 +45,7 @@ echo '</h3>'
 uptime
 
 echo '<br><br>'
-echo 'setting pin information'
+echo 'setting ping information'
 echo '<br><br>'
 
 # Check if should respond
