@@ -161,15 +161,23 @@ fi
 # sudo chown root:root /usr/lib/cgi-bin/sysview_cgi.sh
 
 sudo mv patch_cgi.sh /usr/lib/cgi-bin/
-sudo chmod 777 /usr/lib/cgi-bin/patch_cgi.sh
+sudo chown root:root /usr/lib/cgi-bin/patch_cgi.sh
+sudo chmod 0755 /usr/lib/cgi-bin/patch_cgi.sh
 sudo mv reboot_cgi.sh /usr/lib/cgi-bin/
-sudo chmod 777 /usr/lib/cgi-bin/reboot_cgi.sh
+sudo chown root:root /usr/lib/cgi-bin/reboot_cgi.sh
+sudo chmod 0755 /usr/lib/cgi-bin/reboot_cgi.sh
 sudo mv showcfg_cgi.sh /usr/lib/cgi-bin/
-sudo chmod 777 /usr/lib/cgi-bin/showcfg_cgi.sh
+sudo chown root:root /usr/lib/cgi-bin/showcfg_cgi.sh
+sudo chmod 0755 /usr/lib/cgi-bin/showcfg_cgi.sh
 sudo mv shutdown_cgi.sh /usr/lib/cgi-bin/
-sudo chmod 777 /usr/lib/cgi-bin/shutdown_cgi.sh
+sudo chown root:root /usr/lib/cgi-bin/shutdown_cgi.sh
+sudo chmod 0755 /usr/lib/cgi-bin/shutdown_cgi.sh
 sudo mv sysview_cgi.sh /usr/lib/cgi-bin/
-sudo chmod 777 /usr/lib/cgi-bin/sysview_cgi.sh
+sudo chown root:root /usr/lib/cgi-bin/sysview_cgi.sh
+sudo chmod 0755 /usr/lib/cgi-bin/sysview_cgi.sh
+
+# remove uptime.sh if exists, as replaced by sysview_cgi.sh
+sudo rm /usr/lib/cgi-bin/uptime.sh
 
 # Add or update general scripts
 mv ctrlwtch.sh $HOME/.scripts
