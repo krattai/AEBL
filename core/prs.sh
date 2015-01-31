@@ -25,6 +25,7 @@ OFFLINE_SYS="${T_STO}/.offline"
 # + hostname
 # + cat chan
 # + uptime
+# + etc
 
 cd $HOME
 
