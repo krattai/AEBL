@@ -30,7 +30,7 @@ cd $HOME
 
 # always ping on these
 if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
-    echo hostname > ping.txt
+    hostname > ping.txt
     echo $(date +"%T") >> ping.txt
     cat chan >> ping.txt
     uptime >> ping.txt
