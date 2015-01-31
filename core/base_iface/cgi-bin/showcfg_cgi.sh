@@ -26,7 +26,7 @@ echo '<h3>'
 hostname
 echo '</h3>'
 
-cat $HOME/.config
+cat /home/pi/.config
 
 echo '<br><br>'
 echo '<a href="../index.html">Home</a>'
