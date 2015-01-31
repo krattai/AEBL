@@ -26,6 +26,9 @@ echo '<h3>'
 hostname
 echo '</h3>'
 
+uptime
+
+echo '<br><br>'
 cat /home/pi/.config
 
 echo '<br><br>'
