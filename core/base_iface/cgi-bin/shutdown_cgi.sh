@@ -6,6 +6,16 @@
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 
+#!/bin/bash
+#
+# provides web interface control to restart computer
+#
+# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
+#
+
+echo "Content-type: text/html"
+
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 TEMP_DIR="/home/pi/tmp"
@@ -20,8 +30,39 @@ LOCAL_SYS="${T_STO}/.local"
 NETWORK_SYS="${T_STO}/.network"
 OFFLINE_SYS="${T_STO}/.offline"
 
+echo ""
+
+echo '<html>'
+echo ""
+echo '<head>'
+echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'
+echo '<link rel="SHORTCUT ICON" href="http://www.megacorp.com/favicon.ico">'
+echo '<link rel="stylesheet" href="http://www.megacorp.com/style.css" type="text/css">'
+
+PATH="/bin:/usr/bin:/usr/ucb:/usr/opt/bin"
+export $PATH
+
+echo '<title>Halting system</title>'
+echo '</head>'
+echo ""
+echo '<body>'
+echo '<h3>'
+hostname
+echo '</h3>'
+
+uptime
+
+echo '<br><br>'
+echo 'system shutting down'
+echo '<br><br>'
 
 # it is this simple, but MUST be done as user pi
-sudo -u pi touch /home/pi/ctrl/halt
+touch /home/pi/ctrl/halt
 
-exit
+echo '<br><br>'
+echo 'please wait a minute or so before removing device from power or powering device up again.'
+echo '</body>'
+echo ""
+echo '</html>'
+
+exit 0
