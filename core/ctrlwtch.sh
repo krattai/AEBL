@@ -39,6 +39,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     # manual patch
     if [ -f "${HOME}/ctrl/patch" ]; then
         /run/shm/scripts/patch.sh &
+        sudo chown pi:pi "${HOME}/ctrl/patch"
         rm "${HOME}/ctrl/patch"
     fi
 
@@ -256,6 +257,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     fi
 
     if [ -f "${HOME}/ctrl/halt" ]; then
+        sudo chown pi:pi "${HOME}/ctrl/halt"
         touch "${HOME}/ctrl/reboot"
     fi
 
@@ -305,6 +307,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
 
 done
 
+sudo chown pi:pi "${HOME}/ctrl/reboot"
 rm $HOME/ctrl/reboot
 
 if [  -f "${HOME}/ctrl/halt" ]; then
