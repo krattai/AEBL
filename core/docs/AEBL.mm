@@ -149,6 +149,7 @@
 <node TEXT="Primecoin" ID="ID_1707229754" CREATED="1422825281201" MODIFIED="1422825290662" LINK="http://en.wikipedia.org/wiki/Primecoin"/>
 <node TEXT="Namecoin" ID="ID_263200355" CREATED="1422825328359" MODIFIED="1422825337201" LINK="http://en.wikipedia.org/wiki/Namecoin"/>
 </node>
+<node TEXT="Ripple" ID="ID_1607635582" CREATED="1422825387418" MODIFIED="1422825396055" LINK="http://en.wikipedia.org/wiki/Ripple_%28payment_protocol%29"/>
 </node>
 <node TEXT="p2p lending blade" ID="ID_68476023" CREATED="1422256270652" MODIFIED="1422256444828" LINK="http://en.wikipedia.org/wiki/Peer-to-peer_lending">
 <node TEXT="zopa" ID="ID_1142629779" CREATED="1422256482069" MODIFIED="1422256492123" LINK="http://en.wikipedia.org/wiki/Zopa"/>
