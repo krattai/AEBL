@@ -143,6 +143,7 @@
 <node TEXT="cclite" ID="ID_177907968" CREATED="1422239401275" MODIFIED="1422239414056" LINK="https://github.com/krattai/cclite"/>
 <node TEXT="oscurrency" ID="ID_1753311689" CREATED="1422239480478" MODIFIED="1422239500607" LINK="http://blog.opensourcecurrency.org/"/>
 <node TEXT="forth corner exchange" ID="ID_995196763" CREATED="1422239567798" MODIFIED="1422239586796" LINK="http://fourthcornerexchange.org/"/>
+<node TEXT="cryptocurrencies" ID="ID_1568422205" CREATED="1422825130551" MODIFIED="1422825138719"/>
 </node>
 <node TEXT="p2p lending blade" ID="ID_68476023" CREATED="1422256270652" MODIFIED="1422256444828" LINK="http://en.wikipedia.org/wiki/Peer-to-peer_lending">
 <node TEXT="zopa" ID="ID_1142629779" CREATED="1422256482069" MODIFIED="1422256492123" LINK="http://en.wikipedia.org/wiki/Zopa"/>
