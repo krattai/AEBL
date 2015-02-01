@@ -146,6 +146,7 @@
 <node TEXT="cryptocurrencies" ID="ID_1568422205" CREATED="1422825130551" MODIFIED="1422825138719">
 <node TEXT="Litecoin" ID="ID_1480880961" CREATED="1422825186511" MODIFIED="1422825201392" LINK="http://en.wikipedia.org/wiki/Litecoin"/>
 <node TEXT="Peercoin" ID="ID_1631506436" CREATED="1422825236975" MODIFIED="1422825248172" LINK="http://en.wikipedia.org/wiki/Peercoin"/>
+<node TEXT="Primecoin" ID="ID_1707229754" CREATED="1422825281201" MODIFIED="1422825290662" LINK="http://en.wikipedia.org/wiki/Primecoin"/>
 </node>
 </node>
 <node TEXT="p2p lending blade" ID="ID_68476023" CREATED="1422256270652" MODIFIED="1422256444828" LINK="http://en.wikipedia.org/wiki/Peer-to-peer_lending">
