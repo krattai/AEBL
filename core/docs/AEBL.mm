@@ -143,7 +143,7 @@
 <node TEXT="cclite" ID="ID_177907968" CREATED="1422239401275" MODIFIED="1422239414056" LINK="https://github.com/krattai/cclite"/>
 <node TEXT="oscurrency" ID="ID_1753311689" CREATED="1422239480478" MODIFIED="1422239500607" LINK="http://blog.opensourcecurrency.org/"/>
 <node TEXT="forth corner exchange" ID="ID_995196763" CREATED="1422239567798" MODIFIED="1422239586796" LINK="http://fourthcornerexchange.org/"/>
-<node TEXT="cryptocurrencies" ID="ID_1568422205" CREATED="1422825130551" MODIFIED="1422825138719">
+<node TEXT="cryptocurrencies" ID="ID_1568422205" CREATED="1422825130551" MODIFIED="1422830030318" LINK="http://en.wikipedia.org/wiki/Cryptocurrency">
 <node TEXT="Litecoin" ID="ID_1480880961" CREATED="1422825186511" MODIFIED="1422825201392" LINK="http://en.wikipedia.org/wiki/Litecoin"/>
 <node TEXT="Peercoin" ID="ID_1631506436" CREATED="1422825236975" MODIFIED="1422825248172" LINK="http://en.wikipedia.org/wiki/Peercoin"/>
 <node TEXT="Primecoin" ID="ID_1707229754" CREATED="1422825281201" MODIFIED="1422825290662" LINK="http://en.wikipedia.org/wiki/Primecoin"/>
