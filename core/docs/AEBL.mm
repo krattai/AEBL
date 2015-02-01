@@ -148,6 +148,7 @@
 <node TEXT="Peercoin" ID="ID_1631506436" CREATED="1422825236975" MODIFIED="1422825248172" LINK="http://en.wikipedia.org/wiki/Peercoin"/>
 <node TEXT="Primecoin" ID="ID_1707229754" CREATED="1422825281201" MODIFIED="1422825290662" LINK="http://en.wikipedia.org/wiki/Primecoin"/>
 <node TEXT="Namecoin" ID="ID_263200355" CREATED="1422825328359" MODIFIED="1422825337201" LINK="http://en.wikipedia.org/wiki/Namecoin"/>
+<node TEXT="Mastercoin" ID="ID_81425334" CREATED="1422825445968" MODIFIED="1422825456696" LINK="http://en.wikipedia.org/wiki/Mastercoin"/>
 </node>
 <node TEXT="Ripple" ID="ID_1607635582" CREATED="1422825387418" MODIFIED="1422825396055" LINK="http://en.wikipedia.org/wiki/Ripple_%28payment_protocol%29"/>
 </node>
