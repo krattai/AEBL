@@ -151,10 +151,10 @@
 <node TEXT="Mastercoin" ID="ID_81425334" CREATED="1422825445968" MODIFIED="1422825456696" LINK="http://en.wikipedia.org/wiki/Mastercoin"/>
 <node TEXT="Auroracoin" ID="ID_1701202110" CREATED="1422825488137" MODIFIED="1422825499547" LINK="http://en.wikipedia.org/wiki/Auroracoin"/>
 <node TEXT="Dogecoin" ID="ID_1921674188" CREATED="1422825549559" MODIFIED="1422825557578" LINK="http://en.wikipedia.org/wiki/Dogecoin"/>
+<node TEXT="others - mrkt" ID="ID_64699982" CREATED="1422849324539" MODIFIED="1422849350981" LINK="http://coinmarketcap.com/"/>
 </node>
 <node TEXT="Ripple" ID="ID_1607635582" CREATED="1422825387418" MODIFIED="1422825396055" LINK="http://en.wikipedia.org/wiki/Ripple_%28payment_protocol%29"/>
 <node TEXT="Nxt" ID="ID_559234061" CREATED="1422829746370" MODIFIED="1422829764367" LINK="http://en.wikipedia.org/wiki/Nxt"/>
-<node TEXT="others - mrkt" ID="ID_64699982" CREATED="1422849324539" MODIFIED="1422849350981" LINK="http://coinmarketcap.com/"/>
 </node>
 <node TEXT="p2p lending blade" ID="ID_68476023" CREATED="1422256270652" MODIFIED="1422256444828" LINK="http://en.wikipedia.org/wiki/Peer-to-peer_lending">
 <node TEXT="zopa" ID="ID_1142629779" CREATED="1422256482069" MODIFIED="1422256492123" LINK="http://en.wikipedia.org/wiki/Zopa"/>
