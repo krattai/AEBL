@@ -109,6 +109,7 @@
 <node TEXT="avahi" ID="ID_1941305561" CREATED="1421001749863" MODIFIED="1421001775473" LINK="http://www.avahi.org/wiki/Avahi4Developpers">
 <node TEXT="dev docs" ID="ID_1365470076" CREATED="1421001824743" MODIFIED="1421001836087" LINK="http://www.avahi.org/wiki/ProgrammingDocs"/>
 <node TEXT="API" ID="ID_84484300" CREATED="1421001886467" MODIFIED="1421001895381" LINK="http://avahi.org/download/doxygen/"/>
+<node TEXT="announce as unique type" ID="ID_1172672805" CREATED="1422985667373" MODIFIED="1422985674661"/>
 </node>
 <node TEXT="patch system upgrade" ID="ID_333515691" CREATED="1420401954862" MODIFIED="1420401963996">
 <node TEXT="honour old patch system and files" ID="ID_911120548" CREATED="1420402080741" MODIFIED="1420402103764"/>
