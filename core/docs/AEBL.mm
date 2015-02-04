@@ -137,9 +137,6 @@
 <node TEXT="v0092" ID="ID_1456223529" CREATED="1421436035805" MODIFIED="1421436041826">
 <node TEXT="review v0091 patches" ID="ID_134489416" CREATED="1421436092199" MODIFIED="1421436098915"/>
 </node>
-<node TEXT="p2p lending blade" ID="ID_68476023" CREATED="1422256270652" MODIFIED="1422256444828" LINK="http://en.wikipedia.org/wiki/Peer-to-peer_lending">
-<node TEXT="zopa" ID="ID_1142629779" CREATED="1422256482069" MODIFIED="1422256492123" LINK="http://en.wikipedia.org/wiki/Zopa"/>
-</node>
 <node TEXT="freebee blade" ID="ID_1218780632" CREATED="1422295425682" MODIFIED="1422295430870">
 <node TEXT="inventory list" ID="ID_1041225855" CREATED="1422298253513" MODIFIED="1422300044677"/>
 <node TEXT="desired list" ID="ID_1265285595" CREATED="1422299984405" MODIFIED="1422300011476"/>
@@ -294,6 +291,9 @@
 </node>
 <node TEXT="Ripple" ID="ID_1607635582" CREATED="1422825387418" MODIFIED="1422825396055" LINK="http://en.wikipedia.org/wiki/Ripple_%28payment_protocol%29"/>
 <node TEXT="Nxt" ID="ID_559234061" CREATED="1422829746370" MODIFIED="1422829764367" LINK="http://en.wikipedia.org/wiki/Nxt"/>
+</node>
+<node TEXT="p2p lending blade" ID="ID_68476023" CREATED="1422256270652" MODIFIED="1422256444828" LINK="http://en.wikipedia.org/wiki/Peer-to-peer_lending">
+<node TEXT="zopa" ID="ID_1142629779" CREATED="1422256482069" MODIFIED="1422256492123" LINK="http://en.wikipedia.org/wiki/Zopa"/>
 </node>
 </node>
 </node>
