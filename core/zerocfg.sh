@@ -22,45 +22,19 @@ LOCAL_SYS="${T_STO}/.local"
 NETWORK_SYS="${T_STO}/.network"
 OFFLINE_SYS="${T_STO}/.offline"
 
-echo ""
+# Check if should respond
+# if so:
+# + hostname
+# + cat chan
+# + uptime
+# + etc
 
-echo '<html>'
-echo ""
-echo '<head>'
-echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'
-echo '<link rel="SHORTCUT ICON" href="http://www.megacorp.com/favicon.ico">'
-echo '<link rel="stylesheet" href="http://www.megacorp.com/style.css" type="text/css">'
-
-PATH="/bin:/usr/bin:/usr/ucb:/usr/opt/bin"
-export $PATH
-
-echo '<title>Patching system</title>'
-echo '</head>'
-echo ""
-echo '<body>'
-echo '<h3>'
-hostname
-echo '</h3>'
+cd $HOME
 
 # possible use of script
 # avahi-browse -a --resolve
 # avahi-browse
 # this next does a terminate after dumping current list of named services
 # avahi-browse -a --resolve -t
-
-echo '<br><br>'
-echo 'system patching'
-echo '<br><br>'
-
-# it is this simple, but MUST be done as user pi
-touch /home/pi/ctrl/patch
-
-echo '<br><br>'
-echo 'system should patch within the next 15 minutes.'
-echo '<br><br>'
-echo '<a href="../index.html">Home</a>'
-echo '</body>'
-echo ""
-echo '</html>'
 
 exit 0
