@@ -296,6 +296,7 @@
 <node TEXT="philanthropic inventory" ID="ID_440815585" CREATED="1422303054628" MODIFIED="1422303071950"/>
 <node TEXT="tribe list" ID="ID_269517038" CREATED="1422303725516" MODIFIED="1422303730275"/>
 </node>
+<node TEXT="openbazaar blade" ID="ID_1428220244" CREATED="1423016210368" MODIFIED="1423016293446" LINK="https://github.com/OpenBazaar/OpenBazaar"/>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
