@@ -137,23 +137,6 @@
 <node TEXT="v0092" ID="ID_1456223529" CREATED="1421436035805" MODIFIED="1421436041826">
 <node TEXT="review v0091 patches" ID="ID_134489416" CREATED="1421436092199" MODIFIED="1421436098915"/>
 </node>
-<node TEXT="open money blade" ID="ID_82754132" CREATED="1422226646123" MODIFIED="1422226651219">
-<node TEXT="cclite" ID="ID_177907968" CREATED="1422239401275" MODIFIED="1422239414056" LINK="https://github.com/krattai/cclite"/>
-<node TEXT="oscurrency" ID="ID_1753311689" CREATED="1422239480478" MODIFIED="1422239500607" LINK="http://blog.opensourcecurrency.org/"/>
-<node TEXT="forth corner exchange" ID="ID_995196763" CREATED="1422239567798" MODIFIED="1422239586796" LINK="http://fourthcornerexchange.org/"/>
-<node TEXT="cryptocurrencies" ID="ID_1568422205" CREATED="1422825130551" MODIFIED="1422830030318" LINK="http://en.wikipedia.org/wiki/Cryptocurrency">
-<node TEXT="Litecoin" ID="ID_1480880961" CREATED="1422825186511" MODIFIED="1422825201392" LINK="http://en.wikipedia.org/wiki/Litecoin"/>
-<node TEXT="Peercoin" ID="ID_1631506436" CREATED="1422825236975" MODIFIED="1422825248172" LINK="http://en.wikipedia.org/wiki/Peercoin"/>
-<node TEXT="Primecoin" ID="ID_1707229754" CREATED="1422825281201" MODIFIED="1422825290662" LINK="http://en.wikipedia.org/wiki/Primecoin"/>
-<node TEXT="Namecoin" ID="ID_263200355" CREATED="1422825328359" MODIFIED="1422825337201" LINK="http://en.wikipedia.org/wiki/Namecoin"/>
-<node TEXT="Mastercoin" ID="ID_81425334" CREATED="1422825445968" MODIFIED="1422825456696" LINK="http://en.wikipedia.org/wiki/Mastercoin"/>
-<node TEXT="Auroracoin" ID="ID_1701202110" CREATED="1422825488137" MODIFIED="1422825499547" LINK="http://en.wikipedia.org/wiki/Auroracoin"/>
-<node TEXT="Dogecoin" ID="ID_1921674188" CREATED="1422825549559" MODIFIED="1422825557578" LINK="http://en.wikipedia.org/wiki/Dogecoin"/>
-<node TEXT="others - mrkt" ID="ID_64699982" CREATED="1422849324539" MODIFIED="1422849350981" LINK="http://coinmarketcap.com/"/>
-</node>
-<node TEXT="Ripple" ID="ID_1607635582" CREATED="1422825387418" MODIFIED="1422825396055" LINK="http://en.wikipedia.org/wiki/Ripple_%28payment_protocol%29"/>
-<node TEXT="Nxt" ID="ID_559234061" CREATED="1422829746370" MODIFIED="1422829764367" LINK="http://en.wikipedia.org/wiki/Nxt"/>
-</node>
 <node TEXT="p2p lending blade" ID="ID_68476023" CREATED="1422256270652" MODIFIED="1422256444828" LINK="http://en.wikipedia.org/wiki/Peer-to-peer_lending">
 <node TEXT="zopa" ID="ID_1142629779" CREATED="1422256482069" MODIFIED="1422256492123" LINK="http://en.wikipedia.org/wiki/Zopa"/>
 </node>
@@ -295,6 +278,23 @@
 <node TEXT="AEBL navigator blade" ID="ID_1612958801" CREATED="1421998056123" MODIFIED="1421998075151"/>
 <node TEXT="barter blade" ID="ID_770861945" CREATED="1422226551527" MODIFIED="1422226556820"/>
 <node TEXT="open info blade" ID="ID_19374729" CREATED="1422226612231" MODIFIED="1422226618674"/>
+<node TEXT="open money blade" ID="ID_82754132" CREATED="1422226646123" MODIFIED="1422226651219">
+<node TEXT="cclite" ID="ID_177907968" CREATED="1422239401275" MODIFIED="1422239414056" LINK="https://github.com/krattai/cclite"/>
+<node TEXT="oscurrency" ID="ID_1753311689" CREATED="1422239480478" MODIFIED="1422239500607" LINK="http://blog.opensourcecurrency.org/"/>
+<node TEXT="forth corner exchange" ID="ID_995196763" CREATED="1422239567798" MODIFIED="1422239586796" LINK="http://fourthcornerexchange.org/"/>
+<node TEXT="cryptocurrencies" ID="ID_1568422205" CREATED="1422825130551" MODIFIED="1422830030318" LINK="http://en.wikipedia.org/wiki/Cryptocurrency">
+<node TEXT="Litecoin" ID="ID_1480880961" CREATED="1422825186511" MODIFIED="1422825201392" LINK="http://en.wikipedia.org/wiki/Litecoin"/>
+<node TEXT="Peercoin" ID="ID_1631506436" CREATED="1422825236975" MODIFIED="1422825248172" LINK="http://en.wikipedia.org/wiki/Peercoin"/>
+<node TEXT="Primecoin" ID="ID_1707229754" CREATED="1422825281201" MODIFIED="1422825290662" LINK="http://en.wikipedia.org/wiki/Primecoin"/>
+<node TEXT="Namecoin" ID="ID_263200355" CREATED="1422825328359" MODIFIED="1422825337201" LINK="http://en.wikipedia.org/wiki/Namecoin"/>
+<node TEXT="Mastercoin" ID="ID_81425334" CREATED="1422825445968" MODIFIED="1422825456696" LINK="http://en.wikipedia.org/wiki/Mastercoin"/>
+<node TEXT="Auroracoin" ID="ID_1701202110" CREATED="1422825488137" MODIFIED="1422825499547" LINK="http://en.wikipedia.org/wiki/Auroracoin"/>
+<node TEXT="Dogecoin" ID="ID_1921674188" CREATED="1422825549559" MODIFIED="1422825557578" LINK="http://en.wikipedia.org/wiki/Dogecoin"/>
+<node TEXT="others - mrkt" ID="ID_64699982" CREATED="1422849324539" MODIFIED="1422849350981" LINK="http://coinmarketcap.com/"/>
+</node>
+<node TEXT="Ripple" ID="ID_1607635582" CREATED="1422825387418" MODIFIED="1422825396055" LINK="http://en.wikipedia.org/wiki/Ripple_%28payment_protocol%29"/>
+<node TEXT="Nxt" ID="ID_559234061" CREATED="1422829746370" MODIFIED="1422829764367" LINK="http://en.wikipedia.org/wiki/Nxt"/>
+</node>
 </node>
 </node>
 <node TEXT="Prototype Showcasing" ID="Freemind_Link_196559201" CREATED="1269462299880" MODIFIED="1269462316023">
