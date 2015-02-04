@@ -45,6 +45,8 @@ echo '</h3>'
 # possible use of script
 # avahi-browse -a --resolve
 # avahi-browse
+# this next does a terminate after dumping current list of named services
+# avahi-browse -a --resolve -t
 
 echo '<br><br>'
 echo 'system patching'
