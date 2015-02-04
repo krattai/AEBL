@@ -42,7 +42,9 @@ echo '<h3>'
 hostname
 echo '</h3>'
 
-uptime
+# possible use of script
+# avahi-browse -a --resolve
+# avahi-browse
 
 echo '<br><br>'
 echo 'system patching'
