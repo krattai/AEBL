@@ -1,1 +1,2 @@
 http://wiki.ucis.nl/Anonet
+http://camlistore.org/
