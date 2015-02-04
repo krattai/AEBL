@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# provides web interface control to patch computer
+# provides web interface to check zeroconf environment
 #
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
