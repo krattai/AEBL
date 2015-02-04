@@ -19,3 +19,14 @@ https://pagekite.net/
 https://sudoroom.org/wiki/Mesh
 https://code.google.com/p/phantom/
 http://www.psyced.org/
+http://qmp.cat/Home
+https://github.com/Katee/quietnet
+https://redmatrix.me/&JS=1
+https://github.com/al3x/sovereign
+https://github.com/jlund/streisand
+http://syncthing.net/
+https://tent.io/
+https://github.com/urbit/urbit
+http://villagetelco.org/
+https://github.com/raybejjani/gitsync
+https://github.com/WachterJud/qaul.net
