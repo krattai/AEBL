@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# provides web interface to check zeroconf environment
+# provides zeroconfig / avahi functions
 #
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
