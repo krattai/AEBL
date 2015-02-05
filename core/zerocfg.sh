@@ -5,6 +5,8 @@
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
+# NB: raspbian needs sudo apt-get -y install dnsutils to have dig, nslookup, etc.
+#
 
 echo "Content-type: text/html"
 
