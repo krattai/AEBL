@@ -19,6 +19,12 @@
     # Do something under Windows NT platform
 # fi
 #
+#
+# With sudo apt-get install lsb-release installed on raspbian (ubuntu has)
+#
+# OS=$(lsb_release -si)        - raspbian shows Debian, ubuntu shows ubuntu
+# ARCH=$(uname -m | sed 's/x86_//;s/i[3-6]86/32/')
+# VER=$(lsb_release -sr)       - raspbian shows wheezy, ubuntu shows current
 
 # patch system now seeking network info in /run/shm
 LOCAL_SYS=".local"
@@ -80,7 +86,7 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 # Add dnsutils to raspbian for future consideration
 if [ ! -f "${AEBL_VM}" ]; then
-    sudo apt-get -y install dnsutils
+    sudo apt-get -y install dnsutils lsb-release
 fi
 
 # reference for proper setting of cgi for http interface
