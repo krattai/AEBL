@@ -86,6 +86,7 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 # Add dnsutils to raspbian for future consideration
 if [ ! -f "${AEBL_VM}" ]; then
+    sudo apt-get update && sudo apt-get -y dist-upgrade
     sudo apt-get -y install dnsutils lsb-release
 fi
 
