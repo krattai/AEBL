@@ -365,6 +365,7 @@
 <node TEXT="gcc" ID="ID_1776747809" CREATED="1422034412070" MODIFIED="1422034417845">
 <node TEXT="sockets" ID="ID_1868280818" CREATED="1422083821596" MODIFIED="1422083833752" LINK="http://beej.us/guide/bgnet/output/html/singlepage/bgnet.html"/>
 </node>
+<node TEXT="ProjectLibre" ID="ID_1988003354" CREATED="1423127598288" MODIFIED="1423127690338" LINK="https://sourceforge.net/projects/projectlibre/?source=navbar"/>
 </node>
 </node>
 <node TEXT="Network" POSITION="left" ID="Freemind_Link_809364370" CREATED="1269462184478" MODIFIED="1269462534971" HGAP="21" VSHIFT="-39">
