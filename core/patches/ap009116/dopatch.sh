@@ -8,6 +8,17 @@
 # wget -N -r -nd -l2 -w 3 -P $HOME --limit-rate=50k http://192.168.200.6/files/create-asys.sh; chmod 777 $HOME/create-asys.sh; $HOME/./create-asys.sh; rm $HOME/create-asys.sh
 # or
 # wget -N -r -nd -l2 -w 3 -P $HOME --limit-rate=50k "https://www.dropbox.com/s/1t3ejk4iyzm07u6/create-asys.sh"; chmod 777 $HOME/create-asys.sh; $HOME/./create-asys.sh; rm $HOME/create-asys.sh
+#
+# Interesting script to check OS
+#
+# if [ "$(uname)" == "Darwin" ]; then
+    # Do something under Mac OS X platform        
+# elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # Do something under Linux platform
+# elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    # Do something under Windows NT platform
+# fi
+#
 
 # patch system now seeking network info in /run/shm
 LOCAL_SYS=".local"
@@ -66,6 +77,11 @@ fi
 
 # Begin main patch application
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
+
+# Add dnsutils to raspbian for future consideration
+if [ ! -f "${AEBL_VM}" ]; then
+    sudo apt-get -y install dnsutils
+fi
 
 # reference for proper setting of cgi for http interface
 # sudo chown root:root /usr/lib/cgi-bin/sysview_cgi.sh
