@@ -90,6 +90,9 @@ if [ ! -f "${AEBL_VM}" ]; then
     sudo apt-get -y install dnsutils lsb-release
 fi
 
+# Change default html path from /var/www/html to /var/www for AEBL VM (Ubuntu)
+if [ -f "${AEBL_VM}" ]; then
+fi
 # reference for proper setting of cgi for http interface
 # sudo chown root:root /usr/lib/cgi-bin/sysview_cgi.sh
 
