@@ -120,6 +120,7 @@ if [ -f "${AEBL_VM}" ]; then
     # This may not be enough to change default, may need to dig deeper
     # nope, looks like /etc/apache2/apache2.conf has /var/www as granted
     sudo a2dissite 000-default.conf
+    sudo mv /etc/apache2/sites-available/default /etc/apache2/sites-available/default.conf
     sudo a2ensite default
     
     # Of course, apache2 needs to restart
