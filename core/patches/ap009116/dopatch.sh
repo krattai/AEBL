@@ -107,6 +107,14 @@ if [ -f "${AEBL_VM}" ]; then
     sudo mv /var/www/html/images/valid-xhtml10.png /var/www/images/*
     sudo rmdir /var/www/html/images
 
+    # Copy new apache2 default config file
+    # 600 : Only owner can read/write
+    # 644 : Only owner can write, others can read
+    # 666 : All uses can read/write.
+    sudo mv default /etc/apache2/sites-available/
+    sudo chown root:root /etc/apache2/sites-available/default
+    sudo chmod 0644 /etc/apache2/sites-available/default
+
 fi
 
 # reference for proper setting of cgi for http interface
