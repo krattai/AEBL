@@ -115,6 +115,11 @@ if [ -f "${AEBL_VM}" ]; then
     sudo chown root:root /etc/apache2/sites-available/default
     sudo chmod 0644 /etc/apache2/sites-available/default
 
+    # Enable and disable sites
+    # This may not be enough to change default, may need to dig deeper
+    sudo a2dissite 000-default.conf
+    sudo a2ensite default
+    
 fi
 
 # reference for proper setting of cgi for http interface
