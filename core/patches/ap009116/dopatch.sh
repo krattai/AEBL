@@ -120,6 +120,9 @@ if [ -f "${AEBL_VM}" ]; then
     sudo a2dissite 000-default.conf
     sudo a2ensite default
     
+    # Of course, apache2 needs to restart
+    sudo service apache2 restart
+    
 fi
 
 # reference for proper setting of cgi for http interface
