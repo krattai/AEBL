@@ -93,6 +93,14 @@ fi
 # Change default html path from /var/www/html to /var/www for AEBL VM (Ubuntu)
 #  includes changing apache default www root
 if [ -f "${AEBL_VM}" ]; then
+
+    # move html
+    sudo mv /var/www/html/about.html /var/www/*
+    sudo mv /var/www/html/blades.html /var/www/*
+    sudo mv /var/www/html/config.html /var/www/*
+    sudo mv /var/www/html/index.html /var/www/*
+    sudo mv /var/www/html/system.html /var/www/*
+
 fi
 
 # reference for proper setting of cgi for http interface
