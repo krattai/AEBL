@@ -127,40 +127,15 @@ if [ -f "${AEBL_VM}" ]; then
 fi
 
 # reference for proper setting of cgi for http interface
+# sudo mv reboot_cgi.sh /usr/lib/cgi-bin/
 # sudo chown root:root /usr/lib/cgi-bin/sysview_cgi.sh
-
-sudo mv patch_cgi.sh /usr/lib/cgi-bin/
-sudo chown root:root /usr/lib/cgi-bin/patch_cgi.sh
-sudo chmod 0755 /usr/lib/cgi-bin/patch_cgi.sh
-sudo mv reboot_cgi.sh /usr/lib/cgi-bin/
-sudo chown root:root /usr/lib/cgi-bin/reboot_cgi.sh
-sudo chmod 0755 /usr/lib/cgi-bin/reboot_cgi.sh
-sudo mv showcfg_cgi.sh /usr/lib/cgi-bin/
-sudo chown root:root /usr/lib/cgi-bin/showcfg_cgi.sh
-sudo chmod 0755 /usr/lib/cgi-bin/showcfg_cgi.sh
-sudo mv shutdown_cgi.sh /usr/lib/cgi-bin/
-sudo chown root:root /usr/lib/cgi-bin/shutdown_cgi.sh
-sudo chmod 0755 /usr/lib/cgi-bin/shutdown_cgi.sh
-sudo mv system_cgi.sh /usr/lib/cgi-bin/
-sudo chown root:root /usr/lib/cgi-bin/system_cgi.sh
-sudo chmod 0755 /usr/lib/cgi-bin/system_cgi.sh
-sudo mv sysview_cgi.sh /usr/lib/cgi-bin/
-sudo chown root:root /usr/lib/cgi-bin/sysview_cgi.sh
-sudo chmod 0755 /usr/lib/cgi-bin/sysview_cgi.sh
-
-# remove uptime.sh if exists, as replaced by sysview_cgi.sh
-sudo rm /usr/lib/cgi-bin/uptime.sh
+# sudo chmod 0755 /usr/lib/cgi-bin/patch_cgi.sh
 
 # Add or update general scripts
-mv ctrlwtch.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/ctrlwtch.sh
-cp $HOME/.scripts/ctrlwtch.sh $HOME/.backup/scripts
-cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
-
-mv prs.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/prs.sh
-cp $HOME/.scripts/prs.sh $HOME/.backup/scripts
-cp $HOME/.scripts/prs.sh /run/shm/scripts
+# mv ctrlwtch.sh $HOME/.scripts
+# chmod 777 $HOME/.scripts/ctrlwtch.sh
+# cp $HOME/.scripts/ctrlwtch.sh $HOME/.backup/scripts
+# cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
 
 sleep 5
 
