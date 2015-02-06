@@ -106,6 +106,7 @@ if [ -f "${AEBL_VM}" ]; then
     sudo mv /var/www/html/images/AEBL_thumb_00.png /var/www/images/
     sudo mv /var/www/html/images/valid-xhtml10.png /var/www/images/
     sudo rmdir /var/www/html/images
+    sudo rmdir /var/www/html
 
     # Copy new apache2 default config file
     # 600 : Only owner can read/write
