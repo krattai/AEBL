@@ -100,6 +100,12 @@ if [ -f "${AEBL_VM}" ]; then
     sudo mv /var/www/html/config.html /var/www/*
     sudo mv /var/www/html/index.html /var/www/*
     sudo mv /var/www/html/system.html /var/www/*
+    
+    # move images
+    sudo mkdir /var/www/images
+    sudo mv /var/www/html/images/AEBL_thumb_00.png /var/www/images/*
+    sudo mv /var/www/html/images/valid-xhtml10.png /var/www/images/*
+    sudo rmdir /var/www/html/images
 
 fi
 
