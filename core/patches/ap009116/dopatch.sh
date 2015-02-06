@@ -177,16 +177,16 @@ pv=$(cat "${GRAB_FILE}" | head -n1)
 # if [ ! -f "${OFFLINE_SYS}" ]; then
 #     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} patched to ${pv}." &
 # fi
-# if [ ! -f "${OFFLINE_SYS}" ]; then
-#     if [ -f $HOME/.alpha ]; then
-#       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, alpha ${MACe0} patched to ${pv}." &
-#     fi
-#     if [ -f $HOME/.beta ]; then
-#       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, beta ${MACe0} patched to ${pv}." &
-#     fi
-#     if [ -f $HOME/.production ]; then
-#       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, production ${MACe0} patched to ${pv}." &
-#     fi
-# fi
+if [ ! -f "${OFFLINE_SYS}" ]; then
+    if [ -f $HOME/.alpha ]; then
+      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, alpha ${MACe0} patched to ${pv} incl security updates." &
+    fi
+    if [ -f $HOME/.beta ]; then
+      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, beta ${MACe0} patched to ${pv} incl security updates." &
+    fi
+    if [ -f $HOME/.production ]; then
+      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, production ${MACe0} patched to ${pv} incl security updates." &
+    fi
+fi
 
 exit
