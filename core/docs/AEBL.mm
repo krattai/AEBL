@@ -90,6 +90,7 @@
 </node>
 <node TEXT="check hardware" ID="ID_1512487008" CREATED="1421643615234" MODIFIED="1421643637711" LINK="http://www.cyberciti.biz/faq/linux-display-cpu-information-number-of-cpus-and-their-speed/"/>
 <node TEXT="check OS" ID="ID_1531941407" CREATED="1421643690161" MODIFIED="1421643710750" LINK="http://www.cyberciti.biz/faq/find-linux-distribution-name-version-number/"/>
+<node TEXT="change hostname" ID="ID_678708003" CREATED="1423326919988" MODIFIED="1423326924134"/>
 </node>
 <node TEXT="possible port conflicts" ID="ID_558478323" CREATED="1421131323913" MODIFIED="1421131334572">
 <node TEXT="chg prt frm" ID="ID_1487212525" CREATED="1423157086310" MODIFIED="1423157102270"/>
