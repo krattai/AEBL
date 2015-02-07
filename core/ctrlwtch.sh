@@ -45,7 +45,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
 
     # Process request to display the contents of the pl folder
     if [ -f "${HOME}/ctrl/showpl" ]; then
-        rm "${HOME}/ctrl/playlist.txt"
+        rm "${HOME}/ctrl/showpl"
         ls -al > "${HOME}/ctrl/playlist.txt"
     fi
 
