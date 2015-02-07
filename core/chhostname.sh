@@ -22,6 +22,9 @@ OFFLINE_SYS="${T_STO}/.offline"
 
 cd $HOME
 
+#Assign existing hostname to $hostn
+hostn=$(cat /etc/hostname)
+
 # read newhost
 # Set new hostname $newhost
 newhost=$(cat "${HOME}/ctrl/newhost" | head -n1)
