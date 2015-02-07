@@ -22,23 +22,14 @@ OFFLINE_SYS="${T_STO}/.offline"
 
 cd $HOME
 
-# Set new hostname $newhost
-# echo "Enter new hostname: "
 # read newhost
-if [ -f "$HOME/aeblsys" ]; then
-    newhost="aeblsys"
-fi
-
-if [ -f "$HOME/idetsys" ]; then
-    newhost="idetsys"
-fi
-
-if [ -f "$HOME/irotsys" ]; then
-    newhost="irotsys"
-fi
+# Set new hostname $newhost
+newhost=$(cat "${HOME}/ctrl/newhost" | head -n1)
 
 #change hostname in /etc/hosts & /etc/hostname
 sudo sed -i "s/${hostn}/${newhost}/g" /etc/hosts
 sudo sed -i "s/${hostn}/${newhost}/g" /etc/hostname
 
-exit
+rm "${HOME}/ctrl/newhost"
+
+exit 0
