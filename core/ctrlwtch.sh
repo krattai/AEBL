@@ -46,7 +46,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     # Process request to display the contents of the pl folder
     if [ -f "${HOME}/ctrl/showpl" ]; then
         rm "${HOME}/ctrl/showpl"
-        ls -al > "${HOME}/ctrl/playlist.txt"
+        cat "${T_STO}/.newpl"
     fi
 
     # Set stand alone AEBL playlist, currently only for mp4 content
