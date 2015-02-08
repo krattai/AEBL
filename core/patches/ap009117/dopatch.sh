@@ -138,6 +138,14 @@ fi
 # chmod 777 $HOME/.scripts/ctrlwtch.sh
 # cp $HOME/.scripts/ctrlwtch.sh $HOME/.backup/scripts
 # cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
+mv ctrlwtch.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/ctrlwtch.sh
+cp $HOME/.scripts/ctrlwtch.sh $HOME/.backup/scripts
+cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
+mv chhostname.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/chhostname.sh
+cp $HOME/.scripts/chhostname.sh $HOME/.backup/scripts
+cp $HOME/.scripts/chhostname.sh /run/shm/scripts
 
 sleep 5
 
