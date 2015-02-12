@@ -85,48 +85,48 @@ fi
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 # Add dnsutils to raspbian for future consideration
-if [ ! -f "${AEBL_VM}" ]; then
-    sudo apt-get update && sudo apt-get -y dist-upgrade
-    sudo apt-get -y install dnsutils lsb-release
-fi
+# if [ ! -f "${AEBL_VM}" ]; then
+#     sudo apt-get update && sudo apt-get -y dist-upgrade
+#     sudo apt-get -y install dnsutils lsb-release
+# fi
 
 # Change default html path from /var/www/html to /var/www for AEBL VM (Ubuntu)
 #  includes changing apache default www root
-if [ -f "${AEBL_VM}" ]; then
+# if [ -f "${AEBL_VM}" ]; then
 
     # move html
-    sudo mv /var/www/html/about.html /var/www/
-    sudo mv /var/www/html/blades.html /var/www/
-    sudo mv /var/www/html/config.html /var/www/
-    sudo mv /var/www/html/index.html /var/www/
-    sudo mv /var/www/html/system.html /var/www/
+#     sudo mv /var/www/html/about.html /var/www/
+#     sudo mv /var/www/html/blades.html /var/www/
+#     sudo mv /var/www/html/config.html /var/www/
+#     sudo mv /var/www/html/index.html /var/www/
+#     sudo mv /var/www/html/system.html /var/www/
     
     # move images
-    sudo mkdir /var/www/images
-    sudo mv /var/www/html/images/AEBL_thumb_00.png /var/www/images/
-    sudo mv /var/www/html/images/valid-xhtml10.png /var/www/images/
-    sudo rmdir /var/www/html/images
-    sudo rmdir /var/www/html
+#     sudo mkdir /var/www/images
+#     sudo mv /var/www/html/images/AEBL_thumb_00.png /var/www/images/
+#     sudo mv /var/www/html/images/valid-xhtml10.png /var/www/images/
+#     sudo rmdir /var/www/html/images
+#     sudo rmdir /var/www/html
 
     # Copy new apache2 default config file
     # 600 : Only owner can read/write
     # 644 : Only owner can write, others can read
     # 666 : All uses can read/write.
-    sudo mv default /etc/apache2/sites-available/
-    sudo chown root:root /etc/apache2/sites-available/default
-    sudo chmod 0644 /etc/apache2/sites-available/default
+#    sudo mv default /etc/apache2/sites-available/
+#    sudo chown root:root /etc/apache2/sites-available/default
+#    sudo chmod 0644 /etc/apache2/sites-available/default
 
     # Enable and disable sites
     # This may not be enough to change default, may need to dig deeper
     # nope, looks like /etc/apache2/apache2.conf has /var/www as granted
-    sudo a2dissite 000-default.conf
-    sudo mv /etc/apache2/sites-available/default /etc/apache2/sites-available/default.conf
-    sudo a2ensite default
+#    sudo a2dissite 000-default.conf
+#    sudo mv /etc/apache2/sites-available/default /etc/apache2/sites-available/default.conf
+#    sudo a2ensite default
     
     # Of course, apache2 needs to restart
-    sudo service apache2 restart
+#    sudo service apache2 restart
     
-fi
+# fi
 
 # reference for proper setting of cgi for http interface
 # sudo mv reboot_cgi.sh /usr/lib/cgi-bin/
