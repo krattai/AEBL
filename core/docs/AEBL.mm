@@ -55,12 +55,6 @@
 <node TEXT="Prototype Development" ID="Freemind_Link_1948237358" CREATED="1269462283400" MODIFIED="1269462296310">
 <node TEXT="specific to any new functions not already part of the core" ID="ID_1064129376" CREATED="1416163700225" MODIFIED="1416163749904"/>
 <node TEXT="includes major updates to core" ID="ID_511280160" CREATED="1420402268957" MODIFIED="1420402301467"/>
-<node TEXT="unattended package installs" ID="ID_1533529031" CREATED="1420499060134" MODIFIED="1420499082714" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
-<node TEXT="debconf-utils" ID="ID_771343685" CREATED="1420534833016" MODIFIED="1420534900607" LINK="http://serverfault.com/questions/407317/passing-default-answers-to-apt-get-package-install-questions"/>
-<node TEXT="sudo apt-get install debconf-utils" ID="ID_895669163" CREATED="1420534866242" MODIFIED="1420534916478" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
-<node TEXT="debconf-get-selections | grep mysql-server" ID="ID_1833706009" CREATED="1420747586601" MODIFIED="1420747604890"/>
-</node>
-</node>
 <node TEXT="in progress" ID="ID_697315095" CREATED="1421095595273" MODIFIED="1421095716281">
 <node TEXT="base interface" ID="ID_404279739" CREATED="1421096723385" MODIFIED="1421096730775">
 <node TEXT="configuration manager tool" ID="ID_1709308848" CREATED="1417779944197" MODIFIED="1417780010739">
@@ -155,6 +149,12 @@
 <node TEXT="VM" ID="ID_1251114123" CREATED="1423772160739" MODIFIED="1423772162736">
 <node TEXT="should not load files" ID="ID_1420645263" CREATED="1423325585977" MODIFIED="1423772203362"/>
 <node TEXT="avahi not showing RDM" ID="ID_1877084945" CREATED="1423602154951" MODIFIED="1423772238094"/>
+</node>
+</node>
+<node TEXT="unattended package installs" ID="ID_1533529031" CREATED="1420499060134" MODIFIED="1420499082714" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
+<node TEXT="debconf-utils" ID="ID_771343685" CREATED="1420534833016" MODIFIED="1420534900607" LINK="http://serverfault.com/questions/407317/passing-default-answers-to-apt-get-package-install-questions"/>
+<node TEXT="sudo apt-get install debconf-utils" ID="ID_895669163" CREATED="1420534866242" MODIFIED="1420534916478" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
+<node TEXT="debconf-get-selections | grep mysql-server" ID="ID_1833706009" CREATED="1420747586601" MODIFIED="1420747604890"/>
 </node>
 </node>
 </node>
