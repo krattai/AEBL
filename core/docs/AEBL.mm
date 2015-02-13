@@ -113,6 +113,12 @@
 <node TEXT="change tld" ID="ID_718390428" CREATED="1423032892643" MODIFIED="1423032900337"/>
 <node TEXT="change hostname" ID="ID_994158351" CREATED="1423032931253" MODIFIED="1423032934109"/>
 </node>
+<node TEXT="unattended package installs" ID="ID_1533529031" CREATED="1420499060134" MODIFIED="1420499082714" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
+<node TEXT="debconf-utils" ID="ID_771343685" CREATED="1420534833016" MODIFIED="1420534900607" LINK="http://serverfault.com/questions/407317/passing-default-answers-to-apt-get-package-install-questions"/>
+<node TEXT="sudo apt-get install debconf-utils" ID="ID_895669163" CREATED="1420534866242" MODIFIED="1420534916478" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
+<node TEXT="debconf-get-selections | grep mysql-server" ID="ID_1833706009" CREATED="1420747586601" MODIFIED="1420747604890"/>
+</node>
+</node>
 <node TEXT="patch system upgrade" ID="ID_333515691" CREATED="1420401954862" MODIFIED="1420401963996">
 <node TEXT="honour old patch system and files" ID="ID_911120548" CREATED="1420402080741" MODIFIED="1420402103764"/>
 <node TEXT="all systems updated to current" ID="ID_1247722413" CREATED="1421260647195" MODIFIED="1421260673955"/>
@@ -121,6 +127,7 @@
 <node TEXT="BETA merges to PROD patch" ID="ID_596586987" CREATED="1421261742830" MODIFIED="1421261761856"/>
 <node TEXT="Update server info" ID="ID_420411364" CREATED="1421606344295" MODIFIED="1421606354866"/>
 <node TEXT="spacewalk" ID="ID_810412958" CREATED="1422384022974" MODIFIED="1422384034603" LINK="http://spacewalk.redhat.com/"/>
+<node TEXT="add rollback function" ID="ID_120366220" CREATED="1423867238356" MODIFIED="1423867245932"/>
 </node>
 <node TEXT="ping response system" ID="ID_1893261640" CREATED="1421441320614" MODIFIED="1421441325464">
 <node TEXT="find way to ping unit for response" ID="ID_867125533" CREATED="1421214809265" MODIFIED="1421214820399"/>
@@ -149,12 +156,6 @@
 <node TEXT="VM" ID="ID_1251114123" CREATED="1423772160739" MODIFIED="1423772162736">
 <node TEXT="should not load files" ID="ID_1420645263" CREATED="1423325585977" MODIFIED="1423772203362"/>
 <node TEXT="avahi not showing RDM" ID="ID_1877084945" CREATED="1423602154951" MODIFIED="1423772238094"/>
-</node>
-</node>
-<node TEXT="unattended package installs" ID="ID_1533529031" CREATED="1420499060134" MODIFIED="1420499082714" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
-<node TEXT="debconf-utils" ID="ID_771343685" CREATED="1420534833016" MODIFIED="1420534900607" LINK="http://serverfault.com/questions/407317/passing-default-answers-to-apt-get-package-install-questions"/>
-<node TEXT="sudo apt-get install debconf-utils" ID="ID_895669163" CREATED="1420534866242" MODIFIED="1420534916478" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
-<node TEXT="debconf-get-selections | grep mysql-server" ID="ID_1833706009" CREATED="1420747586601" MODIFIED="1420747604890"/>
 </node>
 </node>
 </node>
