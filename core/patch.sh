@@ -81,16 +81,17 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
             x=0
         else
             # Get dropbox companion link
+            #   this should now be changed to version type
             dbox=$(cat "${GRAB_FILE}" | head -n1)
             # And strip it off the playlist file
             cat "${GRAB_FILE}" | tail -n+2 > "${GRAB_FILE}.new"
             mv "${GRAB_FILE}.new" "${GRAB_FILE}"
             if [ ! -f "$HOME/.${cont}" ]; then
-                if [ -f "${LOCAL_SYS}" ]; then
-                    wget -N -nd -w 3 -P ${TEMP_DIR}/patch/${cont} --limit-rate=50k "http://192.168.200.6/files/${cont}.zip"
-                else
-                    wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k "https://github.com/krattai/AEBL/raw/master/core/patches/${cont}.zip"
-                fi
+#                 if [ -f "${LOCAL_SYS}" ]; then
+#                     wget -N -nd -w 3 -P ${TEMP_DIR}/patch/${cont} --limit-rate=50k "http://192.168.200.6/files/${cont}.zip"
+#                 else
+                    wget -N -nd -w 3 -P ${TEMP_DIR}/patch/${cont} --limit-rate=50k "https://github.com/krattai/AEBL/raw/master/core/patches/${cont}.zip"
+#                 fi
                 cd ${TEMP_DIR}/patch/${cont}
                 unzip ${cont}.zip
                 rm ${cont}.zip
