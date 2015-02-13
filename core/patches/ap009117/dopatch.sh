@@ -146,6 +146,10 @@ mv chhostname.sh $HOME/.scripts
 chmod 777 $HOME/.scripts/chhostname.sh
 cp $HOME/.scripts/chhostname.sh $HOME/.backup/scripts
 cp $HOME/.scripts/chhostname.sh /run/shm/scripts
+mv patch.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/patch.sh
+cp $HOME/.scripts/patch.sh $HOME/.backup/scripts
+cp $HOME/.scripts/patch.sh /run/shm/scripts
 
 sleep 5
 
