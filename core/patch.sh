@@ -45,6 +45,7 @@ cd $HOME
 # Should check for current version and use that as reference to patches.
 # Check patch version type now, rather than dropbox location
 
+# use v####p file, second element (previously dropbox field, as version type)
 # new logic
 # if patch production
 #     all do patch
