@@ -46,6 +46,7 @@ cd $HOME
 # Check patch version type now, rather than dropbox location
 
 # use v####p file, second element (previously dropbox field, as version type)
+
 # new logic
 # if patch production
 #     all do patch
@@ -58,7 +59,7 @@ cd $HOME
 # fi
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
-# test no more local_sys patching
+# test with no more local_sys patching
 #     if [ -f "${LOCAL_SYS}" ]; then
 #         wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k http://192.168.200.6/files/v0091p
 #     else
@@ -80,9 +81,8 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
             # added by Kevin: exit clean if empty
             x=0
         else
-            # Get dropbox companion link
-            #   this should now be changed to version type
-            dbox=$(cat "${GRAB_FILE}" | head -n1)
+            # Get version type
+            vtype=$(cat "${GRAB_FILE}" | head -n1)
             # And strip it off the playlist file
             cat "${GRAB_FILE}" | tail -n+2 > "${GRAB_FILE}.new"
             mv "${GRAB_FILE}.new" "${GRAB_FILE}"
