@@ -50,7 +50,14 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         rm "${HOME}/ctrl/rollback"
     fi
 
-    # change hostname
+     # force system rebuild, bringing system to current
+    if [ -f "${HOME}/ctrl/rebuild" ]; then
+        /run/shm/scripts/rebuild.sh &
+        sudo chown pi:pi "${HOME}/ctrl/rebuild"
+        rm "${HOME}/ctrl/rebuild"
+    fi
+
+   # change hostname
     if [ -f "${HOME}/ctrl/hostname" ]; then
         mv "${HOME}/ctrl/hostname" "${HOME}/ctrl/newhost"
         /run/shm/scripts/chhostname.sh &
