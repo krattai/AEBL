@@ -43,6 +43,13 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         rm "${HOME}/ctrl/patch"
     fi
 
+    # force patch rollback
+    if [ -f "${HOME}/ctrl/rollback" ]; then
+        /run/shm/scripts/rollback.sh &
+        sudo chown pi:pi "${HOME}/ctrl/rollback"
+        rm "${HOME}/ctrl/rollback"
+    fi
+
     # change hostname
     if [ -f "${HOME}/ctrl/hostname" ]; then
         mv "${HOME}/ctrl/hostname" "${HOME}/ctrl/newhost"
