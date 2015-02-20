@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+[ -n "$1" ] && CHANNEL=$1
+
+send "PART $CHANNEL"
