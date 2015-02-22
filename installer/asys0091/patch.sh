@@ -59,7 +59,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
                 if [ -f "${LOCAL_SYS}" ]; then
                     wget -N -nd -w 3 -P ${TEMP_DIR}/patch/${cont} --limit-rate=50k "http://192.168.200.6/files/${cont}.zip"
                 else
-                    wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k "https://www.dropbox.com/s/${dbox}/${cont}.zip"
+                    wget -N -nd -w 3 -P ${TEMP_DIR}/patch/${cont} --limit-rate=50k "https://www.dropbox.com/s/${dbox}/${cont}.zip"
                 fi
                 cd ${TEMP_DIR}/patch/${cont}
                 unzip ${cont}.zip
