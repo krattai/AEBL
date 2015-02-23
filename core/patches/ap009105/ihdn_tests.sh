@@ -630,6 +630,48 @@ if [ -f "${HOME}/.newchan107" ]; then
     rm $T_STO.newpl
 fi
 
+if [ "${MACe0}" == 'b8:27:eb:7b:bc:95' ] && [ ! -f "${HOME}/.ihdnfol108" ]; then
+    if [ ! -f "${OFFLINE_SYS}" ]; then
+#        echo "MAC is ending :13 so touching .ihdnfol108." >> log.txt
+        touch .ihdnfol108
+        rm .id
+
+        %T_SCR/./mkuniq.sh &
+
+        # Tweet -> SMS announce
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNdet ${MACe0} now re-registered for channel 108." &
+
+    fi
+
+fi
+
+if [ -f "${HOME}/.ihdnfol108" ] && [ ! -f "${OFFLINE_SYS}" ]; then
+#    echo "Channel 108 on this system." >> log.txt
+
+    wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/kqecpctpzfxbc89/grbchan108.sh"
+
+    chmod 777 $HOME/scripts/grbchan108.sh
+
+    cp $HOME/scripts/grbchan108.sh $T_SCR
+
+    if [ ! -f "${HOME}/.getchan108" ]; then
+#        echo "Grabbing new Channel 108 files." >> log.txt
+        $T_SCR/./grbchan108.sh &
+    fi
+fi
+
+if [ -f "${HOME}/.newchan108" ]; then
+#    echo "New Channel 108 to play on this system." >> log.txt
+#     mkdir chan27tmp
+#     mv pl/*.mp4 chan27tmp
+#     mv mp4/*.mp4 pl
+#     mv chan27tmp/*.mp4 mp4
+
+#     rmdir chan27tmp
+    rm .newchan108
+    rm $T_STO.newpl
+fi
+
 # log current IPs
 # echo "Current IPs as follows:" >> log.txt
 # echo "WAN IP: $IPw0" >> log.txt
