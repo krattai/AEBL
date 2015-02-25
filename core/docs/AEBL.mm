@@ -110,13 +110,6 @@
 <node TEXT="REST ful" ID="ID_1740524678" CREATED="1420997822586" MODIFIED="1420997830014">
 <node TEXT="resty" ID="ID_1034638347" CREATED="1422951150413" MODIFIED="1422951197021" LINK="https://github.com/micha/resty"/>
 </node>
-<node TEXT="avahi" ID="ID_1941305561" CREATED="1421001749863" MODIFIED="1421001775473" LINK="http://www.avahi.org/wiki/Avahi4Developpers">
-<node TEXT="dev docs" ID="ID_1365470076" CREATED="1421001824743" MODIFIED="1421001836087" LINK="http://www.avahi.org/wiki/ProgrammingDocs"/>
-<node TEXT="API" ID="ID_84484300" CREATED="1421001886467" MODIFIED="1421001895381" LINK="http://avahi.org/download/doxygen/"/>
-<node TEXT="announce as unique type" ID="ID_1172672805" CREATED="1422985667373" MODIFIED="1422985674661"/>
-<node TEXT="change tld" ID="ID_718390428" CREATED="1423032892643" MODIFIED="1423032900337"/>
-<node TEXT="change hostname" ID="ID_994158351" CREATED="1423032931253" MODIFIED="1423032934109"/>
-</node>
 <node TEXT="unattended package installs" ID="ID_1533529031" CREATED="1420499060134" MODIFIED="1420499082714" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
 <node TEXT="debconf-utils" ID="ID_771343685" CREATED="1420534833016" MODIFIED="1420534900607" LINK="http://serverfault.com/questions/407317/passing-default-answers-to-apt-get-package-install-questions"/>
 <node TEXT="sudo apt-get install debconf-utils" ID="ID_895669163" CREATED="1420534866242" MODIFIED="1420534916478" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
@@ -347,6 +340,13 @@
 <node TEXT="prs.sh" ID="ID_1446118109" CREATED="1421441388813" MODIFIED="1421441395748">
 <node TEXT="sysadmin tool" ID="ID_875350077" CREATED="1421476315627" MODIFIED="1421476335992"/>
 </node>
+</node>
+<node TEXT="avahi" ID="ID_1941305561" CREATED="1421001749863" MODIFIED="1421001775473" LINK="http://www.avahi.org/wiki/Avahi4Developpers">
+<node TEXT="dev docs" ID="ID_1365470076" CREATED="1421001824743" MODIFIED="1421001836087" LINK="http://www.avahi.org/wiki/ProgrammingDocs"/>
+<node TEXT="API" ID="ID_84484300" CREATED="1421001886467" MODIFIED="1421001895381" LINK="http://avahi.org/download/doxygen/"/>
+<node TEXT="announce as unique type" ID="ID_1172672805" CREATED="1422985667373" MODIFIED="1422985674661"/>
+<node TEXT="change tld" ID="ID_718390428" CREATED="1423032892643" MODIFIED="1423032900337"/>
+<node TEXT="change hostname" ID="ID_994158351" CREATED="1423032931253" MODIFIED="1423032934109"/>
 </node>
 </node>
 </node>
