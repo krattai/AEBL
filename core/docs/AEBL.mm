@@ -107,12 +107,6 @@
 <node TEXT="set file location" ID="ID_752761117" CREATED="1423325331365" MODIFIED="1423325339640"/>
 <node TEXT="set auto/noauto" ID="ID_727090769" CREATED="1423325486795" MODIFIED="1423325494075"/>
 </node>
-<node TEXT="unattended package installs" ID="ID_1533529031" CREATED="1420499060134" MODIFIED="1420499082714" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
-<node TEXT="debconf-utils" ID="ID_771343685" CREATED="1420534833016" MODIFIED="1420534900607" LINK="http://serverfault.com/questions/407317/passing-default-answers-to-apt-get-package-install-questions"/>
-<node TEXT="sudo apt-get install debconf-utils" ID="ID_895669163" CREATED="1420534866242" MODIFIED="1420534916478" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
-<node TEXT="debconf-get-selections | grep mysql-server" ID="ID_1833706009" CREATED="1420747586601" MODIFIED="1420747604890"/>
-</node>
-</node>
 <node TEXT="patch system upgrade" ID="ID_333515691" CREATED="1420401954862" MODIFIED="1420401963996">
 <node TEXT="honour old patch system and files" ID="ID_911120548" CREATED="1420402080741" MODIFIED="1420402103764"/>
 <node TEXT="all systems updated to current" ID="ID_1247722413" CREATED="1421260647195" MODIFIED="1421260673955"/>
@@ -347,6 +341,12 @@
 </node>
 <node TEXT="REST ful" ID="ID_1740524678" CREATED="1420997822586" MODIFIED="1420997830014">
 <node TEXT="resty" ID="ID_1034638347" CREATED="1422951150413" MODIFIED="1422951197021" LINK="https://github.com/micha/resty"/>
+</node>
+<node TEXT="unattended package installs" ID="ID_1533529031" CREATED="1420499060134" MODIFIED="1420499082714" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
+<node TEXT="debconf-utils" ID="ID_771343685" CREATED="1420534833016" MODIFIED="1420534900607" LINK="http://serverfault.com/questions/407317/passing-default-answers-to-apt-get-package-install-questions"/>
+<node TEXT="sudo apt-get install debconf-utils" ID="ID_895669163" CREATED="1420534866242" MODIFIED="1420534916478" LINK="http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html">
+<node TEXT="debconf-get-selections | grep mysql-server" ID="ID_1833706009" CREATED="1420747586601" MODIFIED="1420747604890"/>
+</node>
 </node>
 </node>
 </node>
