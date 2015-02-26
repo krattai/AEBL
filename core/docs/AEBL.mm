@@ -264,6 +264,7 @@
 <node TEXT="ftp blade" ID="ID_1412037632" CREATED="1423012504781" MODIFIED="1423012508423"/>
 <node TEXT="SMB LAMP server" ID="ID_418380009" CREATED="1424380506008" MODIFIED="1424380584924" VSHIFT="20">
 <node TEXT="perfect server example" ID="ID_1876473172" CREATED="1424915615299" MODIFIED="1424915643234" LINK="https://www.howtoforge.com/perfect-server-ubuntu-14.04-apache2-php-mysql-pureftpd-bind-dovecot-ispconfig-3"/>
+<node TEXT="hosting panels" ID="ID_1077533690" CREATED="1424918506197" MODIFIED="1424918520636" LINK="http://www.hostingadvice.com/blog/cpanel-vs-plesk-vs-webpanel/"/>
 </node>
 <node TEXT="irc blade" ID="ID_1994242301" CREATED="1424194853170" MODIFIED="1424194860954">
 <node TEXT="freenode" ID="ID_1317799183" CREATED="1424194937185" MODIFIED="1424194941551"/>
