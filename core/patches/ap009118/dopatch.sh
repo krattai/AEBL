@@ -133,6 +133,16 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 # sudo chown root:root /usr/lib/cgi-bin/sysview_cgi.sh
 # sudo chmod 0755 /usr/lib/cgi-bin/patch_cgi.sh
 
+# previous update changed firmware improperly on detectors.  Need to force revert.
+
+if [ -f "/home/pi/.ihdndet" ]; then
+    sudo rm /boot/.firmware_revision
+    sudo rpi-update d9eb023ba98317d81fc53a3f9d6752b127a8dbbf
+
+    # wait 10 minutes, then reboot
+    sudo shutdown -r +10 &
+fi
+
 # Add or update general scripts
 # mv ctrlwtch.sh $HOME/.scripts
 # chmod 777 $HOME/.scripts/ctrlwtch.sh
