@@ -125,7 +125,7 @@
 <node TEXT="install Lua 5.2" ID="ID_708110717" CREATED="1425946877096" MODIFIED="1425946889603">
 <node TEXT="sudo apt-get install lua5.2" ID="ID_304528019" CREATED="1425946929416" MODIFIED="1425946932596"/>
 <node TEXT="sudo apt-get install liblua5.2-dev" ID="ID_561832685" CREATED="1425966114570" MODIFIED="1425966118138"/>
-<node TEXT="compile hint" ID="ID_196656313" CREATED="1425969354291" MODIFIED="1425969426665"><richcontent TYPE="NOTE">
+<node TEXT="compile hint" ID="ID_196656313" CREATED="1425969354291" MODIFIED="1425969526200" LINK="http://stackoverflow.com/questions/20079572/srlua-makefile-error-lua-h-no-such-file-or-directory"><richcontent TYPE="NOTE">
 
 <html>
   <head>
