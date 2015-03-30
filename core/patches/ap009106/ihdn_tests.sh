@@ -74,10 +74,12 @@ cd $HOME
 
 touch $T_STO/.syschecks
 
-# if [ ! -f "${OFFLINE_SYS}" ] && [ ! -f "${HOME}/scripts/macip.sh" ]; then
-#     wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/hjmrvwqmzefhnhy/macip.sh"
-#     wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/ryag5pha0qzjndg/mkuniq.sh"
-# fi
+# Allow a detector to be able to switch from det to rot and back
+#  a detector will have a bin directory with det.sh
+#  so a check for det.sh in bin will be certain the device could be both
+#  if file exists then check ctrl folder to see if det or rot exists
+#  and switch accordingly.  Should reboot once changed.
+#  Basically would require changing out bootup.sh to switch.
 
 if [ ! -f "${OFFLINE_SYS}" ] && [ -f "${LOCAL_SYS}" ]; then
     wget -N -nd -w 3 -P $HOME --limit-rate=50k http://192.168.200.6/files/ihdncron.tab
@@ -178,15 +180,6 @@ fi
 
 if [ -f "${HOME}/.newchan0" ]; then
     echo "New Channel 0 to play on this system."
-#    echo "New Channel 0 to play on this system." >> log.txt
-#     mkdir chan0tmp
-#     mv pl/*.mp4 chan0tmp
-#     mv mp4/*.mp4 pl
-#     mv chan0tmp/*.mp4 mp4
-
-#     rmdir chan0tmp
-#     rm .newchan0
-#     rm .newpl
 fi
 
 if [ "${MACe0}" == 'b8:27:eb:e3:0d:f8' ] && [ ! -f "${HOME}/.ihdnfol-2" ]; then
@@ -213,7 +206,7 @@ if [ "${MACe0}" == 'b8:27:eb:a7:23:94' ] && [ ! -f "${HOME}/.ihdnfol26" ]; then
         $T_SCR/./mkuniq.sh &
 
         # Tweet -> SMS announce
-        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNpi ${MACe0} now re-registered for channel 26 at Robert E. Steen Community Centre." &
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNpi ${MACe0} now re-registered for channel 26." &
 
     fi
 
@@ -222,19 +215,9 @@ fi
 # testing what could be wrong with grabchan26.sh 
 if [ -f "${HOME}/.ihdnfol0" ] && [ ! -f "${OFFLINE_SYS}" ]; then
 #     echo "List of Channel 26 files in mp4 folder" >> log.txt
-#     ls -al mp4 >> log.txt
-
-#    echo "Channel 26 on this system." >> log.txt
-
-#     wget -t 1 -N -nd "https://www.dropbox.com/s/h8st6ech35eae2n/grbchan26.sh" -O $HOME/scripts/grbchan26.sh
-
-#     chmod 777 $HOME/scripts/grbchan26.sh
-
-#     cp $HOME/scripts/grbchan26.sh $T_SCR
 
     if [ -f "$HOME/.getchan0" ]; then
         echo "Grabbing new Channel 26 files."
-#        echo "Grabbing new Channel 26 files." >> log.txt
 
 #        $T_SCR/./grbchan26.sh &
 
@@ -243,9 +226,6 @@ fi
 
 if [ -f "${HOME}/.ihdnfol26" ] && [ ! -f "${OFFLINE_SYS}" ]; then
 #     echo "List of Channel 26 files in mp4 folder" >> log.txt
-#     ls -al mp4 >> log.txt
-
-#    echo "Channel 26 on this system." >> log.txt
 
     wget -t 1 -N -nd "https://www.dropbox.com/s/h8st6ech35eae2n/grbchan26.sh" -O $HOME/scripts/grbchan26.sh
 
@@ -261,35 +241,8 @@ if [ -f "${HOME}/.ihdnfol26" ] && [ ! -f "${OFFLINE_SYS}" ]; then
     fi
 fi
 
-# if [ -f "${HOME}/.ihdnfol26" ]; then
-#     if [ ! -f "${HOME}/pl/ArtMomentClean.mp4" ] || [ ! -f "${HOME}/pl/RAStennisMASre.mp4" ]; then
-#         mv pl/*.mp4 mp4
-#         mv mp4/ArtMomentClean.mp4 pl
-#         mv mp4/RAStennisMASre.mp4 pl
-#         rm .newpl
-#     fi
-# fi
-
-# if [ -f "${HOME}/.ihdnfol26" ]; then
-#     mkdir chan26tmp
-#     mv pl/*.mp4 chan26tmp
-#     mv chan26tmp/ArtMomentClean.mp4 pl
-#     mv chan26tmp/RAStennisMASre.mp4 pl
-#     mv chan26tmp/*.mp4 mp4
-# 
-#     rmdir chan26tmp
-#     rm .newpl
-# fi
-
 if [ -f "${HOME}/.newchan26" ]; then
 #    echo "New Channel 26 to play on this system." >> log.txt
-#     mkdir chan26tmp
-#     mv pl/*.mp4 chan26tmp
-#     mv pl/*.mp4 mp4
-#     mv mp4/ArtMomentClean.mp4 pl
-#     mv mp4/RAStennisMASre.mp4.mp4 pl
-
-#    rmdir chan26tmp
     rm .newchan26
     rm $T_STO/.newpl
 fi
@@ -303,7 +256,7 @@ if [ "${MACe0}" == 'b8:27:eb:3e:a8:17' ] && [ ! -f "${HOME}/.ihdnfol27" ]; then
         %T_SCR/./mkuniq.sh &
 
         # Tweet -> SMS announce
-        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNpi ${MACe0} now re-registered for #Hyundai demo on channel 27." &
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNpi ${MACe0} now re-registered for channel 27." &
 
     fi
 
@@ -326,12 +279,6 @@ fi
 
 if [ -f "${HOME}/.newchan27" ]; then
 #    echo "New Channel 27 to play on this system." >> log.txt
-#     mkdir chan27tmp
-#     mv pl/*.mp4 chan27tmp
-#     mv mp4/*.mp4 pl
-#     mv chan27tmp/*.mp4 mp4
-
-#     rmdir chan27tmp
     rm .newchan27
     rm $T_STO.newpl
 fi
@@ -368,12 +315,6 @@ fi
 
 if [ -f "${HOME}/.newchan100" ]; then
 #    echo "New Channel 100 to play on this system." >> log.txt
-#     mkdir chan27tmp
-#     mv pl/*.mp4 chan27tmp
-#     mv mp4/*.mp4 pl
-#     mv chan27tmp/*.mp4 mp4
-
-#     rmdir chan27tmp
     rm .newchan100
     rm $T_STO.newpl
 fi
@@ -410,12 +351,6 @@ fi
 
 if [ -f "${HOME}/.newchan101" ]; then
 #    echo "New Channel 101 to play on this system." >> log.txt
-#     mkdir chan27tmp
-#     mv pl/*.mp4 chan27tmp
-#     mv mp4/*.mp4 pl
-#     mv chan27tmp/*.mp4 mp4
-
-#     rmdir chan27tmp
     rm .newchan101
     rm $T_STO.newpl
 fi
@@ -452,12 +387,6 @@ fi
 
 if [ -f "${HOME}/.newchan102" ]; then
 #    echo "New Channel 102 to play on this system." >> log.txt
-#     mkdir chan27tmp
-#     mv pl/*.mp4 chan27tmp
-#     mv mp4/*.mp4 pl
-#     mv chan27tmp/*.mp4 mp4
-
-#     rmdir chan27tmp
     rm .newchan102
     rm $T_STO.newpl
 fi
@@ -494,12 +423,6 @@ fi
 
 if [ -f "${HOME}/.newchan103" ]; then
 #    echo "New Channel 103 to play on this system." >> log.txt
-#     mkdir chan27tmp
-#     mv pl/*.mp4 chan27tmp
-#     mv mp4/*.mp4 pl
-#     mv chan27tmp/*.mp4 mp4
-
-#     rmdir chan27tmp
     rm .newchan103
     rm $T_STO.newpl
 fi
@@ -536,12 +459,6 @@ fi
 
 if [ -f "${HOME}/.newchan105" ]; then
 #    echo "New Channel 105 to play on this system." >> log.txt
-#     mkdir chan27tmp
-#     mv pl/*.mp4 chan27tmp
-#     mv mp4/*.mp4 pl
-#     mv chan27tmp/*.mp4 mp4
-
-#     rmdir chan27tmp
     rm .newchan105
     rm $T_STO.newpl
 fi
@@ -578,12 +495,6 @@ fi
 
 if [ -f "${HOME}/.newchan106" ]; then
 #    echo "New Channel 106 to play on this system." >> log.txt
-#     mkdir chan27tmp
-#     mv pl/*.mp4 chan27tmp
-#     mv mp4/*.mp4 pl
-#     mv chan27tmp/*.mp4 mp4
-
-#     rmdir chan27tmp
     rm .newchan106
     rm $T_STO.newpl
 fi
@@ -620,19 +531,13 @@ fi
 
 if [ -f "${HOME}/.newchan107" ]; then
 #    echo "New Channel 107 to play on this system." >> log.txt
-#     mkdir chan27tmp
-#     mv pl/*.mp4 chan27tmp
-#     mv mp4/*.mp4 pl
-#     mv chan27tmp/*.mp4 mp4
-
-#     rmdir chan27tmp
     rm .newchan107
     rm $T_STO.newpl
 fi
 
 if [ "${MACe0}" == 'b8:27:eb:7b:bc:95' ] && [ ! -f "${HOME}/.ihdnfol108" ]; then
     if [ ! -f "${OFFLINE_SYS}" ]; then
-#        echo "MAC is ending :95 so touching .ihdnfol108." >> log.txt
+#        echo "MAC is ending :13 so touching .ihdnfol108." >> log.txt
         touch .ihdnfol108
         rm .id
 
@@ -714,28 +619,347 @@ if [ -f "${HOME}/.newchan109" ]; then
     rm $T_STO.newpl
 fi
 
-# log current IPs
-# echo "Current IPs as follows:" >> log.txt
-# echo "WAN IP: $IPw0" >> log.txt
-# echo "LAN IP: $IPe0" >> log.txt
+if [ "${MACe0}" == 'b8:27:eb:34:06:37' ] && [ ! -f "${HOME}/.ihdnfol110" ]; then
+    if [ ! -f "${OFFLINE_SYS}" ]; then
+#        echo "MAC is ending :37 so touching .ihdnfol110." >> log.txt
+        touch .ihdnfol110
+        rm .id
 
-# echo $(date +"%y-%m-%d")
-# echo $(date +"%T")
+        %T_SCR/./mkuniq.sh &
 
-# echo $(date +"%y-%m-%d")$(date +"%T")$MACe0$IPw0
-# echo $(date +"%y-%m-%d") >> log.txt
-# echo $(date +"%T") >> log.txt
+        # Tweet -> SMS announce
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNdet ${MACe0} now re-registered for channel 110." &
 
-# temp check
-# log host $HOME dirctory
+    fi
 
-# echo "Current home directory" >> log.txt
-# echo $(date +"%T") >> log.txt
-# ls -al >> log.txt
+fi
 
-# echo "Current pl directory" >> log.txt
-# echo $(date +"%T") >> log.txt
-# ls -al pl >> log.txt
+if [ -f "${HOME}/.ihdnfol110" ] && [ ! -f "${OFFLINE_SYS}" ]; then
+#    echo "Channel 110 on this system." >> log.txt
+
+    wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/kqecpctpzfxbc89/grbchan110.sh"
+
+    chmod 777 $HOME/scripts/grbchan110.sh
+
+    cp $HOME/scripts/grbchan110.sh $T_SCR
+
+    if [ ! -f "${HOME}/.getchan110" ]; then
+#        echo "Grabbing new Channel 110 files." >> log.txt
+        $T_SCR/./grbchan110.sh &
+    fi
+fi
+
+if [ -f "${HOME}/.newchan110" ]; then
+#    echo "New Channel 110 to play on this system." >> log.txt
+#     mkdir chan27tmp
+#     mv pl/*.mp4 chan27tmp
+#     mv mp4/*.mp4 pl
+#     mv chan27tmp/*.mp4 mp4
+
+#     rmdir chan27tmp
+    rm .newchan110
+    rm $T_STO.newpl
+fi
+
+if [ "${MACe0}" == 'b8:27:eb:9a:d8:28' ] && [ ! -f "${HOME}/.ihdnfol111" ]; then
+    if [ ! -f "${OFFLINE_SYS}" ]; then
+#        echo "MAC is ending :283 so touching .ihdnfol111." >> log.txt
+        touch .ihdnfol111
+        rm .id
+
+        %T_SCR/./mkuniq.sh &
+
+        # Tweet -> SMS announce
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNdet ${MACe0} now re-registered for channel 111." &
+
+    fi
+
+fi
+
+if [ -f "${HOME}/.ihdnfol111" ] && [ ! -f "${OFFLINE_SYS}" ]; then
+#    echo "Channel 111 on this system." >> log.txt
+
+    wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/kqecpctpzfxbc89/grbchan111.sh"
+
+    chmod 777 $HOME/scripts/grbchan111.sh
+
+    cp $HOME/scripts/grbchan111.sh $T_SCR
+
+    if [ ! -f "${HOME}/.getchan111" ]; then
+#        echo "Grabbing new Channel 111 files." >> log.txt
+        $T_SCR/./grbchan111.sh &
+    fi
+fi
+
+if [ -f "${HOME}/.newchan111" ]; then
+#    echo "New Channel 111 to play on this system." >> log.txt
+#     mkdir chan27tmp
+#     mv pl/*.mp4 chan27tmp
+#     mv mp4/*.mp4 pl
+#     mv chan27tmp/*.mp4 mp4
+
+#     rmdir chan27tmp
+    rm .newchan111
+    rm $T_STO.newpl
+fi
+
+# chan 112 - 
+if [ "${MACe0}" == 'b8:27:eb:a6:26:b7' ] && [ ! -f "${HOME}/.ihdnfol112" ]; then
+    if [ ! -f "${OFFLINE_SYS}" ]; then
+#        echo "MAC is ending :b7 so touching .ihdnfol112." >> log.txt
+        touch .ihdnfol112
+        rm .id
+
+        %T_SCR/./mkuniq.sh &
+
+        # Tweet -> SMS announce
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNdet ${MACe0} now re-registered for channel 112." &
+
+    fi
+
+fi
+
+if [ -f "${HOME}/.ihdnfol112" ] && [ ! -f "${OFFLINE_SYS}" ]; then
+#    echo "Channel 112 on this system." >> log.txt
+
+    wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/kqecpctpzfxbc89/grbchan112.sh"
+
+    chmod 777 $HOME/scripts/grbchan112.sh
+
+    cp $HOME/scripts/grbchan112.sh $T_SCR
+
+    if [ ! -f "${HOME}/.getchan112" ]; then
+#        echo "Grabbing new Channel 112 files." >> log.txt
+        $T_SCR/./grbchan112.sh &
+    fi
+fi
+
+if [ -f "${HOME}/.newchan112" ]; then
+#    echo "New Channel 112 to play on this system." >> log.txt
+#     mkdir chan27tmp
+#     mv pl/*.mp4 chan27tmp
+#     mv mp4/*.mp4 pl
+#     mv chan27tmp/*.mp4 mp4
+
+#     rmdir chan27tmp
+    rm .newchan112
+    rm $T_STO.newpl
+fi
+
+# chan 113 - 
+if [ "${MACe0}" == 'b8:27:eb:6a:a2:37' ] && [ ! -f "${HOME}/.ihdnfol113" ]; then
+    if [ ! -f "${OFFLINE_SYS}" ]; then
+#        echo "MAC is ending :37 so touching .ihdnfol113." >> log.txt
+        touch .ihdnfol113
+        rm .id
+
+        %T_SCR/./mkuniq.sh &
+
+        # Tweet -> SMS announce
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNdet ${MACe0} now re-registered for channel 113." &
+
+    fi
+
+fi
+
+if [ -f "${HOME}/.ihdnfol113" ] && [ ! -f "${OFFLINE_SYS}" ]; then
+#    echo "Channel 113 on this system." >> log.txt
+
+    wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/kqecpctpzfxbc89/grbchan113.sh"
+
+    chmod 777 $HOME/scripts/grbchan113.sh
+
+    cp $HOME/scripts/grbchan113.sh $T_SCR
+
+    if [ ! -f "${HOME}/.getchan113" ]; then
+#        echo "Grabbing new Channel 113 files." >> log.txt
+        $T_SCR/./grbchan113.sh &
+    fi
+fi
+
+if [ -f "${HOME}/.newchan113" ]; then
+#    echo "New Channel 113 to play on this system." >> log.txt
+#     mkdir chan27tmp
+#     mv pl/*.mp4 chan27tmp
+#     mv mp4/*.mp4 pl
+#     mv chan27tmp/*.mp4 mp4
+
+#     rmdir chan27tmp
+    rm .newchan113
+    rm $T_STO.newpl
+fi
+
+# chan 114 - 
+if [ "${MACe0}" == 'b8:27:eb:4a:06:cd' ] && [ ! -f "${HOME}/.ihdnfol114" ]; then
+    if [ ! -f "${OFFLINE_SYS}" ]; then
+#        echo "MAC is ending :cd so touching .ihdnfol114." >> log.txt
+        touch .ihdnfol114
+        rm .id
+
+        %T_SCR/./mkuniq.sh &
+
+        # Tweet -> SMS announce
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNdet ${MACe0} now re-registered for channel 114." &
+
+    fi
+
+fi
+
+if [ -f "${HOME}/.ihdnfol114" ] && [ ! -f "${OFFLINE_SYS}" ]; then
+#    echo "Channel 114 on this system." >> log.txt
+
+    wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/kqecpctpzfxbc89/grbchan114.sh"
+
+    chmod 777 $HOME/scripts/grbchan114.sh
+
+    cp $HOME/scripts/grbchan114.sh $T_SCR
+
+    if [ ! -f "${HOME}/.getchan114" ]; then
+#        echo "Grabbing new Channel 114 files." >> log.txt
+        $T_SCR/./grbchan114.sh &
+    fi
+fi
+
+if [ -f "${HOME}/.newchan114" ]; then
+#    echo "New Channel 114 to play on this system." >> log.txt
+#     mkdir chan27tmp
+#     mv pl/*.mp4 chan27tmp
+#     mv mp4/*.mp4 pl
+#     mv chan27tmp/*.mp4 mp4
+
+#     rmdir chan27tmp
+    rm .newchan114
+    rm $T_STO.newpl
+fi
+
+# chan 115 - 
+if [ "${MACe0}" == 'b8:27:eb:5e:43:5c' ] && [ ! -f "${HOME}/.ihdnfol115" ]; then
+    if [ ! -f "${OFFLINE_SYS}" ]; then
+#        echo "MAC is ending :5c so touching .ihdnfol115." >> log.txt
+        touch .ihdnfol115
+        rm .id
+
+        %T_SCR/./mkuniq.sh &
+
+        # Tweet -> SMS announce
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNdet ${MACe0} now re-registered for channel 115." &
+
+    fi
+
+fi
+
+if [ -f "${HOME}/.ihdnfol115" ] && [ ! -f "${OFFLINE_SYS}" ]; then
+#    echo "Channel 115 on this system." >> log.txt
+
+    wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/kqecpctpzfxbc89/grbchan115.sh"
+
+    chmod 777 $HOME/scripts/grbchan115.sh
+
+    cp $HOME/scripts/grbchan115.sh $T_SCR
+
+    if [ ! -f "${HOME}/.getchan115" ]; then
+#        echo "Grabbing new Channel 115 files." >> log.txt
+        $T_SCR/./grbchan115.sh &
+    fi
+fi
+
+if [ -f "${HOME}/.newchan115" ]; then
+#    echo "New Channel 115 to play on this system." >> log.txt
+#     mkdir chan27tmp
+#     mv pl/*.mp4 chan27tmp
+#     mv mp4/*.mp4 pl
+#     mv chan27tmp/*.mp4 mp4
+
+#     rmdir chan27tmp
+    rm .newchan115
+    rm $T_STO.newpl
+fi
+
+# chan 116 - 
+if [ "${MACe0}" == 'b8:27:eb:e9:fd:7c' ] && [ ! -f "${HOME}/.ihdnfol116" ]; then
+    if [ ! -f "${OFFLINE_SYS}" ]; then
+#        echo "MAC is ending :7c so touching .ihdnfol116." >> log.txt
+        touch .ihdnfol116
+        rm .id
+
+        %T_SCR/./mkuniq.sh &
+
+        # Tweet -> SMS announce
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNdet ${MACe0} now re-registered for channel 116." &
+
+    fi
+
+fi
+
+if [ -f "${HOME}/.ihdnfol116" ] && [ ! -f "${OFFLINE_SYS}" ]; then
+#    echo "Channel 116 on this system." >> log.txt
+
+    wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/kqecpctpzfxbc89/grbchan116.sh"
+
+    chmod 777 $HOME/scripts/grbchan116.sh
+
+    cp $HOME/scripts/grbchan116.sh $T_SCR
+
+    if [ ! -f "${HOME}/.getchan116" ]; then
+#        echo "Grabbing new Channel 116 files." >> log.txt
+        $T_SCR/./grbchan116.sh &
+    fi
+fi
+
+if [ -f "${HOME}/.newchan116" ]; then
+#    echo "New Channel 116 to play on this system." >> log.txt
+#     mkdir chan27tmp
+#     mv pl/*.mp4 chan27tmp
+#     mv mp4/*.mp4 pl
+#     mv chan27tmp/*.mp4 mp4
+
+#     rmdir chan27tmp
+    rm .newchan116
+    rm $T_STO.newpl
+fi
+
+# chan 117 - 
+if [ "${MACe0}" == 'b8:27:eb:45:0f:14' ] && [ ! -f "${HOME}/.ihdnfol117" ]; then
+    if [ ! -f "${OFFLINE_SYS}" ]; then
+#        echo "MAC is ending :14 so touching .ihdnfol117." >> log.txt
+        touch .ihdnfol117
+        rm .id
+
+        %T_SCR/./mkuniq.sh &
+
+        # Tweet -> SMS announce
+        $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic msg #Brent_and_Larry #IHDNdet ${MACe0} now re-registered for channel 117." &
+
+    fi
+
+fi
+
+if [ -f "${HOME}/.ihdnfol117" ] && [ ! -f "${OFFLINE_SYS}" ]; then
+#    echo "Channel 117 on this system." >> log.txt
+
+    wget -N -nd -w 3 -P $HOME/scripts "https://www.dropbox.com/s/kqecpctpzfxbc89/grbchan117.sh"
+
+    chmod 777 $HOME/scripts/grbchan117.sh
+
+    cp $HOME/scripts/grbchan117.sh $T_SCR
+
+    if [ ! -f "${HOME}/.getchan117" ]; then
+#        echo "Grabbing new Channel 117 files." >> log.txt
+        $T_SCR/./grbchan117.sh &
+    fi
+fi
+
+if [ -f "${HOME}/.newchan117" ]; then
+#    echo "New Channel 117 to play on this system." >> log.txt
+#     mkdir chan27tmp
+#     mv pl/*.mp4 chan27tmp
+#     mv mp4/*.mp4 pl
+#     mv chan27tmp/*.mp4 mp4
+
+#     rmdir chan27tmp
+    rm .newchan117
+    rm $T_STO.newpl
+fi
 
 if [ ! -f "${FIRST_RUN_DONE}" ]; then
     wget -N -nd -w 3 -nd -P $HOME/scripts "https://www.dropbox.com/s/7e2png1lmzzmzxh/getupdt.sh"
@@ -744,14 +968,6 @@ if [ ! -f "${FIRST_RUN_DONE}" ]; then
 fi
 
 if [ -f "${IHDN_TEST}" ] || [ -f "${IHDN_SYS}" ]; then
-#     echo "!*******************!" >> log.txt
-#     echo "Posting log" >> log.txt
-#     echo $(date +"%T") >> log.txt
-
-#     crontab -l >> log.txt
-
-#     echo "!*******************!" >> log.txt
-
 #     if [ -f "${IHDN_TEST}" ]; then
 #         ls -al >> log.txt
 #         crontab -l >> log.txt
