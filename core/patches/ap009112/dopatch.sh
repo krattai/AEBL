@@ -105,9 +105,9 @@ pv=$(cat "${GRAB_FILE}" | head -n1)
 #     if [ -f $HOME/.beta ]; then
 #       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, beta ${MACe0} patched to ${pv}." &
 #     fi
-    if [ -f $HOME/.production ]; then
-      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, production ${MACe0} patched to ${pv}." &
-    fi
-fi
+#     if [ -f $HOME/.production ]; then
+#       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, production ${MACe0} patched to ${pv}." &
+#     fi
+# fi
 
 exit
