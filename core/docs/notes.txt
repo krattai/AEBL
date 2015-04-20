@@ -2,6 +2,12 @@ This document contains random notes on performing certain function and other tho
 
 ~~~~
 
+Boot splash screen (graphic) should include note indicating that AEBL contains Open Source software under, at least, GPLv2.0 and MIT licenses.
+
+And guides or other available docs (placed in the ctrl folder or elsewhere on the applinace) should contain reference to open source licenses.
+
+~~~~
+
 Wishlist and other, non-code notes:
 
 Set beta system to test code in field, without affecting production systems.
