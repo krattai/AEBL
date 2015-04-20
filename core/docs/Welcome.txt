@@ -2,7 +2,7 @@ Welcome
 
 Welcome to the AEBL world of mobile media.
 
-This is v1.0 of this document.
+This is v1.1 of this document.
 
 NOTE:  The AEBL appliance includes Open Source software, such as Linux and associated programs, as well as the AEBL code.  Said code is managed under the GPL v2.0 as well as MIT licenses, at least.
 
