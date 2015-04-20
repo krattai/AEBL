@@ -1,6 +1,6 @@
 This is an administrative guide for this device.
 
-This is v1.0 of this document.
+This is v1.1 of this document.
 
 Please note that depending on the device type and / or vendor, certain control methods may not be available or may only be accessed using the proper, authorized admin password.
 
