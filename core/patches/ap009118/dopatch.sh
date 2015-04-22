@@ -134,6 +134,7 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 # sudo chmod 0755 /usr/lib/cgi-bin/patch_cgi.sh
 
 # previous update changed firmware improperly on detectors.  Need to force revert.
+# not sure if already applied, so leaving this for patch 18
 
 if [ -f "/home/pi/.ihdndet" ]; then
     sudo rm /boot/.firmware_revision
@@ -148,18 +149,12 @@ fi
 # chmod 777 $HOME/.scripts/ctrlwtch.sh
 # cp $HOME/.scripts/ctrlwtch.sh $HOME/.backup/scripts
 # cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
-mv ctrlwtch.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/ctrlwtch.sh
-cp $HOME/.scripts/ctrlwtch.sh $HOME/.backup/scripts
-cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
-mv chhostname.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/chhostname.sh
-cp $HOME/.scripts/chhostname.sh $HOME/.backup/scripts
-cp $HOME/.scripts/chhostname.sh /run/shm/scripts
-mv patch.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/patch.sh
-cp $HOME/.scripts/patch.sh $HOME/.backup/scripts
-cp $HOME/.scripts/patch.sh /run/shm/scripts
+
+# updated l-ctrl.sh to include new channels
+mv l-ctrl.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/l-ctrl.sh
+cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
+cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
 
 sleep 5
 
