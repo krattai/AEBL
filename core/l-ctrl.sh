@@ -111,6 +111,61 @@ if  [ -f "${IHDN_SYS}" ] ||  [ -f "${IHDN_TEST}" ] && [ ! -f "${HOME}/chan" ]; t
         echo "chan107" >> /home/pi/chan
         echo "000107" >> /home/pi/chan
     fi
+    if [ -f "${HOME}/.ihdnfol108" ]; then
+        touch /home/pi/chan
+        echo "chan108" >> /home/pi/chan
+        echo "000108" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol109" ]; then
+        touch /home/pi/chan
+        echo "chan109" >> /home/pi/chan
+        echo "000109" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol110" ]; then
+        touch /home/pi/chan
+        echo "chan110" >> /home/pi/chan
+        echo "000110" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol111" ]; then
+        touch /home/pi/chan
+        echo "chan111" >> /home/pi/chan
+        echo "000111" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol112" ]; then
+        touch /home/pi/chan
+        echo "chan112" >> /home/pi/chan
+        echo "000112" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol113" ]; then
+        touch /home/pi/chan
+        echo "chan113" >> /home/pi/chan
+        echo "000113" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol114" ]; then
+        touch /home/pi/chan
+        echo "chan114" >> /home/pi/chan
+        echo "000114" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol116" ]; then
+        touch /home/pi/chan
+        echo "chan116" >> /home/pi/chan
+        echo "000116" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol117" ]; then
+        touch /home/pi/chan
+        echo "chan117" >> /home/pi/chan
+        echo "000117" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol118" ]; then
+        touch /home/pi/chan
+        echo "chan118" >> /home/pi/chan
+        echo "000118" >> /home/pi/chan
+    fi
+    if [ -f "${HOME}/.ihdnfol119" ]; then
+        touch /home/pi/chan
+        echo "chan119" >> /home/pi/chan
+        echo "000119" >> /home/pi/chan
+    fi
 fi
 
 # try to recover from non-playing system
