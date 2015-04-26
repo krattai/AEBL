@@ -8,6 +8,17 @@ And guides or other available docs (placed in the ctrl folder or elsewhere on th
 
 ~~~~
 
+picture in picture
+
+omxplayer --layer 1 --win "30 30 230 130" "mp4/Revolution OS.mp4"
+omxplayer --layer 2 --win "475 300 650 400" "mp4/Revolution OS.mp4"
+
+Can not currently do more than 2 at a time.
+
+Can not use background call (with &) apparently requires remaining in focus
+
+~~~~
+
 Wishlist and other, non-code notes:
 
 Set beta system to test code in field, without affecting production systems.
