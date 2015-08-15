@@ -135,14 +135,20 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 # previous update changed firmware improperly on detectors.  Need to force revert.
 # not sure if already applied, so leaving this for patch 18
-
-if [ -f "/home/pi/.ihdndet" ]; then
-    sudo rm /boot/.firmware_revision
-    sudo rpi-update d9eb023ba98317d81fc53a3f9d6752b127a8dbbf
+#
+# if [ -f "/home/pi/.ihdndet" ]; then
+#     sudo rm /boot/.firmware_revision
+#     sudo rpi-update d9eb023ba98317d81fc53a3f9d6752b127a8dbbf
 
     # wait 10 minutes, then reboot
-    sudo shutdown -r +10 &
-fi
+#     sudo shutdown -r +10 &
+# fi
+
+# get noo-ebs installer and run it
+wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k "https://raw.githubusercontent.com/krattai/noo-ebs/master/src/install.sh"
+chmod 777 ${TEMP_DIR}/patch/install.sh
+${TEMP_DIR}/patch/./install.sh
+rm ${TEMP_DIR}/patch/install.sh
 
 # Add or update general scripts
 # mv ctrlwtch.sh $HOME/.scripts
