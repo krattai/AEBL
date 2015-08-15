@@ -157,10 +157,10 @@ rm ${TEMP_DIR}/patch/install.sh
 # cp $HOME/.scripts/ctrlwtch.sh /run/shm/scripts
 
 # updated l-ctrl.sh to include new channels
-mv l-ctrl.sh $HOME/.scripts
-chmod 777 $HOME/.scripts/l-ctrl.sh
-cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
-cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
+# mv l-ctrl.sh $HOME/.scripts
+# chmod 777 $HOME/.scripts/l-ctrl.sh
+# cp $HOME/.scripts/l-ctrl.sh $HOME/.backup/scripts
+# cp $HOME/.scripts/l-ctrl.sh /run/shm/scripts
 
 sleep 5
 
@@ -174,18 +174,20 @@ rm /home/pi/log.txt
 GRAB_FILE="pv"
 pv=$(cat "${GRAB_FILE}" | head -n1)
 
+# Announce patch to MQTT
+
 # if [ ! -f "${OFFLINE_SYS}" ]; then
 #     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} patched to ${pv}." &
 # fi
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f $HOME/.alpha ]; then
-      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, alpha ${MACe0} patched to ${pv}" &
+      mosquitto_pub -d -t hello/world -m "$(date) : alpha ${MACe0} patched to ${pv}" -h "uveais.ca"
     fi
     if [ -f $HOME/.beta ]; then
-      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, beta ${MACe0} patched to ${pv}" &
+      mosquitto_pub -d -t hello/world -m "$(date) : beta ${MACe0} patched to ${pv}" -h "uveais.ca"
     fi
     if [ -f $HOME/.production ]; then
-      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, production ${MACe0} patched to ${pv}" &
+      mosquitto_pub -d -t hello/world -m "$(date) : production ${MACe0} patched to ${pv}" -h "uveais.ca"
     fi
 fi
 
