@@ -181,12 +181,6 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     cp -p ${SCRPT_DIR}/* /run/shm/scripts
 
-    # get noo-ebs installer and run it
-    wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k "https://raw.githubusercontent.com/krattai/noo-ebs/master/src/install.sh"
-    chmod 777 ${TEMP_DIR}/patch/install.sh
-    ${TEMP_DIR}/patch/./install.sh
-    rm ${TEMP_DIR}/patch/install.sh
-
     if [ -f "${AEBL_VM}" ]; then
         $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, #AEBL_VM ${MACe0} registered." &
     else
