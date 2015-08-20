@@ -66,6 +66,9 @@ chmod 777 ${TEMP_DIR}/patch/install.sh
 ${TEMP_DIR}/patch/./install.sh
 rm ${TEMP_DIR}/patch/install.sh
 
+# express that AEBL device being installed
+ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+mosquitto_pub -d -t hello/world -m "$(date) : AEBL being installed. IP is $ext_ip" -h "uveais.ca"
 
 # Process necessary AEBL files
 #
