@@ -59,6 +59,14 @@ fi
 
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
+
+# get noo-ebs installer and run it
+wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k "https://raw.githubusercontent.com/krattai/noo-ebs/master/src/install.sh"
+chmod 777 ${TEMP_DIR}/patch/install.sh
+${TEMP_DIR}/patch/./install.sh
+rm ${TEMP_DIR}/patch/install.sh
+
+
 # Process necessary AEBL files
 #
 
