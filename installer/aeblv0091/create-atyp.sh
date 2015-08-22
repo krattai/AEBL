@@ -59,6 +59,10 @@ else
     rm .offline
 fi
 
+# express that AEBL device being installed
+ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+mosquitto_pub -d -t hello/world -m "$(date) : checking AEBL type and installing. IP is $ext_ip" -h "uveais.ca"
+
 # set sys type scripts
 if [ -f "$HOME/aeblsys" ]; then
     systype="casys0091.sh"
