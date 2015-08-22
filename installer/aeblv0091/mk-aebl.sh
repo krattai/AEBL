@@ -40,14 +40,14 @@ else
     rm .network
 fi
 
-ping -c 1 192.168.200.6
+# ping -c 1 192.168.200.6
 
-if [[ $? -eq 0 ]]; then
-    touch .local
-    echo "Local network available."
-else
-    rm .local
-fi
+# if [[ $? -eq 0 ]]; then
+#     touch .local
+#     echo "Local network available."
+# else
+#     rm .local
+# fi
 
 if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
     touch .offline
@@ -87,6 +87,10 @@ sudo update-rc.d bootup.sh defaults
 
 mv ${TEMP_DIR}/create-atyp.sh scripts
 chmod 777 scripts/create-atyp.sh
+
+# express that AEBL device SD card expansion beginning
+ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+mosquitto_pub -d -t hello/world -m "$(date) : AEBL SD card being expanded. IP is $ext_ip" -h "uveais.ca"
 
 # rpi-wiggle MUST be last item, as it reboots the system
 # not applicable if aeblvm
