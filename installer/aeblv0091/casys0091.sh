@@ -78,7 +78,7 @@ export PATH=$PATH:${BIN_DIR}:${SCRPT_DIR}
 
 # express that AEBL device being installed
 ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
-mosquitto_pub -d -t hello/world -m "$(date) : pure AEBL device installing. IP is $ext_ip" -h "uveais.ca"
+mosquitto_pub -d -t hello/world -m "$(date) : AEBL branded device installing. IP is $ext_ip" -h "uveais.ca"
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
 
@@ -187,8 +187,14 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     if [ -f "${AEBL_VM}" ]; then
         $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, #AEBL_VM ${MACe0} registered." &
+        # express that AEBL device being installed
+        ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+mosquitto_pub -d -t hello/world -m "$(date) : AEBL VM registered.  ${MACe0} IP is $ext_ip" -h "uveais.ca"
     else
         $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, #AEBLpi ${MACe0} registered." &
+        # express that AEBL device being installed
+        ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+mosquitto_pub -d -t hello/world -m "$(date) : AEBL Pi registered. ${MACe0} IP is $ext_ip" -h "uveais.ca"
     fi
     # sleep 5 seconds to ensure system ready for reboot
     echo "Processing files.  Please wait."
