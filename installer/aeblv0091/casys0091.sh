@@ -48,14 +48,14 @@ else
     rm .network
 fi
 
-ping -c 1 192.168.200.6
+# ping -c 1 192.168.200.6
 
-if [[ $? -eq 0 ]]; then
-    touch .local
-    echo "Local network available."
-else
-    rm .local
-fi
+# if [[ $? -eq 0 ]]; then
+#     touch .local
+#     echo "Local network available."
+# else
+#     rm .local
+# fi
 
 if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
     touch .offline
