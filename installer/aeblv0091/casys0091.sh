@@ -76,6 +76,10 @@ export PATH=$PATH:${BIN_DIR}:${SCRPT_DIR}
 # Get necessary asys files
 #
 
+# express that AEBL device being installed
+ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+mosquitto_pub -d -t hello/world -m "$(date) : pure AEBL device installing. IP is $ext_ip" -h "uveais.ca"
+
 if [ ! -f "${OFFLINE_SYS}" ]; then
 
     if [ -f "${LOCAL_SYS}" ]; then
