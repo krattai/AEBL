@@ -181,13 +181,19 @@ pv=$(cat "${GRAB_FILE}" | head -n1)
 # fi
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f $HOME/.alpha ]; then
-      mosquitto_pub -d -t hello/world -m "$(date) : alpha ${MACe0} patched to ${pv}" -h "uveais.ca"
+        # express that AEBL device being installed
+        ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+        mosquitto_pub -d -t hello/world -m "$(date) : AEBL Pi alpha patched to ${pv}. ${MACe0} IP is $ext_ip" -h "uveais.ca"
     fi
     if [ -f $HOME/.beta ]; then
-      mosquitto_pub -d -t hello/world -m "$(date) : beta ${MACe0} patched to ${pv}" -h "uveais.ca"
+        # express that AEBL device being installed
+        ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+        mosquitto_pub -d -t hello/world -m "$(date) : AEBL Pi beta patched to ${pv}. ${MACe0} IP is $ext_ip" -h "uveais.ca"
     fi
     if [ -f $HOME/.production ]; then
-      mosquitto_pub -d -t hello/world -m "$(date) : production ${MACe0} patched to ${pv}" -h "uveais.ca"
+        # express that AEBL device being installed
+        ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+        mosquitto_pub -d -t hello/world -m "$(date) : AEBL Pi production patched to ${pv}. ${MACe0} IP is $ext_ip" -h "uveais.ca"
     fi
 fi
 
