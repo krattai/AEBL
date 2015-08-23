@@ -87,8 +87,11 @@ sleep 5
 GRAB_FILE="pv"
 pv=$(cat "${GRAB_FILE}" | head -n1)
 
-# if [ ! -f "${OFFLINE_SYS}" ]; then
+if [ ! -f "${OFFLINE_SYS}" ]; then
 #     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, ${MACe0} patched to ${pv}." &
-# fi
+    # express that AEBL device being installed
+    ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+mosquitto_pub -d -t hello/world -m "$(date) : AEBL Pi patched to ${pv}. ${MACe0} IP is $ext_ip" -h "uveais.ca"
+fi
 
 exit
