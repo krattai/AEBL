@@ -173,13 +173,22 @@ pv=$(cat "${GRAB_FILE}" | head -n1)
 # fi
 if [ ! -f "${OFFLINE_SYS}" ]; then
     if [ -f $HOME/.alpha ]; then
-      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, alpha ${MACe0} patched to ${pv}" &
+#       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, alpha ${MACe0} patched to ${pv}" &
+        # express that AEBL device being installed
+        ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+        mosquitto_pub -d -t hello/world -m "$(date) : AEBL Pi alpha patched to ${pv}. ${MACe0} IP is $ext_ip" -h "uveais.ca"
     fi
     if [ -f $HOME/.beta ]; then
-      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, beta ${MACe0} patched to ${pv}" &
+#       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, beta ${MACe0} patched to ${pv}" &
+        # express that AEBL device being installed
+        ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+        mosquitto_pub -d -t hello/world -m "$(date) : AEBL Pi beta patched to ${pv}. ${MACe0} IP is $ext_ip" -h "uveais.ca"
     fi
     if [ -f $HOME/.production ]; then
-      $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, production ${MACe0} patched to ${pv}" &
+#       $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic @kratt, production ${MACe0} patched to ${pv}" &
+        # express that AEBL device being installed
+        ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+        mosquitto_pub -d -t hello/world -m "$(date) : AEBL Pi production patched to ${pv}. ${MACe0} IP is $ext_ip" -h "uveais.ca"
     fi
 fi
 
