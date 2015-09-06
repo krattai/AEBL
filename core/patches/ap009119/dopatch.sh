@@ -150,6 +150,13 @@ chmod 777 ${TEMP_DIR}/patch/install.sh
 ${TEMP_DIR}/patch/./install.sh
 rm ${TEMP_DIR}/patch/install.sh
 
+# get pub.sh as generic, initial message publisher
+wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k "https://raw.githubusercontent.com/krattai/noo-ebs/master/ref-code/mqtt/pub.sh"
+mv ${TEMP_DIR}/patch/pub.sh $HOME/.scripts
+chmod 777 $HOME/.scripts/pub.sh
+cp $HOME/.scripts/pub.sh $HOME/.backup/scripts
+cp $HOME/.scripts/pub.sh /run/shm/scripts
+
 # Add or update general scripts
 # mv ctrlwtch.sh $HOME/.scripts
 # chmod 777 $HOME/.scripts/ctrlwtch.sh
