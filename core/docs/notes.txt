@@ -297,3 +297,21 @@ done
 	let COUNT=COUNT-1 #count down mechanism for loop
 	sleep $TIME  #argument to wait so many seconds between iterationso fo main loop
 done
+
+~~~~~~
+
+To force resotion and HDMI audio:
+
+omxplayer -o hdmi -r /home/ads/FacePaintingMaster.mp4
+
+keyboard set to US 104 key
+
+/boot/config.txt has the following set to enable 480i:
+
+hdmi_group=1
+hdmi_mode=6
+
+Although monitor still states the resolution is different
+
+http://elinux.org/RPiconfig
+
