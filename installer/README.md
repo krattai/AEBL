@@ -1,4 +1,4 @@
-The AEBL installer scripts take the base image and adds all the necessary code to turn the appliance into an AEBL core appliance.  While still v0091, adding the noo-ebs / MQTT framework.
+The AEBL installer scripts take the base image and adds all the necessary code to turn the appliance into an AEBL core appliance.  While still using v0091, adding the noo-ebs / MQTT framework.  Also, tying to work through migrating to v0092 in order to move the appliance code forward.
 
 AEBL is based on a rolling update, so every device will become current, if it has a internet connection, based on the patching system.
 
