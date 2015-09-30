@@ -272,6 +272,54 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
             curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000107/chan107.pl"
         fi
 
+        if [ -f "${HOME}/.ihdnfol108" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000108/chan108.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol109" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000109/chan109.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol110" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000110/chan110.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol111" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000111/chan111.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol112" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000112/chan112.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol113" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000113/chan113.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol114" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000114/chan114.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol115" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000115/chan115.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol116" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000116/chan116.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol117" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000117/chan117.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol118" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000118/chan118.pl"
+        fi
+
+        if [ -f "${HOME}/.ihdnfol119" ]; then
+            curl -o "${T_STO}/mynew.tmp" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/000119/chan119.pl"
+        fi
+
     fi
 
     dos2unix "${T_STO}/mynew.tmp"
