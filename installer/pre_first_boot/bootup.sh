@@ -1,11 +1,19 @@
 #!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:		pre_init_bootup
+# Required-Start:	$remote_fs $syslog
+# Required-Stop:	$remote_fs $syslog
+# Default-Start:	2 3 4 5
+# Default-Stop:		0 1 6
+# Short-Description:	AEBL pre-initialization bootup
+# Description: 
+#  This bootup script provide a bootstrap to start AEBL installation
+#  runs on boot
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2015 Uvea I. S., Kevin Rattai
 #
-# Initial bootup.sh included on base AEBL image
-# starts the new AEBL core install on boot
-#
-# Base AEBL image also includes the following changes from:
+# Boot up also included the following changes from:
 # http://blog.sheasilverman.com/2013/09/adding-a-startup-movie-to-your-raspberry-pi/
 #
 # You will need to edit your /boot/cmdline.txt file:
@@ -20,22 +28,18 @@
 # in the event a static image is prefered, have currently gone with:
 # http://www.edv-huber.com/index.php/problemloesungen/15-custom-splash-screen-for-raspberry-pi-raspbian
 #
-#
-#
 #! /bin/sh
 # /etc/init.d/blah
 #
-#
 # Some things that run always
 # touch /var/lock/blah
-#
-# Carry out specific functions when asked to by the system
+### END INIT INFO
 
+# Carry out specific functions when asked to by the system
 case "$1" in
   start)
     AUTOOFF_CHECK_FILE="/home/pi/.noauto"
 
-# The following is only included in case base image contains so pre-test files
     sudo -u pi rm /home/pi/.playlist
     sudo -u pi rm /home/pi/.local
     sudo -u pi rm /home/pi/.network
@@ -49,10 +53,9 @@ case "$1" in
     sudo -u pi rm /home/pi/.optimized
     sudo -u pi rm /home/pi/.sysrunning
 
-# To pre-configure AEBL core, start pre-installed image with .noauto in pi root
-#   Add .noauto if desired by loading SD with image on working Linux box 
     if [ ! -f "${AUTOOFF_CHECK_FILE}" ]; then
         echo "${AUTOOFF_CHECK_FILE} not found, in auto mode."
+        sleep 10
         setterm -blank 1
         sudo -u pi /home/pi/scripts/./create-aebl.sh &
     fi
