@@ -14,7 +14,7 @@ Features
 + Social media aware and interactive
 + Zeroconf / bonjour device
 + Channel content playing and sharing
-+ Integrated Emergency Broadcast. 611 info, and other features
++ Integrated Emergency Broadcast. 411 info, and other features
 + and Much, much more, doesn't even begin to explain it! :)
 
 AEBL Mobile Media Player, changing how we consume media. AEBL is a media player and a digital media platform in use in the IHDN XPO network media system ( http://www.ihdn.ca/Xpo_VI.html ).
