@@ -144,6 +144,9 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 #     sudo shutdown -r +10 &
 # fi
 
+# dos2unix not installed on some systems
+sudo apt-get install dos2unix
+
 # get noo-ebs installer and run it
 wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k "https://raw.githubusercontent.com/krattai/noo-ebs/master/src/install.sh"
 chmod 777 ${TEMP_DIR}/patch/install.sh
