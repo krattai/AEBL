@@ -1,0 +1,106 @@
+omxd(1) --  daemon to maintain a playlist and play it via omxplayer
+===================================================================
+
+## SYNOPSIS
+
+ omxd
+ echo <command> [abs-path] > /var/run/omxctl
+ omxd <command> [rel-path]
+
+## DESCRIPTION
+
+The omxd daemon plays your playlist even if you've disconnected from your
+Raspberry Pi, to allow the easy implementation of various media centre apps.
+Typically, start omxd from the /etc/rc.local stript at boot time.
+
+## COMMANDS
+
+ -h	Print this help text
+
+omxd listens for commands through the /var/run/omxctl FIFO,
+please write one command at a time into it, for example:
+
+echo A /home/foo/bar.mp3 > /var/run/omxctl
+
+Playlist commands: Files shall be absolute paths or URLs playable by omxplayer.
+
+ i file	insert to playlist before current item
+ a file	add to playlist after current item
+ A file	append to end of playlist
+ I file	interrupt playlist, play file on default output, then continue playlist
+ H file	interrupt playlist, play file on HDMI, then continue playlist
+ J file	interrupt playlist, play file on Jack, then continue playlist
+ L file	pLay file on default after current item, then continue playlist
+ .	replay current item
+ h	change default output to HDMI
+ j	change default output to Jack
+ n	next
+ N	previous
+ d	next directory
+ D	previous directory
+ x	delete current item from playlist, play next
+ X	delete entire playlist, terminate playback
+
+Others commands control the running omxplayer instance.
+
+ f	forward 30s
+ r	rewind  30s
+ F	forward 600s
+ R	rewind  600s
+ p	play/pause
+ P	pause playlist, stop omxplayer
+ k	next audio stream
+ o	next chapter
+ m	next subtitle stream
+ s	toggle subtitles
+ -	volume down
+ +	volume up
+
+Client commands:
+
+ S	show what's playing now
+
+## CLIENT MODE
+
+You can call omxd with the above commands as arguments, it writes them
+into /var/run/omxctl, but translates relative paths into absolute ones
+and performs commands recursively if you specify a directory as the file.
+
+## FILES
+
+When you start the omxd daemon as an unprivileged user the files below
+will be created in the current directory instead of the locations below,
+to allow easier testing.
+
+     /var/run/omxctl	FIFO to write commands into
+     /var/local/omxplay	playlist file, actual item indicated by >
+     /var/log/omxlog	log file
+     /etc/omxd.conf	defines user to run omxplayer: user=foo
+.
+rpyt(1) -- Raspberry Pi YouTube
+===============================
+
+## SYNOPSIS
+
+rpyt [cmd] url
+
+## DESCRIPTION
+
+Supply a normal YouTube link URL, rpyt finds the related stream URL
+via youtube-dl, and streams it using curl via FIFO rpyt.fifo to the player,
+omxplayer or omxd.
+
+## COMMANDS
+
+ -h	Print this help text
+ -J url	Play URL via omxd on Jack
+ -H url	Play URL via omxd on HDMI
+ -I url	Play URL via omxd on current default audio
+ -l url	Play URL via omxplayer on Jack (-olocal)
+ -h url	Play URL via omxplayer on HDMI (-ohdmi)
+ url	Play URL via omxplayer on HDMI (-ohdmi): default
+
+## FILES
+
+Creates the FIFO rpyt.fifo in the current directory, which is played
+by omxplayer.
