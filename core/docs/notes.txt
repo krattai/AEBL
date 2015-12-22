@@ -315,3 +315,7 @@ Although monitor still states the resolution is different
 
 http://elinux.org/RPiconfig
 
+
+~~~~~~
+
+Need to review and update installer and patch software
