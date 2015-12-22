@@ -326,3 +326,7 @@ Start looking at using omxd as advanced playback
 ~~~~~~
 
 Check installation of AEBL and then using ctrl commands to set devices types
+
+~~~~~~
+
+Look at securing non-generic devices using web interface, etc
