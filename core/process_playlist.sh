@@ -95,11 +95,11 @@ while [ -f "${T_STO}/.omx_playing" ]; do
         "${PLAYER}" ${PLAYER_OPTIONS} "${file}" > /dev/null
 
         if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] || [ -f "${IHDN_TEST}" ]; then
-            mosquitto_pub -d -t ihdn/play -m "$(date) : $hostn IP $ext_ip played: $(file)." -h "2604:8800:100:19a::2"
+            mosquitto_pub -d -t ihdn/play -m "$(date) : $hostn IP $ext_ip played: $file." -h "2604:8800:100:19a::2"
         fi
 
         if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_TEST}" ]; then
-            mosquitto_pub -d -t aebl/play -m "$(date) : $hostn IP $ext_ip played: $(file)." -h "2604:8800:100:19a::2"
+            mosquitto_pub -d -t aebl/play -m "$(date) : $hostn IP $ext_ip played: $file." -h "2604:8800:100:19a::2"
         fi
 
         echo
