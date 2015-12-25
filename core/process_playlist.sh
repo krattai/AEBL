@@ -24,6 +24,7 @@ AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
 IHDN_SYS="/home/pi/.ihdnsys"
+IHDN_DET="/home/pi/.ihdndet"
 TEMP_DIR="/home/pi/tmp"
 
 T_STO="/run/shm"
@@ -43,6 +44,10 @@ PLAYER_OPTIONS=""
 
 # Where is the playlist
 PLAYLIST_FILE="${T_STO}/.playlist"
+# Grab IP
+ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+# Get hostname
+hostn=$(cat /etc/hostname)
 
 touch $T_STO/.omx_playing
 
@@ -87,8 +92,15 @@ while [ -f "${T_STO}/.omx_playing" ]; do
         echo
 
 #         cat ${file}
-
         "${PLAYER}" ${PLAYER_OPTIONS} "${file}" > /dev/null
+
+        if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] || [ -f "${IHDN_TEST}" ]; then
+            mosquitto_pub -d -t ihdn/play -m "$(date) : $hostn IP $ext_ip played: $(file)." -h "2604:8800:100:19a::2"
+        fi
+
+        if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_DET}" ]; then
+            mosquitto_pub -d -t aebl/play -m "$(date) : $hostn IP $ext_ip played: $(file)." -h "2604:8800:100:19a::2"
+        fi
 
         echo
         echo "Playback complete, continuing to next item on playlist."
@@ -100,3 +112,16 @@ if [ -f "${T_STO}/.omx_playing" ]; then
 fi
 
 exit
+
+#!/bin/bash
+
+i="0"
+
+while [ $i -lt 1 ]
+do
+# i=$[$i+1]
+sleep 300
+done
+
+
+
