@@ -330,3 +330,7 @@ Check installation of AEBL and then using ctrl commands to set devices types
 ~~~~~~
 
 Look at securing non-generic devices using web interface, etc
+
+~~~~~~~~~~~~~~~~~~~
+
+For auto connect on first boot and autodiscover, should use a trust level.  Both node and server will be at trust level 0 until formally authorized by some method of challenge response, human intervention, or similar.
