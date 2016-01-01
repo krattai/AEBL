@@ -333,4 +333,4 @@ Look at securing non-generic devices using web interface, etc
 
 ~~~~~~~~~~~~~~~~~~~
 
-For auto connect on first boot and autodiscover, should use a trust level.  Both node and server will be at trust level 0 until formally authorized by some method of challenge response, human intervention, or similar.
+For auto connect on first boot and autodiscover, should use a trust level.  Both node and server will be at trust level 0 until formally authorized by some method of challenge response, human intervention, or similar.  Could use an auth token to indicate device has been authenticated either on the local network or on the licensed network.
