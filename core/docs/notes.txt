@@ -334,3 +334,10 @@ Look at securing non-generic devices using web interface, etc
 ~~~~~~~~~~~~~~~~~~~
 
 For auto connect on first boot and autodiscover, should use a trust level.  Both node and server will be at trust level 0 until formally authorized by some method of challenge response, human intervention, or similar.  Could use an auth token to indicate device has been authenticated either on the local network or on the licensed network.
+
+~~~~~~~~~~~~~~~~~~~
+
+check if gogo6 not authenticating anonymous on hosts.  If not, in /etc/gogoc/gogoc.conf set:
+server=anon-montreal.freenet6.net
+
+possibly put anon- prefix on servers in /var/lib/gogoc/tsp-broker-list.txt
