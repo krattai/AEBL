@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script makes the AEBL framework
 #
-# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2016 Uvea I. S., Kevin Rattai
 #
 # Useage:
 
@@ -40,15 +40,6 @@ else
     rm .network
 fi
 
-ping -c 1 192.168.200.6
-
-if [[ $? -eq 0 ]]; then
-    touch .local
-    echo "Local network available."
-else
-    rm .local
-fi
-
 if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
     touch .offline
     echo "No network available."
@@ -58,6 +49,18 @@ else
 fi
 
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
+
+# get noo-ebs installer and run it
+wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k "https://raw.githubusercontent.com/krattai/noo-ebs/master/src/install.sh"
+chmod 777 ${TEMP_DIR}/patch/install.sh
+${TEMP_DIR}/patch/./install.sh
+rm ${TEMP_DIR}/patch/install.sh
+
+# express that AEBL device being installed
+ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+# mosquitto_pub -d -t hello/world -m "$(date) : AEBL being installed. IP is $ext_ip" -h "uveais.ca"
+# AEBL MQTT broker 2001:5c0:1100:dd00:240:63ff:fefd:d3f1
+mosquitto_pub -d -t hello/world -m "$(date) : AEBL being installed. IP is $ext_ip" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
 
 # Process necessary AEBL files
 #
@@ -77,6 +80,10 @@ sudo update-rc.d bootup.sh defaults
 
 mv ${TEMP_DIR}/create-atyp.sh scripts
 chmod 777 scripts/create-atyp.sh
+
+# express that AEBL device SD card expansion beginning
+ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+mosquitto_pub -d -t hello/world -m "$(date) : AEBL SD card being expanded. IP is $ext_ip" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
 
 # rpi-wiggle MUST be last item, as it reboots the system
 # not applicable if aeblvm
@@ -98,6 +105,11 @@ fi
 if [ -f "$HOME/aeblvm" ]; then
     sudo shutdown -r +1 &
 fi
+
+# announce that first reboot now occuring
+ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+mosquitto_pub -d -t hello/world -m "$(date) : AEBL prepped and rebooting first time. IP is $ext_ip" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+
 # system should be in timed reboot state, so clean up and exit
 
 touch .$(cat "${TEMP_DIR}/version" | head -n1)
