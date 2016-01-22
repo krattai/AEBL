@@ -3,7 +3,7 @@
 # The AEBL img is not a pure raspbian image, some unique
 # updates were performed to achieve base img
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 # Useage:
 # There is no useage, this is a standalone script
@@ -124,23 +124,15 @@ export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 if [ ! -f "${OFFLINE_SYS}" ]; then
 
-    if [ -f "${LOCAL_SYS}" ]; then
+    wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/core/aeblcurr
 
-        wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k http://192.168.200.6/files/aeblcurr
+    cur_file=$(cat "${TEMP_DIR}/aeblcurr" | head -n1)
 
-        cur_file=$(cat "${TEMP_DIR}/aeblcurr" | head -n1)
+#     dbox_file=$(cat "${TEMP_DIR}/aeblcurr" | tail -n1)
 
-        wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k http://192.168.200.6/files/${cur_file}
+#     wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://www.dropbox.com/s/${dbox_file}/${cur_file}"
 
-    else
-
-        wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://www.dropbox.com/s/ee4vepd4kbn84d7/aeblcurr"
-
-        cur_file=$(cat "${TEMP_DIR}/aeblcurr" | head -n1)
-        dbox_file=$(cat "${TEMP_DIR}/aeblcurr" | tail -n1)
-
-        wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://www.dropbox.com/s/${dbox_file}/${cur_file}"
-    fi
+    wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://github.com/krattai/AEBL/raw/master/core/patches/${cur_file}"
 
     cd ${TEMP_DIR}
 
