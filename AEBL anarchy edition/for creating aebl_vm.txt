@@ -1,0 +1,35 @@
+sudo apt-get install unzip
+
+mkdir tmp
+
+wget -N -nd -w 3 -P tmp --limit-rate=50k http://192.168.200.6/files/tcli.zip
+
+cd tmp
+
+unzip -o tcli.zip
+
+cd tcli
+
+mv .tcli.rc ~
+
+cd tmpdir_maintenance
+
+mkdir ~/tmpdir_maintenance
+
+mkdir ~/tmpdir_maintenance/log
+
+mkdir ~/tmpdir_maintenance/mod_Twitter
+
+cp mod_Twitter/* ~/tmpdir_maintenance/mod_Twitter
+
+cp * ~/tmpdir_maintenance
+
+cd ~
+
+cat /dev/null > ~/.bash_history && history -c && exit
+
+~~~~~~~~~~~~~~~~~~~
+
+Location of base AEBL VM:
+
+https://www.dropbox.com/s/clidd488ag805x1/AEBL.vdi.7z?dl=0

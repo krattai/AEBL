@@ -28,6 +28,18 @@ MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
 cd $HOME
 
+# Check for Pi 2 hardware
+cat /proc/cpuinfo | grep a01041
+if [ $? -eq 0 ]; then
+    touch .p2
+    echo "Sony Pi 2."
+fi
+cat /proc/cpuinfo | grep a21041
+if [ $? -eq 0 ]; then
+    touch .p2
+    echo "Embest Pi 2."
+fi
+
 # Discover network availability
 #
 
