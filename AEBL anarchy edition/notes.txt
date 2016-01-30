@@ -1,0 +1,110 @@
+References for future use
+
+if word in mystring: 
+   print 'success'
+
+if 'seek' in 'those who seek shall find':
+    print('Success!')
+
+but keep in mind that this matches a sequence of characters, not necessarily a whole word - for example, 'word' in 'swordsmith' is True. If you only want to match whole words, you ought to use regular expressions:
+
+import re
+
+def findWholeWord(w):
+    return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search
+
+findWholeWord('seek')('those who seek shall find')    # -> <match object>
+findWholeWord('word')('swordsmith')                   # -> None
+
+~~~~~~~ current clpi.py ~~~~~~~~~~~~~~~~~
+
+#!/usr/bin/env python
+
+import paho.mqtt.client as mqtt
+import time
+
+# Unknown license, code found here:  http://stackoverflow.com/questions/31775450/publish-and-subscribe-with-paho-mqtt-client
+
+# reference to MQTT python found here: http://mosquitto.org/documentation/python/
+
+# requires:  sudo pip install paho-mqtt
+# pip requires: sudo apt-get install python-pip
+
+message = 'ON'
+def on_connect(mosq, obj, rc):
+#    mqttc.subscribe("aebl/hello", 0)
+#    mqttc.subscribe("aebl/alive", 0)
+#    mqttc.subscribe("uvea/alive", 0)
+    mqttc.subscribe("uvea/world", 0)
+    print("rc: " + str(rc))
+
+def on_message(mosq, obj, msg):
+    global message
+    print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
+    message = msg.payload
+#    mqttc.publish("uvea/world",msg.payload);
+#    mqttc.publish("uvea/world","uvea/alive - ACK");
+#    mqttc.publish("uvea/world",msg.payload);
+    if 'ping' in message:
+        mqttc.publish("uvea/world","pong");
+#
+#    mqttcb.publish("uvea/world",msg.payload);
+
+def on_publish(mosq, obj, mid):
+    print("mid: " + str(mid))
+
+def on_subscribe(mosq, obj, mid, granted_qos):
+    print("Subscribed: " + str(mid) + " " + str(granted_qos))
+
+def on_log(mosq, obj, level, string):
+    print(string)
+
+mqttc = mqtt.Client()
+# Assign event callbacks
+mqttc.on_message = on_message
+mqttc.on_connect = on_connect
+mqttc.on_publish = on_publish
+mqttc.on_subscribe = on_subscribe
+
+# Connect
+# mqttc.connect("localhost", 1883,60)
+
+mqttc.connect("2001:5c0:1100:dd00:240:63ff:fefd:d3f1", 1883,60)
+# mqttc.connect("2001:5c0:1100:dd00:ba27:ebff:fe2c:41d7", 1883,60)
+
+# mosquitto_sub -h 2001:5c0:1100:dd00:ba27:ebff:fe2c:41d7 -t "hello/+" -t "aebl/+" -t "ihdn/+" -t "uvea/+"
+
+# Continue the network loop
+# mqttc.loop_forever()
+mqttc.loop_start()
+while True:
+    mqttc.publish("uvea/world","sixxs alive")
+    time.sleep(300) # sleep for 300 seconds before next call
+
+
+
+
+mosquitto_pub -d -t uvea/world -m "ping" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+
+~~~~~~~~~~
+
+bash wget exchange rate
+wget -O quote.txt "http://finance.yahoo.com/d/quotes.csv?e=.csv&f=sl1d1t1&s=BTCCAD=X"
+
+~~~~~~~~~~~~~~~~~~~
+
+curl upload to via server at studio:
+
+curl -g -u ftp:none -T Videos/test.mkv ftp://[2001:5c0:1100:dd00:240:63ff:fefd:d3f1]/incoming/
+
+~~~~~~~~~~~~~
+
+watch files in directory: inotifywait
+http://linux.die.net/man/1/inotifywait
+http://techarena51.com/index.php/inotify-tools-example/
+
+~~~~~~~~~~~~~
+
+Popcorn Time bittorrent streaming client:
+http://www.tecmint.com/watch-movies-online-using-popcorn-time/
+
