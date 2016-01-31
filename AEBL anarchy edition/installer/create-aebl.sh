@@ -3,15 +3,16 @@
 # The AEBL img is not a pure raspbian image, some unique
 # updates were performed to achieve base img
 #
-# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2016 Uvea I. S., Kevin Rattai
 #
 # Useage:
 # There is no useage, this is a standalone script
 
-LOCAL_SYS="/home/pi/.local"
+# LOCAL_SYS="/home/pi/.local"
 NETWORK_SYS="/home/pi/.network"
 OFFLINE_SYS="/home/pi/.offline"
 AEBL_SYS="/home/pi/.aeblsys"
+AEBL_AE="/home/pi/.aeblae"
 
 TEMP_DIR="/home/pi/tempdir"
 MP3_DIR="/home/pi/mp3"
