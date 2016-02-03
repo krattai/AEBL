@@ -9,6 +9,7 @@
 # Current modification is change minsize to allow 15% free space
 #
 # NB: May only work on Raspbian Wheezy images.  Does not work on noobs.
+#
 
 strImgFile=$1
 
@@ -38,6 +39,7 @@ partstart=`echo "$partinfo" | grep ext4 | awk -F: ' { print substr($2,0,length($
 loopback=`losetup -f --show -o $partstart $1`
 e2fsck -f $loopback
 minsize=`resize2fs -P $loopback | awk -F': ' ' { print $2 } '`
+#
 # Modified minsize calc by Kevin Rattai
 #
 # original minsize produces 0bytes on partition, calculated as:
@@ -45,6 +47,7 @@ minsize=`resize2fs -P $loopback | awk -F': ' ' { print $2 } '`
 #
 # New minsize calc produces 10% minsize as available space
 # minsize=`echo “($minsize+($minsize*0.1))/1” | bc`
+#
 minsize=`echo "($minsize+($minsize*0.15))/1" | bc`
 resize2fs -p $loopback $minsize
 sleep 1
