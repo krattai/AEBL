@@ -7,6 +7,8 @@
 #
 # Original modification was change minsize to allow 10% free space
 # Current modification is change minsize to allow 15% free space
+#
+# NB: May only work on Raspbian Wheezy images.  Does not work on noobs.
 
 strImgFile=$1
 
