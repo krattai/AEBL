@@ -341,3 +341,8 @@ check if gogo6 not authenticating anonymous on hosts.  If not, in /etc/gogoc/gog
 server=anon-montreal.freenet6.net
 
 possibly put anon- prefix on servers in /var/lib/gogoc/tsp-broker-list.txt
+
+~~~~
+
+Use method to auto assign channel and register via mqtt
+Use same method to register for noo-ebs locale
