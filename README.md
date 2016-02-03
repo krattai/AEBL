@@ -28,3 +28,19 @@ For those interested in trying it out, you will need a Raspberry Pi (should be t
 
 The current image is a ~680MB 7zip compressed file of it's original 2.7GB size, located on dropbox, here:
 https://www.dropbox.com/s/lj0r6yia4tsnz8w/140815-aeblpi.img.7z?dl=0
+
+AEBL uses IPv6 to a great extent.  Many Internet Service Providers still do not provide IPv6.  As a result, in order to access certain information for AEBL, obtaining an IPv6 internet connection will be helpful.  The following providers offer free IPv6 tunnerls:
+
+gogo6:
+http://www.gogo6.com/profile/gogoCLIENT
+
+sixxs:
+https://www.sixxs.net/faq/account/?faq=10steps
+
+Hurricane Electric also provides IPv6:
+https://tunnelbroker.net/
+
+There is more and more information for IPv6 on the internet and HE.net provides a decent certifiation course for learning about IPv6 from simple to extensive:
+https://ipv6.he.net/certification/
+
+Generally gogo6 is the simplest path to IPv6 without native or dual stack configurations, followed by sixxs (a more stringent process), and finally HE.net (which requires a significant amount to networking skills).
