@@ -91,10 +91,13 @@ if [ ! -f "${ID_FILE}" ]; then
     # create local store id file
 
     # put to dropbox
-    $T_SCR/./dropbox_uploader.sh upload ${ID_FILE} /${U_ID}
+#     $T_SCR/./dropbox_uploader.sh upload ${ID_FILE} /${U_ID}
 
     # Tweet -> SMS announce
-    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic To @kratt, #${TYPE_SYS} channel registered ${U_ID} ${IPw0} ${IPe0} by ifTTT Tweet -> SMS."
+#     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic To @kratt, #${TYPE_SYS} channel registered ${U_ID} ${IPw0} ${IPe0} by ifTTT Tweet -> SMS."
+
+    # Change publish method from dropbox and twitter to MQTT
+    mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn registered ID: ${U_ID} from IP $ext_ip location." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
 
 else
 
