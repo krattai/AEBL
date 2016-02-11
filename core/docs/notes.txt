@@ -346,3 +346,10 @@ possibly put anon- prefix on servers in /var/lib/gogoc/tsp-broker-list.txt
 
 Use method to auto assign channel and register via mqtt
 Use same method to register for noo-ebs locale
+
+~~~~~~~~~~~~~
+
+Might be intersting to set up console tool.
+
+Could do so using Newt:
+http://opensourceforu.efytimes.com/2011/11/spicing-up-console-for-fun-profit-2/
