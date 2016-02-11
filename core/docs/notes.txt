@@ -353,3 +353,12 @@ Might be intersting to set up console tool.
 
 Could do so using Newt:
 http://opensourceforu.efytimes.com/2011/11/spicing-up-console-for-fun-profit-2/
+
+~~~~~~~~~~~~~~
+
+How to post to google+ using google api ???
+
+curl -v -H "Content-Type: application/json" -H "Authorization: OAuth$ACCESS_TOKEN" -d "{"object": {"originalContent": "Happy Monday!#caseofthemondays"},"access":{"kind":"plus#acl","items":[{"type":"domain"}],"domainRestricted":true}}" -X POST https://www.googleapis.com/plusDomains/v1/people/{userId}/activities
+
+https://developers.google.com/+/domains/posts/creating
+
