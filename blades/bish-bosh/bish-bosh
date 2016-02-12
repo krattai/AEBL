@@ -1,0 +1,1032 @@
+#!/usr/bin/env sh
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+_program()
+{
+	core_usesIn core temporaryFiles compatibility
+	core_usesIn bishbosh validate filesize backend connection
+	
+	bishbosh_adjustReadLatencyIfNecessary()
+	{
+		if core_variable_isSet BASH_VERSINFO; then
+			if [ ${BASH_VERSINFO[0]} -eq 3 ]; then
+				if [ $bishbosh_readLatency -lt 1000 ]; then
+					core_message WARN "bash 3 does not support fractional read latency (we're forcing bishbosh_readLatency to 1000 ms) [discovered on Mac OS X when run as default sh]"
+					bishbosh_readLatency=1000
+					bishbosh_readLatency_inFractionalSeconds=1
+				fi
+			fi
+		fi
+		if ! core_compatibility_sleepSupportsFractionalSeconds; then
+			core_message WARN "sleep does not support fractional seconds for read latency (we're forcing bishbosh_readLatency to 1000 ms) [discovered on AIX]"
+			bishbosh_readLatency=1000
+			bishbosh_readLatency_inFractionalSeconds=1
+		fi
+	}
+	
+	bishbosh()
+	{
+		bishbosh_adjustReadLatencyIfNecessary
+	
+		bishbosh_backend_find
+		
+		local TMP_FOLDER
+		core_temporaryFiles_newFolderToRemoveOnExit
+		local bishbosh_temporaryFolderPath="$TMP_FOLDER"
+		
+		bishbosh_connection_makeClientConnection
+	}
+}
+
+_program_name='bish-bosh'
+_program_namespace='bishbosh'
+_program_version='unversioned'
+_program_package_or_build=''
+_program_path="$([ "${_program_fattening_program_path+set}" = 'set' ] && printf '%s\n' "$_program_fattening_program_path" || ([ "${0%/*}" = "${0}" ] && printf '%s\n' '.' || printf '%s\n' "${0%/*}"))"
+_program_libPath="${_program_path}/lib"
+_program_etcPath="${_program_path}/etc"
+_program_varPath="${_program_path}/var"
+_program_entrypoint='bishbosh'
+_program_ignoreDependencies=no
+
+_program_commandLine_parseInitialise()
+{
+	_program_default_tunnel='none'
+	if core_variable_isSet bishbosh_tunnel; then
+		_program_configurationSet_bishbosh_tunnel=0
+	else
+		_program_configurationSet_bishbosh_tunnel=1
+	fi
+	
+	_program_default_server='test.mosquitto.org'
+	if core_variable_isSet bishbosh_server; then
+		_program_configurationSet_bishbosh_server=0
+	else
+		_program_configurationSet_bishbosh_server=1
+	fi
+	
+	if core_variable_isSet bishbosh_port; then
+		_program_configurationSet_bishbosh_port=0
+	else
+		_program_configurationSet_bishbosh_port=1
+	fi
+	
+	_program_default_randomClientId=0
+	if core_variable_isSet bishbosh_randomClientId; then
+		_program_configurationSet_bishbosh_randomClientId=0
+	else
+		_program_configurationSet_bishbosh_randomClientId=1
+	fi
+
+	_program_default_pingTimeout=30
+	if core_variable_isSet bishbosh_pingTimeout; then
+		_program_configurationSet_bishbosh_pingTimeout=0
+	else
+		_program_configurationSet_bishbosh_pingTimeout=1
+	fi
+
+	_program_default_connectTimeout=30
+	if core_variable_isSet bishbosh_connectTimeout; then
+		_program_configurationSet_bishbosh_connectTimeout=0
+	else
+		_program_configurationSet_bishbosh_connectTimeout=1
+	fi
+	
+	_program_default_backends='openssl,socat,ncat,nc6,nc,ncDebianOpenBSD,ncFreeBSD,ncOpenBSD,ncMirBSD,ncMacOSX,ncDebianTraditional,ncSolaris,ncGNU,ncToybox,ncBusyBox,devtcp,cryptcat'
+	if core_variable_isSet bishbosh_backends; then
+		_program_configurationSet_bishbosh_backends=0
+	else
+		_program_configurationSet_bishbosh_backends=1
+	fi
+	
+	_program_default_clientPath="${_program_varPath}"/lib/"$_program_name"/client
+	if core_variable_isSet bishbosh_clientPath; then
+		_program_configurationSet_bishbosh_clientPath=0
+	else
+		_program_configurationSet_bishbosh_clientPath=1
+	fi
+	
+	_program_default_sessionPath="${_program_varPath}"/spool/"$_program_name"/session
+	if core_variable_isSet bishbosh_sessionPath; then
+		_program_configurationSet_bishbosh_sessionPath=0
+	else
+		_program_configurationSet_bishbosh_sessionPath=1
+	fi
+	
+	_program_default_lockPath="${_program_varPath}"/run/"$_program_name"/lock
+	if core_variable_isSet bishbosh_lockPath; then
+		_program_configurationSet_bishbosh_lockPath=0
+	else
+		_program_configurationSet_bishbosh_lockPath=1
+	fi
+	
+	_program_default_filesizeAlgorithm=ls
+	if core_variable_isSet bishbosh_filesizeAlgorithm; then
+		_program_configurationSet_bishbosh_filesizeAlgorithm=0
+	else
+		_program_configurationSet_bishbosh_filesizeAlgorithm=1
+	fi
+	
+	if [ "$core_init_shellDetected" = 'zsh' ]; then
+		_program_default_readLatency=0
+	else
+		_program_default_readLatency=100
+	fi
+	if core_variable_isSet bishbosh_readLatency; then
+		_program_configurationSet_bishbosh_readLatency=0
+	else
+		_program_configurationSet_bishbosh_readLatency=1
+	fi
+	
+	if core_variable_isSet bishbosh_transport; then
+		_program_configurationSet_bishbosh_transport=0
+	else
+		_program_configurationSet_bishbosh_transport=1
+	fi
+	
+	if core_variable_isSet bishbosh_sourceAddress; then
+		_program_configurationSet_bishbosh_sourceAddress=0
+	else
+		_program_configurationSet_bishbosh_sourceAddress=1
+	fi
+	
+	if core_variable_isSet bishbosh_sourcePort; then
+		_program_configurationSet_bishbosh_sourcePort=0
+	else
+		_program_configurationSet_bishbosh_sourcePort=1
+	fi
+	
+	if core_variable_isSet bishbosh_proxyKind; then
+		_program_configurationSet_bishbosh_proxyKind=1
+	else
+		_program_configurationSet_bishbosh_proxyKind=0
+	fi
+	
+	if core_variable_isSet bishbosh_proxyServer; then
+		_program_configurationSet_bishbosh_proxyServer=1
+	else
+		_program_configurationSet_bishbosh_proxyServer=0
+	fi
+	
+	if core_variable_isSet bishbosh_proxyPort; then
+		_program_configurationSet_bishbosh_proxyPort=1
+	else
+		_program_configurationSet_bishbosh_proxyPort=0
+	fi
+	
+	if core_variable_isSet bishbosh_proxyUsername; then
+		_program_configurationSet_bishbosh_proxyUsername=1
+	else
+		_program_configurationSet_bishbosh_proxyUsername=0
+	fi
+	
+	if core_variable_isSet bishbosh_proxyPassword; then
+		_program_configurationSet_bishbosh_proxyPassword=1
+	else
+		_program_configurationSet_bishbosh_proxyPassword=0
+	fi
+	
+	_program_default_bishbosh_tunnelTlsUseDer=off
+	_program_default_bishbosh_tunnelTlsVerify=on
+}
+
+_program_commandLine_helpMessage()
+{
+	_program_commandLine_helpMessage_usage="[OPTION]... -- [SCRIPTLETS]..."
+	_program_commandLine_helpMessage_description="Connects to a MQTT server and runs SCRIPTLETS.
+May be used as a command interpreter in scripts starting #!/usr/bin/env ${_program_name}
+if on the PATH."
+	_program_commandLine_helpMessage_options="
+  -t, --tunnel TUNNEL       Network tunnel TUNNEL to use. One of 'none', 'tls',
+                            'cryptcat'. Defaults to '${_program_default_tunnel}'.
+                            'WebSockets', 'WebSocketsSecure', 'SSH' and 'telnet'
+                            are unimplemented but possible if there's demand.
+  -s, --server HOST         Server hostname, HOST, is a hostname,
+                            IPv4 address, IPv6 address, unix domain socket
+                            path or serial character device path.
+  -p, --port PORT           Server PORT. Ignored for Unix domain sockets and
+                            serial devices.
+                            Defaults to 1883 or 8883 depending on --tunnel.
+  -i, --client-id ID        Specifies the client id ID to use. Any SCRITPLETS
+                            found at --clients-path PATH/ID will then be
+                            sourced. SCRIPTLETS control how a connection is
+                            managed. If this option is not used, then an
+                            empty ID is used if Clean Session is 1 (unless
+                            the switch --random-client-id is used, below).
+  -r, --random-client-id    Specify this to force a random client-id instead
+                            of an empty one if Clean Session is 1 and
+                            --client-id isn't specified. Invalid if
+                            Clean Session is 0.
+  -x, --ping-timeout SECS   Maximum time to wait in SECS seconds for a
+                            PINGRESP packet if keep-alive is non-zero.
+                            Defaults to '${_program_default_pingTimeout}'
+  -w, --connect-timeout SECS  Maximum time in 'SECS' seconds to wait to try
+                            to connect. Not all backends support this.
+                            Some older netcats interpret this as also
+                            being an idle timeout. 0 is infinity.
+                            Defaults to '${_program_default_connectTimeout}'
+  -b, --backends A,B,...    Backend types A,B,... to talk to MQTT server.
+                            Ordered in preference order. First found used.
+                            Comma separated. Most backends do not support
+                            tunnels TUNNEL other than 'MQTT'.
+                            Defaults to '${_program_default_backends}'.
+  -c, --client-path PATH    PATH to folder containing client scriptlets.
+                            Defaults to '${_program_default_clientPath}'.
+  -d, --session-path PATH   PATH to folder containing session data for
+                            Clean Session = 0 clients.
+                            Defaults to '${_program_default_sessionPath}'.
+  -l, --lock-path PATH      PATH to a parent folder for locking with a
+                            Mutex; ensures only one copy runs at a time.
+                            Defaults to '${_program_default_lockPath}'.
+      --filesize-algorithm  ALGO  Choose a different binary dependency to
+                            calculate file sizes. ALGO may be one of 'ls',
+                            'GNUAndBusyBoxStat', 'BSDStat', and 'ToyboxStat'
+                            Defaults to '${_program_default_filesizeAlgorithm}'.
+      --read-latency MSECS  Maximum time to block for when reading in
+                            MSECS milliseconds between 0 and 1000
+                            inclusive. 0 has different meaning in
+                            'zsh' as opposed to 'bash'.
+                            Defaults to '${_program_default_readLatency}'.
+                            Default varies by detected shell and OS.
+      --transport TRANSPT   TRANSPT of inet, inet4, inet6, unix or serial.
+                            Defaults to 'inet'
+      --source-address S    Bind to network interface with address S.
+                            Should not normally be needed.
+                            Turn off with ''.
+                            Off by default.
+                            Does not work with transports 'unix' or
+                            'serial'.
+      --source-port PORT    Send packets from port PORT.
+                            Should not normally be needed.
+                            Turn off with ''.
+                            Off by default.
+                            Does not work with transport 'unix'.
+      --proxy-kind KIND     Use a particular KIND of proxy.
+                            KIND is 'SOCKS4','SOCKS4a', 'SOCKS5',
+                            'HTTP' or 'none'.
+                            Turn off with 'none'.
+                            Off by default.
+                            Does not work with transports 'unix' or
+                            'serial'.
+                            Not all backends support this option.
+      --proxy-server HOST   Connect to a proxy on a given HOST.
+                            Turn off with ''.
+                            Off by default.
+                            Does not work with transports 'unix' or
+                            'serial'.
+      --proxy-port PORT     Connect to a proxy on a given PORT.
+                            Turn off with ''.
+                            Off by default, but defaults to 1080
+                            for SOCKS4 / SOCKS4a / SOCKS5 and 3128 for HTTP.
+                            Does not work with transports 'unix' or
+                            'serial'.
+      --proxy-username UN   Connect to a proxy using username UN.
+                            Turn off with ''.
+                            Off by default.
+                            Does not work with transports 'unix' or
+                            'serial'.
+                            Insecure - use configuration instead.
+                            Not all proxies support this option.
+      --proxy-password PWD  Connect to a proxy using password PWD.
+                            Turn off with ''.
+                            Off by default.
+                            Does not work with transports 'unix' or
+                            'serial'.
+                            Insecure - use configuration instead.
+                            Not all proxies support this option.
+      --tunnel-tls-ca-path PATH  Folder PATH containing certificate
+                            authorities in PEM format with OpenSSL
+                            hashes. Must not be specified if 
+                            --tunnel-tls-ca-bundle is.
+      --tunnel-tls-ca-bundle FILE  PEM-encoded FILE file containing
+                            all trusted certificate authorities.
+                            Must not be specified if 
+                            --tunnel-tls-ca-path is.
+      --tunnel-tls-certificate FILE  TLS certificate FILE for client
+                            authentication. Must be PEM-encoded.
+                            Required if --tunnel-tls-key
+                            is specified.
+      --tunnel-tls-key FILE  TLS key FILE for client
+                            authentication. Must be PEM-encoded.
+                            Required if --tunnel-tls-certificate
+                            is specified.
+      --tunnel-tls-use-der [BOOL]  Boolean BOOL (0/1,on/off) to enable
+                            interpretation of certificate and key as
+                            DER encoded.
+                            Defaults to ${_program_default_bishbosh_tunnelTlsUseDer}.
+      --tunnel-tls-verify [BOOL]  Boolean BOOL (0/1,on/off) to enable
+                            verification of server certificates.
+                            Defaults to ${_program_default_bishbosh_tunnelTlsVerify} (verification).
+      --tunnel-tls-ciphers STR  Cipher string. Format is specific to
+                            backend. For openssl-based backends
+                            (most) see man 5 ciphers. For GnuTLS
+                            see man gnutls. 
+      --tunnel-cryptcat-password PWD  Password for cryptcat."
+    _program_commandLine_helpMessage_optionsSpacing='   '
+	_program_commandLine_helpMessage_configurationKeys="
+  bishbosh_tunnel         Equivalent to --tunnel
+  bishbosh_server         Equivalent to --server
+  bishbosh_port           Equivalent to --port
+  bishbosh_clientId       Equivalent to --client-id
+  bishbosh_randomClientId Equivalent to --random-client-id
+  bishbosh_pingTimeout    Equivalent to --ping-timeout
+  bishbosh_connectTimeout  Equalivant to --connect-timeout
+  bishbosh_backends       Equivalent to --backends
+  bishbosh_clientPath     Equivalent to --clients-path
+  bishbosh_sessionPath    Equivalent to --session-path
+  bishbosh_lockPath       Equivalent to --lock-path
+  bishbosh_filesizeAlgorithm  Equivalent to --filesize-algorithm
+  bishbosh_readLatency    Equivalent to --read-latency
+  bishbosh_transport      Equivalent to --transport
+  bishbosh_sourceAddress  Equivalent to --source-address
+  bishbosh_sourcePort     Equivalent to --source-port
+  bishbosh_proxyKind      Equivalent to --proxy-kind
+  bishbosh_proxyServer    Equivalent to --proxy-server
+  bishbosh_proxyPort      Equivalent to --proxy-port
+  bishbosh_proxyUsername  Equivalent to --proxy-username
+  bishbosh_proxyPassword  Equivalent to --proxy-password
+  
+The following values control the tunnel 'tls'
+  bishbosh_tunnelTlsCaPath       Equivalent to --tunnel-tls-ca-path
+  bishbosh_tunnelTlsCaBundle     Equivalent to --tunnel-tls-ca-bundle
+  bishbosh_tunnelTlsCertificate  Equivalent to --tunnel-tls-certificate
+  bishbosh_tunnelTlsKey          Equivalent to --tunnel-tls-key
+  bishbosh_tunnelTlsUseDer       Equivalent to --tunnel-tls-use-der
+  bishbosh_tunnelTlsVerify       Equivalent to --tunnel-tls-verify
+  bishbosh_tunnelTlsCiphers      Equivalent to --tunnel-tls-ciphers
+  
+The following values control the tunnel 'cryptcat'
+  bishbosh_tunnelCryptcatPassword  Equivalent to --tunnel-cryptcat-password
+  
+These may also be set in the SCRIPTLETS.
+
+The following values may be used in SCRIPTLETS to manage a connection:-
+  bishbosh_connect_cleanSession  Option    Boolean
+  bishbosh_connect_willTopic     Optional  String
+  bishbosh_connect_willMessage   Optional  Binary*
+  bishbosh_connect_willQoS       Optional  0 - 2
+  bishbosh_connect_willRetain    Optional
+  bishbosh_connect_keepAlive     Optional  0 - 65535
+  bishbosh_connect_username      Optional  String
+  bishbosh_connect_password      Optional  Binary*
+
+  * ASCII NUL (0x00) is not supported.
+
+The following values may be used to override client-id based configuration:-
+  bishbosh_connection_clientServersPath
+  bishbosh_connection_clientServersPortsPath
+  bishbosh_connection_clientServersPortsClientIdsPath
+  
+The following handlers may be specified as functions in SCRIPTLETS, with
+the globals specified:-
+  bishbosh_connection_handler_CONNACK()
+  bishbosh_connection_handler_SUBACK()
+  bishbosh_connection_handler_UNSUBACK()
+  bishbosh_connection_handler_PUBLISH()
+  bishbosh_connection_handler_PUBACK()
+  bishbosh_connection_handler_PUBREC()
+  bishbosh_connection_handler_PUBREL()
+  bishbosh_connection_handler_PUBCOMP()
+  bishbosh_connection_handler_PINGRESP()
+  bishbosh_connection_handler_noControlPacketsRead()
+"
+	_program_commandLine_helpMessage_examples="
+  ${_program_name} --server test.mosquitto.org --backends nc,devtcp --client-id 12 -- /path/to/connection-details.scriptlet
+"
+}
+
+_program_commandLine_optionExists()
+{
+	case "$optionName" in
+		
+		t|tunnel)
+			echo 'yes-argumented'
+		;;
+		
+		s|server)
+			echo 'yes-argumented'
+		;;
+		
+		p|port)
+			echo 'yes-argumented'
+		;;
+		
+		i|client-id)
+			echo 'yes-argumented'
+		;;
+		
+		r|random-client-id)
+			echo 'no'
+		;;
+		
+		x|ping-timeout)
+			echo 'yes-argumented'
+		;;
+		
+		w|connect-timeout)
+			echo 'yes-argumented'
+		;;
+		
+		b|backends)
+			echo 'yes-argumented'
+		;;
+		
+		c|clients-path)
+			echo 'yes-argumented'
+		;;
+		
+		d|session-path)
+			echo 'yes-argumented'
+		;;
+		
+		l|lock-path)
+			echo 'yes-argumented'
+		;;
+		
+		filesize-algorithm)
+			echo 'yes-argumented'
+		;;
+		
+		read-latency)
+			echo 'yes-argumented'
+		;;
+		
+		transport)
+			echo 'yes-argumented'
+		;;
+		
+		source-address)
+			echo 'yes-argumented'
+		;;
+		
+		source-port)
+			echo 'yes-argumented'
+		;;
+		
+		proxy-kind)
+			echo 'yes-argumented'
+		;;
+		
+		proxy-server)
+			echo 'yes-argumented'
+		;;
+		
+		proxy-port)
+			echo 'yes-argumented'
+		;;
+		
+		proxy-username)
+			echo 'yes-argumented'
+		;;
+		
+		proxy-password)
+			echo 'yes-argumented'
+		;;
+		
+		tunnel-tls-ca-path)
+			echo 'yes-argumented'
+		;;
+		
+		tunnel-tls-ca-bundle)
+			echo 'yes-argumented'
+		;;
+		
+		tunnel-tls-certificate)
+			echo 'yes-argumented'
+		;;
+		
+		tunnel-tls-key)
+			echo 'yes-argumented'
+		;;
+		
+		tunnel-tls-use-der)
+			echo 'yes-optionally-argumented'
+		;;
+		
+		tunnel-tls-verify)
+			echo 'yes-optionally-argumented'
+		;;
+		
+		tunnel-tls-ciphers)
+			echo 'yes-argumented'
+		;;
+		
+		tunnel-cryptcat-password)
+			echo 'yes-argumented'
+		;;
+		
+		*)
+			echo 'no'
+		;;
+		
+	esac
+}
+
+_program_commandLine_processOptionWithoutArgument()
+{
+	case "$optionName" in
+		
+		r|random-client-id)
+			bishbosh_randomClientId=1
+		;;
+
+		tunnel-tls-use-der)
+			bishbosh_tunnelTlsUseDer=1
+		;;
+		
+		tunnel-tls-verify)
+			bishbosh_tunnelTlsVerify=1
+		;;
+		
+	esac
+}
+
+_program_commandLine_processOptionWithArgument()
+{
+	case "$optionName" in
+		
+		t|tunnel)
+			bishbosh_validate_tunnel $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_tunnel="$optionValue"
+		;;
+		
+		s|server)
+			bishbosh_validate_address $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_server="$optionValue"
+		;;
+		
+		p|port)
+			core_validate_nonDynamicPort $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_port="$optionValue"
+		;;
+		
+		i|client-id)
+			bishbosh_clientId="$optionValue"
+		;;
+		
+		x|ping-timeout)
+			bishbosh_validate_unsignedIntegerUpto65535Inclusive $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_pingTimeout=$optionValue
+		;;
+		
+		w|connect-timeout)
+			bishbosh_validate_unsignedIntegerUpto65535Inclusive $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_connectTimeout=$optionValue
+		;;
+		
+		b|backends)
+			bishbosh_validate_backends $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_backends="$optionValue"
+		;;
+		
+		c|clients-path)
+			core_validate_folderPathReadableAndSearchableAndWritable $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_clientPath="$optionValue"
+		;;
+		
+		t|session-path)
+			core_validate_folderPathReadableAndSearchableAndWritable $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_sessionPath="$optionValue"
+		;;
+		
+		l|lock-path)
+			core_validate_folderPathReadableAndSearchableAndWritable $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_lockPath="$optionValue"
+		;;
+		
+		filesize-algorithm)
+			bishbosh_validate_filesizeAlgorithm $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_filesizeAlgorithm="$optionValue"
+		;;
+		
+		read-latency)
+			bishbosh_validate_latency $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_readLatency="$optionValue"
+		;;
+		
+		transport)
+			bishbosh_validate_transport $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_transport="$optionValue"
+		;;
+		
+		source-address)
+			bishbosh_validate_address $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_sourceAddress="$optionValue"
+		;;
+		
+		source-port)
+			core_validate_nonDynamicPort $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_sourcePort="$optionValue"
+		;;
+		
+		proxy-kind)
+			bishbosh_validate_proxyKind $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_proxyKind="$optionValue"
+			_program_configurationSet_bishbosh_proxyKind=0
+		;;
+		
+		proxy-server)
+			bishbosh_validate_address $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_proxyServer="$optionValue"
+			_program_configurationSet_bishbosh_proxyServer=0
+		;;
+		
+		proxy-port)
+			core_validate_nonDynamicPort $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_proxyPort="$optionValue"
+			_program_configurationSet_bishbosh_proxyPort=0
+		;;
+		
+		proxy-username)
+			core_message WARN "Specifying the option '--proxy-username' on the command line is insecure"
+			bishbosh_proxyUsername="$optionValue"
+			_program_configurationSet_bishbosh_proxyUsername=0
+		;;
+		
+		proxy-password)
+			core_message WARN "Specifying the option '--proxy-password' on the command line is insecure"
+			bishbosh_proxyPassword="$optionValue"
+			_program_configurationSet_bishbosh_proxyPassword=0
+		;;
+		
+		tunnel-tls-ca-path)
+			core_validate_folderPathReadableAndSearchable $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_tunnelTlsCaPath="$optionValue"
+		;;
+		
+		tunnel-tls-ca-bundle)
+			core_validate_filePathReadable $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_tunnelTlsCaBundle="$optionValue"
+		;;
+		
+		tunnel-tls-certificate)
+			core_validate_filePathReadable $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_tunnelTlsCertificate="$optionValue"
+		;;
+		
+		tunnel-tls-key)
+			core_validate_filePathReadable $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_tunnelTlsKey="$optionValue"
+		;;
+
+		tunnel-tls-use-der)
+			core_validate_isBoolean $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_tunnelTlsUseDer="$optionValue"
+		;;
+		
+		tunnel-tls-verify)
+			core_validate_isBoolean $core_commandLine_exitCode_USAGE 'option' "$optionNameIncludingHyphens" "$optionValue"
+			bishbosh_tunnelTlsVerify="$optionValue"
+		;;
+		
+		tunnel-tls-ciphers)
+			bishbosh_tunnelTlsCiphers="$optionValue"
+		;;
+		
+		tunnel-cryptcat-password)
+			core_message WARN "Specifying the option '--tunnel-cryptcat-password' on the command line is insecure"
+			bishbosh_tunnelCryptcatPassword="$optionValue"
+		;;
+		
+	esac
+}
+
+_program_commandLine_handleNonOptions()
+{
+	local scriptletFilePath
+	local suitableForSourceBuiltInFilePath
+	for scriptletFilePath in "$@"
+	do
+		suitableForSourceBuiltInFilePath=$(core_compatibility_dirname "$scriptletFilePath")/"$(core_compatibility_basename "$scriptletFilePath")"
+		. "$suitableForSourceBuiltInFilePath" || core_exitError "Could not source SCRIPTLET '$scriptletFilePath'"
+	done
+}
+
+_program_commandLine_validateTransportSetting()
+{
+	local variableName="$1"
+	local optionName="$2"
+	local description="$3"
+	local configurationSet=$4
+	
+	local code
+	local category
+	local name
+	if core_variable_isSet "$variableName"; then
+		local core_variable_indirectValue_result
+		core_variable_indirectValue "$variableName"
+		
+		if [ $_program_configurationSet_bishbosh_transport -eq 1 ]; then
+			if [ $configurationSet -eq 1 ]; then
+				code=$core_commandLine_exitCode_CONFIG
+				category='configuration setting'
+				name="$variableName"
+			else
+				code=$core_commandLine_exitCode_USAGE
+				category='option'
+				name='--source-address'
+			fi
+			core_exitError $code "The $category '$name' specified a $description ('$core_variable_indirectValue_result') but the transport ($categoryTransport '$nameTransport') is '$bishbosh_transport'"
+		fi
+	fi
+}
+
+_program_commandLine_validateProxySetting()
+{
+	local noneOrUnspecified="$1"
+	local variableName="$2"
+	local optionName="$3"
+	local description="$4"
+	local configurationSet=$5
+	
+	local code
+	local category
+	local name
+	local message
+	
+	if core_variable_isSet "$variableName"; then
+		local core_variable_indirectValue_result
+		core_variable_indirectValue "$variableName"
+		
+		if [ $configurationSet -eq 1 ]; then
+			code=$core_commandLine_exitCode_CONFIG
+			category='configuration setting'
+			name="$variableName"
+		else
+			code=$core_commandLine_exitCode_USAGE
+			category='option'
+			name="$optionName"
+		fi
+		
+		if [ $_program_configurationSet_bishbosh_proxyKind -eq 1 ]; then
+			categoryProxyKind='configuration setting'
+			nameProxyKind='bishbosh_proxyKind'
+		else
+			categoryProxyKind='option'
+			nameProxyKind='--proxy-kind'
+		fi
+		
+		message="The $category '$name' specifies a $description ('$core_variable_indirectValue_result') but the proxy kind ($categoryProxyKind '$nameProxyKind') is $noneOrUnspecified"
+		if [ "$noneOrUnspecified" = "unspecified" ]; then
+			core_exitError $code "$message"
+		else
+			core_message WARN "$message"
+		fi
+	fi
+}
+
+_program_commandLine_validate()
+{
+	local categoryProxyKind
+	local nameProxyKind
+	if [ $_program_configurationSet_bishbosh_proxyKind -eq 1 ]; then
+		categoryProxyKind='configuration setting'
+		nameProxyKind='bishbosh_proxyKind'
+	else
+		categoryProxyKind='option'
+		nameProxyKind='--proxy-kind'
+	fi
+	
+	local codeTransport
+	local categoryTransport
+	local nameTransport
+	if [ $_program_configurationSet_bishbosh_transport -eq 1 ]; then
+		codeTransport=$core_commandLine_exitCode_CONFIG
+		categoryTransport='configuration setting'
+		nameTransport='bishbosh_transport'
+	else
+		codeTransport=$core_commandLine_exitCode_USAGE
+		categoryTransport='option'
+		nameTransport='--transport'
+	fi
+	
+	local codeServer
+	local categoryServer
+	local nameServer
+	if [ $_program_configurationSet_bishbosh_server -eq 1 ]; then
+		codeServer=$core_commandLine_exitCode_CONFIG
+		categoryServer='configuration setting'
+		nameServer='bishbosh_server'
+	else
+		codeServer=$core_commandLine_exitCode_USAGE
+		categoryServer='option'
+		nameServer='--server'
+	fi
+	
+	if core_variable_isUnset bishbosh_backends; then
+		bishbosh_backends="$_program_default_backends"
+	else
+		bishbosh_validate_backends $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_backends' "$bishbosh_backends"
+	fi
+	
+	if core_variable_isUnset bishbosh_tunnel; then
+		bishbosh_tunnel="$_program_default_tunnel"
+	else
+		bishbosh_validate_tunnel $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_tunnel' "$bishbosh_tunnel"
+	fi
+	
+	if core_variable_isUnset bishbosh_server; then
+		bishbosh_server="$_program_default_server"
+	else
+		bishbosh_validate_address $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_server' "$bishbosh_server"
+	fi
+	
+	if core_variable_isUnset bishbosh_randomClientId; then
+		bishbosh_randomClientId=$_program_default_randomClientId
+	else
+		bishbosh_validate_boolean $core_commandLine_exitCode_USAGE 'configuration setting' 'bishbosh_randomClientId' "$bishbosh_randomClientId"
+	fi
+	
+	if core_variable_isUnset bishbosh_pingTimeout; then
+		bishbosh_pingTimeout=$_program_default_pingTimeout
+	else
+		bishbosh_validate_unsignedIntegerUpto65535Inclusive $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_pingTimeout' "$bishbosh_pingTimeout"
+	fi
+	
+	if core_variable_isUnset bishbosh_connectTimeout; then
+		bishbosh_connectTimeout=$_program_default_connectTimeout
+	else
+		bishbosh_validate_unsignedIntegerUpto65535Inclusive $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_connectTimeout' "$bishbosh_connectTimeout"
+	fi
+	
+	if core_variable_isUnset bishbosh_clientPath; then
+		bishbosh_clientPath="$_program_default_clientPath"
+		core_validate_folderPathReadableAndSearchableAndWritable $core_commandLine_exitCode_CONFIG 'defaulted value for' '--client-path' "$bishbosh_clientPath"
+	else
+		core_validate_folderPathReadableAndSearchable $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_clientPath' "$bishbosh_clientPath"
+	fi
+	
+	if core_variable_isUnset bishbosh_sessionPath; then
+		bishbosh_sessionPath="$_program_default_sessionPath"
+		core_validate_folderPathReadableAndSearchableAndWritable $core_commandLine_exitCode_CONFIG 'defaulted value for' '--session-path' "$bishbosh_sessionPath"
+	else
+		core_validate_folderPathReadableAndSearchable $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_sessionPath' "$bishbosh_sessionPath"
+	fi
+	
+	if core_variable_isUnset bishbosh_lockPath; then
+		bishbosh_lockPath="$_program_default_lockPath"
+		core_validate_folderPathReadableAndSearchableAndWritable $core_commandLine_exitCode_CONFIG 'defaulted value for' '--lock-path' "$bishbosh_lockPath"
+	else
+		core_validate_folderPathReadableAndSearchable $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_lockPath' "$bishbosh_lockPath"
+	fi
+	
+	if core_variable_isUnset bishbosh_filesizeAlgorithm; then
+		bishbosh_filesizeAlgorithm="$_program_default_filesizeAlgorithm"
+	else
+		bishbosh_validate_filesizeAlgorithm $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_filesizeAlgorithm' "$bishbosh_filesizeAlgorithm"
+	fi
+	
+	if core_variable_isUnset bishbosh_readLatency; then
+		bishbosh_readLatency="$_program_default_readLatency"
+	else
+		bishbosh_validate_latency $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_readLatency' "$bishbosh_readLatency"
+	fi
+	
+	if core_variable_isUnset bishbosh_readLatency_inFractionalSeconds; then
+		if [ $bishbosh_readLatency -lt 1 ]; then
+			bishbosh_readLatency_inFractionalSeconds=0
+		elif [ $bishbosh_readLatency -lt 10 ]; then
+			bishbosh_readLatency_inFractionalSeconds=0.00${bishbosh_readLatency}
+		elif [ $bishbosh_readLatency -lt 100 ]; then
+			bishbosh_readLatency_inFractionalSeconds=0.0${bishbosh_readLatency}
+		elif [ $bishbosh_readLatency -lt 1000 ]; then
+			bishbosh_readLatency_inFractionalSeconds=0.${bishbosh_readLatency}
+		else
+			bishbosh_readLatency_inFractionalSeconds=1
+		fi
+	fi
+	
+	if core_variable_isUnset bishbosh_transport; then
+		bishbosh_transport=inet
+	else
+		bishbosh_validate_transport $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_transport' "$bishbosh_transport"
+		if [ "$bishbosh_transport" = unix ]; then
+			if [ ! core_validate_socketPathReadableAndWritable "$bishbosh_server" ]; then
+				core_exitError $codeServer "When $categoryTransport '$nameTransport' is 'unix' the $categoryServer '$nameServer' must be a path to a readable, writable domain socket ('$bishbosh_server' is not)"
+			fi
+			_program_commandLine_validateTransportSetting bishbosh_sourceAddress '--source-address' 'source address' $_program_configurationSet_bishbosh_sourceAddress
+			_program_commandLine_validateTransportSetting bishbosh_sourcePort '--source-port' 'source port' $_program_configurationSet_bishbosh_sourcePort
+			_program_commandLine_validateTransportSetting bishbosh_port '-p/--port' 'destination port' $_program_configurationSet_bishbosh_port
+		fi
+		if [ "$bishbosh_transport" = serial ]; then
+			if [ ! core_validate_characterDeviceFileReadableAndWritable "$bishbosh_server" ]; then
+				core_exitError $codeServer "When $categoryTransport '$nameTransport' is 'serial' the $categoryServer '$nameServer' must be a path to a readable, writable character device file ('$bishbosh_server' is not)"
+			fi
+			_program_commandLine_validateTransportSetting bishbosh_sourceAddress '--source-address' 'source address' $_program_configurationSet_bishbosh_sourceAddress
+			_program_commandLine_validateTransportSetting bishbosh_sourcePort '--source-port' 'source port' $_program_configurationSet_bishbosh_sourcePort
+			_program_commandLine_validateTransportSetting bishbosh_port '-p/--port' 'destination port' $_program_configurationSet_bishbosh_port
+		fi
+	fi
+	
+	if core_variable_isSet bishbosh_proxyKind; then
+		bishbosh_validate_proxyKind $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_proxyKind' "$bishbosh_proxyKind"
+		
+		if [ "$bishbosh_proxyKind" = 'none' ]; then
+			_program_commandLine_validateProxySetting "'none'" bishbosh_proxyServer '--proxy-server' 'proxy server' $_program_configurationSet_bishbosh_proxyServer
+			_program_commandLine_validateProxySetting "'none'" bishbosh_proxyPort '--proxy-port' 'proxy port' $_program_configurationSet_bishbosh_proxyPort
+			_program_commandLine_validateProxySetting "'none'" bishbosh_proxyUsername '--proxy-username' 'proxy username' $_program_configurationSet_bishbosh_proxyUsername
+			_program_commandLine_validateProxySetting "'none'" bishbosh_proxyPassword '--proxy-password' 'proxy password' $_program_configurationSet_bishbosh_proxyPassword
+		else
+			_program_commandLine_validateTransportSetting bishbosh_proxyKind '--proxy-kind' 'proxy kind' $_program_configurationSet_bishbosh_proxyKind
+			if core_variable_isUnset bishbosh_proxyServer; then
+				core_commandLine_exitBadCommandLine "The proxy kind ($categoryProxyKind '$nameProxyKind') is '$bishbosh_proxyKind' but the option '--proxy-server' is unspecified"
+			fi
+			if core_variable_isUnset bishbosh_proxyPort; then
+				case "$bishbosh_proxyKind" in
+					SOCKS4|SOCKS4a|SOCKS5)
+						bishbosh_proxyPort=1080
+					;;
+					
+					HTTP)
+						bishbosh_proxyPort=3128
+					;;
+				esac
+			else
+				core_validate_nonDynamicPort $core_commandLine_exitCode_USAGE 'configuration setting' 'bishbosh_proxyPort' "$bishbosh_proxyPort"
+			fi
+		fi
+	else
+		_program_commandLine_validateProxySetting 'unspecified' bishbosh_proxyServer '--proxy-server' 'proxy server' $_program_configurationSet_bishbosh_proxyServer
+		_program_commandLine_validateProxySetting 'unspecified' bishbosh_proxyPort '--proxy-port' 'proxy port' $_program_configurationSet_bishbosh_proxyPort
+		_program_commandLine_validateProxySetting 'unspecified' bishbosh_proxyUsername '--proxy-username' 'proxy username' $_program_configurationSet_bishbosh_proxyUsername
+		_program_commandLine_validateProxySetting 'unspecified' bishbosh_proxyPassword '--proxy-password' 'proxy password' $_program_configurationSet_bishbosh_proxyPassword
+		bishbosh_proxyKind='none'
+	fi
+	
+	# tunnel specific checks
+	
+	if [ "$bishbosh_tunnel" = 'tls' ]; then
+
+		if core_variable_isSet bishbosh_tunnelTlsCaBundle; then
+			if core_variable_isSet bishbosh_tunnelTlsCaPath; then
+				core_exitError $core_commandLine_exitCode_CONFIG "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', and the option '--tunnel-tls-ca-bundle' (or configuration setting 'bishbosh_tunnelTlsCaBundle') is specified, then the option '--tunnel-tls-ca-path' (or configuration setting 'bishbosh_tunnelTlsCaPath' must not be specified)"
+			fi
+			core_validate_filePathReadable $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_tunnelTlsCaBundle' "$bishbosh_tunnelTlsCaBundle"
+		fi
+
+		if core_variable_isSet bishbosh_tunnelTlsCaPath; then
+			if core_variable_isSet bishbosh_tunnelTlsCaBundle; then
+				core_exitError $core_commandLine_exitCode_CONFIG "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', and the option '--tunnel-tls-ca-path' (or configuration setting 'bishbosh_tunnelTlsCaPath') is specified, then the option '--tunnel-tls-ca-bundle' (or configuration setting 'bishbosh_tunnelTlsCaBundle' must not be specified)"
+			fi
+			core_validate_folderPathReadableAndSearchable $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_tunnelTlsCaPath' "$bishbosh_tunnelTlsCaPath"
+		fi
+		
+		# Client authentication
+		if core_variable_isSet bishbosh_tunnelTlsCertificate; then
+			if core_variable_isUnset bishbosh_tunnelTlsKey; then
+				core_exitError $core_commandLine_exitCode_CONFIG "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', and the option '--tunnel-tls-certificate' (or configuration setting 'bishbosh_tunnelTlsCertificate') is specified, then the option '--tunnel-tls-key' (or configuration setting 'bishbosh_tunnelTlsKey' must be specified)"
+			fi
+			core_validate_filePathReadable $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_tunnelTlsCertificate' "$bishbosh_tunnelTlsCertificate"
+			core_validate_filePathReadable $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_tunnelTlsKey' "$bishbosh_tunnelTlsKey"
+		elif core_variable_isSet bishbosh_tunnelTlsKey; then
+			core_exitError $core_commandLine_exitCode_CONFIG "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', and the option '--tunnel-tls-key' (or configuration setting 'bishbosh_tunnelTlsKey') is specified, then the option '--tunnel-tls-certificate' (or configuration setting 'bishbosh_tunnelTlsCertificate' must be specified)"
+		fi
+		
+		if core_variable_isSet bishbosh_tunnelTlsUseDer; then
+			core_validate_isBoolean $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_tunnelTlsUseDer' "$bishbosh_tunnelTlsUseDer"
+		else
+			bishbosh_tunnelTlsUseDer=${_program_default_bishbosh_tunnelTlsUseDer}
+		fi
+		
+		if core_variable_isSet bishbosh_tunnelTlsVerify; then
+			core_validate_isBoolean $core_commandLine_exitCode_CONFIG 'configuration setting' 'bishbosh_tunnelTlsVerify' "$bishbosh_tunnelTlsVerify"
+		else
+			bishbosh_tunnelTlsVerify=${_program_default_bishbosh_tunnelTlsVerify}
+		fi
+	else
+		if core_variable_isSet bishbosh_tunnelTlsCaPath; then
+			core_exitError $codeServer "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', then the option '--tunnel-tls-ca-path' (or configuration setting 'bishbosh_tunnelTlsCaPath') must not be specified."
+		fi
+		if core_variable_isSet bishbosh_tunnelTlsCaBundle; then
+			core_exitError $codeServer "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', then the option '--tunnel-tls-ca-bundle' (or configuration setting 'bishbosh_tunnelTlsCaBundle') must not be specified."
+		fi
+		if core_variable_isSet bishbosh_tunnelTlsCertificate; then
+			core_exitError $codeServer "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', then the option '--tunnel-tls-certificate' (or configuration setting 'bishbosh_tunnelTlsCertificate') must not be specified."
+		fi
+		if core_variable_isSet bishbosh_tunnelTlsKey; then
+			core_exitError $codeServer "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', then the option '--tunnel-tls-key' (or configuration setting 'bishbosh_tunnelTlsKey') must not be specified."
+		fi
+		if core_variable_isSet bishbosh_tunnelTlsUseDer; then
+			core_exitError $codeServer "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', then the option '--tunnel-tls-use-der' (or configuration setting 'bishbosh_tunnelTlsUseDer') must not be specified."
+		fi
+		if core_variable_isSet bishbosh_tunnelTlsVerify; then
+			core_exitError $codeServer "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', then the option '--tunnel-tls-verify' (or configuration setting 'bishbosh_tunnelTlsVerify') must not be specified."
+		fi
+		if core_variable_isSet bishbosh_tunnelTlsCiphers; then
+			core_exitError $codeServer "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', then the option '--tunnel-tls-ciphers' (or configuration setting 'bishbosh_tunnelTlsCiphers') must not be specified."
+		fi
+	fi
+	
+	if [ "$bishbosh_tunnel" = 'cryptcat' ]; then
+		:
+	else
+		if core_variable_isSet bishbosh_tunnel_cryptcatPassword; then
+			core_exitError $codeServer "When the option '--tunnel' (or configuration setting 'bishbosh_tunnel') is '$bishbosh_tunnel', then the option '--tunnel-cryptcat-password' (or configuration setting 'bishbosh_tunnelCryptcatPassword') must not be specified."
+		fi
+	fi
+}
+
+# Assumes pwd, and so requires this code to be running from this folder
+. "$_program_libPath"/shellfire/core/init.functions "$@"

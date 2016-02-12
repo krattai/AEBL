@@ -1,0 +1,127 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+core_dependency_oneOf '*' date
+bishbosh_connection_ping_initialise()
+{
+	bishbosh_connection_ping_responsePending=0
+	
+	if core_variable_isUnset bishbosh_connect_keepAlive; then
+		bishbosh_connect_keepAlive=0
+	fi
+	
+	if [ $bishbosh_connect_keepAlive -ne 0 ]; then
+	
+		if [ $bishbosh_readLatency -ge 1000 ]; then
+			if [ $bishbosh_connect_keepAlive -lt 2 ]; then
+				core_message WARN "When the option '--read-latency' (or configuration setting 'bishbosh_readLatency') is 1000 ms, 'bishbosh_connect_keepAlive' must be at least 2 seconds (not '$bishbosh_connect_keepAlive'). bishbosh_connect_keepAlive is being forcing to 2 seconds."
+				bishbosh_connect_keepAlive=2
+			fi
+		fi
+		
+		bishbosh_connection_ping_sendPingIfRequired()
+		{
+			if [ $bishbosh_connection_ping_responsePending -eq 1 ]; then
+				return 0
+			fi
+			
+			if bishbosh_connection_ping_checkTimer -lt $bishbosh_connect_keepAlive; then
+				return 0
+			fi
+			
+			core_message INFO 'Writing PINGREQ'
+			bishbosh_connection_write_PINGREQ
+			bishbosh_connection_ping_responsePending=1
+		}
+		
+		bishbosh_connection_ping_recordLastSentControlPacketAt()
+		{
+			# Avoid unnecessary resets - speeds up dash, etc shells lacking $SECONDS builtin
+			if [ $bishbosh_connection_ping_responsePending -eq 1 ]; then
+				return 0
+			fi
+	
+			bishbosh_connection_ping_resetTimer
+		}
+
+		bishbosh_connection_ping_checkForResponseTimeout()
+		{
+			if [ $bishbosh_connection_ping_responsePending -eq 0 ]; then
+				return 0
+			fi
+
+			if bishbosh_connection_ping_checkTimer -gt $bishbosh_pingTimeout; then
+				bishbosh_connection_error_pingTimeout
+			fi
+		}
+
+		bishbosh_connection_ping_responseReceived()
+		{
+			core_message INFO 'Received valid PINGRESP'
+			bishbosh_connection_ping_responsePending=0
+		}
+		
+		if core_variable_isSet SECONDS; then
+			
+			bishbosh_connection_ping_resetTimer()
+			{
+				SECONDS=0
+			}
+
+			bishbosh_connection_ping_checkTimer()
+			{
+				[ $SECONDS $1 $2 ]
+			}
+			
+			return 0
+		fi
+		
+		if core_compatibility_whichNoOutput date; then
+		
+			_bishbosh_connection_ping_timer=0
+			
+			bishbosh_connection_ping_resetTimer()
+			{
+				_bishbosh_connection_ping_timer=$(date '+%s')
+			}
+
+			bishbosh_connection_ping_checkTimer()
+			{
+				local now=$(date '+%s')
+				local elapsedTime=$((now-_bishbosh_connection_ping_timer))
+				[ $elapsedTime $1 $2 ]
+			}
+			
+			return 0
+		fi
+		
+		core_message WARN "Your shell does not support 'SECONDS' and the 'date' program isn't unavailble. Overriding your setting of 'bishbosh_connect_keepAlive as '$bishbosh_connect_keepAlive' to '0' (ie disabling)."
+		bishbosh_connect_keepAlive=0
+	fi
+	
+	bishbosh_connection_ping_sendPingIfRequired()
+	{
+		:
+	}
+
+	bishbosh_connection_ping_recordLastSentControlPacketAt()
+	{
+		:
+	}
+	
+	bishbosh_connection_ping_checkForResponseTimeout()
+	{
+		:
+	}
+	
+	bishbosh_connection_ping_responseReceived()
+	{
+		bishbosh_connection_error_protocolReadControlPacket PINGRESP 'Pings should not be received when Keep Alive is 0'
+	}
+	
+	bishbosh_connection_write_PINGREQ()
+	{
+		bishbosh_connection_error_protocol "PINGREQ should not be called when Keep Alive is 0"
+	}
+}

@@ -1,0 +1,71 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+bishbosh_connection_read_controlpacket_handlers=()
+
+bishbosh_connection_read_controlpacket_initialise()
+{
+	local isServer="$1"
+	
+	local -i index
+	for((index=0;index<256;index++))
+	do
+		bishbosh_connection_read_controlpacket_handlers[$index]=bishbosh_connection_read_controlpacket_invalid
+	done
+	
+	if core_variable_isTrue "$isServer"; then
+		bishbosh_connection_read_controlpacket_handlers[16]=bishbosh_connection_read_controlpacket_CONNECT
+	else
+		# Never expected after initial read
+		:
+	fi
+
+	
+	# bishbosh_connection_read_PUBLISH_6, bishbosh_connection_read_controlpacket_PUBLISH_7, bishbosh_connection_read_controlpacket_PUBLISH_14, bishbosh_connection_read_controlpacket_PUBLISH_15 all have invalid QoS values and so aren't listed
+	# bishbosh_connection_read_PUBLISH_8 and bishbosh_connection_read_PUBLISH_9 have QoS of 0 and DUP of 1 which isn't allowed
+	bishbosh_connection_read_controlpacket_handlers[48]=bishbosh_connection_read_controlpacket_PUBLISH_0
+	bishbosh_connection_read_controlpacket_handlers[49]=bishbosh_connection_read_controlpacket_PUBLISH_1
+	bishbosh_connection_read_controlpacket_handlers[50]=bishbosh_connection_read_controlpacket_PUBLISH_2
+	bishbosh_connection_read_controlpacket_handlers[51]=bishbosh_connection_read_controlpacket_PUBLISH_3
+	bishbosh_connection_read_controlpacket_handlers[52]=bishbosh_connection_read_controlpacket_PUBLISH_4
+	bishbosh_connection_read_controlpacket_handlers[53]=bishbosh_connection_read_controlpacket_PUBLISH_5
+	bishbosh_connection_read_controlpacket_handlers[58]=bishbosh_connection_read_controlpacket_PUBLISH_10
+	bishbosh_connection_read_controlpacket_handlers[59]=bishbosh_connection_read_controlpacket_PUBLISH_11
+	bishbosh_connection_read_controlpacket_handlers[60]=bishbosh_connection_read_controlpacket_PUBLISH_12
+	bishbosh_connection_read_controlpacket_handlers[61]=bishbosh_connection_read_controlpacket_PUBLISH_13
+	
+	bishbosh_connection_read_controlpacket_handlers[64]=bishbosh_connection_read_controlpacket_PUBACK
+	
+	bishbosh_connection_read_controlpacket_handlers[80]=bishbosh_connection_read_controlpacket_PUBREC
+	
+	bishbosh_connection_read_controlpacket_handlers[98]=bishbosh_connection_read_controlpacket_PUBREL
+	
+	bishbosh_connection_read_controlpacket_handlers[112]=bishbosh_connection_read_controlpacket_PUBCOMP
+	
+	if core_variable_isTrue "$isServer"; then
+		bishbosh_connection_read_controlpacket_handlers[130]=bishbosh_connection_read_controlpacket_SUBSCRIBE
+	else
+		bishbosh_connection_read_controlpacket_handlers[144]=bishbosh_connection_read_controlpacket_SUBACK
+	fi
+	
+	if core_variable_isTrue "$isServer"; then
+		bishbosh_connection_read_controlpacket_handlers[162]=bishbosh_connection_read_controlpacket_UNSUBSCRIBE
+	else
+		bishbosh_connection_read_controlpacket_handlers[176]=bishbosh_connection_read_controlpacket_UNSUBACK
+	fi
+	if core_variable_isTrue "$isServer"; then
+		bishbosh_connection_read_controlpacket_handlers[192]=bishbosh_connection_read_controlpacket_PINGREQ
+	else
+		bishbosh_connection_read_controlpacket_handlers[208]=bishbosh_connection_read_controlpacket_PINGRESP
+	fi
+	
+	if core_variable_isTrue "$isServer"; then
+		bishbosh_connection_read_controlpacket_handlers[224]=bishbosh_connection_read_controlpacket_DISCONNECT
+	fi
+}
+
+bishbosh_connection_read_controlpacket_handle()
+{
+	${bishbosh_connection_read_controlpacket_handlers[${controlPacketByte}]}
+}
