@@ -14,7 +14,7 @@ def on_connect(mosq, obj, rc):
 # subscribe([("my/topic", 0), ("another/topic", 2)])
 #    mqttc.subscribe("aebl/hello", 0)
 #    mqttc.subscribe("aebl/alive", 0)
-    mqttc.subscribe("uvea/world", 0)
+    mqttc.subscribe("aebl/world", 0)
     print("rc: " + str(rc))
 
 def on_message(mosq, obj, msg):
