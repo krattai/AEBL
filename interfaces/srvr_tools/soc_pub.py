@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
 import paho.mqtt.client as mqtt
+# Unknown license, code found here:  http://stackoverflow.com/questions/31775450/publish-and-subscribe-with-paho-mqtt-client
 
-# Unknown license, code found here:  http://stackoverflow.com/questions/3177545$
+# reference to MQTT python found here: http://mosquitto.org/documentation/python/
 
-# reference to MQTT python found here: http://mosquitto.org/documentation/pytho$
 
 # requires:  sudo pip install paho-mqtt
 # pip requires: sudo apt-get install python-pip
