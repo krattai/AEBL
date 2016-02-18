@@ -14,7 +14,7 @@ def on_connect(mosq, obj, rc):
 # subscribe([("my/topic", 0), ("another/topic", 2)])
 #    mqttc.subscribe("aebl/hello", 0)
 #    mqttc.subscribe("aebl/alive", 0)
-    mqttc.subscribe("aebl/world", 0)
+    mqttc.subscribe("aebl/social", 0)
     print("rc: " + str(rc))
 
 def on_message(mosq, obj, msg):
@@ -22,8 +22,10 @@ def on_message(mosq, obj, msg):
     print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
     message = msg.payload
 #    mqttc.publish("uvea/world",msg.payload);
-    if 'ACK' in message:
-        mqttc.publish("uvea/world","NAK");
+    if '#am2p' in message:
+        mqttc.publish("aebl/social","Publishing to social media.");
+#         $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "Can you print your own money? http://embracingopen.blogspot.ca/2016/02/open-money.html #am2p"
+
 #    mqttcb.publish("uvea/world",msg.payload);
 
 def on_publish(mosq, obj, mid):
