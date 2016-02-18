@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
+import os
+
 import paho.mqtt.client as mqtt
 # Unknown license, code found here:  http://stackoverflow.com/questions/31775450/publish-and-subscribe-with-paho-mqtt-client
 
 # reference to MQTT python found here: http://mosquitto.org/documentation/python/
-
 
 # requires:  sudo pip install paho-mqtt
 # pip requires: sudo apt-get install python-pip
@@ -24,8 +25,9 @@ def on_message(mosq, obj, msg):
 #    mqttc.publish("uvea/world",msg.payload);
     if '#am2p' in message:
         mqttc.publish("aebl/social","Publishing to social media.");
-#         $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "Can you print your own money? http://embracingopen.blogspot.ca/2016/02/open-money.html #am2p"
-
+#         $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "Publishin to social media, with a link. http://embracingopen.blogspot.ca/ #am2p"
+        os.system("/home/kevin/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s %s" % (message))
+ 
 #    mqttcb.publish("uvea/world",msg.payload);
 
 def on_publish(mosq, obj, mid):
