@@ -45,8 +45,9 @@ mqttc.on_subscribe = on_subscribe
 # Connect
 # mqttc.connect("localhost", 1883,60)
 
-mqttc.connect("2001:5c0:1100:dd00:240:63ff:fefd:d3f1", 1883,60)
+# mqttc.connect("2001:5c0:1100:dd00:240:63ff:fefd:d3f1", 1883,60)
 # mqttc.connect("2001:5c0:1100:dd00:ba27:ebff:fe2c:41d7", 1883,60)
+mqttc.connect("uveais.ca", 1883,60)
 
 # mosquitto_sub -h 2001:5c0:1100:dd00:ba27:ebff:fe2c:41d7 -t "hello/+" -t "aebl$
 
