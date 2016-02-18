@@ -26,7 +26,8 @@ def on_message(mosq, obj, msg):
     if '#am2p' in message:
         mqttc.publish("aebl/social","Publishing to social media.");
 #         $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "Publishin to social media, with a link. http://embracingopen.blogspot.ca/ #am2p"
-        os.system("/home/kevin/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s %s" % (message))
+# ex: os.system("./args.sh %s %s %s" % (value1,value2,value3)) 
+        os.system("/home/kevin/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s \"%s\"" % (message))
  
 #    mqttcb.publish("uvea/world",msg.payload);
 
