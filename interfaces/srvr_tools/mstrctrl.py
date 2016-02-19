@@ -2,13 +2,9 @@
 
 # Copyright (C) 2016 Uvea I. S., Kevin Rattai
 #
-# This script watches MQTT channel and publishes to social media on trigger.
+# This script should watch MQTT channels and respond and direct accordingly.
 #
-# Trigger is #am2p on channel
-#   Same trigger, by user fires ITTT recipe to push to other social media
-#
-# usage:
-#   mosquitto_pub -d -t aebl/social -m "If this posts, then it worked.  :) #am2p " -h "uveais.ca"
+# Trigger on things like new registrations and direct channel content uptake
 
 import os
 
