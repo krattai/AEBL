@@ -10,7 +10,7 @@
 # usage:
 #   mosquitto_pub -d -t aebl/social -m "If this posts, then it worked.  :) #am2p " -h "uveais.ca"
 #
-# Special char handling requires \ interrupt, as in \$:
+# Special char handling requires \ escape char, as in \$:
 #     mosquitto_pub -d -t aebl/social -m "Today's bitcoin rate CAD\\\$576.5844 US$ rate CAD\\\$1.3769 #PSA #am2p" -h "uveais.ca"
 #
 # The above will drop first and third \ and then pub to twitter with tcli.sh drops the other \ for final publish to twitter.
