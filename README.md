@@ -29,7 +29,7 @@ For those interested in trying it out, you will need a Raspberry Pi (should be t
 The current image is a ~680MB 7zip compressed file of it's original 2.7GB size, located on dropbox, here:
 https://www.dropbox.com/s/lj0r6yia4tsnz8w/140815-aeblpi.img.7z?dl=0
 
-AEBL uses IPv6 to a great extent.  Many Internet Service Providers still do not provide IPv6.  As a result, in order to access certain information for AEBL, obtaining an IPv6 internet connection will be helpful.  The following providers offer free IPv6 tunnerls:
+AEBL uses IPv6 to a great extent.  Many Internet Service Providers still do not provide IPv6.  As a result, in order to access certain information for AEBL, obtaining an IPv6 internet connection will be helpful.  The following providers offer free IPv6 tunnels:
 
 gogo6:
 http://www.gogo6.com/profile/gogoCLIENT
