@@ -362,3 +362,7 @@ curl -v -H "Content-Type: application/json" -H "Authorization: OAuth$ACCESS_TOKE
 
 https://developers.google.com/+/domains/posts/creating
 
+~~~~~~~~~~~~~~~~~~~~~~
+
+Added Lua intro to docs as a, possibly just, temporary reference
+
