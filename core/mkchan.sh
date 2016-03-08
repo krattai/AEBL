@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 # make unique channel
 
@@ -76,6 +76,21 @@ echo "MAC Address: $MACe0"
 
 echo $(date +"%y-%m-%d")
 echo $(date +"%T")
+
+# request IHDN channel (using MAC address):
+# mosquitto_pub -d -t request/chan -m "a0:2b:b8:58:62:bf" -h "ihdn.ca"
+
+# Wait for response using MAC address:
+# mosquitto_sub -h ihdn.ca -t "response/a0:2b:b8:58:62:bf"
+
+# mosquitto_sub -h 2001:5c0:1100:dd00:240:63ff:fefd:d3f1 -t "hello/+" -t "aebl/+" -t "ihdn/+" -t "uvea/+" |
+# while IFS= read -r line
+#     do
+#           if [[ $line = "sixxs alive" ]]; then
+#               echo "$(date +"%T") - sixxs ACK"
+#               echo " "
+#           fi
+# done
 
 # check file doesn't exist
 if [ ! -f "${ID_FILE}" ]; then
