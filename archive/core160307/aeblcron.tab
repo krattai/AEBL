@@ -1,0 +1,6 @@
+# This is the AEBL core crontab jobs file
+# 
+*/3 * * * * /run/shm/scripts/inetup.sh
+*/15 * * * * /run/shm/scripts/l-ctrl.sh
+30 2 * * * /run/shm/scripts/patch.sh
+30 4 * * 3 /run/shm/scripts/upgrade.sh

@@ -1,0 +1,78 @@
+Model and Pi Revision 	256MB 	Hardware Revision Code from cpuinfo
+Model B Revision 1.0 	256MB 	0002
+Model B Revision 1.0 + ECN0001 (no fuses, D14 removed) 	256MB 	0003
+Model B Revision 2.0
+Mounting holes 	256MB 	0004 0005 0006
+Model A
+Mounting holes 	256MB 	0007 0008 0009
+Model B Revision 2.0
+Mounting holes 	512MB 	000d 000e 000f
+Model B+ 	512MB 	0010
+Compute Module 	512MB 	0011
+Model A+ 	256MB 	0012
+Pi 2 Model B 	1GB 	a01041 (Sony, UK) a21041 (Embest, China)
+
+B+
+
+cat /proc/cpuinfo
+processor	: 0
+model name	: ARMv6-compatible processor rev 7 (v6l)
+Features	: swp half thumb fastmult vfp edsp java tls 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xb76
+CPU revision	: 7
+
+Hardware	: BCM2708
+Revision	: 000e
+Serial		: 000000004ee30df8
+
+~~~~~~~~~~~~
+
+Pi 2
+
+cat /proc/cpuinfo
+processor	: 0
+model name	: ARMv7 Processor rev 5 (v7l)
+BogoMIPS	: 57.60
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc07
+CPU revision	: 5
+
+processor	: 1
+model name	: ARMv7 Processor rev 5 (v7l)
+BogoMIPS	: 57.60
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc07
+CPU revision	: 5
+
+processor	: 2
+model name	: ARMv7 Processor rev 5 (v7l)
+BogoMIPS	: 57.60
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc07
+CPU revision	: 5
+
+processor	: 3
+model name	: ARMv7 Processor rev 5 (v7l)
+BogoMIPS	: 57.60
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc07
+CPU revision	: 5
+
+Hardware	: BCM2709
+Revision	: a21041
+Serial		: 00000000d8443e09
