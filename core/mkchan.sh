@@ -26,6 +26,7 @@ ID_FILE="${HOME}/.id"
 IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 
 # MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
+MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
 # echo var from position for length
 # var="Welcome to the AEBLstuff"
