@@ -1,0 +1,252 @@
+mosquitto_sub -h 2001:5c0:1100:dd00:240:63ff:fefd:d3f1 -t "hello/+" -t "aebl/+" -t "ihdn/+" -t "uvea/+" 2> >(grep ACK)
+
+#!/bin/bash
+# Element14 - SuddenImpact design challenge
+# http://www.element14.com/community/community/design-challenges/sudden-impact
+#
+# This file is part of submission made for Modular&EasyConfigure project (tomaj$
+#
+# v010 - January 11th 2015.
+#      Initial version. Subscribe to MQTT broker and act upon messages received.
+#
+
+mosquitto_sub -h 2001:5c0:1100:dd00:240:63ff:fefd:d3f1 -t "hello/+" -t "aebl/+" -t "ihdn/+" -t "uvea/+" |
+while IFS= read -r line
+    do
+          if [[ $line = "sixxs alive" ]]; then
+              echo "$(date +"%T") - sixxs ACK"
+              echo " "
+          fi
+done
+
+exit 0
+
+
+~~~~~~~~~~~~~~~~
+
+
+Very interesting code may be able to auto seek and login to networks:
+https://www.element14.com/community/community/design-challenges/sudden-impact/blog/2015/01/11/easyconfigure--bash-scripting
+
+#!/bin/bash
+# Element14 - SuddenImpact design challenge
+# http://www.element14.com/community/community/design-challenges/sudden-impact
+#
+# This file is part of submission made for Modular&EasyConfigure project (tomaja).
+#.
+# v000 - January 10th 2015.
+#      Initial version. Scans for available wireless network access points.
+#      Loops through the list and connects to all available remote units to send configuration data.
+#
+
+# Hardcoded values. Will be passed through the command line.
+MAIN_AP=tomaje
+BROKER_IP=192.168.1.94
+
+# I will filter APs here using regex. For now, connect to any AP
+# ESSIDs will be written in remote unit flash memory.
+# ESSID example: MEC_deadbeef1234
+# Device reset button will restore the AP mode for device so it can be initialized again with different main AP ESSID and broker address.
+aps=`sudo unbuffer iwlist wlan0 scan | grep ESSID | sed 's/[ ][ ]*ESSID:\(\)/\1/g' | sed 's/"//g'`
+
+count=`unbuffer echo "$aps" | wc -l`
+
+if [ $count != 0 ]; then
+    unbuffer echo Pairing with remote units...
+    unbuffer echo Number of detected devices: $count
+
+    for ap in $aps ; do
+      echo Setting up device $ap
+      echo -e "\tConnecting to $ap ..."
+      sudo unbuffer iwconfig wlan0 mode Managed &
+      sudo unbuffer iwconfig wlan0 essid $ap &
+      echo -e "\tSending configuration ..."
+# Sending configuration data. For now, just send some dummy settings to localhost (Test server: nc -k -l 12345)
+      echo "AP:$MAIN_AP IP:$BROKER_IP" | nc localhost 12345
+      echo "switch_to_client" | nc localhost 12345
+      echo -e "\tDONE"
+    done
+else
+    echo "Could not find SuddentImpact remote units. Please make sure that units are prepared for pairing."
+fi
+
+
+
+
+#!/bin/bash
+# Element14 - SuddenImpact design challenge
+# http://www.element14.com/community/community/design-challenges/sudden-impact
+#
+# This file is part of submission made for Modular&EasyConfigure project (tomaja).
+#
+# v010 - January 11th 2015.
+#      Initial version. Subscribe to MQTT broker and act upon messages received.
+#
+
+mosquitto_sub -t suddenimpact/commands |
+while IFS= read -r line
+    do
+          if [ $line = "update-units" ]; then
+              sudo ./scan_and_configure.sh
+          fi
+done
+
+
+
+pi@malina ~/SuddenImpact $ sudo ./subscribe.sh
+Pairing with remote units...
+Number of detected devices: 1
+Setting up device tomaje
+  Connecting to tomaje ...
+  Sending configuration ...
+  DONE
+
+
+
+pi@malina ~ $ mosquitto_pub -t suddenimpact/commands -m update-units
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sudden Impact Wearables Design Challenge
+Previous post
+Next post
+tomaja
+EasyConfigure - BASH scripting
+Posted by tomaja in Sudden Impact Wearables Design Challenge on Jan 11, 2015 4:50:27 PM
+Previous posts:
+
+EasyConfigure - Modular/Configurable System Intro
+
+EasyConfigure - Hardware Components
+
+ 
+1. Introduction
+
+Time is getting shorter for this challenge so it seems like a good idea to use tools that will help in making the progress faster.
+
+Since I'm still waiting for the contestant's kit, the only way I can work right now is by working on the software side and on hardware components that I already have.
+
+I decided to make parts of this project with simple BASH scripts. BASH scripts are speeding up the prototyping phase very much.
+
+These scripts are running on a Raspberry Pi.
+
+ 
+2. Scripts
+
+scan_and_configure.sh - Scans for WiFi access points and connects to those that follow the naming convention selected for remote units (list of predefined unit names is also an option).
+
+For now, all remote units will initially run as APs with open access.
+
+After Raspberry Pi connects to remote unit as client, it sends a configuration string using netcat. For now, this string contains the main access point ESSID and MQTT broker IP.
+
+After that, switch_to_client command is sent. I'm still waiting for my WiFi modules that I've ordered on eBay so this script is not fully functional.
+
+Please, disregard this many unbuffer commands, I had too much trouble with buffering so I put them everywhere without too much thinking - I'll sort it out later.
++ expand sourceview plain
+
+    #!/bin/bash  
+    # Element14 - SuddenImpact design challenge  
+    # http://www.element14.com/community/community/design-challenges/sudden-impact  
+    #  
+    # This file is part of submission made for Modular&EasyConfigure project (tomaja).  
+    #.  
+    # v000 - January 10th 2015.  
+    #      Initial version. Scans for available wireless network access points.  
+    #      Loops through the list and connects to all available remote units to send configuration data.  
+    #  
+      
+    # Hardcoded values. Will be passed through the command line.  
+    MAIN_AP=tomaje  
+    BROKER_IP=192.168.1.94  
+      
+    # I will filter APs here using regex. For now, connect to any AP  
+    # ESSIDs will be written in remote unit flash memory.  
+    # ESSID example: MEC_deadbeef1234  
+    # Device reset button will restore the AP mode for device so it can be initialized again with different main AP ESSID and broker address.  
+    aps=`sudo unbuffer iwlist wlan0 scan | grep ESSID | sed 's/[ ][ ]*ESSID:\(\)/\1/g' | sed 's/"//g'`  
+      
+    count=`unbuffer echo "$aps" | wc -l`  
+      
+    if [ $count != 0 ]; then  
+        unbuffer echo Pairing with remote units...  
+        unbuffer echo Number of detected devices: $count  
+      
+        for ap in $aps ; do  
+          echo Setting up device $ap  
+          echo -e "\tConnecting to $ap ..."  
+          sudo unbuffer iwconfig wlan0 mode Managed &  
+          sudo unbuffer iwconfig wlan0 essid $ap &  
+          echo -e "\tSending configuration ..."  
+    # Sending configuration data. For now, just send some dummy settings to localhost (Test server: nc -k -l 12345)  
+          echo "AP:$MAIN_AP IP:$BROKER_IP" | nc localhost 12345  
+          echo "switch_to_client" | nc localhost 12345  
+          echo -e "\tDONE"  
+        done  
+    else  
+        echo "Could not find SuddentImpact remote units. Please make sure that units are prepared for pairing."  
+    fi  
+
+ 
+
+subscribe.sh - Subscribe to MQTT broker and act upon messages received.
+
+I have a An Open Source MQTT v3.1 Broker mosquitto package installed on my RPi (using install method from their site).
+
+Also, mosquitto-clients package was installed, since I use some CLI tools like mosquitto_pub and mosquitto_sub from that package.
+
+For now, only update-units command is being handled in this script (line 15). This command triggers the previous script. Publishing will be done from monitoring applications (usually run on handheld devices).
+
+ 
++ expand sourceview plain
+
+    #!/bin/bash  
+    # Element14 - SuddenImpact design challenge  
+    # http://www.element14.com/community/community/design-challenges/sudden-impact  
+    #  
+    # This file is part of submission made for Modular&EasyConfigure project (tomaja).  
+    #  
+    # v010 - January 11th 2015.  
+    #      Initial version. Subscribe to MQTT broker and act upon messages received.  
+    #  
+      
+    mosquitto_sub -t suddenimpact/commands |  
+    while IFS= read -r line  
+        do  
+              if [ $line = "update-units" ]; then  
+                  sudo ./scan_and_configure.sh  
+              fi  
+    done  
+
+ 
+
+Demo output looks like this (tomaje was the only WiFi AP available):
++ expand sourceview plain
+
+    pi@malina ~/SuddenImpact $ sudo ./subscribe.sh  
+    Pairing with remote units...  
+    Number of detected devices: 1  
+    Setting up device tomaje  
+      Connecting to tomaje ...  
+      Sending configuration ...  
+      DONE  
+
+ 
+
+The above output is triggered by publishing update-unit to suddenimpact/commands topic like this:
++ expand sourceview plain
+
+    pi@malina ~ $ mosquitto_pub -t suddenimpact/commands -m update-units  
+
+ 
+
+Similarly, I will make a script to store remote units sensor data into a database. If this turns out to be too slow, I will make a dedicated C++ application. Assessment of performance can be easily done by running an arbitrary number of publishers from another computer.
+
+ 
+
+I received Arduino Micro that I plan to use as the basis for remote units. I'm still to receive the ESP8266 WiFi module. I will also try using one of Microchip's WiFi modules available from element14 (unlike ESP8266, Microchip modules are certified for usage in Europe and USA at least).
+
+ 
+
+Thanks,
+
+Dragan
