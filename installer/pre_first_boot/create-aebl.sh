@@ -3,6 +3,12 @@
 # The AEBL img is not a pure raspbian image, some unique
 # updates were performed to achieve base img
 #
+# This script should be changed out as secondary installer accessed via internet
+#   and the load script should install and configure IPv6 network and also
+#   opennic to get files from aebl.oss
+# Yes, this will introduce possible security risk so will need to ensure control
+#   of domain and introduce possible auth via challenge/response, or something
+#
 # Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 # Useage:
@@ -44,22 +50,29 @@ fi
 # is google there?
 ping -c 1 8.8.8.8
 
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# use this a reference for future feature to grab install file immediately from net
 if [ $? -eq 0 ]; then
     touch .network
     echo "Internet available."
 else
     rm .network
 fi
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+# no longer using local net
 # is it on test/home network?
-ping -c 1 192.168.200.6
+# ping -c 1 192.168.200.6
 
-if [[ $? -eq 0 ]]; then
-    touch .local
-    echo "Local network available."
-else
-    rm .local
-fi
+# if [[ $? -eq 0 ]]; then
+#     touch .local
+#     echo "Local network available."
+# else
+#     rm .local
+# fi
+
+# force removal of possible local reference as not being used
+rm .local
 
 if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
     touch .offline
