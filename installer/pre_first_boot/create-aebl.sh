@@ -8,6 +8,10 @@
 #   opennic to get files from aebl.oss
 # Yes, this will introduce possible security risk so will need to ensure control
 #   of domain and introduce possible auth via challenge/response, or something
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# Actually, while goal is to be as bare bones as possible, reality is gogoc and
+#   proper anon tunnel set up prior to install would most likely be best
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #
 # Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
