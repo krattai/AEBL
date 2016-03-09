@@ -1,0 +1,4 @@
+anon-montreal.freenet6.net
+anon-amsterdam.freenet6.net
+anon-taipei.freenet6.net
+anon-sydney.freenet6.net
