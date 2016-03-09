@@ -59,123 +59,12 @@ ping -c 1 8.8.8.8
 if [ $? -eq 0 ]; then
     touch .network
     echo "Internet available."
+    wget -N -nd -w 3 -P scripts --limit-rate=50k https://www.dropbox.com/s/56wti4xtbu4txf4/create-aebl.sh
 else
     rm .network
 fi
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-# no longer using local net
-# is it on test/home network?
-# ping -c 1 192.168.200.6
-
-# if [[ $? -eq 0 ]]; then
-#     touch .local
-#     echo "Local network available."
-# else
-#     rm .local
-# fi
-
-# force removal of possible local reference as not being used
-rm .local
-
-if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
-    touch .offline
-    echo "No network available."
-    exit 1
-else
-    rm .offline
-fi
-
-# change hostname, from:
-# http://pricklytech.wordpress.com/2013/04/24/ubuntu-change-hostname-permanently-using-the-command-line/
-
-#Assign existing hostname to $hostn
-hostn=$(cat /etc/hostname)
-
-#Display existing hostname
-# echo "Existing hostname is $hostn"
-
-# Set new hostname $newhost
-# echo "Enter new hostname: "
-# read newhost
-if [ -f "$HOME/aeblsys" ]; then
-    newhost="aeblsys"
-fi
-
-if [ -f "$HOME/idetsys" ]; then
-    newhost="idetsys"
-fi
-
-if [ -f "$HOME/irotsys" ]; then
-    newhost="irotsys"
-fi
-
-#change hostname in /etc/hosts & /etc/hostname
-sudo sed -i "s/${hostn}/${newhost}/g" /etc/hosts
-sudo sed -i "s/${hostn}/${newhost}/g" /etc/hostname
-
-sudo hostname ${newhost}
-
-# set IPv6 enabled
-
-sudo chown pi:pi /etc/modules
-echo "ipv6" >> /etc/modules
-sudo chown root:root /etc/modules
-
-mkdir ${TEMP_DIR}
-mkdir ${MP3_DIR}
-mkdir ${MP4_DIR}
-mkdir ${PL_DIR}
-mkdir ${CTRL_DIR}
-mkdir ${BIN_DIR}
-
-chmod 777 ${MP3_DIR}
-chmod 777 ${MP4_DIR}
-chmod 777 ${PL_DIR}
-chmod 777 ${CTRL_DIR}
-
-export PATH=$PATH:${BIN_DIR}:$HOME/scripts
-
-# Get necessary AEBL files
-#
-
-if [ ! -f "${OFFLINE_SYS}" ]; then
-
-    wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/core/aeblcurr
-
-    cur_file=$(cat "${TEMP_DIR}/aeblcurr" | head -n1)
-
-#     dbox_file=$(cat "${TEMP_DIR}/aeblcurr" | tail -n1)
-
-#     wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://www.dropbox.com/s/${dbox_file}/${cur_file}"
-
-    wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://github.com/krattai/AEBL/raw/master/core/patches/${cur_file}"
-
-    cd ${TEMP_DIR}
-
-    unzip -o ${cur_file}
-
-    rm ${cur_file}
-
-    cd $HOME
-
-    sudo apt-get update
-
-    sudo apt-get -y install fbi samba samba-common-bin libnss-mdns lsof
-
-    sudo rpi-update
-
-    # running rpi-wiggle in background so script has chance to
-    # end gracefully
-    chmod 777 ${TEMP_DIR}/mk-aebl.sh
-    ${TEMP_DIR}/./mk-aebl.sh
-
-    # system should be in timed reboot state, so clean up and exit
-
-    rm ${TEMP_DIR}/*
-
-    rmdir ${TEMP_DIR}
-
-fi
+chmod 755 scripts/create-aebl.sh
+scripts/create-aebl.sh &
 
 exit
