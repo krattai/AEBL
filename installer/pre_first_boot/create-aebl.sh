@@ -161,7 +161,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     sudo apt-get update
 
-    sudo apt-get -y install fbi samba samba-common-bin libnss-mdns lsof
+    sudo apt-get -y install fbi samba samba-common-bin libnss-mdns lsof gogoc
 
     sudo rpi-update
 
