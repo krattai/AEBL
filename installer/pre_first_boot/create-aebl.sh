@@ -54,26 +54,12 @@ fi
 # is google there?
 ping -c 1 8.8.8.8
 
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# use this a reference for future feature to grab install file immediately from net
 if [ $? -eq 0 ]; then
     touch .network
     echo "Internet available."
 else
     rm .network
 fi
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-# no longer using local net
-# is it on test/home network?
-# ping -c 1 192.168.200.6
-
-# if [[ $? -eq 0 ]]; then
-#     touch .local
-#     echo "Local network available."
-# else
-#     rm .local
-# fi
 
 # force removal of possible local reference as not being used
 rm .local
