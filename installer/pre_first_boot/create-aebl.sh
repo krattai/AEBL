@@ -121,6 +121,8 @@ sudo hostname ${newhost}
 sudo chown pi:pi /etc/modules
 echo "ipv6" >> /etc/modules
 sudo chown root:root /etc/modules
+sudo /etc/init.d/networking restart
+sleep 15s
 
 mkdir ${TEMP_DIR}
 mkdir ${MP3_DIR}
