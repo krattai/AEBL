@@ -3,9 +3,6 @@
 # This script is the first run from a fresh AEBL device
 # It gets information from current host of AEBL platform for installation
 #
-# This script should be changed out as secondary installer accessed via internet
-#   and the load script should install and configure IPv6 network and also
-#   opennic to get files from aebl.oss
 # Yes, this will introduce possible security risk so will need to ensure control
 #   of domain and introduce possible auth via challenge/response, or something
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

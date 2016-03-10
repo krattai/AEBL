@@ -149,7 +149,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
 #     wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://www.dropbox.com/s/${dbox_file}/${cur_file}"
 
-    wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://github.com/krattai/AEBL/raw/master/core/patches/${cur_file}"
+    wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://github.com/krattai/AEBL/raw/master/installer/${cur_file}"
 
     cd ${TEMP_DIR}
 
