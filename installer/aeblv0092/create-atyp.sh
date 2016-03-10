@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script preps the pi for use on the AEBL framework
 #
-# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2016 Uvea I. S., Kevin Rattai
 #
 # Useage:
 
@@ -42,14 +42,7 @@ else
     rm .network
 fi
 
-ping -c 1 192.168.200.6
-
-if [[ $? -eq 0 ]]; then
-    touch .local
-    echo "Local network available."
-else
-    rm .local
-fi
+rm .local
 
 if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
     touch .offline
@@ -61,27 +54,27 @@ fi
 
 # set sys type scripts
 if [ -f "$HOME/aeblsys" ]; then
-    systype="casys0091.sh"
-    sysloc="71aq3kkcs15dosv"
+    systype="casys0092.sh"
+    sysloc="AEBL/master/installer/aeblv0092"
     rm $HOME/aeblsys
 fi
 
 if [ -f "$HOME/aeblvm" ]; then
-    systype="casys0091.sh"
-    sysloc="71aq3kkcs15dosv"
+    systype="casys0092.sh"
+    sysloc="AEBL/master/installer/aeblv0092"
 # do not remove until casys started
 #    rm $HOME/aeblvm
 fi
 
 if [ -f "$HOME/idetsys" ]; then
-    systype="cidet0091.sh"
-    sysloc="x1i74qtze2gnqib"
+    systype="cidet0092.sh"
+    sysloc="detrot/master/src"
     rm $HOME/idetsys
 fi
 
 if [ -f "$HOME/irotsys" ]; then
-    systype="cirot0091.sh"
-    sysloc="13fvgo3hfa5d449"
+    systype="cirot0092.sh"
+    sysloc="detrot/master/src"
     rm $HOME/irotsys
 fi
 
@@ -111,13 +104,13 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     else
 
-        wget -N -nd -w 3 -P ${SCRPT_DIR} --limit-rate=50k "https://www.dropbox.com/s/${sysloc}/${systype}"
+        wget -N -nd -w 3 -P ${SCRPT_DIR} --limit-rate=50k "https://raw.githubusercontent.com/krattai/${sysloc}/${systype}"
 
     fi
 
 fi
 
-chmod 777 ${SCRPT_DIR}/${systype}
+chmod 755 ${SCRPT_DIR}/${systype}
 
 # grab all new sys files prior to installing AEBL type
 sudo apt-get -y install gogoc dos2unix apache2
