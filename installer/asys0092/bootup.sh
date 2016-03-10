@@ -53,6 +53,7 @@ case "$1" in
     if [ ! -f "${AUTOOFF_CHECK_FILE}" ]; then
         echo "${AUTOOFF_CHECK_FILE} not found, in auto mode."
         setterm -blank 1
+        sleep 10s
         sudo -u pi /run/shm/scripts/./startup.sh &
     fi
     echo "Could do more here"
