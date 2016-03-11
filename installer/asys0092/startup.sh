@@ -2,6 +2,7 @@
 # gets update scripts
 #
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 # This is the first script from clean bootup.  It should immediately
 # put something to screen and audio so that people know it is working,
@@ -89,6 +90,13 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~" >> log.txt
 echo $(date +"%T") >> log.txt
 echo "Booted up." >> log.txt
 
+# create new ping.txt file
+if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] && [ -f $HOME/.production ]; then
+
+    $T_SCR/./prs.sh
+ 
+fi
+
 # Discover network availability if not previously tested
 if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ] && [ ! -f "${OFFLINE_SYS}" ]; then
 
@@ -98,7 +106,7 @@ fi
 
 # Always check and perform patching on startup, if internet available
 if [ -f "${NETWORK_SYS}" ]; then
-    /run/shm/scripts/patch.sh &
+    touch /home/pi/patch
 fi
 
 if [ ! -f "${OFFLINE_SYS}" ] && [ ! -f "${IHDN_DET}" ]; then

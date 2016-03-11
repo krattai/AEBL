@@ -39,13 +39,34 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     # manual patch
     if [ -f "${HOME}/ctrl/patch" ]; then
         /run/shm/scripts/patch.sh &
+        sudo chown pi:pi "${HOME}/ctrl/patch"
         rm "${HOME}/ctrl/patch"
+    fi
+
+    # force patch rollback
+    if [ -f "${HOME}/ctrl/rollback" ]; then
+        /run/shm/scripts/rollback.sh &
+        sudo chown pi:pi "${HOME}/ctrl/rollback"
+        rm "${HOME}/ctrl/rollback"
+    fi
+
+     # force system rebuild, bringing system to current
+    if [ -f "${HOME}/ctrl/rebuild" ]; then
+        /run/shm/scripts/rebuild.sh &
+        sudo chown pi:pi "${HOME}/ctrl/rebuild"
+        rm "${HOME}/ctrl/rebuild"
+    fi
+
+   # change hostname
+    if [ -f "${HOME}/ctrl/hostname" ]; then
+        mv "${HOME}/ctrl/hostname" "${HOME}/ctrl/newhost"
+        /run/shm/scripts/chhostname.sh &
     fi
 
     # Process request to display the contents of the pl folder
     if [ -f "${HOME}/ctrl/showpl" ]; then
-        rm "${HOME}/ctrl/playlist.txt"
-        ls -al > "${HOME}/ctrl/playlist.txt"
+        rm "${HOME}/ctrl/showpl"
+        cat "${T_STO}/.newpl"
     fi
 
     # Set stand alone AEBL playlist, currently only for mp4 content
@@ -256,6 +277,7 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
     fi
 
     if [ -f "${HOME}/ctrl/halt" ]; then
+        sudo chown pi:pi "${HOME}/ctrl/halt"
         touch "${HOME}/ctrl/reboot"
     fi
 
@@ -305,13 +327,14 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
 
 done
 
+sudo chown pi:pi "${HOME}/ctrl/reboot"
 rm $HOME/ctrl/reboot
 
 if [  -f "${HOME}/ctrl/halt" ]; then
     rm "${HOME}/ctrl/halt"
 
     sleep 1s
-    sudo halt &
+    sudo poweroff &
 else
     sleep 1s
     sudo reboot &

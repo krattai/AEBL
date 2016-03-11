@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 # make unique channel
 
@@ -26,22 +26,36 @@ ID_FILE="${HOME}/.id"
 IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 
 # MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
+MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
+
+# echo var from position for length
+# var="Welcome to the AEBLstuff"
+
+# echo ${var:15}
+# echo ${var:15:4}
+
+# with the above, could potentially use to get and strip from var
+# when used with a "find" like operation 
+
+# $ ./substr.sh
+# AEBLstuff
+# AEBL
+
+# replace pattern with value
+# echo "After Replacement:" ${filename/str*./operations.}
+
+# replace all pattern with value
+# echo "After Replacement:" ${filename//bash/sh}
+
+# fe80::ba27:ebff:fee3:df8
+# expands to
+# fe80:0000:0000:0000:ba27:ebff:fee3:0df8
 
 # This doesn't work if there is a network assigned or public IPv6 as well
 #  add leading 0s between : and take second IPv6 as channel
+#  This may get more than one IPv6, will want to decide which to use, if so
+#  Most likely want second one, or specifically, the one that start fe80
 IP6e0=$(ip addr show eth0 | sed 's/://g' | sed 's/\/64//' | awk '/inet6 / {print $2}')
-
-# some other sed examples
-# sed 's/%//' file > newfile
-# echo "68%" | sed "s/%$//" #assume % is always at the end.
-# echo "82%%%" | sed 's/%*$//'
-# echo "/this/is/my/path////" | sed 's!/*$!!'
-# echo $string | sed 's/[\._-]//g'
-# echo ${string//[-._]/}
-
-# this removes all instances
-# echo "8%2%%%" | sed 's/%//g'
-
 
 if [ -f "${AEBL_TEST}" ]; then
     TYPE_SYS="AEBLtest"
@@ -59,11 +73,25 @@ if [ -f "${IHDN_SYS}" ]; then
     TYPE_SYS="IHDNpi"
 fi
 
-
 echo "MAC Address: $MACe0"
 
 echo $(date +"%y-%m-%d")
 echo $(date +"%T")
+
+# request IHDN channel (using MAC address):
+# mosquitto_pub -d -t request/chan -m "a0:2b:b8:58:62:bf" -h "ihdn.ca"
+
+# Wait for response using MAC address:
+# mosquitto_sub -h ihdn.ca -t "response/a0:2b:b8:58:62:bf"
+
+# mosquitto_sub -h 2001:5c0:1100:dd00:240:63ff:fefd:d3f1 -t "hello/+" -t "aebl/+" -t "ihdn/+" -t "uvea/+" |
+# while IFS= read -r line
+#     do
+#           if [[ $line = "sixxs alive" ]]; then
+#               echo "$(date +"%T") - sixxs ACK"
+#               echo " "
+#           fi
+# done
 
 # check file doesn't exist
 if [ ! -f "${ID_FILE}" ]; then
@@ -79,10 +107,13 @@ if [ ! -f "${ID_FILE}" ]; then
     # create local store id file
 
     # put to dropbox
-    $T_SCR/./dropbox_uploader.sh upload ${ID_FILE} /${U_ID}
+#     $T_SCR/./dropbox_uploader.sh upload ${ID_FILE} /${U_ID}
 
     # Tweet -> SMS announce
-    $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic To @kratt, #${TYPE_SYS} channel registered ${U_ID} ${IPw0} ${IPe0} by ifTTT Tweet -> SMS."
+#     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic To @kratt, #${TYPE_SYS} channel registered ${U_ID} ${IPw0} ${IPe0} by ifTTT Tweet -> SMS."
+
+    # Change publish method from dropbox and twitter to MQTT
+    mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn registered ID: ${U_ID} from IP $ext_ip location." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
 
 else
 

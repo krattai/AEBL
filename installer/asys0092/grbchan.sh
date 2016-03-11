@@ -34,7 +34,7 @@ MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
 cd $HOME
 
-touch .getchan
+touch "${T_STO}/.getchan"
 
 cp /home/pi/chan /home/pi/chtmp
 
@@ -117,6 +117,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
                 curl -o "${TEMP_DIR}/${cont}" -k -u videouser:password "sftp://184.71.76.158:8022/home/videouser/videos/${folder}/${cont}"
             fi
 
+            # This check was for when detector not getting mynew.pl
             if [ -f "${IHDN_DET}" ]; then
                 mv "${TEMP_DIR}/${cont}" $HOME/ad
                 touch /run/shm/.newplay
@@ -132,7 +133,7 @@ rm "$GRAB_FILE"
 # if [ -f "${HOME}/.newchan0" ]; then
 #     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic #IHDNpi Robert E. Steen channel 26 updated." &
 
-rm /home/pi/.getchan
+rm "${T_STO}/.getchan"
 
 # tput clear
 exit 0
