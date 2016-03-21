@@ -1,0 +1,11 @@
+In certain configurations, in order to get proper size output and audio via HDMI cable, need to:
+
+sudo nano /boot/config.txt
+
+# to force HDMI mode.
+hdmi_drive=2
+hdmi_group=1
+# to force a CEA mode.
+hdmi_mode=4
+
+And also set omxplayer with -o hdmi
