@@ -3,6 +3,7 @@
 # Copyright (C) 2016 Uvea I. S., Kevin Rattai
 #
 # Watch for channel request and assign channel based on prior or unassigned chan
+#   Use ctrlwtch.sh as reference for this
 #
 # This software is based on an unknown license, but is available
 # with no license statement from here:
@@ -28,7 +29,8 @@ import paho.mqtt.client as mqtt
 
 message = 'ON'
 def on_connect(mosq, obj, rc):
-    mqttc.subscribe("request/chan", 0)
+#     mqttc.subscribe("request/chan", 0)
+    mqttc.subscribe("request/b8:27:eb:62:d9:19", 0)
     print("rc: " + str(rc))
 
 def on_message(mosq, obj, msg):
