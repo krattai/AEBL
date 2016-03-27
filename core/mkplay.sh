@@ -2,7 +2,7 @@
 #
 # grabs and makes playlist
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 
 AEBL_TEST="/home/pi/.aebltest"
