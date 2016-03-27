@@ -2,7 +2,7 @@
 #
 # grabs and makes playlist
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 
 AEBL_TEST="/home/pi/.aebltest"
@@ -102,7 +102,7 @@ while [ -f "${T_STO}/.mkplayrun" ]; do
 
             if [ ! -s "${T_STO}/.playlist" ]; then
                 while [ -f "$T_STO/.omx_playing" ]; do
-                    echo "waiting for player off"
+                    echo "waiting for player off" > /dev/null
                 done
                 rm "${T_STO}/.playlist"
                 cp "${T_STO}/.newpl" "${T_STO}/.playlist"
