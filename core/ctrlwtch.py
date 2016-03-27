@@ -18,6 +18,8 @@
 # And portions of this code is based on the AEBL project:
 #     https://github.com/krattai/AEBL
 #
+#
+# Unknown problem with code failing as is, need to review
 
 import os
 import paho.mqtt.client as mqtt
