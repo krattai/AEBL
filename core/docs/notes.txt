@@ -381,3 +381,6 @@ to extract length / duration:
 
 ffmpeg -i bpgameday00.mp4 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//
 avconv -i bpgameday00.mp4 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//
+
+http://askubuntu.com/questions/224237/how-to-check-how-long-a-video-mp4-is-using-the-shell
+https://wiki.debian.org/ffmpeg
