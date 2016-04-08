@@ -369,3 +369,15 @@ Added Lua intro to docs as a, possibly just, temporary reference
 ~~~~~~~~~~~~~~~~~
 
 Need to work on aggregating source content, including on dynamic IPs, which would mean parsing messages and updating cloud / torrent seeds
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to read header info of video (or audio) file, use ffmpeg.  In the event that AEBL and associated devices are on Jessie, the libav-tools is the alternative.
+
+ffmpeg -i bpgameday00.mp4
+avconv -i bpgameday00.mp4
+
+to extract length / duration:
+
+ffmpeg -i bpgameday00.mp4 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//
+avconv -i bpgameday00.mp4 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//
