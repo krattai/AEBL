@@ -59,6 +59,16 @@ def on_message(mosq, obj, msg):
         fchan.write(chan + "\n")
         fchan.close()
 
+#     Case like examples for reference
+#     if 'IPv6' in message:
+#         myFile = open('$HOME/ipv6log.txt', 'a') # or 'a' to add text instead of truncate
+#         myFile.write(message + '\n')
+#         myFile.close()
+#     if 'reboot' in message:
+#         myFile = open('$HOME/actionlog.txt', 'a') # or 'a' to add text instead of truncate
+#         myFile.write(message + '\n')
+#         myFile.close()
+
     mqttc.publish("response/" + str(msg.payload),chan);
 
 #    mqttc.publish("response/" + str(msg.payload),msg.payload);
