@@ -15,6 +15,12 @@
 #
 # The rest of this doc is currently (160420) a reference script
 # Will use this script as supplement to manage hosts on opennic
+#
+# Will likely, eventually want to set resov.conf on boot, after DHCP obtained
+#   Otherwise, bootup may clobber resolv.conf
+#
+# Further reference info at:
+#   http://superuser.com/questions/617796/how-do-i-set-dns-servers-on-raspberry-pi
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
