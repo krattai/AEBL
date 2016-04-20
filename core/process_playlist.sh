@@ -7,7 +7,7 @@
 # terms of the Do What The Fuck You Want To Public License, Version 2,
 # as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 # May 14, 2014 Larry added GPIO 23 to switch on video
 #
@@ -95,11 +95,11 @@ while [ -f "${T_STO}/.omx_playing" ]; do
         "${PLAYER}" ${PLAYER_OPTIONS} "${file}" > /dev/null
 
         if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] || [ -f "${IHDN_TEST}" ]; then
-            mosquitto_pub -d -t ihdn/play -m "$(date) : $hostn IP $ext_ip played: $file." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+            mosquitto_pub -d -t ihdn/play -m "$(date) : $hostn IP $ext_ip played: $file." -h "ihdn.ca"
         fi
 
         if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_TEST}" ]; then
-            mosquitto_pub -d -t aebl/play -m "$(date) : $hostn IP $ext_ip played: $file." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+            mosquitto_pub -d -t aebl/play -m "$(date) : $hostn IP $ext_ip played: $file." -h "aebl.oss"
         fi
 
         echo
