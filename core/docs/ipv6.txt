@@ -1,0 +1,3 @@
+notes regarding IPv6
+
+radvd configuration should only be on a /64 issue
