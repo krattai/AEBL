@@ -1,3 +1,4 @@
 notes regarding IPv6
 
 radvd configuration should only be on a /64 issue
+on radvd server, gateway should be set to /48 netmask to handle larger gateway
