@@ -4,3 +4,5 @@ radvd configuration should only be on a /64 issue
 on radvd server, gateway should be set to /48 netmask to handle larger gateway
 
 https://en.wikipedia.org/wiki/IPv6_subnetting_reference
+
+IPv6 routing dies when OpenVPN tunnel established; need to investigate
