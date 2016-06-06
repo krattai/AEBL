@@ -384,3 +384,9 @@ avconv -i bpgameday00.mp4 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//
 
 http://askubuntu.com/questions/224237/how-to-check-how-long-a-video-mp4-is-using-the-shell
 https://wiki.debian.org/ffmpeg
+
+further info for no HDMI audio
+https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=44678
+
+info for audio volume
+https://www.raspberrypi.org/forums/viewtopic.php?f=38&t=60700
