@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2016 Uvea I. S., Kevin Rattai
 #
 # This script is a cron job script
 # It checks for network and internet connectivity
@@ -118,6 +118,17 @@ fi
 # else
 #     rm $NETWORK_SYS
 # fi
+
+# this works
+ping -c 1 10.8.0.1
+
+if [ $? -eq 0 ]; then
+    touch $VPN_SYS
+    echo "VPN available."
+else
+    rm $VPN_SYS
+    sudo service openvpn restart
+fi
 
 if [ -f "${NETWORK_SYS}" ]; then
     if [ ! -L /sys/class/net/tun ]; then
