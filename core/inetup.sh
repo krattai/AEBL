@@ -99,6 +99,25 @@ fi
 #     sudo /etc/init.d/gogoc start
 # fi
 
+# Check VPN tun for master control IP
+# some possible examples of how to handle VPN down
+# if [ -f "${OFFLINE_SYS}" ]; then
+#     sudo ifdown eth0
+#     sudo ifdown wlan0
+#     sleep 5
+#     sudo ifup eth0
+#     sudo ifup wlan0
+#     sleep 10
+# fi
+# 
+# ping -c 1 10.8.0.1
+# 
+# if [ $? -eq 0 ]; then
+#     touch $NETWORK_SYS
+#     echo "Internet available."
+# else
+#     rm $NETWORK_SYS
+# fi
 
 if [ -f "${NETWORK_SYS}" ]; then
     if [ ! -L /sys/class/net/tun ]; then
