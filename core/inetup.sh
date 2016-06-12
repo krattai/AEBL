@@ -26,6 +26,7 @@ T_SCR="/run/shm/scripts"
 LOCAL_SYS="${T_STO}/.local"
 NETWORK_SYS="${T_STO}/.network"
 OFFLINE_SYS="${T_STO}/.offline"
+VPN_SYS="${T_STO}/.vpn_on"
 
 
 cd $HOME
