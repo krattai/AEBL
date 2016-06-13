@@ -120,6 +120,15 @@ fi
 #     rm $NETWORK_SYS
 # fi
 
+# if script to be run on non-raspbian system, will likely need to set permissions:
+#     http://askubuntu.com/questions/167847/how-to-run-bash-script-as-root-with-no-password
+# specifically:
+#   + Make the file owned by root and group root:
+#   + sudo chown root.root <my script>
+#   + Now set the sticky but, make it executable for all and writable only by root:
+#   + sudo chmod 4755 <my script>
+#   + Keep in mind if this script will allow any input or editing of files, this will also be done as root.
+#
 # this works
 ping -c 1 10.8.0.1
 
