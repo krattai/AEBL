@@ -5,6 +5,8 @@
 # This script should watch MQTT channels and respond and direct accordingly.
 #
 # Trigger on things like new registrations and direct channel content uptake
+# This is a complementary and primary control system for AEBL devices for functions
+# such as updates, upgrades, AEBL behaviours, etc.
 
 import os
 
