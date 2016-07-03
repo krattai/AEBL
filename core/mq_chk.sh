@@ -2,6 +2,7 @@
 #
 # Copyright (C) 2016 Uvea I. S., Kevin Rattai
 # checks for control messages and acts accordingly
+# Will likely, eventually replace msgrec.sh
 #
 # This script borrows from:
 #
@@ -13,7 +14,11 @@
 # v010 - January 11th 2015.
 #      Initial version. Subscribe to MQTT broker and act upon messages received.
 #
-#
+# ~~~~~~~~~~~~
+# run.sh should contain (mq_chk eventually replaced by msgrec.sh):
+#   if [ "$(! pgrep mq_chk.sh)" ]; then
+#     $T_SCR/./mq_chk.sh &
+#   fi
 #
 
 mosquitto_sub -h uveais.ca -t "aebl/sys_m" |
