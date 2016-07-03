@@ -16,12 +16,14 @@
 #
 #
 
-mosquitto_sub -h 2001:5c0:1100:dd00:240:63ff:fefd:d3f1 -t "hello/+" -t "aebl/+" -t "ihdn/+" -t "uvea/+" |
+mosquitto_sub -h uveais.ca -t "aebl/sys_m" |
 while IFS= read -r line
     do
-          if [[ $line = "sixxs alive" ]]; then
-              echo "$(date +"%T") - sixxs ACK"
+          if [[ $line = "reboot" ]]; then
+              echo "$(date +"%T") - rebooting"
               echo " "
+              mosquitto_pub -d -t ihdn/action -m "$(date) : AEBL device from $ext_ip rebooting." -h "uveais.ca"
+              touch ~/ctrl/reboot
           fi
 done
 
