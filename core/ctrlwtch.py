@@ -2,8 +2,7 @@
 
 # Copyright (C) 2016 Uvea I. S., Kevin Rattai
 #
-# Watch for channel request and assign channel based on prior or unassigned chan
-#   Use ctrlwtch.sh as reference for this
+# Watch for broker submissions and reacts by setting triggers for AEBL behaviour
 #
 # This software is based on an unknown license, but is available
 # with no license statement from here:
@@ -32,7 +31,9 @@ import paho.mqtt.client as mqtt
 message = 'ON'
 def on_connect(mosq, obj, rc):
 #     mqttc.subscribe("request/chan", 0)
-    mqttc.subscribe("request/b8:27:eb:62:d9:19", 0)
+#     mqttc.subscribe("request/b8:27:eb:62:d9:19", 0)
+#    mqttc.subscribe("ctrl/#", 0)
+    mqttc.subscribe("ctrl/aebl", 0)
     print("rc: " + str(rc))
 
 def on_message(mosq, obj, msg):
@@ -40,24 +41,30 @@ def on_message(mosq, obj, msg):
     print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
     message = msg.payload
     
-    if os.path.isfile('chan/' + str(msg.payload)):
+#     if os.path.isfile('chan/' + str(msg.payload)):
         # get channel from file
-        fchan = open("chan/" + str(msg.payload))
-        chan = fchan.readline()
-        chan = chan.rstrip('\n')
-        fchan.close()
-    else:
+#         fchan = open("chan/" + str(msg.payload))
+#         chan = fchan.readline()
+#         chan = chan.rstrip('\n')
+#         fchan.close()
+#     else:
         # get next channel, create file and insert channel
-        fchan = open("chan/.0chan","r+")
-        chan = fchan.readline()
-        chan = chan.rstrip('\n')
-        nchan = int(chan) + 1
-        fchan.seek(0, 0)
-        fchan.write(repr(nchan).zfill(6) + "\n")
-        fchan.close()
-        fchan = open("chan/" + str(msg.payload),"w+")
-        fchan.write(chan + "\n")
-        fchan.close()
+#         fchan = open("chan/.0chan","r+")
+#         chan = fchan.readline()
+#         chan = chan.rstrip('\n')
+#         nchan = int(chan) + 1
+#         fchan.seek(0, 0)
+#         fchan.write(repr(nchan).zfill(6) + "\n")
+#         fchan.close()
+#         fchan = open("chan/" + str(msg.payload),"w+")
+#         fchan.write(chan + "\n")
+#         fchan.close()
+
+    if 'reboot' in message:
+#         mqttc.publish("aebl/social","Publishing to social media.");
+#         $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "Publishin to social media, with a link. http://embracingopen.blogspot.ca/ #am2p"
+# ex: os.system("./args.sh %s %s %s" % (value1,value2,value3)) 
+        os.system("touch /home/pi/ctrl/reboot")
 
 #     Case like examples for reference
 #     if 'IPv6' in message:
@@ -69,7 +76,7 @@ def on_message(mosq, obj, msg):
 #         myFile.write(message + '\n')
 #         myFile.close()
 
-    mqttc.publish("response/" + str(msg.payload),chan);
+#     mqttc.publish("response/" + str(msg.payload),chan);
 
 #    mqttc.publish("response/" + str(msg.payload),msg.payload);
 #    if 'ACK' in message:
@@ -96,7 +103,7 @@ mqttc.on_publish = on_publish
 mqttc.on_subscribe = on_subscribe
 
 # Connect
-mqttc.connect("ihdn.ca", 1883,60)
+mqttc.connect("uveais.ca", 1883,60)
 # mqttc.connect("2001:dead::beef:1", 1883,60)
 
 # mosquitto_sub -h 2001:dead::beef -t "hello/+" -t "ihdn/+" -t "test/+"
