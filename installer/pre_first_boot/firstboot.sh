@@ -61,6 +61,9 @@ else
     rm .network
 fi
 
+# Network is sometimes not up when scripts starts, even with delay in bootup.sh
+# Should add way to repeat network check for period of time and start when up
+
 chmod 755 scripts/create-aebl.sh
 scripts/create-aebl.sh &
 
