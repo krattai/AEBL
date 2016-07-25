@@ -48,21 +48,27 @@ fi
 # Discover network availability
 #
 
-# is google there?
-ping -c 1 8.8.8.8
+net_wait=0
 
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# use this a reference for future feature to grab install file immediately from net
-if [ $? -eq 0 ]; then
-    touch .network
-    echo "Internet available."
-    wget -N -nd -w 3 -P scripts --limit-rate=50k https://www.dropbox.com/s/56wti4xtbu4txf4/create-aebl.sh
-else
-    rm .network
-fi
+# Repeat for 5 minutes, or 5 cycles, until network available or still no network
+while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait < 10 ]; do
 
-# Network is sometimes not up when scripts starts, even with delay in bootup.sh
-# Should add way to repeat network check for period of time and start when up
+    # is google there?
+    ping -c 1 8.8.8.8
+
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # use this as reference for future feature to grab install file immediately from net
+    if [ $? -eq 0 ]; then
+        touch $NETWORK_SYS
+        echo "Internet available."
+        wget -N -nd -w 3 -P scripts --limit-rate=50k https://www.dropbox.com/s/56wti4xtbu4txf4/create-aebl.sh
+    else
+        rm $NETWORK_SYS
+        net_wait=netwait+1
+        sleep 30
+    fi
+
+done
 
 chmod 755 scripts/create-aebl.sh
 scripts/create-aebl.sh &
