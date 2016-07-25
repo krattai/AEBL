@@ -64,7 +64,7 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait < 10 ]; do
         wget -N -nd -w 3 -P scripts --limit-rate=50k https://www.dropbox.com/s/56wti4xtbu4txf4/create-aebl.sh
     else
         rm $NETWORK_SYS
-        net_wait=netwait+1
+        net_wait=net_wait+1
         sleep 30
     fi
 
