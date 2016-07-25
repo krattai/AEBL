@@ -48,18 +48,31 @@ if [ -f "${HOME}/scripts/interfaces" ]; then
     sudo reboot
 fi
 
+rm $NETWORK_SYS
+
 # Discover network availability
 #
 
-# is google there?
-ping -c 1 8.8.8.8
+net_wait=0
 
-if [ $? -eq 0 ]; then
-    touch .network
-    echo "Internet available."
-else
-    rm .network
-fi
+# Repeat for 5 minutes, or 5 cycles, until network available or still no network
+while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait < 10 ]; do
+
+    # is google there?
+    ping -c 1 8.8.8.8
+
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # use this as reference for future feature to grab install file immediately from net
+    if [ $? -eq 0 ]; then
+        touch $NETWORK_SYS
+        echo "Internet available."
+    else
+        rm $NETWORK_SYS
+        net_wait=net_wait+1
+        sleep 30
+    fi
+
+done
 
 # force removal of possible local reference as not being used
 rm .local
