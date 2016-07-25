@@ -72,7 +72,9 @@ rm ${TEMP_DIR}/patch/install.sh
 ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
 # mosquitto_pub -d -t hello/world -m "$(date) : AEBL being installed. IP is $ext_ip" -h "uveais.ca"
 # AEBL MQTT broker 2001:5c0:1100:dd00:240:63ff:fefd:d3f1
-mosquitto_pub -d -t aebl/info -m "$(date) : AEBL being installed. IP is $ext_ip" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+# mosquitto_pub -d -t aebl/info -m "$(date) : AEBL being installed. IP is $ext_ip" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+
+mosquitto_pub -d -t ihdn/aebl/info -m "$(date) : AEBL being installed. IP is $ext_ip" -h "ihdn.ca"
 
 # Process necessary AEBL files
 #
@@ -95,7 +97,9 @@ chmod 777 scripts/create-atyp.sh
 
 # express that AEBL device SD card expansion beginning
 ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
-mosquitto_pub -d -t aebl/info -m "$(date) : AEBL SD card being expanded. IP is $ext_ip" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+# mosquitto_pub -d -t aebl/info -m "$(date) : AEBL SD card being expanded. IP is $ext_ip" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+
+mosquitto_pub -d -t ihdn/aebl/info -m "$(date) : AEBL SD card being expanded. IP is $ext_ip" -h "ihdn.ca"
 
 # rpi-wiggle MUST be last item, as it reboots the system
 # not applicable if aeblvm
@@ -120,7 +124,9 @@ fi
 
 # announce that first reboot now occuring
 ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
-mosquitto_pub -d -t aebl/info -m "$(date) : AEBL prepped and rebooting first time. IP is $ext_ip" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+# mosquitto_pub -d -t aebl/info -m "$(date) : AEBL prepped and rebooting first time. IP is $ext_ip" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+
+mosquitto_pub -d -t ihdn/aebl/info -m "$(date) : AEBL prepped and rebooting first time. IP is $ext_ip" -h "ihdn.ca"
 
 # system should be in timed reboot state, so clean up and exit
 
