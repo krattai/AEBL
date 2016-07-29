@@ -17,6 +17,16 @@
 # log or file to indicate that it completed successfully
 # this would be the last command before a the script exits
 # on a success rather than a fail exit
+#
+# for lack of another location to put this:
+#   can control output to tty, such as playing video, from ssh, via:
+#     omxplayer "pl/Yes-Rhythm Of Love.mp4" > /dev/tty1
+#
+#   this requires taking ownership of tty1, via:
+#     sudo chmod 666 /dev/tty1
+#
+#   and can also startx to tty1 using:
+#     startx & > /dev/tty1   
 
 sudo bash /home/pi/scripts/led_on.sh
 
