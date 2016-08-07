@@ -17,6 +17,9 @@
 # And portions of this code is based on the AEBL project:
 #     https://github.com/krattai/AEBL
 #
+# Example for publishing files via MQTT:
+# http://stackoverflow.com/questions/19506939/how-can-i-publish-a-file-using-mosquitto-in-python
+# https://github.com/jpmens/mqtt-watchdir
 
 import os
 import paho.mqtt.client as mqtt
