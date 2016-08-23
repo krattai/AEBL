@@ -5,6 +5,30 @@
 #
 # Useage:
 # There is no useage, this is a standalone script
+
+# For certain functions, use case:
+#
+#
+# mosquitto_sub -h 2001:5c0:1100:dd00:240:63ff:fefd:d3f1 -t "hello/+" -t "aebl/+" -t "ihdn/+" -t "uvea/+" |
+# while IFS= read -r line
+#     do
+#           if [[ $line = "sixxs alive" ]]; then
+#               echo "$(date +"%T") - sixxs ACK"
+#               echo " "
+#           fi
+#           if [[ $line == *"ihdnsrvr IPv6"* ]]; then
+#               echo "$(date +"%T") - ihdnsrvr ACK"
+#               echo "$line"
+#               echo " "
+#           fi
+#           if [[ $line == *"played"* ]]; then
+#               echo "$(date +"%T") - play log"
+#               echo "$line"
+#               echo " "
+#           fi
+#
+# done
+
 i="0"
 
 while [ $i -lt 1 ]
