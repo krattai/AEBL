@@ -28,6 +28,9 @@
 #           fi
 #
 # done
+#
+# And use AEBL playlist.sh and process_playlist.sh for example code
+#  to process files
 
 i="0"
 
