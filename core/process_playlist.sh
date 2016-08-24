@@ -28,7 +28,7 @@
 #   and can also startx to tty1 using:
 #     startx & > /dev/tty1   
 
-sudo bash /home/pi/scripts/led_on.sh
+# sudo bash /home/pi/scripts/led_on.sh
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
