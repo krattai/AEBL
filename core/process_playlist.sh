@@ -28,6 +28,9 @@
 #   and can also startx to tty1 using:
 #     startx & > /dev/tty1   
 
+# In order to play content via http:
+#   omxplayer -o hdmi -r http://ihdn.ca/ads/2016NissanRogue.mp4
+
 # sudo bash /home/pi/scripts/led_on.sh
 
 AEBL_TEST="/home/pi/.aebltest"
