@@ -69,6 +69,8 @@ do
 #
         done
 
+    i="1"
+
 # hostn=$(cat /etc/hostname)
 # ext_ip4=$(dig +short myip.opendns.com @resolver1.opendns.com)
 # ext_ip6=$(curl icanhazip.com)
