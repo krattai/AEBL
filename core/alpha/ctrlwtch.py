@@ -153,6 +153,9 @@ def on_message(mosq, obj, msg):
 #         mqttc.publish("test/output","NAK");
 #    mqttcb.publish("test/output",msg.payload);
 
+    if 'halt' in message:
+        os.system("touch /home/pi/ctrl/halt")
+
 def on_publish(mosq, obj, mid):
     print("mid: " + str(mid))
 
