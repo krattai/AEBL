@@ -31,6 +31,11 @@
 #
 # And use AEBL playlist.sh and process_playlist.sh for example code
 #  to process files
+# For determining what content, should eventually be able to parse
+#  a upload directory for playlists as well as files and then move
+#  those files to download dir and notify specific client(s) of
+#  availability.
+# This can also be used in order to send URL for streamed content
 
 i="0"
 
