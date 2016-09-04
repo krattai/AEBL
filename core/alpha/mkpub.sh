@@ -5,22 +5,22 @@
 # Copyright (C) 2016 Uvea I. S., Kevin Rattai
 #
 
-AEBL_TEST="/home/pi/.aebltest"
-AEBL_SYS="/home/pi/.aeblsys"
-IHDN_TEST="/home/pi/.ihdntest"
-IHDN_SYS="/home/pi/.ihdnsys"
-TEMP_DIR="/home/pi/tmp"
+# AEBL_TEST="/home/pi/.aebltest"
+# AEBL_SYS="/home/pi/.aeblsys"
+# IHDN_TEST="/home/pi/.ihdntest"
+# IHDN_SYS="/home/pi/.ihdnsys"
+# TEMP_DIR="/home/pi/tmp"
 
-T_STO="/run/shm"
-T_SCR="/run/shm/scripts"
-LOCAL_SYS="${T_STO}/.local"
-NETWORK_SYS="${T_STO}/.network"
-OFFLINE_SYS="${T_STO}/.offline"
+# T_STO="/run/shm"
+# T_SCR="/run/shm/scripts"
+# LOCAL_SYS="${T_STO}/.local"
+# NETWORK_SYS="${T_STO}/.network"
+# OFFLINE_SYS="${T_STO}/.offline"
 
-NEW_PL="${T_STO}/.newpl"
-PLAYLIST="${T_STO}/.playlist"
+# NEW_PL="${T_STO}/.newpl"
+# PLAYLIST="${T_STO}/.playlist"
 
-MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
+# MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
 cd $HOME
 
