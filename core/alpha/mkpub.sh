@@ -30,6 +30,26 @@ touch $T_STO/.mkplayrun
 
 while [ -f "${T_STO}/.mkplayrun" ]; do
 
+    mosquitto_sub -h uveais.ca -t -t "aebl/#" -t "uvea/#" |
+    while IFS= read -r line
+        do
+#           if [[ $line = "sixxs alive" ]]; then
+#               echo "$(date +"%T") - sixxs ACK"
+#               echo " "
+#           fi
+#           if [[ $line == *"ihdnsrvr IPv6"* ]]; then
+#               echo "$(date +"%T") - ihdnsrvr ACK"
+#               echo "$line"
+#               echo " "
+#           fi
+#           if [[ $line == *"played"* ]]; then
+#               echo "$(date +"%T") - play log"
+#               echo "$line"
+#               echo " "
+#           fi
+#
+        done
+
     # Check if not currenlty making playlist and newpl exists
 
     if [ ! -f "${T_STO}/mkpl" ] && [ -f "${T_STO}/mynew.pl" ]; then
