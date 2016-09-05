@@ -22,7 +22,7 @@ touch .mkcontent
 
 while [ -f ".mkcontent" ]; do
 
-    mosquitto_sub -h uveais.ca -t -t "aebl/add/content" |
+    mosquitto_sub -h uveais.ca -t "aebl/add/content" |
     while IFS= read -r line
         do
 #           if [[ $line = "sixxs alive" ]]; then
@@ -40,10 +40,12 @@ while [ -f ".mkcontent" ]; do
 #               echo " "
 #           fi
 #
+
+            # Append file to playlist
+            echo "$line" >> "${CONTENT}"
+
         done
 
-        # Append file to playlist
-        echo "$line" >> "${CONTENT}"
 
 done
 
