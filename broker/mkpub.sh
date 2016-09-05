@@ -42,7 +42,7 @@ while [ -f ".mkcontent" ]; do
 #
 
             # Append file to playlist
-            echo "$line" >> "${CONTENT}"
+            echo "$line #am2p" >> "${CONTENT}"
 
         done
 
