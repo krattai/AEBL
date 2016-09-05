@@ -41,7 +41,7 @@ i="0"
 
 while [ $i -lt 1 ]
 do
-    mosquitto_sub -h uveais.ca -t -t "aebl/add/content" |
+    mosquitto_sub -h uveais.ca -t -t "aebl/#" -t "uvea/#" |
     while IFS= read -r line
         do
 #           if [[ $line = "sixxs alive" ]]; then
