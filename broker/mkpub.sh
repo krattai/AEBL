@@ -34,11 +34,6 @@ while [ -f ".mkcontent" ]; do
 #               echo "$line"
 #               echo " "
 #           fi
-#           if [[ $line == *"played"* ]]; then
-#               echo "$(date +"%T") - play log"
-#               echo "$line"
-#               echo " "
-#           fi
 #
 
             # Append file to playlist
