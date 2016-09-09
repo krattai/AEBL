@@ -37,6 +37,8 @@
 #  availability.
 # This can also be used in order to send URL for streamed content
 
+# This will require that mkchan.sh works
+
 i="0"
 
 while [ $i -lt 1 ]
