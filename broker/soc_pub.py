@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+# currently running on ebox00
 import os
 
 import paho.mqtt.client as mqtt
