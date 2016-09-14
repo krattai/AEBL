@@ -8,6 +8,9 @@
 # Use AEBL playlist.sh and process_playlist.sh for example code
 #  to process files
 
+# 160914 - appears to post multiple times, or at least twice
+#        - the link appears to suggest this is a buffer.com reason
+
 # TEMP_DIR="/home/user/tmp"
 CONT_DIR="/home/ihdn/content"
 
