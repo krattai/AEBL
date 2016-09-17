@@ -5,6 +5,10 @@
 # Copyright (C) 2016 Uvea I. S., Kevin Rattai
 #
 
+# to make short URL using tinyurl:
+# wget http://tinyurl.com/api-create.php?url=http://ihdn.ca/
+
+
 # TEMP_DIR="/home/user/tmp"
 CONT_DIR="/home/ihdn/content"
 
