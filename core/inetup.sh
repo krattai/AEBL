@@ -14,6 +14,9 @@
 # --tries=10
 # --timeout=20
 
+# Speaking of network, here is the proper way to set up raspbian static:
+# http://askubuntu.com/a/157192
+
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
