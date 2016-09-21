@@ -15,6 +15,7 @@
 # --timeout=20
 
 # restarting vpn appears not to be working
+# might want to look at method to associate easier with static network
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
