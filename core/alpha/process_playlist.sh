@@ -35,6 +35,10 @@
 
 # Need to determine if and/or how much lag between clips
 
+# This stalled, for some reason:
+#    8450 ?        S     73:39 /bin/bash /usr/bin/omxplayer -o both --vol -3000 /home/pi/pl/The Verve - Bittersweet Symphony.mp4
+
+
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
