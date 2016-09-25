@@ -20,7 +20,11 @@
 #     while IFS= read -r line
 
 # use hostname to determine channel to watch as initial version
-mosquitto_sub -h 2001:5c0:1100:dd00:240:63ff:fefd:d3f1 -t "hello/+" -t "aebl/+" -t "ihdn/+" -t "uvea/+" |
+hostn=$(cat /etc/hostname)
+
+mosquitto_pub -d -t ihdn/alive -m "$(date) : $hostn IPv6 $ext_ip6 is online." -h "ihdn.ca"
+
+mosquitto_sub -h "ihdn.ca" -t "aebl/$hostn" |
 while IFS= read -r line
     do
 #           if [[ $line = "sixxs alive" ]]; then
