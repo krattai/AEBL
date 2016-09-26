@@ -28,7 +28,7 @@ hostn=$(cat /etc/hostname)
 #  + all by aebl/$hostn/#
 #  + certain as topics by name 
 
-mosquitto_sub -h "ihdn.ca" -t "aebl/$hostn" |
+mosquitto_sub -h "ihdn.ca" -t "aebl/$hostn/#" |
 while IFS= read -r line
     do
 #           if [[ $line = "sixxs alive" ]]; then
