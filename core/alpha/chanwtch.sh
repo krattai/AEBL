@@ -22,7 +22,11 @@
 # use hostname to determine channel to watch as initial version
 hostn=$(cat /etc/hostname)
 
-mosquitto_pub -d -t ihdn/alive -m "$(date) : $hostn IPv6 $ext_ip6 is online." -h "ihdn.ca"
+# mosquitto_pub -d -t ihdn/alive -m "$(date) : $hostn IPv6 $ext_ip6 is online." -h "ihdn.ca"
+
+# need to check if should be watching ALL or just certain:
+#  + all by aebl/$hostn/#
+#  + certain as topics by name 
 
 mosquitto_sub -h "ihdn.ca" -t "aebl/$hostn" |
 while IFS= read -r line
