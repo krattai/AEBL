@@ -22,6 +22,11 @@
 # Further reference info at:
 #   http://superuser.com/questions/617796/how-do-i-set-dns-servers-on-raspberry-pi
 
+# There are many opinions on how to set DNS, although in many cases,
+#   resolv.conf ends up with DHCP provided DNS as primaries.  The
+#   only instance where solution worked, was set in interfaces, as
+#   static config.
+
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
