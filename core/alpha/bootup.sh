@@ -1,7 +1,7 @@
 #!/bin/bash
 # runs on boot
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 # Boot up also included the following changes from:
 # http://blog.sheasilverman.com/2013/09/adding-a-startup-movie-to-your-raspberry-pi/
@@ -18,6 +18,8 @@
 # in the event a static image is prefered, have currently gone with:
 # http://www.edv-huber.com/index.php/problemloesungen/15-custom-splash-screen-for-raspberry-pi-raspbian
 #
+# 20160928:
+# + updated to run opennic.sh to create AEBL resolv.conf
 #
 #
 #! /bin/sh
@@ -49,11 +51,11 @@ case "$1" in
     sudo -u pi mkdir /run/shm/scripts
     sudo -u pi cp -p /home/pi/.scripts/* /run/shm/scripts
     sudo -u pi /run/shm/scripts/./ctrlwtch.sh &
+    /run/shm/scripts/./opennic.sh &
 
     if [ ! -f "${AUTOOFF_CHECK_FILE}" ]; then
         echo "${AUTOOFF_CHECK_FILE} not found, in auto mode."
         setterm -blank 1
-        sleep 10s
         sudo -u pi /run/shm/scripts/./startup.sh &
     fi
     echo "Could do more here"
@@ -69,3 +71,4 @@ case "$1" in
 esac
 
 exit 0
+
