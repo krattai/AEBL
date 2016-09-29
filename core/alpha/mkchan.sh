@@ -3,6 +3,8 @@
 # Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 # make unique channel
+#
+# The unique channel ensures that no channels are the same.  It can be linked to hostname, but the unique identifier prevents cross links
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
