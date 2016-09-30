@@ -11,7 +11,7 @@ touch .pub
 
 while [ -f ".pub" ]; do
 
-    mosquitto_sub -h uveais.ca -t "aebl/noo/social" |
+    mosquitto_sub -h ihdn.ca -t "aebl/noo/social" |
     while IFS= read -r line
         do
 #           if [[ $line = "sixxs alive" ]]; then
