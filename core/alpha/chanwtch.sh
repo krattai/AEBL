@@ -45,10 +45,11 @@ while IFS= read -r line
             # Append file to playlist
 #             echo "$line #am2p" >> "${CONTENT}"
 
-          if [[ $line = "sixxs alive" ]]; then
-              echo "$(date +"%T") - sixxs ACK"
-              echo " "
-          fi
+#           if [[ $line = "sixxs alive" ]]; then
+#               echo "$(date +"%T") - sixxs ACK"
+#               echo " "
+#           fi
+
 done
 
 exit 0
