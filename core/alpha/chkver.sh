@@ -10,6 +10,10 @@
 #
 # or more:
 # http://elinux.org/RPi_HardwareHistory#Board_Revision_History
+#
+# Command to pull rev info, per elinux:
+# + cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//'
+
 
 cat /proc/cpuinfo | grep a01041
 
