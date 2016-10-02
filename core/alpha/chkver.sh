@@ -7,6 +7,9 @@
 #
 # Models as indicated here:
 # http://www.raspberrypi-spy.co.uk/2012/09/checking-your-raspberry-pi-board-version/
+#
+# or more:
+# http://elinux.org/RPi_HardwareHistory#Board_Revision_History
 
 cat /proc/cpuinfo | grep a01041
 
