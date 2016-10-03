@@ -374,6 +374,10 @@ while IFS= read -r line
 #               echo " "
 #           fi
 
+          if [[ $line = "reboot" ]]; then
+              touch ctrl/reboot
+          fi
+
 done
 
 exit 0
