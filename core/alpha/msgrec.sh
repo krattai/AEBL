@@ -352,6 +352,9 @@ hostn=$(cat /etc/hostname)
 #  + all by aebl/$hostn/#
 #  + certain as topics by name 
 
+# mosquitto_pub -d -t aebl/ctrl/idet009 -m "reboot" -h "ihdn.ca"
+
+
 mosquitto_sub -h "ihdn.ca" -t "aebl/ctrl/$hostn/#" |
 while IFS= read -r line
     do
