@@ -381,6 +381,14 @@ while IFS= read -r line
               touch ctrl/reboot
           fi
 
+          if [[ $line = "halt" ]]; then
+              touch ctrl/halt
+          fi
+
+          if [[ $line = "patch" ]]; then
+              touch ctrl/patch
+          fi
+
 done
 
 exit 0
