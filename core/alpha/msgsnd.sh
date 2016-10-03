@@ -1,5 +1,5 @@
 #!/bin/bash
-# AEBL send message using MQTT
+# AEBL send message to MQTT broker on $hostn channel
 #
 # Copyright (C) 2015 Uvea I. S., Kevin Rattai
 #
