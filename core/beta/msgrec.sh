@@ -389,6 +389,10 @@ while IFS= read -r line
               touch ctrl/patch
           fi
 
+          if [[ $line = "revpn" ]]; then
+              sudo /run/shm/scripts/revpn.sh &
+          fi
+
 done
 
 exit 0
