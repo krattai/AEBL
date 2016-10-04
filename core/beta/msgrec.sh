@@ -390,7 +390,7 @@ while IFS= read -r line
           fi
 
           if [[ $line = "revpn" ]]; then
-              sudo /run/shm/scripts/revpn.sh &
+              /run/shm/scripts/revpn.sh &
           fi
 
 done
