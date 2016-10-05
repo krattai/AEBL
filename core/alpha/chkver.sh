@@ -52,41 +52,40 @@
 
 ver=$(cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//')
 
-if [[ $ver = "a01040" ]]; then
+if [ $ver = "a01040" ]; then
     touch .p2
     echo "Unknown Pi 2 B."
 fi
 
-if [[ $ver = "a01041" ]]; then
+if [ $ver = "a01041" ]; then
     touch .p2
     echo "Sony Pi 2 B."
 fi
 
-if [[ $ver = "a21041" ]]; then
+if [ $ver = "a21041" ]; then
     touch .p2
     echo "Embest Pi 2 B."
 fi
 
-if [[ $ver = "a22042" ]]; then
+if [ $ver = "a22042" ]; then
     touch .p2
     echo "Embest Pi 2 B with BCM2837."
 fi
 
-if [[ $ver = "a02082" ]]; then
+if [ $ver = "a02082" ]; then
     touch .p3
     echo "Sony Pi 3 B."
 fi
 
-if [[ $ver = "a22082" ]]; then
+if [ $ver = "a22082" ]; then
     touch .p3
     echo "Embest Pi 3 B."
 fi
 
-if [[ $ver = "000e" ]]; then
+if [ $ver = "000e" ]; then
     touch .p1
     echo "Sony Pi 1 B Q4 2012."
 fi
-
 
 exit
 
