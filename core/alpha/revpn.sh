@@ -3,6 +3,7 @@
 #
 # Copyright (C) 2016 Uvea I. S., Kevin Rattai
 #
+# This may likely only work for AEBL
 
 # i="0"
 
