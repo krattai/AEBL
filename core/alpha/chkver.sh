@@ -52,39 +52,134 @@
 
 ver=$(cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//')
 
-if [ $ver = "a01040" ]; then
-    touch .p2
-    echo "Unknown Pi 2 B."
+if [ $ver = "Beta" ]; then
+    touch .p1
+    echo "Beta Pi 1 B Q1 2012 256MB."
 fi
 
-if [ $ver = "a01041" ]; then
-    touch .p2
-    echo "Sony Pi 2 B."
+if [ $ver = "0002" ]; then
+    touch .p1
+    echo "Pi 1 B Q1 2012 256MB."
 fi
 
-if [ $ver = "a21041" ]; then
-    touch .p2
-    echo "Embest Pi 2 B."
+if [ $ver = "0003" ]; then
+    touch .p1
+    echo "Pi 1 B Q3 2012 256MB."
 fi
 
-if [ $ver = "a22042" ]; then
-    touch .p2
-    echo "Embest Pi 2 B with BCM2837."
+if [ $ver = "0004" ]; then
+    touch .p1
+    echo "Sony Pi 1 B Q3 2012 256MB."
 fi
 
-if [ $ver = "a02082" ]; then
-    touch .p3
-    echo "Sony Pi 3 B."
+if [ $ver = "0005" ]; then
+    touch .p1
+    echo "Qisda Pi 1 B Q4 2012 256MB."
 fi
 
-if [ $ver = "a22082" ]; then
-    touch .p3
-    echo "Embest Pi 3 B."
+if [ $ver = "0006" ]; then
+    touch .p1
+    echo "Egoman Pi 1 B Q4 2012 256MB."
+fi
+
+if [ $ver = "0007" ]; then
+    touch .p1
+    echo "Egoman Pi 1 A Q1 2013 256MB."
+fi
+
+if [ $ver = "0008" ]; then
+    touch .p1
+    echo "Sony Pi 1 A Q1 2013 256MB."
+fi
+
+if [ $ver = "0009" ]; then
+    touch .p1
+    echo "Qisda Pi 1 A Q1 2013 256MB."
+fi
+
+if [ $ver = "000d" ]; then
+    touch .p1
+    echo "Egoman Pi 1 B Q4 2012 512MB."
 fi
 
 if [ $ver = "000e" ]; then
     touch .p1
-    echo "Sony Pi 1 B Q4 2012."
+    echo "Sony Pi 1 B Q4 2012 512MB."
+fi
+
+if [ $ver = "000f" ]; then
+    touch .p1
+    echo "Qisda Pi 1 B Q4 2012 512MB."
+fi
+
+if [ $ver = "0010" ]; then
+    touch .p1
+    echo "Sony Pi 1 B+ Q3 2014 512MB."
+fi
+
+if [ $ver = "0011" ]; then
+    touch .p1
+    echo "Sony Pi 1 Computer Module Q2 2014 512MB."
+fi
+
+if [ $ver = "0012" ]; then
+    touch .p1
+    echo "Sony Pi 1 A+ Q4 2014 256MB."
+fi
+
+if [ $ver = "0013" ]; then
+    touch .p1
+    echo "? Pi 1 B+ Q1 2015 512MB."
+fi
+
+if [ $ver = "0014" ]; then
+    touch .p1
+    echo "Embest Pi 1 Compute Module Q2 2014 512MB."
+fi
+
+if [ $ver = "0015" ]; then
+    touch .p1
+    echo "Embest Pi 1 A+ ? 256/512MB."
+fi
+
+if [ $ver = "a01040" ]; then
+    touch .p2
+    echo "Unknown Pi 2 B unknown 1GB."
+fi
+
+if [ $ver = "a01041" ]; then
+    touch .p2
+    echo "Sony Pi 2 B Q1 2015 1GB."
+fi
+
+if [ $ver = "a21041" ]; then
+    touch .p2
+    echo "Embest Pi 2 B Q1 2015 1GB."
+fi
+
+if [ $ver = "a22042" ]; then
+    touch .p2
+    echo "Embest Pi 2 B with BCM2837 Q3 2016 1GB."
+fi
+
+if [ $ver = "900092" ]; then
+    touch .p0
+    echo "Sony Pi 0 Q4 2015 512MB."
+fi
+
+if [ $ver = "900093" ]; then
+    touch .p0
+    echo "Sony Pi 0 Q2 2016 512MB."
+fi
+
+if [ $ver = "a02082" ]; then
+    touch .p3
+    echo "Sony Pi 3 B Q1 2016 1GB."
+fi
+
+if [ $ver = "a22082" ]; then
+    touch .p3
+    echo "Embest Pi 3 B Q1 2016 1GB."
 fi
 
 exit
