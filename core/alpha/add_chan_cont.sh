@@ -39,13 +39,13 @@
 
 # This will require that mkchan.sh works
 
-i="0"
+# i="0"
 
-while [ $i -lt 1 ]
-do
-    mosquitto_sub -h uveais.ca -t -t "aebl/#" -t "uvea/#" |
-    while IFS= read -r line
-        do
+# while [ $i -lt 1 ]
+# do
+#     mosquitto_sub -h uveais.ca -t -t "aebl/#" -t "uvea/#" |
+#     while IFS= read -r line
+#         do
 #           if [[ $line = "sixxs alive" ]]; then
 #               echo "$(date +"%T") - sixxs ACK"
 #               echo " "
@@ -61,7 +61,7 @@ do
 #               echo " "
 #           fi
 #
-        done
+#         done
 
 # hostn=$(cat /etc/hostname)
 # ext_ip4=$(dig +short myip.opendns.com @resolver1.opendns.com)
@@ -74,6 +74,35 @@ do
 # mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn IPv6 $ext_ip6 is online." -h "uveais.ca"
 # i=$[$i+1]
 # sleep 300
+# done
+
+# Use $hostn to watch for new content
+mosquitto_sub -h "ihdn.ca" -t "aebl/$hostn/add" |
+while IFS= read -r line
+    do
+#           if [[ $line = "sixxs alive" ]]; then
+#               echo "$(date +"%T") - sixxs ACK"
+#               echo " "
+#           fi
+#           if [[ $line == *"ihdnsrvr IPv6"* ]]; then
+#               echo "$(date +"%T") - ihdnsrvr ACK"
+#               echo "$line"
+#               echo " "
+#           fi
+#
+
+            # Append file to playlist
+#             echo "$line #am2p" >> "${CONTENT}"
+
+#           if [[ $line = "sixxs alive" ]]; then
+#               echo "$(date +"%T") - sixxs ACK"
+#               echo " "
+#           fi
+
+            # grab file
+#             echo "$line #am2p" >> "${CONTENT}"
+            wget -N -nd -w 3 -P /home/pi/ad --limit-rate=50k "http://ihdn.ca/ads/${line}"
+
 done
 
 exit 0
