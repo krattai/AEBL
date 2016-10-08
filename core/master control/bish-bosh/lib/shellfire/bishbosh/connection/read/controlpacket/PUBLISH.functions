@@ -1,0 +1,182 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+bishbosh_connection_read_controlpacket_PUBLISH_0()
+{	
+	local retain=0
+	local QoS=0
+	local dup=0
+	_bishbosh_connection_read_PUBLISH
+}
+
+bishbosh_connection_read_controlpacket_PUBLISH_1()
+{
+	local retain=1
+	local QoS=0
+	local dup=0
+	_bishbosh_connection_read_PUBLISH
+}
+
+bishbosh_connection_read_controlpacket_PUBLISH_2()
+{
+	local retain=0
+	local QoS=1
+	local dup=0
+	_bishbosh_connection_read_PUBLISH
+}
+
+bishbosh_connection_read_controlpacket_PUBLISH_3()
+{
+	local retain=1
+	local QoS=1
+	local dup=0
+	_bishbosh_connection_read_PUBLISH
+}
+
+bishbosh_connection_read_controlpacket_PUBLISH_4()
+{
+	local retain=0
+	local QoS=2
+	local dup=0
+	_bishbosh_connection_read_PUBLISH
+}
+
+bishbosh_connection_read_controlpacket_PUBLISH_5()
+{
+	local retain=1
+	local QoS=2
+	local dup=0
+	_bishbosh_connection_read_PUBLISH
+}
+
+bishbosh_connection_read_controlpacket_PUBLISH_10()
+{
+	local retain=0
+	local QoS=1
+	local dup=1
+	_bishbosh_connection_read_PUBLISH
+}
+
+bishbosh_connection_read_controlpacket_PUBLISH_11()
+{
+	local retain=1
+	local QoS=1
+	local dup=1
+	_bishbosh_connection_read_PUBLISH
+}
+
+bishbosh_connection_read_controlpacket_PUBLISH_12()
+{
+	local retain=0
+	local QoS=2
+	local dup=1
+	_bishbosh_connection_read_PUBLISH
+}
+
+bishbosh_connection_read_controlpacket_PUBLISH_13()
+{
+	local retain=1
+	local QoS=2
+	local dup=1
+	_bishbosh_connection_read_PUBLISH
+}
+
+_bishbosh_connection_read_PUBLISH()
+{
+	local length
+	bishbosh_connection_read_length
+	local topicLength=$length
+	
+	local temporaryTheirPacketIdentifierFolderPath
+	temporaryTheirPacketIdentifierFolderPath="$bishbosh_connection_sessionTheirPacketIdentifiersPath"/temporary
+	rm -rf "$temporaryTheirPacketIdentifierFolderPath" 2>/dev/null || true
+	mkdir -m 0700 -p "$temporaryTheirPacketIdentifierFolderPath"
+	
+	# This design preserves any embedded line feeds, including terminal ones
+	local remainingTopicLength=$topicLength
+	local byte
+	while [ $remainingTopicLength -ne 0 ]
+	do
+		bishbosh_connection_read_byte_blocking byte
+		bishbosh_connection_write_byte $byte >>"$temporaryTheirPacketIdentifierFolderPath"/topic-name
+		remainingTopicLength=$((remainingTopicLength-1))
+	done
+	
+	local topicName="$(<"$temporaryTheirPacketIdentifierFolderPath"/topic-name)"
+	
+	local packetIdentifier
+	local messageLength
+	local theirPacketIdentifierFolderPath
+	if [ $QoS -eq 0 ]; then
+		packetIdentifier=qos0
+		# -2 for topicLength size bytes
+		messageLength=$((remainingLength-topicLength-2))
+		bishbosh_connection_packetIdentifier_theirPacketIdentifierFolderPath
+		rm -rf "$theirPacketIdentifierFolderPath" 2>/dev/null || true
+	else
+		bishbosh_connection_read_packetIdentifier
+		# -2 for packetIdentifier, -2 for topicLength size bytes == -4
+		messageLength=$((remainingLength-topicLength-4))
+		bishbosh_connection_packetIdentifier_theirPacketIdentifierFolderPath
+	fi
+	
+	local readMessage
+	if [ -d "$theirPacketIdentifierFolderPath" ]; then
+		if [ -f "$theirPacketIdentifierFolderPath"/transmission-counter ]; then
+			readMessage=0
+		else
+			readMessage=1
+		fi
+	else
+		mv "$temporaryTheirPacketIdentifierFolderPath" "$theirPacketIdentifierFolderPath"
+		readMessage=1
+	fi
+	local topicNameFilePath="$theirPacketIdentifierFolderPath"/topic-name
+	
+	local remainingMessageLength=$messageLength
+	local byte
+	if [ $readMessage -eq 1 ]; then
+		while [ $remainingMessageLength -ne 0 ]
+		do
+			bishbosh_connection_read_byte_blocking byte
+			bishbosh_connection_write_byte $byte
+			remainingMessageLength=$((remainingMessageLength-1))
+		done >"$theirPacketIdentifierFolderPath"/message-received
+		
+		local messageFilePath="$theirPacketIdentifierFolderPath"/message-received
+		
+		bishbosh_connection_handler_PUBLISH
+		
+	else
+		while [ $remainingMessageLength -ne 0 ]
+		do
+			bishbosh_connection_read_byte_blocking byte
+			remainingMessageLength=$((remainingMessageLength-1))
+		done
+		
+		bishbosh_connection_handler_PUBLISH_again
+	fi
+	
+	case $QoS in
+		
+		0)
+			rm -rf "$theirPacketIdentifierFolderPath" 2>/dev/null
+		;;
+		
+		1)
+			bishbosh_connection_packetIdentifier_forWriting=$packetIdentifier
+			bishbosh_connection_write_PUBACK
+			
+			rm -rf "$theirPacketIdentifierFolderPath" 2>/dev/null
+		;;
+		
+		2)
+			bishbosh_connection_packetIdentifier_incrementTransmissionCounter "$theirPacketIdentifierFolderPath"
+			
+			bishbosh_connection_packetIdentifier_forWriting=$packetIdentifier
+			bishbosh_connection_write_PUBREC
+		;;
+		
+	esac
+}

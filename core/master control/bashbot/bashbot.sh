@@ -1,0 +1,190 @@
+#!/usr/bin/env bash
+# Copyright (C) 2012 Josh Cartwright <joshc@linux.com>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in
+# the Software without restriction, including without limitation the rights to
+# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+# of the Software, and to permit persons to whom the Software is furnished to do
+# so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+# Copyright (C) 2016 Kevin Rattai <krattai@gmail.com>
+# Bot being modified to work on AEBL noo-ebs network
+#
+# mosquitto_sub -h 2001:5c0:1100:dd00:240:63ff:fefd:d3f1 -t "hello/+" -t "aebl/+" -t "ihdn/+" -t "uvea/+"
+
+[ -r bashbot.config ] || cat >bashbot.config <<-EOF
+# 	nick=bashbot
+        nick=hostname
+# 	server=irc.freenode.net
+        server=2001:5c0:1100:dd00:240:63ff:fefd:d3f1
+# 	port=6667
+	chans=( "uvea/bottest" )
+EOF
+
+# exec source file (which is just series of global assignments
+. bashbot.config
+
+# Basic helpers for communication with via IRC protocol
+recv() { echo "< $@" >&2; }
+send() { echo "> $@" >&2;
+         printf "%s\r\n" "$@" >&3; }
+export -f send
+
+declare -A filters
+reload_filters() {
+   for i in "${!filters[@]}"; do
+      unset "filters[$i]"
+   done
+   for f in filters/*; do
+      source "$f"
+   done
+}
+
+filter() {
+   filters["$1"]+="${@:2}"
+}
+export -f filter
+
+run_filters() {
+   for f in "${!filters[@]}"; do
+      if [[ "$@" =~ $f ]]; then
+         for func in ${filters[$f]}; do
+            $func "${BASH_REMATCH[@]}"
+         done
+      fi
+   done
+}
+
+reload_filters
+
+declare -A builtin_commands
+
+bashbot_args=("$0" "$@")
+builtin_reload()
+{
+   wait
+   send "QUIT :reloading"
+   exec 3>&-
+   exec "${bashbot_args[@]}"
+}
+builtin_commands[reload]=builtin_reload
+
+builtin_filters()
+{
+   echo "active filters:";
+   for f in "${!filters[@]}"; do
+      printf "%-20s: %s\n" "$f" "${filters[$f]}"
+   done
+}
+builtin_commands[filters]=builtin_filters
+
+builtin_list()
+{
+   echo -n "available commands: ${!builtin_commands[@]} "
+   (cd commands; echo *;)
+}
+builtin_commands[list]=builtin_list
+
+# We'll also allow for SIGHUP to reload bashbot.  Useful for git hooks.
+[ -e bashbot.pid ] && rm bashbot.pid
+echo $$ >bashbot.pid
+trap 'builtin_reload' SIGHUP
+
+exec 3<>/dev/tcp/$server/$port || { echo "Could not connect"; exit 1; }
+
+send "NICK $nick"
+send "USER $nick 0 * :bashbot"
+
+for chan in "${chans[@]}"; do
+   send "JOIN :$chan"
+done
+
+CHANNEL=
+NAME=
+BOTNICK=$nick
+export CHANNEL NAME BOTNICK
+
+while read -r line; do
+
+   # strip trailing carriage return
+   line=${line%%$'\r'}
+
+   recv "$line"
+   set -- $line
+
+   case "$1" in
+   :*)
+      # turn: :nickname!example.host.com
+      # into: nickname
+      NAME=${1%%!*}
+      NAME=${NAME#:}
+      shift
+      ;;
+   esac
+
+   case "$@" in
+   "PING "*)
+      send "PONG $2"
+      continue
+      ;;
+   "PRIVMSG $nick :"*)
+      # private message to bot
+      CHANNEL=$NAME
+      prefix="PRIVMSG $NAME "
+      set -- "${3#:}" "${@:4}"
+      ;;
+   "PRIVMSG "*" :$nick: "*)
+      CHANNEL=$2
+      prefix="PRIVMSG $CHANNEL :$NAME"
+      set -- "${@:4}"
+      ;;
+   "PRIVMSG "*" :"*)
+      CHANNEL=$2
+      run_filters "${3#:}" "${@:4}" | while IFS= read -r line; do
+         send "PRIVMSG $CHANNEL :$line"
+      done&
+      continue
+      ;;
+   *)
+      continue
+      ;;
+   esac
+
+   # prevent tricky commands like '../../../shutdown'
+   cmd=${1##*/}
+   shift
+
+   # reload is handled specially.  we can't leave the | while read subshell
+   # hangin' during re-exec, or it will be orphaned
+   case "$cmd" in
+   reload)
+      builtin_reload "$@"
+      continue
+      ;;
+   esac
+
+   # note, builtin commands run in-process
+   if [ -n "${builtin_commands[$cmd]}" ]; then
+      "${builtin_commands[$cmd]}" "$@"
+      continue
+   elif [ -x "commands/$cmd" ]; then
+      "commands/$cmd" "$@"
+   else
+      "commands/insult"
+   fi | while IFS= read -r line; do
+      send "$prefix:$line"
+   done&
+
+done <&3

@@ -1,0 +1,62 @@
+== bashbot - damn simple IRC bot ==
+
+Bashbot is a simple bot written entirely in bash.  I've written it such
+that the addition of commands is simple, and language agnostic (any executable
+script/file can be used as a command).  The use of 'filters' is also supported
+(see below).
+
+Note: bashbot has not been audited for insecurities...its main deployment is
+on an IRC server where I trust all of the users.
+
+== getting started ==
+
+The bot consumes a bashbot.config file in the directory it is executed from.
+The default braindead configuration should be easily modified to meet your needs:
+
+    nick=bashbot
+    server=irc.freenode.net
+    port=6667
+    chans=( "#bottest" )
+
+== commands ==
+
+Any executable file placed in the 'commands' subdirectory is available for
+execution immediately by the bot.  Commands are executed when the bot is
+mentioned in a channel it currently belongs to.
+
+For example, if 'bashbot: do_something a b c d' was said in a channel
+bashbot belongs to, it will attempt to execute the 'do_something' executable
+in the command subdirectory, passing it the arguments a, b, c, and d.
+
+It is also possible for a user to directly PM the bot.
+
+Commands also have available to them:
+   $CHANNEL - the channel with which the query was requested from
+   $NAME - the nickname of the individual making the request
+   send() - function allowing for the sending of raw messages to the server
+
+Standard output is captured and sent back to the requesting user.
+
+== filters ==
+
+When any non-command message is sent to a channel, the message is checked
+against a series of regexps, and if they match, a callback is executed.
+Filters are added by adding a simple bash script to the filters/
+subdirectory.
+
+For example, if we want to tell the channel 'polo' whenever
+anyone says 'marco', we can accomplish this by adding the following
+file to the filters subdir:
+
+    say_polo() { echo 'polo'; }
+    filter 'marco' say_polo
+
+In addition, arguments are passed to the callback that correspond
+the regexp match state.  For example, if you to respond by saying
+'goodbye, {x}' whenever someone says 'hello, {x}', you can do so fairly
+simply:
+
+say_goodbye() { echo "goodbye, $2"; }
+filter 'hello, ([^ ]+)' say_goodbye
+
+Note: the first argument passed is the entire matched string.

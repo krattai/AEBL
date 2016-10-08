@@ -1,0 +1,239 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+_bishbosh_connection_write_CONNECT_validateArguments()
+{
+	if core_variable_isUnset bishbosh_connect_cleanSession; then
+		bishbosh_connect_cleanSession=1
+		cleanSession=1
+	else
+		core_validate_isBoolean $core_commandLine_exitCode_CONFIG 'argument' bishbosh_connect_cleanSession "$bishbosh_connect_cleanSession"
+		if core_variable_isTrue "$bishbosh_connect_cleanSession"; then
+			bishbosh_connect_cleanSession=1
+			cleanSession=1
+			# Clean Session Flag (1<<1)
+			connectFlags=$(( connectFlags + 2 ))
+		else
+			bishbosh_connect_cleanSession=0
+			cleanSession=0
+		fi
+	fi
+		
+	if core_variable_isUnset bishbosh_connect_willTopic; then
+		if core_variable_isSet bishbosh_connect_willMessage; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_connect_willMessage' can not be set when 'bishbosh_connect_willTopic' is unset"
+		fi
+		if core_variable_isSet bishbosh_connect_willMessageFilePath; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_connect_willMessageFilePath' can not be set when 'bishbosh_connect_willTopic' is unset"
+		fi
+		if core_variable_isSet bishbosh_connect_willQoS; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_connect_willQoS' can not be set when 'bishbosh_connect_willTopic' is unset"
+		fi
+		if core_variable_isSet bishbosh_connect_willRetain; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_connect_willRetain' can not be set when 'bishbosh_connect_willTopic' is unset"
+		fi
+		willTopic=''
+		willTopicFieldLength=-1
+		willMessage=''
+		willMessageFieldLength=-1
+	else
+		# Will Flag (1<<2)
+		connectFlags=$(( connectFlags + 4 ))
+		
+		# Will Topic
+		willTopic="$bishbosh_connect_willTopic"
+		bishbosh_connection_validate_topicName bishbosh_connect_willTopic "$willTopic"
+		willTopicFieldLength=${#willTopic}
+		remainingLength=$(( remainingLength + 2 + willTopicFieldLength ))
+		
+		# Will Message
+		if core_variable_isUnset bishbosh_connect_willMessage; then
+			if core_variable_isUnset bishbosh_connect_willMessageFilePath; then
+				willMessage=''
+				willMessageFieldLength=0
+				willMessageFilePath=''
+			else
+				willMessage=''
+				core_validate_filePathReadable $core_commandLine_exitCode_CONFIG 'argument' bishbosh_connect_willMessageFilePath "$bishbosh_connect_willMessageFilePath"
+				willMessageFilePath="$bishbosh_connect_willMessageFilePath"
+				willMessageFieldLength=$(bishbosh_filesize_${bishbosh_filesizeAlgorithm} "$willMessageFilePath")
+				if [ $willMessageFieldLength -gt 65535 ]; then
+					core_exitError $core_commandLine_exitCode_CONFIG "The size of the file pointed to be argument 'bishbosh_connect_willMessageFilePath' can not be longer than 65,535 bytes"
+				fi
+			fi
+		else
+			if core_variable_isSet bishbosh_connect_willMessageFilePath; then
+				core_exitError $core_commandLine_exitCode_CONFIG "The arguments 'bishbosh_connect_willMessage' and 'bishbosh_connect_willMessageFilePath' can not both be specified"
+			fi
+			willMessage="$bishbosh_connect_willMessage"
+			willMessageFieldLength=${#willMessage}
+			if [ $willMessageFieldLength -gt 65535 ]; then
+				core_exitError $core_commandLine_exitCode_CONFIG "The size of the argument 'bishbosh_connect_willMessage' can not be longer than 65,535 bytes"
+			fi
+			willMessageFilePath=''
+		fi
+		bishbosh_connection_validate_fieldLength CONNECT willMessage
+		willMessageFieldLength=${#willMessage}
+		remainingLength=$(( remainingLength + 2 + willMessageFieldLength ))
+		
+		# Will QoS
+		if core_variable_isUnset bishbosh_connect_willQoS; then
+			willQoS=0
+		else
+			core_validate_isUnsignedInteger $core_commandLine_exitCode_CONFIG 'argument' bishbosh_connect_willQoS "$bishbosh_connect_willQoS"
+			if [ $bishbosh_connect_willQoS -gt 2 ]; then
+				core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_connect_willQoS' must be between 0 and 2 inclusive"
+			fi
+			willQoS=$bishbosh_connect_willQoS
+			connectFlags=$(( connectFlags + (willQoS << 3) ))
+		fi
+		
+		# Will Retain
+		if core_variable_isSet bishbosh_connect_willRetain; then
+			core_validate_isBoolean $core_commandLine_exitCode_CONFIG 'argument' bishbosh_connect_willRetain "$bishbosh_connect_willRetain"
+			if core_variable_isTrue "$bishbosh_connect_willRetain"; then
+				# Will Retain (1 << 5)
+				connectFlags=$(( connectFlags + 32 ))
+			fi
+		fi
+	fi
+	
+	if core_variable_isUnset bishbosh_connect_keepAlive; then
+		bishbosh_connect_keepAlive=0
+		keepAlive=0
+	else
+		bishbosh_validate_unsignedIntegerUpto65535Inclusive $core_commandLine_exitCode_CONFIG 'argument' bishbosh_connect_keepAlive "$bishbosh_connect_keepAlive"
+		keepAlive=$bishbosh_connect_keepAlive
+	fi
+	
+	if core_variable_isUnset bishbosh_clientId; then
+		core_exitError $core_commandLine_exitCode_SOFTWARE "How is bishbosh_clientId unset?"
+	elif [ -z "$bishbosh_clientId" ]; then
+		if [ $cleanSession -eq 0 ]; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_clientId' can not be empty (blank) if the argument 'bishbosh_connect_cleanSession' is 0"
+		fi
+	else
+		# bishbosh_connection_validate_clientId is called before we get to this point by bishbosh_connection_clientId_validateAndDefault
+		clientId="$bishbosh_clientId"
+	fi
+	
+	clientIdFieldLength=${#clientId}
+	bishbosh_connection_validate_fieldLength CONNECT clientId
+	remainingLength=$(( remainingLength + 2 + clientIdFieldLength ))
+
+	if core_variable_isUnset bishbosh_connect_username; then
+		username=''
+		usernameFieldLength=-1
+	else
+		bishbosh_connection_validate_isUtf8 bishbosh_connect_username "$bishbosh_connect_username"
+		username="$bishbosh_connect_username"
+		bishbosh_connection_validate_fieldLength CONNECT username
+		usernameFieldLength=${#username}
+		remainingLength=$(( remainingLength + 2 + usernameFieldLength ))
+		# Username Flag (1 << 7)
+		connectFlags=$(( connectFlags + 128 ))
+	fi
+	
+	if core_variable_isUnset bishbosh_connect_password; then
+		if core_variable_isUnset bishbosh_connect_passwordFilePath; then
+			password=''
+			passwordFieldLength=-1
+			passwordFilePath=''
+		else
+			password=''
+			core_validate_filePathReadable $core_commandLine_exitCode_CONFIG 'argument' bishbosh_connect_passwordFilePath "$bishbosh_connect_passwordFilePath"
+			passwordFilePath="$bishbosh_connect_passwordFilePath"
+			passwordFieldLength=$(bishbosh_filesize_${bishbosh_filesizeAlgorithm} "$passwordFilePath")
+			if [ ${#passwordFieldLength} -gt 65535 ]; then
+				core_exitError $core_commandLine_exitCode_CONFIG "The size of the file pointed to be argument 'bishbosh_connect_passwordFilePath' can not be longer than 65,535 bytes"
+			fi
+		fi
+	else
+		if core_variable_isSet bishbosh_connect_passwordFilePath; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The arguments 'bishbosh_connect_password' and 'bishbosh_connect_passwordFilePath' can not both be specified"
+		fi
+		password="$bishbosh_connect_password"
+		passwordFilePath=''
+		bishbosh_connection_validate_fieldLength CONNECT password
+		passwordFieldLength=${#password}
+		remainingLength=$(( remainingLength + 2 + passwordFieldLength ))
+		# Password Flag (1 << 6)
+		connectFlags=$(( connectFlags + 64 ))
+	fi
+}
+
+core_usesIn bishbosh/connection write
+core_dependency_requires '*' cat
+bishbosh_connection_write_CONNECT()
+{
+	# 8 byte preamble and 2 byte keep-alive
+	local remainingLength=10
+	local connectFlags=0
+	
+	local cleanSession
+	local willTopic
+	local willTopicFieldLength
+	local willMessage
+	local willMessageFilePath
+	local willMessageFieldLength
+	local willQoS
+	local keepAlive
+	local clientId
+	local clientIdFieldLength
+	local username
+	local usernameFieldLength
+	local password
+	local passwordFilePath
+	local passwordFieldLength
+	_bishbosh_connection_write_CONNECT_validateArguments
+	
+	# CONNECT 1 << 4 in Octal (1 byte)
+	printf '\020'
+	
+	# Remaining Length (1 - 3 bytes; 4 bytes would never be required)
+	bishbosh_connection_write_remainingLength $remainingLength
+
+	# protocol name (MSB, LSB, MQTT), protocol level (7 bytes)
+	printf '\000\004MQTT\004'
+
+	# connect flag (1 byte)
+	bishbosh_connection_write_byte $connectFlags
+
+	# two-byte size of Keep Alive (2 bytes)
+	bishbosh_connection_write_twoByteLength $keepAlive
+
+	# client id
+	bishbosh_connection_write_twoByteLength $clientIdFieldLength
+	printf '%s' "$clientId"
+
+	# will topic & will message
+	if [ $willTopicFieldLength -ne -1 ]; then
+		bishbosh_connection_write_twoByteLength $willTopicFieldLength
+		printf '%s' "$willTopic"
+		bishbosh_connection_write_twoByteLength $willMessageFieldLength
+		if [ -z "$willMessageFilePath" ]; then
+			printf '%s' "$willMessage"
+		else
+			bishbosh_connection_write_file "$willMessageFilePath" $willMessageFieldLength
+		fi
+	fi
+
+	# username
+	if [ $usernameFieldLength -ne -1 ]; then
+		bishbosh_connection_write_twoByteLength $usernameFieldLength
+		printf '%s' "$username"
+	fi
+
+	# password
+	if [ $passwordFieldLength -ne -1 ]; then
+		bishbosh_connection_write_twoByteLength $passwordFieldLength
+		if [ -z "$passwordFilePath" ]; then
+			printf '%s' "$password"
+		else
+			bishbosh_connection_write_file "$passwordFilePath" $passwordFieldLength
+		fi
+	fi
+	
+	bishbosh_connection_ping_recordLastSentControlPacketAt
+}

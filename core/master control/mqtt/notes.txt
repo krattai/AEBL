@@ -1,0 +1,3 @@
+This contains mqtt reference code for the master control.
+
+Master control will initially be a console based utility

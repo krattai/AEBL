@@ -1,0 +1,70 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+bishbosh_connection_handler_CONNACK()
+{
+	core_message DEBUG "bishbosh_connection_handler_CONNACK(bishbosh_connection_sessionPresent=$bishbosh_connection_sessionPresent)"
+}
+
+bishbosh_connection_handler_SUBACK()
+{
+	core_message DEBUG "bishbosh_connection_handler_SUBACK(packetIdentifier=$packetIdentifier, returnCodeCount=$returnCodeCount, returnCodes=$@)"
+}
+
+bishbosh_connection_handler_UNSUBACK()
+{
+	core_message DEBUG "bishbosh_connection_handler_UNSUBACK(packetIdentifier=$packetIdentifier)"
+}
+
+bishbosh_connection_handler_PUBLISH()
+{
+	core_message DEBUG "bishbosh_connection_handler_PUBLISH(packetIdentifier=$packetIdentifier, retain=$retain, QoS=$QoS, dup=$dup, topicLength=$topicLength, topicName=$topicName, topicNameFilePath="$topicNameFilePath", messageLength=$messageLength, messageFilePath=$messageFilePath)"
+	rm "$messageFilePath"
+}
+
+bishbosh_connection_handler_PUBLISH_again()
+{
+	# Occurs because a QoS 2 PUBLISH has been received after we sent a PUBREC (but before receiveing a PUBREL)
+	core_message DEBUG "bishbosh_connection_handler_PUBLISH_again(packetIdentifier=$packetIdentifier, retain=$retain, QoS=$QoS, dup=$dup, topicLength=$topicLength, topicName=$topicName, topicNameFilePath="$topicNameFilePath", messageLength=$messageLength, messageFilePath=$messageFilePath)"
+	rm "$messageFilePath"
+}
+
+bishbosh_connection_handler_PUBACK()
+{
+	core_message DEBUG "bishbosh_connection_handler_PUBACK(packetIdentifier=$packetIdentifier, unknownPacketIdentifier=$packetIdentifier)"
+}
+
+bishbosh_connection_handler_PUBREC()
+{
+	core_message DEBUG "bishbosh_connection_handler_PUBREC(packetIdentifier=$packetIdentifier, unknownPacketIdentifier=$packetIdentifier)"
+}
+
+bishbosh_connection_handler_PUBREL()
+{
+	core_message DEBUG "bishbosh_connection_handler_PUBREL(packetIdentifier=$packetIdentifier, unknownPacketIdentifier=$packetIdentifier)"
+}
+
+bishbosh_connection_handler_PUBCOMP()
+{
+	core_message DEBUG "bishbosh_connection_handler_PUBCOMP(packetIdentifier=$packetIdentifier, unknownPacketIdentifier=$packetIdentifier)"
+}
+
+bishbosh_connection_handler_PINGRESP()
+{
+	core_message DEBUG "bishbosh_connection_handler_PINGRESP()"
+}
+
+bishbosh_connection_handler_noControlPacketsRead()
+{
+	if core_variable_isUnset _bishbosh_connection_handler_noControlPacketsRead_count; then
+		_bishbosh_connection_handler_noControlPacketsRead_count=1
+	fi
+	
+	if [ $_bishbosh_connection_handler_noControlPacketsRead_count -eq 10 ]; then
+		core_message DEBUG "bishbosh_connection_handler_noControlPacketsRead() 10 times"
+		_bishbosh_connection_handler_noControlPacketsRead_count=1
+	else
+		_bishbosh_connection_handler_noControlPacketsRead_count=$((_bishbosh_connection_handler_noControlPacketsRead_count+1))
+	fi
+}

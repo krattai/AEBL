@@ -1,0 +1,121 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+core_usesIn bishbosh/connection write
+
+bishbosh_connection_clientId_validateAndDefault()
+{
+	if core_variable_isSet bishbosh_clientId; then
+		bishbosh_connection_validate_clientId
+		return 0
+	fi
+	
+	if core_variable_isUnset bishbosh_connect_cleanSession; then
+		core_exitError $core_commandLine_exitCode_CONFIG "Clean Session is 0 and the option -i,--client-id or configuration setting bishbosh_clientId isn't set, either in configuration, SCRIPTLETS or any path under '$bishbosh_clientPath'."
+	else
+		core_validate_isBoolean $core_commandLine_exitCode_CONFIG 'configuration setting' bishbosh_connect_cleanSession "$bishbosh_connect_cleanSession"
+		if core_variable_isFalse "$bishbosh_connect_cleanSession"; then
+			core_exitError $core_commandLine_exitCode_CONFIG "Clean Session is 0 and the option -i,--client-id or configuration setting bishbosh_clientId isn't set, either in configuration, SCRIPTLETS or any path under '$bishbosh_clientPath'."
+		fi
+	fi
+	
+	if core_variable_isTrue bishbosh_randomClientId; then
+		bishbosh_connection_clientId_random
+	else
+		core_message WARN "Clean Session is 1 and the client id is unset; defaulting to empty (''). This may be rejected by some MQTT servers."
+		bishbosh_clientId=''
+	fi
+}
+
+core_dependency_oneOf '*' openssl gpg base64 dd tr awk
+
+bishbosh_connection_clientId_random()
+{
+	local potentialClientId
+	local reducedClientId
+	while true
+	do
+		potentialClientId="$(bishbosh_connection_clientId_randomBytesBase64EncodedALike 16)"
+		reducedClientId="$(bishbosh_connection_validate_removeCharacters '+/' "$potentialClientId")"
+		
+		if [ ${#reducedClientId} = ${#potentialClientId}]; then
+			bishbosh_clientId="$potentialClientId"
+			return 0
+		fi
+	done
+}
+
+# Broken out because it might be possible to use a different technique
+bishbosh_connection_clientId_randomBytesBase64EncodedALike_base64tr()
+{
+	# GNU base64 inserts line breaks, hence the use of tr -d '\n'.
+	# This can be disabled in GNU base64, but the switches with Mac OS X base64 differ.
+	base64 | tr -d '\n='
+}
+
+bishbosh_connection_clientId_randomBytesBase64EncodedALike()
+{
+	local count=$1
+
+	# We use base64.
+	# base85 / Ascii85 encoding would be more efficient but support is uncommon and requires non-MQTT safe characters
+	
+	if core_compatibility_whichNoOutput openssl; then
+		openssl -base64 $count
+		return 0
+	fi
+	
+	if core_compatibility_whichNoOutput gpg; then
+		gpg --armor --gen-random 1 $count
+		return 0
+	fi
+	
+	if core_compatibility_whichNoOutput base64; then
+		if core_compatibility_whichNoOutput tr; then
+			
+			local randomFilePath
+			for randomFilePath in /dev/urandom /dev/random
+			do
+				if [ -r "$randomFilePath" ]; then
+					if core_compatibility_whichNoOutput dd; then
+						dd bs=1 count=$count if="$randomFilePath" | bishbosh_connection_clientId_randomBytesBase64EncodedALike_base64tr
+						return 0
+					fi
+					if core_compatibility_whichNoOutput head; then
+						head -c $count | bishbosh_connection_clientId_randomBytesBase64EncodedALike_base64tr
+						return 0
+					fi
+				fi
+			done
+
+			if core_variable_isSet RANDOM; then
+				{
+					local index
+					while [ $index -lt $count ]
+					do
+						printf "\\$(printf '%o' $((RANDOM%256)))"
+						index=$((index+1))
+					done
+				} | bishbosh_connection_clientId_randomBytesBase64EncodedALike_base64tr
+				return 0
+			fi
+	
+			if core_compatibility_whichNoOutput awk; then
+				{
+					local index
+					while [ $index -lt $count ]
+					do
+						printf "\\$(printf '%o' $(echo | awk -v ORS='' '{ srand(); print int((rand()*1000000)%256)} '))"
+						index=$((index+1))
+					done
+				} | bishbosh_connection_clientId_randomBytesBase64EncodedALike_base64tr
+				return 0
+			fi
+			
+		fi
+	fi
+	
+	core_message WARN "Clean Session is 1, the client id is unset and there are not sources of randomness; defaulting to empty (''). This may be rejected by some MQTT servers."
+	bishbosh_clientId=''
+}

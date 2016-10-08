@@ -1,0 +1,45 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+_bishbosh_connection_write_CONNACK_validateArguments()
+{
+	if core_variable_isUnset bishbosh_connection_write_CONNACK_sessionPresent; then
+		sessionPresent=0
+	else
+		core_validate_isBoolean $core_commandLine_exitCode_CONFIG 'argument' bishbosh_connection_write_CONNACK_sessionPresent "$bishbosh_connection_write_CONNACK_sessionPresent"
+		if core_variable_isTrue "$bishbosh_connection_write_CONNACK_sessionPresent"; then
+			sessionPresent=1
+		else
+			sessionPresent=0
+		fi
+	fi
+	
+	if core_variable_isUnset bishbosh_connection_write_CONNACK_connectReturnCode; then
+		connectReturnCode=0
+	else
+		core_validate_isUnsignedInteger "$bishbosh_connection_write_CONNACK_connectReturnCode"
+		if [ $bishbosh_connection_write_CONNACK_connectReturnCode -gt 5 ]; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The argument '$bishbosh_connection_write_CONNACK_connectReturnCode' should be between 0 and 5, not '$bishbosh_connection_write_CONNACK_connectReturnCode'"
+		fi
+		connectReturnCode=$bishbosh_connection_write_CONNACK_connectReturnCode
+	fi
+}
+
+core_usesIn bishbosh/connection write
+bishbosh_connection_write_CONNACK()
+{
+	local remainingLength=10
+	
+	local sessionPresent
+	local connectReturnCode
+	_bishbosh_connection_write_CONNACK_validateArguments
+	
+	# CONNECT 2 << 4 in Octal (1 byte)
+	# Remaining Length of 2
+	printf '\040\002'
+	bishbosh_connection_write_byte $sessionPresent
+	bishbosh_connection_write_byte $connectReturnCode
+	
+	bishbosh_connection_ping_recordLastSentControlPacketAt
+}

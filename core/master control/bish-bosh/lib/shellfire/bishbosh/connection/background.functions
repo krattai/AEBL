@@ -1,0 +1,262 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+core_usesIn bishbosh/connection ping
+
+bishbosh_connection_background_client()
+{
+	bishbosh_backend_${bishbosh_backend_name}_start
+}
+
+core_dependency_requires '*' grep
+core_dependency_oneOf '*' stdbuf od hexdump dd unbuffer uname
+bishbosh_connection_background_hexConversion()
+{	
+	# AIX uname has a broken -t u1 (but does support -w1)
+	if core_compatibility_whichNoOutput uname; then
+		if [ "$(uname)" = 'AIX' ]; then
+			local odConversionString='d1'
+		else
+			local odConversionString='u1'
+		fi
+	else
+		local odConversionString='u1'
+	fi
+	
+	# Not a loop; but setting varargs ($@) isn't something we can return from a method call
+	# Of course, in bash, once could use an array
+	while true
+	do
+		local unbufferingTool
+		for unbufferingTool in gstdbuf stdbuf
+		do
+			if ! core_compatibility_whichNoOutput "$unbufferingTool"; then
+				continue
+			fi
+		
+			# hexdump on Mac OS X doesn't seem to be compatible with stdbuf (probably because it uses a different libc)
+		
+			local odTool
+			for odTool in god od
+			do
+				if ! core_compatibility_whichNoOutput "$odTool"; then
+					continue
+				fi
+				if ! "$odTool" --version 2>&1 | grep -q '^od (GNU coreutils) '; then
+					continue
+				fi
+				core_message INFO "Using stdbuf ($unbufferingTool) with od ($odTool)"
+				set -- "$unbufferingTool" -i 0 -o 0 -e 0 "$odTool" -A n -t "$odConversionString" -w1 -v
+				break 3
+			done
+		done
+		
+		
+		if core_compatibility_whichNoOutput hexdump; then
+			core_message INFO "Using hexdump"
+			set -- _bishbosh_connection_background_hexConversion_dd_hexdump -e '/1 "%u\n"'
+			break
+		fi
+		
+		# od varies enormously
+		#  AIX od supports -w1, has a broken -t u1, extra line at end
+		#  GNU od has single spacing (but one leading whitespace), supports -w1, no extra line
+		#  Mac od has weird spacing, no -w1, extra line at end with lots of whitespace!
+		if core_compatibility_whichNoOutput od; then
+			core_message INFO "Using od with conversion '$odConversionString'"
+			set -- _bishbosh_connection_background_hexConversion_dd_od -A n -t "$odConversionString"
+			break
+		fi
+		
+		# This DOES NOT SEEM TO WORK - there are almost certainly problems with od
+		if core_compatibility_whichNoOutput unbuffer; then
+		
+			if core_compatibility_whichNoOutput hexdump; then
+
+				core_message INFO "Using unbuffer with hexdump"
+				set -- unbuffer hexdump -v -e '/1 "%u\n"'
+				break
+			
+			else
+		
+				local odTool
+				for odTool in god od
+				do
+					if ! core_compatibility_whichNoOutput "$odTool"; then
+						continue
+					fi
+					if ! "$odTool" --version 2>&1 | grep -q '^od (GNU coreutils) '; then
+						continue
+					fi
+					core_message INFO "Using unbuffer with od ($odTool)"
+					# Only works with GNU od / AIX od because of the -w1 argument
+					# However, AIX od (and BSD od) inserts a double \n\n
+					set -- unbuffer "$odTool" -A n -t "$odConversionString" -w1 -v
+					break 2
+				done
+			fi
+		fi
+		
+		core_exitError $core_commandLine_exitCode_OSFILE "Could not find a means of doing Hex Conversion"
+	done
+	
+	if [ "${bishbosh_backend_name}" = 'devtcp' ]; then
+		"$@" <&4 >"$bishbosh_connection_fromHexConversionFifo" &
+	else
+		"$@" <"$bishbosh_connection_fromServerFifo" >"$bishbosh_connection_fromHexConversionFifo" &
+	fi
+}
+
+_bishbosh_connection_background_hexConversion_dd_hexdump()
+{
+	{
+		trap '' INT HUP ABRT QUIT USR1 USR2
+		bishbosh_connection_background_hexConversion_dd_trapHandler()
+		{
+			bishbosh_connection_background_hexConversion_dd_continue=false
+		}
+		bishbosh_connection_background_hexConversion_dd_continue=true
+		trap bishbosh_connection_background_hexConversion_dd_trapHandler TERM
+		
+		while $bishbosh_connection_background_hexConversion_dd_continue
+		do
+			dd bs=1 count=1 2>/dev/null | hexdump "$@"
+		done
+	}
+}
+
+_bishbosh_connection_background_hexConversion_dd_od()
+{
+	{
+		trap '' INT HUP ABRT QUIT USR1 USR2
+		bishbosh_connection_background_hexConversion_dd_trapHandler()
+		{
+			bishbosh_connection_background_hexConversion_dd_continue=false
+		}
+		bishbosh_connection_background_hexConversion_dd_continue=true
+		trap bishbosh_connection_background_hexConversion_dd_trapHandler TERM
+		
+		while $bishbosh_connection_background_hexConversion_dd_continue
+		do
+			# Some od implementations output extraneous blank lines (or blank lines with just whitespace) and use tabs not spaces
+			dd bs=1 count=1 2>/dev/null | od "$@" | grep -v '^\w*$' | tr -d '\t '
+		done
+	}
+}
+
+_bishbosh_connection_background_processLoop_trapHandlerTERM()
+{
+	bishbosh_connection_continue=false
+	core_message INFO 'processLoop terminating because of signal'
+}
+
+_bishbosh_connection_background_processLoop_trapHandlerPIPE()
+{
+	core_message WARN 'Could not write DISCONNECT, probably because the network connection has already died (often due to nc handling SIGINT / Ctrl-C to a process group too quickly)'
+	
+	# Doesn't seem to work
+	exit $core_commandLine_exitCode_IOERR
+}
+
+bishbosh_connection_background_processLoop()
+{
+	_bishbosh_connection_background_processLoop_body()
+	{
+		trap '' TERM INT HUP ABRT QUIT
+		bishbosh_connection_continue=true
+		trap _bishbosh_connection_background_processLoop_trapHandlerTERM TERM
+		
+		bishbosh_connection_read_byte_nonBlockingInitialise
+		
+		if ! $bishbosh_connection_continue; then
+			return
+		fi
+		core_message INFO "Writing CONNECT"
+		bishbosh_connection_write_CONNECT
+		
+		local controlPacketByte
+		local remainingLength
+		
+		# Specialised CONNACK handling
+		# - No need to check for pings
+		# - Do not respond to any other packets bar CONNACK
+		while $bishbosh_connection_continue
+		do
+			# Will return empty if interrupted (SIGINT) or non-blocking
+			controlPacketByte=''
+			bishbosh_connection_read_byte_nonBlocking controlPacketByte
+			if [ -z "$controlPacketByte" ]; then
+				continue
+			fi
+			break
+		done
+		if ! $bishbosh_connection_continue; then
+			return
+		fi
+		if [ $controlPacketByte -ne 32 ]; then
+			bishbosh_connection_read_controlpacket_invalid
+		fi
+		bishbosh_connection_read_remainingLength CONNACK
+		bishbosh_connection_read_controlpacket_CONNACK
+
+		core_message INFO "Received valid CONNACK"
+		
+		# Main read loop
+		while $bishbosh_connection_continue
+		do
+			bishbosh_connection_ping_sendPingIfRequired
+			
+			# Will return empty if interrupted (SIGINT) or non-blocking
+			controlPacketByte=''
+			bishbosh_connection_read_byte_nonBlocking controlPacketByte
+			if [ -z "$controlPacketByte" ]; then
+				bishbosh_connection_ping_checkForResponseTimeout
+				bishbosh_connection_handler_noControlPacketsRead
+				continue
+			fi
+			
+			bishbosh_connection_read_remainingLength "$controlPacketByte"
+			bishbosh_connection_read_controlpacket_handle
+			
+			bishbosh_connection_ping_checkForResponseTimeout
+		done
+		
+		core_message INFO "Writing DISCONNECT"
+		trap _bishbosh_connection_background_processLoop_trapHandlerPIPE PIPE
+		bishbosh_connection_write_DISCONNECT
+	}
+	
+	if [ "${bishbosh_backend_name}" = 'devtcp' ]; then
+		_bishbosh_connection_background_processLoop_body >&4 3<"$bishbosh_connection_fromHexConversionFifo" &
+	else
+		# Something about this goes weird on AIX with output
+		_bishbosh_connection_background_processLoop_body >"$bishbosh_connection_toServerFifo" 3<"$bishbosh_connection_fromHexConversionFifo" &
+	fi
+}
+
+# Only needed for dash, pdksh
+core_dependency_requires '*' sleep kill
+core_usesIn bishbosh/connection foreground
+bishbosh_connection_background_processingLoopReadInterrupter()
+{
+	if [ $bishbosh_connection_supportsNonBlockingRead -eq 0 ]; then
+		{
+			trap '' TERM INT HUP ABRT QUIT USR1 USR2
+			
+			bishbosh_connection_background_processingLoopReadInterrupter_trapHandler()
+			{
+				bishbosh_connection_background_processingLoopReadInterrupter_continue=false
+			}
+			bishbosh_connection_background_processingLoopReadInterrupter_continue=true
+			trap bishbosh_connection_background_processingLoopReadInterrupter_trapHandler TERM
+			
+			while $bishbosh_connection_background_processingLoopReadInterrupter_continue
+			do
+				sleep $bishbosh_readLatency_inFractionalSeconds
+				kill -HUP $bishbosh_connection_processLoopPid 2>/dev/null || exit 0
+			done
+		} 1>/dev/null </dev/null &
+		bishbosh_connection_foreground_recordBackgroundJob bishbosh_connection_processingLoopReadInterrupterPid
+	fi
+}

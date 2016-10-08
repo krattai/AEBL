@@ -1,0 +1,305 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+core_usesIn bishbosh/connection write
+
+_bishbosh_connection_write_PUBLISH_setRetainFlag()
+{
+	if core_variable_isSet bishbosh_publish_retain; then
+		if core_variable_isTrue bishbosh_publish_retain; then
+			bishbosh_publish_retain=1
+			# RETAIN flag (1<<0)
+			controlPacketTypeAndFlags=$(( controlPacketTypeAndFlags + 1 ))
+		else
+			bishbosh_publish_retain=0
+		fi
+	else
+		bishbosh_publish_retain=0
+	fi
+}
+
+_bishbosh_connection_write_PUBLISH_setTopicName()
+{
+	if core_variable_isUnset bishbosh_publish_topicName; then
+		core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_publish_topicName' must be specified"
+	fi
+	bishbosh_connection_validate_topicName bishbosh_publish_topicName "$bishbosh_publish_topicName"
+	topicName="$bishbosh_publish_topicName"
+	
+	topicNameFieldLength=${#topicName}
+	remainingLength=$(( remainingLength + 2 + topicNameFieldLength ))
+}
+
+_bishbosh_connection_write_PUBLISH_setMessage()
+{
+	if core_variable_isSet bishbosh_publish_message; then
+		
+		if core_variable_isSet bishbosh_publish_messageFilePath; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_publish_messageFilePath' can not be specified if 'bishbosh_publish_message' is"
+		fi
+		
+		if core_variable_isSet bishbosh_publish_messageUnlinkFile; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_publish_messageUnlinkFile' can not be specified if 'bishbosh_publish_message' is"
+		fi
+
+		bishbosh_connection_validate_fieldLength PUBLISH bishbosh_publish_message
+		
+		message="$bishbosh_publish_message"
+		messageFieldLength=${#bishbosh_publish_message}
+		messageFilePath=''
+		messageUnlinkFile=0
+	
+	elif core_variable_isSet bishbosh_publish_messageFilePath; then
+		
+		if core_variable_isSet bishbosh_publish_message; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_publish_message' can not be specified if 'bishbosh_publish_messageFilePath' is"
+		fi
+
+		core_validate_filePathReadable $core_commandLine_exitCode_CONFIG 'argument' bishbosh_publish_messageFilePath "$bishbosh_publish_messageFilePath"
+		
+		message=''
+		messageFieldLength=$(bishbosh_filesize_${bishbosh_filesizeAlgorithm} "$bishbosh_publish_messageFilePath")
+		messageFilePath="$bishbosh_publish_messageFilePath"
+		
+		if core_variable_isSet bishbosh_publish_messageUnlinkFile; then
+			if core_variable_isTrue bishbosh_publish_messageUnlinkFile; then
+				messageUnlinkFile=0
+			else
+				messageUnlinkFile=1
+			fi
+		else
+			messageUnlinkFile=0
+		fi
+		
+	else
+		
+		if core_variable_isSet bishbosh_publish_messageUnlinkFile; then
+			core_exitError $core_commandLine_exitCode_CONFIG "The argument 'bishbosh_publish_messageUnlinkFile' can not be specified if 'bishbosh_publish_messageFilePath' isn't"
+		fi
+		
+		message=''
+		messageFieldLength=0
+		messageFilePath=''
+		messageUnlinkFile=0
+	fi
+	
+	bishbosh_connection_validate_publishMessageFieldLength
+	remainingLength=$(( remainingLength + messageFieldLength ))
+}
+
+_bishbosh_connection_write_PUBLISH_setQoS()
+{
+	controlPacketTypeAndFlags=$(( controlPacketTypeAndFlags + (QoS << 1) ))
+	remainingLength=$(( remainingLength + 2 ))
+}
+
+_bishbosh_connection_write_PUBLISH_writeCommon()
+{
+	bishbosh_connection_write_byte "$controlPacketTypeAndFlags"
+	bishbosh_connection_write_remainingLength $remainingLength
+	bishbosh_connection_write_twoByteLength $topicNameFieldLength
+	printf '%s' "$topicName"
+}
+
+core_dependency_requires '*' rm
+_bishbosh_connection_write_PUBLISH_writeMessagePingAndUnlink()
+{
+	if [ -z "$messageFilePath" ]; then
+		printf '%s' "$message"
+	else
+		bishbosh_connection_write_file "$messageFilePath" $messageFieldLength
+	fi
+	
+	bishbosh_connection_ping_recordLastSentControlPacketAt
+	
+	if [ $messageUnlinkFile -eq 1 ]; then
+		rm -f $messageUnlinkFile 2>/dev/null || true
+	fi
+}
+
+core_dependency_requires '*' mv ln
+_bishbosh_connection_write_PUBLISH_storeMessage()
+{
+	printf '%s' $QoS >"$ourPacketIdentifierFolderPath"/qos
+	
+	# We only store recovery information for Clean Session = 0
+	# Clean Session = 1 is discarded on reconnect
+	if [ $bishbosh_connect_cleanSession -eq 0 ]; then
+		
+		if [ $bishbosh_publish_retain ]; then
+			printf '' >"$ourPacketIdentifierFolderPath"/retain
+		fi
+
+		printf '%s' "$topicName" >"$ourPacketIdentifierFolderPath"/topic-name
+		
+		if [ $messageUnlinkFile -eq 1 ]; then
+			mv "$messageFilePath" "$ourPacketIdentifierFolderPath"/message-sent
+		elif [ -n "$messageFilePath" ]; then
+			# hard links are better but may not work
+			ln "$messageFilePath" "$ourPacketIdentifierFolderPath"/message-sent 2>/dev/null || ln -s "$messageFilePath" "$ourPacketIdentifierFolderPath"/message-sent
+		else
+			printf '%s' "$message" >"$ourPacketIdentifierFolderPath"/message-sent
+		fi
+	fi
+}
+
+_bishbosh_connection_write_PUBLISH_QoS0()
+{
+	# 3 << 4
+	local controlPacketTypeAndFlags=48
+	local remainingLength=0
+	local QoS=0
+	
+	_bishbosh_connection_write_PUBLISH_setRetainFlag
+	
+	local topicName
+	local topicNameFieldLength
+	_bishbosh_connection_write_PUBLISH_setTopicName
+	
+	local message
+	local messageFieldLength
+	local messageFilePath
+	local messageUnlinkFile
+	_bishbosh_connection_write_PUBLISH_setMessage
+	
+	_bishbosh_connection_write_PUBLISH_writeCommon
+	
+	_bishbosh_connection_write_PUBLISH_writeMessagePingAndUnlink
+}
+
+_bishbosh_connection_write_PUBLISH_QoS()
+{
+	# 3 << 4
+	local controlPacketTypeAndFlags=48
+	local remainingLength=0
+	
+	_bishbosh_connection_write_PUBLISH_setRetainFlag
+	
+	local topicName
+	local topicNameFieldLength
+	_bishbosh_connection_write_PUBLISH_setTopicName
+	
+	local message
+	local messageFieldLength
+	local messageFilePath
+	local messageUnlinkFile
+	_bishbosh_connection_write_PUBLISH_setMessage
+	
+	_bishbosh_connection_write_PUBLISH_setQoS
+	
+	bishbosh_connection_packetIdentifier_useOneOfOurs publish _bishbosh_connection_write_PUBLISH_storeMessage
+	
+	_bishbosh_connection_write_PUBLISH_writeCommon
+	
+	bishbosh_connection_packetIdentifier_write
+	
+	_bishbosh_connection_write_PUBLISH_writeMessagePingAndUnlink
+}
+
+_bishbosh_connection_write_rePUBLISH_setRetainFlag()
+{
+	if [ -f "$ourPacketIdentifierFolderPath"/retain ]; then
+		# RETAIN flag (1<<0)
+		controlPacketTypeAndFlags=$(( controlPacketTypeAndFlags + 1 ))
+	fi
+}
+
+_bishbosh_connection_write_rePUBLISH_setTopicName()
+{
+	topicName="$(<"$ourPacketIdentifierFolderPath"/topic-name)"
+		
+	topicNameFieldLength=${#topicName}
+	remainingLength=$(( remainingLength + 2 + topicNameFieldLength ))
+}
+
+_bishbosh_connection_write_rePUBLISH_setMessage()
+{
+	message=''
+	messageFilePath="$ourPacketIdentifierFolderPath"/message-sent
+	messageFieldLength=$(bishbosh_filesize_${bishbosh_filesizeAlgorithm} "$messageFilePath")
+	messageUnlinkFile=0
+}
+
+_bishbosh_connection_write_rePUBLISH_setQoS()
+{
+	if [ -f "$ourPacketIdentifierFolderPath"/1 ]; then
+		QoS=1
+	elif [ -f "$ourPacketIdentifierFolderPath"/2 ]; then
+		QoS=2
+	else
+		core_exitError $core_commandLine_exitCode_DATAERR "There is not QoS 1 or 2 file for packet identifier '$packetIdentifier' in stored session state at '$bishbosh_connection_sessionOurPacketIdentifiersPath'."
+	fi
+	
+	QoS=$(<"$ourPacketIdentifierFolderPath"/qos)
+}
+
+# requires packetIdentifier
+bishbosh_connection_write_rePUBLISH()
+{
+	core_message INFO "re-PUBLISH-ing packet identifier '$packetIdentifier'"
+	
+	# 3 << 4
+	local controlPacketTypeAndFlags=48
+	local remainingLength=0
+	local ourPacketIdentifierFolderPath
+	bishbosh_connection_packetIdentifier_ourPacketIdentifierFolderPath
+	
+	_bishbosh_connection_write_rePUBLISH_setRetainFlag
+	
+	local topicName
+	local topicNameFieldLength
+	_bishbosh_connection_write_rePUBLISH_setTopicName
+	
+	local message
+	local messageFieldLength
+	local messageFilePath
+	local messageUnlinkFile
+	_bishbosh_connection_write_rePUBLISH_setMessage
+	
+	_bishbosh_connection_write_PUBLISH_setQoS
+	
+	_bishbosh_connection_write_PUBLISH_writeCommon
+	
+	local bishbosh_connection_packetIdentifier_forWriting=$packetIdentifier
+	bishbosh_connection_packetIdentifier_write
+	
+	_bishbosh_connection_write_PUBLISH_writeMessagePingAndUnlink
+}
+
+bishbosh_publishText()
+{
+	if [ $# -eq 3 ]; then
+		local bishbosh_publish_message=''
+	else
+		local bishbosh_publish_message="$4"
+	fi
+	_bishbosh_publish "$1" "$2" "$3"
+}
+
+bishbosh_publishFile()
+{
+	local bishbosh_publish_messageFilePath="$4"
+	local bishbosh_publish_messageUnlinkFile=no
+	_bishbosh_publish "$1" "$2" "$3"
+}
+
+bishbosh_publishFileAndRemove()
+{
+	local bishbosh_publish_messageFilePath="$4"
+	local bishbosh_publish_messageUnlinkFile=yes
+	_bishbosh_publish "$1" "$2" "$3"
+}
+
+_bishbosh_publish()
+{
+	local QoS=$1
+	local bishbosh_publish_topicName="$2"
+	local bishbosh_publish_retain="$3"
+	
+	if [ $QoS -eq 0 ]; then
+		_bishbosh_connection_write_PUBLISH_QoS0
+	else
+		_bishbosh_connection_write_PUBLISH_QoS
+	fi
+}
