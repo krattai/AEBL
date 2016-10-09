@@ -6,6 +6,8 @@ will need back end automation as well as front end interaction
 
 ~~~~~~~~~~~~~~~
 
+Might want to use base config file for p2p services stored on github
+
 Need to consider server side scripts in order to manage master control functions
 
 Server should function as p2p broker as necessary
