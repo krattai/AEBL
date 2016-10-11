@@ -36,6 +36,13 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         fi
     fi
 
+    # restart vpn
+    if [ -f "${HOME}/ctrl/revpn" ]; then
+        /run/shm/scripts/revpn.sh &
+        sudo chown pi:pi "${HOME}/ctrl/revpn"
+        rm "${HOME}/ctrl/revpn"
+    fi
+
     # manual patch
     if [ -f "${HOME}/ctrl/patch" ]; then
         /run/shm/scripts/patch.sh &
