@@ -8,9 +8,6 @@
 
 # i="0"
 
-# should modify this loop to simply listen persistently
-# while [ $i -lt 9999 ]
-# do
 # ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
 # mosquitto_pub -d -t hello/world -m "$(date) : irot LdB, online. IP is $ext_ip" -h "uveais.ca"
 
@@ -179,27 +176,6 @@
 #             mkdir /home/pi/blades
 #             touch /home/pi/blades/mediatomb
 #         fi
-#         if [ "$blade" == "webmin" ]; then
-#             wget -N -r -nd -l2 -w 3 -O "${T_SCR}/webmin.sh" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/webmin.sh?raw=true
-#             chmod 777 $T_SCR/webmin.sh
-#             $T_SCR/webmin.sh &
-#             mkdir /home/pi/blades
-#             touch /home/pi/blades/webmin
-#         fi
-#         if [ "$blade" == "owncloud" ]; then
-#             wget -N -r -nd -l2 -w 3 -O "${T_SCR}/owncloud.sh" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/owncloud.sh?raw=true
-#             chmod 777 $T_SCR/owncloud.sh
-#             $T_SCR/owncloud.sh &
-#             mkdir /home/pi/blades
-#             touch /home/pi/blades/owncloud
-#         fi
-#         if [ "$blade" == "ajenti" ]; then
-#             wget -N -r -nd -l2 -w 3 -O "${T_SCR}/ajenti.sh" --limit-rate=50k https://github.com/krattai/AEBL/blob/master/blades/ajenti.sh?raw=true
-#             chmod 777 $T_SCR/ajenti.sh
-#             $T_SCR/ajenti.sh &
-#             mkdir /home/pi/blades
-#             touch /home/pi/blades/ajenti
-#         fi
 #         sudo apt-get install -y $blade
 
         # this should only remove mkblade once mkblade.sh no longer running
@@ -262,18 +238,8 @@
 #         fi
 #     fi
 
-#     if ls /home/pi/ctrl/*.mp3 &> /dev/null; then
-#         if ! [[ `smbstatus | grep -i mp3` ]]; then
-#             mv /home/pi/ctrl/*.mp3 /home/pi/pl
-#         fi
-#     fi
-
 #     if [ ! -f "${HOME}/ctrl/Welcome.txt" ]; then
 #         cp "${HOME}/.backup/Welcome.txt" "${HOME}/ctrl" 
-#     fi
-
-#     if [ ! -f "${HOME}/ctrl/admin_guide.txt" ]; then
-#         cp "${HOME}/.backup/admin_guide.txt" "${HOME}/ctrl" 
 #     fi
 
 #     if [ -f "${HOME}/ctrl/halt" ]; then
@@ -325,10 +291,6 @@
 
 #     sleep 1s
 
-# done
-
-# i=$[$i+1]
-# sleep 300
 # done
 
 #
