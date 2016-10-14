@@ -1,1 +1,0 @@
-30 2 * * * /run/shm/scripts/patch.sh
