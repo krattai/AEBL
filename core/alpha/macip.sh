@@ -1,5 +1,8 @@
 #!/bin/sh
+#
 # show IP and MAC
+#
+# Copyright (C) 2015 - 2016 Uvea I. S., Kevin Rattai
  
 IPw0=$(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 MACw0=$(ip link show wlan0 | awk '/ether/ {print $2}')
