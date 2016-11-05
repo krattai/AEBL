@@ -6,6 +6,8 @@
 # The beginning of this script is from ctrlwtch.sh as a reference for
 #   $hostname control messages
 
+# add "out" for detectors
+
 # i="0"
 
 # ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
