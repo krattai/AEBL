@@ -357,6 +357,10 @@ while IFS= read -r line
               /run/shm/scripts/revpn.sh &
           fi
 
+          if [[ $line = "out" ]]; then
+              touch ctrl/out
+          fi
+
 done
 
 exit 0
