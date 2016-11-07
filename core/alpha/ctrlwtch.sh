@@ -2,7 +2,7 @@
 #
 # manages ctrl folder content
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 
 AEBL_TEST="/home/pi/.aebltest"
@@ -41,6 +41,15 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         /run/shm/scripts/revpn.sh &
         sudo chown pi:pi "${HOME}/ctrl/revpn"
         rm "${HOME}/ctrl/revpn"
+    fi
+
+    # change device to detect out
+    if [ -f "${HOME}/ctrl/out" ]; then
+        /run/shm/scripts/revpn.sh &
+        sudo chown pi:pi "${HOME}/ctrl/out"
+        touch .out
+        rm "${HOME}/ctrl/out"
+        touch "${HOME}/ctrl/reboot"
     fi
 
     # manual patch
