@@ -36,6 +36,11 @@ if [ ! "$(pgrep ctrlwtch.sh)" ]; then
     $T_SCR/./ctrlwtch.sh &
 fi
 
+# check msgrec.sh running
+if [ ! "$(pgrep msgrec.sh)" ]; then
+    $T_SCR/./msgrec.sh &
+fi
+
 # check irot or idet and remove aeblsys
 if [ -f "${IHDN_TEST}" ] ||  [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ]; then
     rm /home/pi/.aeblsys
