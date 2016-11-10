@@ -4,7 +4,6 @@
 #
 # Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
-# Scripts stops running.  Need way to check and restart
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
