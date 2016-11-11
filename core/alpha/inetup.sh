@@ -143,10 +143,11 @@ else
     sudo service openvpn restart
 fi
 
-if [ -f "${NETWORK_SYS}" ]; then
-    if [ ! -L /sys/class/net/tun ]; then
-        sudo /etc/init.d/gogoc restart
-    fi
-fi
+# gogoc no longer available
+# if [ -f "${NETWORK_SYS}" ]; then
+#     if [ ! -L /sys/class/net/tun ]; then
+#         sudo /etc/init.d/gogoc restart
+#     fi
+# fi
 
 exit
