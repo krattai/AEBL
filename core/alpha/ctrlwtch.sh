@@ -4,6 +4,7 @@
 #
 # Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
+# add omxd as a blade install
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
