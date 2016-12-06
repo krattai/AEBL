@@ -1,1 +1,3 @@
 being able to further build out the CDN and broker system to ensure the device always has the capacity to function, even without a public, static IPv4 or primary server
+
+Look into demonsaw
