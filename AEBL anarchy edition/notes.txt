@@ -108,3 +108,7 @@ http://techarena51.com/index.php/inotify-tools-example/
 Popcorn Time bittorrent streaming client:
 http://www.tecmint.com/watch-movies-online-using-popcorn-time/
 
+~~~~~~~~~~~~~~~~~~~~~~
+
+Possible use of demonsaw for p2p messaging in event that server with static IP not available:
+https://www.demonsaw.com/
