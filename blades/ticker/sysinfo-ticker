@@ -1,0 +1,37 @@
+#!/usr/bin/perl -w
+#
+# Scrolls system information.
+# A simple example of how to communicate with ticker from a perl program.
+# 
+# By Joey Hess <joey@kitenet.net>, GPL copyright 1998.
+
+use strict;
+
+my $size=200; # max buffer size.
+
+$SIG{'INT'} = 'quit';
+$SIG{'QUIT'} = 'quit';
+
+# Use shared memory to communicate with the ticker program.
+my $IPC_PRIVATE = 0;
+my $IPC_RMID = 0;
+my $key=shmget($IPC_PRIVATE, $size , 0600 ) || die $!;
+
+shmwrite($key, `uptime`, 0 , $size ) || die $!;
+
+# Fork the ticker program off.
+if (!fork) {
+	exec "ticker","-s$key","-S$size","-c5",@ARGV;
+	die "Cannot execute ticker program, is it in the PATH?";
+}
+
+while (1) {
+	shmwrite($key, `uptime`, 0 , $size ) || die $!;
+	sleep 10;
+}
+
+sub quit {
+	# Mark the shared memory for deletion.
+	shmctl($key, $IPC_RMID, 0) || die $!;
+        exit;
+}
