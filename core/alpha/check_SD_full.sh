@@ -9,6 +9,9 @@ i="0"
 
 # This is old code, use inetup.sh script or similar as reference
 
+# Shows column 5 (use$) of all drives
+# df -H | grep -vE '^Filesystem|tmpfs|cdrom' | awk '{ print $5 " " $1 }'
+
 # should modify this loop to simply ping persistently
 while [ $i -lt 9999 ]
 do
