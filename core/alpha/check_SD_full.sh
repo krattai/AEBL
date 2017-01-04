@@ -8,6 +8,7 @@
 i="0"
 
 # This is old code, use inetup.sh script or similar as reference
+# check script like mkchan.sh for reference
 
 # Shows column 5 (use$) of all drives
 # df -H | grep -vE '^Filesystem|tmpfs|cdrom' | awk '{ print $5 " " $1 }'
@@ -17,7 +18,7 @@ while [ $i -lt 9999 ]
 do
 ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
 # mosquitto_pub -d -t hello/world -m "$(date) : irot LdB, online. IP is $ext_ip" -h "uveais.ca"
-mosquitto_pub -d -t hello/world -m "$(date) : AEBL device from $ext_ip ping." -h "uveais.ca"
+mosquitto_pub -d -t aebl/disk -m "$(date) : AEBL device from $ext_ip ping." -h "ihdn.ca"
 i=$[$i+1]
 sleep 300
 done
