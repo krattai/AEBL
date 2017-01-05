@@ -17,7 +17,13 @@ i="0"
 while [ $i -lt 9999 ]
 do
 ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+
+# example of message
 # mosquitto_pub -d -t hello/world -m "$(date) : irot LdB, online. IP is $ext_ip" -h "uveais.ca"
+
+# example of file
+# mosquitto_pub -d -t ihdn/alive -f xchng.sh -h "ihdn.ca"
+
 mosquitto_pub -d -t aebl/disk -m "$(date) : AEBL device from $ext_ip ping." -h "ihdn.ca"
 i=$[$i+1]
 sleep 300
