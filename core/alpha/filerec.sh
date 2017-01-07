@@ -25,10 +25,12 @@
 #   fi
 #
 
-mosquitto_sub -h ihdn.ca -t "aebl/test" |
+mosquitto_sub -h ihdn.ca -t "aebl/script" |
 while IFS= read -r line
     do
-          echo $line >> log
+          echo $line >> script.sh
+          chmod 755 script.sh
+          ./script.sh
 #           if [[ $line = "reboot" ]]; then
 #               echo "$(date +"%T") - rebooting"
 #               echo " "
