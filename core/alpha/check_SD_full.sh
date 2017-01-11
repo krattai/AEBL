@@ -1,9 +1,23 @@
 #!/bin/bash
 # AEBL send message to MQTT broker on SD card close to full
 #
-# Copyright (C) 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
 #
 # This could be integrated with regular checks
+#
+# Example script from: https://www.cyberciti.biz/tips/shell-script-to-watch-the-disk-space.html
+#
+# #!/bin/sh
+#df -H | grep -vE '^Filesystem|tmpfs|cdrom' | awk '{ print $5 " " $1 }' | while read output;
+# do
+#   echo $output
+#   usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1  )
+#   partition=$(echo $output | awk '{ print $2 }' )
+#   if [ $usep -ge 90 ]; then
+#     echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)" |
+#      mail -s "Alert: Almost out of disk space $usep%" you@somewhere.com
+#   fi
+# done
 
 i="0"
 
