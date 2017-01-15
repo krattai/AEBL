@@ -7,7 +7,16 @@
 #
 # Example script from: https://www.cyberciti.biz/tips/shell-script-to-watch-the-disk-space.html
 #
-# #!/bin/sh
+
+i="0"
+
+# This is old code, use inetup.sh script or similar as reference
+# check script like mkchan.sh for reference
+
+# Shows column 5 (use$) of all drives
+# df -H | grep -vE '^Filesystem|tmpfs|cdrom' | awk '{ print $5 " " $1 }'
+
+# This will replace most of below, except instead of mailing, should report by MQTT
 #df -H | grep -vE '^Filesystem|tmpfs|cdrom' | awk '{ print $5 " " $1 }' | while read output;
 # do
 #   echo $output
@@ -19,13 +28,6 @@
 #   fi
 # done
 
-i="0"
-
-# This is old code, use inetup.sh script or similar as reference
-# check script like mkchan.sh for reference
-
-# Shows column 5 (use$) of all drives
-# df -H | grep -vE '^Filesystem|tmpfs|cdrom' | awk '{ print $5 " " $1 }'
 
 # should modify this loop to simply ping persistently
 while [ $i -lt 9999 ]
