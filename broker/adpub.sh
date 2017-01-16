@@ -2,14 +2,14 @@
 # This script should auto ad content from flat file
 # Copyright (C) 2017 Uvea I. S., Kevin Rattai
 #
-# Runs as cron job, should post one item per day
+# Runs as cron job, scheduled according to desired frequency
 
 #
 # Use AEBL playlist.sh and process_playlist.sh for example code
 #  to process files
 
 # TEMP_DIR="/home/user/tmp"
-CONT_DIR="/home/ihdn/content"
+CONT_DIR="/home/kevin/content"
 
 # PLAYLIST="${T_STO}/.playlist"
 CONTENT="${CONT_DIR}/.soc_content"
