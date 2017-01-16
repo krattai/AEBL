@@ -12,10 +12,10 @@
 CONT_DIR="/home/kevin/content"
 
 # PLAYLIST="${T_STO}/.playlist"
-CONTENT="${CONT_DIR}/.soc_content"
+CONTENT="${CONT_DIR}/.psa_content"
 
 # PLAYLIST="${T_STO}/.playlist"
-PLAYED="${CONT_DIR}/.soc_played"
+PLAYED="${CONT_DIR}/.psa_played"
 
 # Get the top of the playlist
 pub=$(cat "${CONTENT}" | head -n1)
