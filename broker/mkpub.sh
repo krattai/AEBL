@@ -2,7 +2,7 @@
 #
 # makes social media content playlist
 #
-# Copyright (C) 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
 #
 
 # to make short URL using tinyurl:
@@ -26,7 +26,7 @@ touch .mkcontent
 
 while [ -f ".mkcontent" ]; do
 
-    mosquitto_sub -h uveais.ca -t "aebl/add/content" |
+    mosquitto_sub -h ihdn.ca -t "aebl/add/content" |
     while IFS= read -r line
         do
 #           if [[ $line = "sixxs alive" ]]; then
