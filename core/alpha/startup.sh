@@ -1,7 +1,7 @@
 #!/bin/bash
 # gets update scripts
 #
-# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2017 Uvea I. S., Kevin Rattai
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 # This is the first script from clean bootup.  It should immediately
