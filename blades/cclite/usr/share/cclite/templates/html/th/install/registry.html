@@ -1,0 +1,297 @@
+
+
+<form id="form"  action="/cgi-bin/protected/ccinstall.cgi" method="post">
+
+<span class="error">
+$$fieldsref{error}
+</span>
+
+<table class="pme-main" summary="om_users">
+
+<tbody class="stripy">
+
+<tr class="pme-row-0">
+
+<td title="ชื่อของฐานข้อมูลการกำหนดกลุ่มการค้า หนึ่งคำโดยไม่เว้นวรรค" class="pme-key-0">
+ชื่อของรีจิสทรี
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input type="hidden" name="action" value="addregistry">
+
+<input class="required" name="newregistry" size="32" maxlength="32" value="$$fieldsref{newregistry}" type="text">
+</td>
+
+</tr>
+
+<tr class="pme-row-0">
+
+<td title="คำอธิบายโดยย่อของกลุ่มการค้า" class="pme-key-0">
+คำอธิบายของรีจิสทรี
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input  class="required" name="description" size="40" maxlength="250" value="$$fieldsref{description}" type="text">
+</td>
+
+</tr>
+
+<tr title="ที่อยู่และบัญชีที่ใช้ในการส่งทางอีเมล์สำหรับกลุ่มนี้" class="pme-row-0">
+
+<td class="pme-key-0">
+จัดการอีเมล์
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input  class="required email" name="admemail" size="50"  maxlength="60" value="$$fieldsref{admemail}" type="text">
+</td>
+
+</tr>
+
+<td title="รหัสผ่านสำหรับบัญชีอีเมลของผู้ดูแลระบบ" class="pme-key-0">
+ผู้จัดการรหัสผ่านอีเมล์
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input class="required" name="admpass" size="20" maxlength="20" value="$$fieldsref{admpass}" type="password">
+</td>
+
+</tr>
+
+<tr title="บัญชีที่ธุรกรรมอีเมล์รับได้เหมือนกับ admin" class="pme-row-1">
+
+<td class="pme-key-1">
+อีเมล์สำหรับธุรกรรมชุดงาน
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input  class="required email" name="postemail" size="50" maxlength="60" value="$$fieldsref{postemail}" type="text">
+</td>
+
+</tr>
+
+<td title="รหัสผ่านสำหรับบัญชีอีเมลของชุด" class="pme-key-0">
+ชุดอีเมลรหัสผ่าน
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input class="required" name="postpass" size="20" maxlength="20" value="$$fieldsref{postpass}" type="password">
+</td>
+
+</tr>
+
+<tr title="ไม่ใช้กำลัง แต่กำหนดรูปแบบการค้า" class="pme-row-1">
+
+<td nowrap class="pme-key-1">
+แบบจำลองระบบชาร์จไฟ
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="chargetype">
+<option value="equaltime">
+ความเสมอภาค
+</option>
+<option selected value="market">
+ราคาตลาด
+</option>
+</select>
+</td>
+
+</tr>
+
+<tr title="ไม่ใช้กำลัง แต่กำหนดรูปแบบคณะกรรมการ" class="pme-row-1">
+
+<td class="pme-key-1">
+ระบบคณะกรรมการรุ่น
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="commission">
+
+<option selected value="no">
+ไม่มีค่าคอมมิชชัน
+</option>
+
+<option value="yes">
+ค่าคอมมิชชันโดยใช้รีจิสทรี
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="ไม่ใช้กำลัง แต่กำหนดรูปแบบบอกรับเป็นสมาชิก" class="pme-row-1">
+
+<td class="pme-key-1">
+รูปแบบการบอกรับเป็นสมาชิก
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="subscription">
+
+<option selected value="no">
+ไม่บอก
+</option>
+
+<option value="yes">
+บอกรับเป็นสมาชิกตาม
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="กำหนดขีดจำกัดมั่นสำหรับสกุลเงินทั้งหมดในรีจิสทรีนี้ แปลงเป็นเซนต์โดยอัตโนมัติถ้าทศนิยมสกุล" class="pme-row-1">
+
+<td class="pme-key-1">
+มั่นสากลจำกัด
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="commitlimit" size="10" maxlength="10" value="$$fieldsref{commitlimit}" type="text">
+</td>
+
+</tr>
+
+<tr title="เซิร์ฟเวอร์หลักที่ใช้: รหัสคีย์สาธารณะสำหรับรีจิสทรีนี้อยู่สำหรับธุรกรรมอีเมล์เท่านั้น" class="pme-row-1">
+
+<td class="pme-key-1">
+รหัสคีย์คีย์เซิร์ฟเวอร์: สาธารณะ
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="public_key_id" size="30" maxlength="30" value="$$fieldsref{public_key_id}" type="text">
+</td>
+
+</tr>
+
+</tr>
+
+<tr title="ไม่ใช้ในปัจจุบัน แต่กำหนดว่าภูมิศาสตร์พื้นที่หรือดอกเบี้ยพิเศษ"  class="pme-row-1">
+
+<td class="pme-key-1">
+ครอบคลุมพื้นที่ทางภูมิศาสตร์อย่างไร
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="geographic">
+
+<option selected value="yes">
+ใช่
+</option>
+
+<option value="no">
+ไม่ใช่
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="ไม่ใช้ในปัจจุบัน แต่กำหนดข้อความหรือรหัสไปรษณีย์เพื่อให้รีจิสทรีสาธารณะสามารถ geocoded และแมป" class="pme-row-1">
+
+<td class="pme-key-1">
+Postcodes หรือละติจูด ลองจิจูด
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="postcodes" size="40" maxlength="80" value="$$fieldsref{postcodes}" type="text">
+
+</td>
+
+</tr>
+
+<tr title="ใช้คีย์การค้าสำหรับ elgg, drupal และ os commerce ตัวเชื่อมต่อ" class="pme-row-1">
+
+<td class="pme-key-1">
+คีย์การค้า
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="merchant_key" size="40" maxlength="80" value="$$fieldsref{merchant_key}" type="text">
+
+</td>
+
+</tr>
+
+<tr title="ใช้ หลักการจำกัดการเชื่อมต่อบาง ips ง่าย ๆ ได้เว็บคง" class="pme-row-1">
+
+<td class="pme-key-1">
+อนุญาตให้พ่อค้าจาก IP แอดเดรส
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="allow_ip_list" size="40" maxlength="80" value="$$fieldsref{allow_ip_list}" type="text">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!-- นี้เป็นการทดลอง จะเปลี่ยนเป็นการเชื่อมโยงการกำหนดค่าสีแดง ถ้า db รหัสผ่านไม่ถูกต้อง -->
+$$fieldsref{script}
+<hr class="pme-hr">
+
+<hr class="pme-hr">
+
+<table class="pme-navigation">
+
+<tbody>
+
+<tr class="pme-navigation">
+
+<td class="pme-buttons">
+
+<input class="pme-save"
+ name="saveadd" value="ไป" type="submit">
+&nbsp;
+<input
+ class="pme-cancel" name="cancel" value="ยกเลิก"
+type="reset">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</form>

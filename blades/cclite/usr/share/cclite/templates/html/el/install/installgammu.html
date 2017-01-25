@@ -1,0 +1,377 @@
+
+<div class="failedcheck">
+$$fieldsref{updatemessage}
+</div>
+Μπορείτε να χρησιμοποιήσετε συναλλαγές sms με διάφορα μητρώα στην τρέχουσα έκδοση, αλλά αυτό είναι προεπιλογή, ανατρέξτε στο εγχειρίδιο! Το
+<b>
+μητρώου και νόμισμα πρέπει να υπάρχει ήδη
+</b>
+.
+<br/>
+
+<br/>
+
+Θα πρέπει επίσης να ρυθμίσετε τις παραμέτρους
+<span class="system">
+/etc/gammu-smsdrc
+</span>
+for the phone or dongle that you are using and for inbox/outbox etc.
+See the example in the
+<span class="system">
+Config
+</span>
+υπο-κατάλογο που είναι για όνομα = Huawei 1750 δίνοντας μια σύνδεση στυλ AT. Αυτό είναι το υλικό που χρησιμοποιείται για τη δοκιμή στην τρέχουσα έκδοση.
+<br/>
+
+<br/>
+
+Επίσης, ίσως χρειαστεί να χρησιμοποιήσετε το
+<a title="Βοηθητικό πρόγραμμα διακόπτη λειτουργίας" href="http://www.draisberghof.de/usb_modeswitch/">
+Βοηθητικό πρόγραμμα διακόπτη λειτουργίας
+</a>
+Εάν ένα dongle τηλέφωνο να αποφαίνεται ως συσκευή αποθήκευσης
+<br/>
+
+<br/>
+
+
+<table>
+<tbody class="stripy">
+
+<form  name="installgammu" id="form" action="/cgi-bin/protected/ccinstall.cgi" method="post">
+
+<input class="small" name="saveadd"  value="Ενημέρωση ρύθμισης παραμέτρων Gammu" type="submit">
+
+<input name="action"  value="updategammuconfig" type="hidden">
+
+<input name="type"  data-simple="yes"  value="gammu" type="hidden">
+
+<tr>
+
+<td title="Αυτό είναι ο χρόνος ύπνου σε δευτερόλεπτα για την ανάγνωση και αποστολή μηνυμάτων sms" class="menu">
+SMS ύπνου
+</td>
+
+<td class="pme-key-1">
+
+<input id="smssleep"  class="required" type="text" name="smssleep" size="3" value="$$fieldsref{smssleep}">
+
+</td>
+
+<td title="SMS interface γλώσσα, προς το παρόν έχει δοκιμαστεί μόνο Αγγλικά!" class="menu">
+γλώσσα
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="" name="language" size="2" value="$$fieldsref{language}">
+</td>
+
+</tr>
+
+<tr>
+<td title="1 αν το readsms_from_gammu.pl είναι στο ίδιο σύστημα ως cclite, αν το μηδέν το ΣΑΠΟΎΝΙ χρησιμοποιείται αλλά αυτό έχει δοκιμαστεί ποτέ" class="menu">
+SMS σενάριο είναι τοπική
+</td>
+<td class="pme-key-1">
+
+<input id="smslocal"  class="required" type="text"  name="smslocal" size="1" value="$$fieldsref{smslocal}">
+
+</td>
+
+<td title="Web κατάσταση του κωδικού πρόσβασης, κανονικά ενεργό" class="menu">
+κατάσταση του κωδικού πρόσβασης Web
+</td>
+<td class="pme-key-1">
+<input readonly id="userpasswordstatus"  class="required" type="text" readonly name="userpasswordstatus" size="6" value="active">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root inwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+SMS προς το εσωτερικό διαδρομή ρίζας
+</td>
+<td class="pme-key-1">
+
+<input type="text"   class="required" name="smsinpath" size="30" value="$$fieldsref{smsinpath}">
+
+</td>
+
+<td title="καθεστώς για κινητό χρήστη καρφίτσα, κανονικά είναι ενεργό, αν να επιτρέψουμε ενώνει από κινητό τηλέφωνο" class="menu">
+κατάσταση ακίδας χρήστη
+</td>
+<td class="pme-key-1">
+<input id="userpinstatus"  class="required" type="text" name="userpinstatus" size="8" value="$$fieldsref{userpinstatus}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root outwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+SMS προς τα έξω διαδρομή ρίζας
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smsoutpath" size="30" value="$$fieldsref{smsoutpath}">
+
+<td title="καθεστώς για εγγραφή χρήστη, κανονικά είναι ενεργό, αν να επιτρέψουμε ενώνει από κινητό τηλέφωνο" class="menu">
+κατάστασης χρήστη
+</td>
+<td class="pme-key-1">
+<input id="userstatus"  class="required" type="text" name="userstatus" size="8" value="$$fieldsref{userstatus}">
+</td>
+
+</td>
+</tr>
+
+<tr>
+<td title="Sms root sent path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+ρίζα, έστειλε SMS sms διαδρομή
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smssentpath" size="30" value="$$fieldsref{smssentpath}">
+
+</td>
+
+<td title="λέξη-κλειδί για τη συνδρομητική στα μηνύματα sms" class="menu">
+πληρώσει λέξη-κλειδί
+</td>
+<td class="pme-key-1">
+<input id="send"  class="required" type="text" name="send_key" size="8" value="$$fieldsref{send_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root error path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+SMS ρίζα λάθος πορεία sms
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smserrorpath" size="30" value="$$fieldsref{smserrorpath}">
+
+</td>
+
+<td title="λέξη-κλειδί για την ισορροπία στα μηνύματα sms" class="menu">
+λέξη-κλειδί ισορροπία
+</td>
+<td class="pme-key-1">
+<input id="balance"  class="required" type="text" name="balance_key" size="8" value="$$fieldsref{balance_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="βάση μητρώου για sms συναλλαγές, μπορεί να επιτρέπουν μόνο ένα μητρώο προς το παρόν" class="menu">
+βάσης μητρώου
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="registry" size="20" value="$$fieldsref{registry}">
+
+</td>
+
+<td title="λέξη-κλειδί για την ένταξη στα μηνύματα sms" class="menu">
+λέξης-κλειδί Join
+</td>
+<td class="pme-key-1">
+<input id="join"  class="required" type="text" name="join_key" size="8" value="$$fieldsref{join_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="νόμισμα για τις συναλλαγές του sms, αυτή είναι η προεπιλογή. Αν δεν το νόμισμα καθορίζεται" class="menu">
+προεπιλογή νομίσματος
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="currency" size="20" value="$$fieldsref{currency}">
+
+</td>
+
+<td title="λέξη-κλειδί για την ακίδα επιβεβαιώσει σε μηνύματα sms" class="menu">
+καρφίτσα επιβεβαιώνουν λέξη-κλειδί
+</td>
+<td class="pme-key-1">
+<input id="confirm"  class="required" type="text" name="confirm_key" size="8" value="$$fieldsref{confirm_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Αυτό είναι απαραίτητο εάν δεν συμπεριλάβετε πλήρη διεθνή αριθμό για την πληρωμή συναλλαγών, για παράδειγμα τα 44 για το Ηνωμένο Βασίλειο, το πιο εύχρηστο όνομα χρήστη ούτως ή άλλως!" class="menu">
+πρόθεμα χώρας
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="sms_prefix" size="2" value="$$fieldsref{sms_prefix}">
+
+</td>
+
+<td title="λέξη-κλειδί για την ακίδα Μεηαβνιή sms μηνύματα" class="menu">
+καρφίτσα αλλαγή λέξεων-κλειδιών
+</td>
+<td class="pme-key-1">
+<input id="pinchange"  class="required" type="text" name="pinchange_key" size="8" value="$$fieldsref{pinchange_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Ενεργοποιήστε εντοπισμού σφαλμάτων για sms, 0 για απενεργοποίηση, 1 για την" class="menu">
+υποσύστημα sms εντοπισμού σφαλμάτων
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="debug" size="1" value="$$fieldsref{debug}">
+
+</td>
+
+<td title="λέξη-κλειδί για την αναστολή λογαριασμού στα μηνύματα sms" class="menu">
+αναστείλει την λέξη-κλειδί
+</td>
+<td class="pme-key-1">
+<input id="suspend"  class="required" type="text" name="suspend_key" size="8" value="$$fieldsref{suspend_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="αρχείο εντοπισμού σφαλμάτων, για τον εντοπισμό σφαλμάτων" class="menu">
+αρχείο καταγραφής εντοπισμού σφαλμάτων SMS
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required" name="sms_debug_file" size="30" value="$$fieldsref{sms_debug_file}">
+
+</td>
+
+<td title="λέξη-κλειδί για την αλλαγή γλώσσας σε μηνύματα sms" class="menu">
+αλλαγή γλώσσας λέξη-κλειδί
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="text" name="language_key" size="8" value="$$fieldsref{language_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Αρχική κατάσταση πληρωμής για sms συναλλαγές, κανονικά αποδεκτή, you κανόνι μεταβάλλω αυτό από το τηλέφωνο σήμερα" class="menu">
+κατάσταση πληρωμής Αρχική
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="initialpaymentstatus" size="15" value="$$fieldsref{initialpaymentstatus}">
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="Εναλλαγή ενεργοποίησης/απενεργοποίησης μηνυμάτων χορηγού στο τέλος του έστειλε smses" class="menu">
+χορηγός μηνύματα
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="sponsor_message_status" size="1" value="$$fieldsref{sponsor_message_status}">
+
+</td>
+</tr>
+
+<tr>
+<td title="χορηγός μήνυμα 1 για το κάτω μέρος των μηνυμάτων sms, βλέπε εγχειρίδιο" class="menu">
+χορηγός μήνυμα 1
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor1" wrap="soft" >
+$$fieldsref{sponsor1}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="χορηγός μήνυμα 2 για το κάτω μέρος των μηνυμάτων sms, βλέπε εγχειρίδιο" class="menu">
+χορηγός μήνυμα 2
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor2"  wrap="soft">
+$$fieldsref{sponsor2}
+</textarea>
+
+</td>
+</tr>
+
+<tr>
+<td title="χορηγός μήνυμα 3 για το κάτω μέρος των μηνυμάτων sms, βλέπε εγχειρίδιο" class="menu">
+χορηγός μήνυμα 3
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor3" wrap="soft">
+$$fieldsref{sponsor3}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="χορηγός μήνυμα 4 για το κάτω μέρος των μηνυμάτων sms, βλέπε εγχειρίδιο" class="menu">
+χορηγός μήνυμα 4
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor4" wrap="soft">
+$$fieldsref{sponsor4}
+</textarea>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+
+</td>
+</tr>
+
+<tr>
+<td title="χορηγός μήνυμα 5 για το κάτω μέρος των μηνυμάτων sms, βλέπε εγχειρίδιο" class="menu">
+χορηγός μήνυμα 5
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor5" wrap="soft">
+$$fieldsref{sponsor5}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+</tbody>
+</table>
+
+</form>

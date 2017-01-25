@@ -1,0 +1,384 @@
+
+
+<table class="front" >
+
+<tr>
+
+<td title="grafikfähiger Skript starten">
+Grafische Darstellung
+</td>
+
+<td title="start accepting email input from the batch mailbox for $$fieldsref{registry} via POP">
+E-Mail-Eingang
+</td>
+
+<!--
+<td title="start accepting  encrypted email input from the batch mailbox for $$fieldsref{registry} please use read_pop_mail_gpg.pl from command line, does not run from web interface">
+<del>GPG Email input</del> 
+</td>
+-->
+
+<td title="produzieren Sie Rss-Feeds für die Gelben Seiten-Kleinanzeigen">
+RSS-Feed
+</td>
+
+<td title="akzeptieren Sie Eingang über Gammu von einem lokalen Mobiltelefon">
+Gammu-Eingang
+</td>
+
+<td title="Upload und Prozess-Batch-Transaktionen">
+Uploads/Batch-Transaktionen
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<form id="form">
+
+<select class="small"  onchange="on_select_change('stats');" id="stats_value" >
+
+<option value="0">
+Statistik zu stoppen
+</option>
+
+<option value="5">
+Alle 5 min.
+</option>
+
+<option value="10">
+Alle 10min
+</option>
+
+<option value="30">
+Alle 30 min.
+</option>
+
+</select>
+
+</td>
+
+<td>
+
+<select class="small"  onchange="on_select_change('mail');" id="mail_value" >
+
+<option value="0">
+Mail beenden
+</option>
+
+<option value="5">
+Alle 5 min.
+</option>
+
+<option value="10">
+Alle 10min
+</option>
+
+<option value="30">
+Alle 30 min.
+</option>
+
+</select>
+
+</td>
+
+<!--
+<td>
+    <select onchange="on_select_change('gpg_mail');" id="gpg_mail_value" >
+	<option value="0"> Stop GPG Mail</option>
+	<option value="5">Every 5min</option>
+	<option value="10">Every 10min</option>
+	<option value="30">Every 30min</option>
+</select>
+
+    
+    </td>
+-->
+
+<td>
+
+<select class="small"  onchange="on_select_change('rss');" id="rss_value" >
+
+<option value="0">
+Rss zu stoppen
+</option>
+
+<option value="5">
+Alle 5 min.
+</option>
+
+<option value="10">
+Alle 10min
+</option>
+
+<option value="30">
+Alle 30 min.
+</option>
+
+</select>
+
+</td>
+
+<td>
+
+<select class="small"  onchange="on_select_change('gammu');" id="gammu_value" >
+
+<option value="0">
+Stop SMS
+</option>
+
+<option value="5">
+Alle 5 min.
+</option>
+
+<option value="10">
+Alle 10min
+</option>
+
+<option value="30">
+Alle 30 min.
+</option>
+
+</select>
+
+</td>
+
+<td>
+
+<div id="file-uploader" title="Batchtransaktionen als Csv-Datei zu erhalten: siehe Handbuch">
+
+<noscript>
+
+<p>
+Bitte aktivieren Sie JavaScript, um die Datei Uploader verwenden.
+</p>
+
+<!-- oder stellen Sie hier ein einfaches Formular zum Hochladen -->
+
+</noscript>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<span id="stats">
+Warten
+</span>
+</td>
+
+<td>
+<span id="mail">
+Warten
+</span>
+</td>
+
+<!--<td><span id="gpg_mail">Wait</span></td> -->
+
+<td>
+<span id="rss">
+Warten
+</span>
+</td>
+
+<td>
+<span id="gammu">
+Warten
+</span>
+</td>
+
+<td>
+</td>
+
+</tr>
+
+</form>
+
+</table>
+
+<table>
+
+<tr>
+
+<td class="front">
+Download OpenOffice-Anweisungen
+<table>
+
+<tr>
+
+<td>
+Monat
+</td>
+<td>
+
+<form class="pme-form" id="form" action="/cgi-bin/protected/batch/print_statements.pl" method="post">
+
+<select class="small" name="month">
+
+<option value="1">
+1
+</option>
+
+<option value="2">
+2
+</option>
+
+<option value="3">
+3
+</option>
+
+<option value="4">
+4
+</option>
+
+<option value="5">
+5
+</option>
+
+<option value="6">
+6
+</option>
+
+<option value="7">
+7
+</option>
+
+<option value="8">
+8
+</option>
+
+<option value="9">
+9
+</option>
+
+<option value="10">
+10
+</option>
+
+<option value="11">
+11
+</option>
+
+<option value="12">
+12
+</option>
+
+</select>
+
+</td>
+</tr>
+
+<tr>
+<td>
+Jahr
+</td>
+<td>
+<input type="text" name="year" size="4" maxlength="4">
+</td>
+</tr>
+
+<tr>
+<td>
+Login-Name
+</td>
+<td>
+<input type="text" name="username" size="10">
+</td>
+</tr>
+
+<tr>
+<td>
+<input type="submit" class="small" name="go" value="Gehen">
+</td>
+<td>
+</td>
+</tr>
+
+</form>
+</table>
+
+</td>
+
+<td class="front" valign="top">
+Download OpenOffice-Verzeichnis
+<form class="pme-form" id="form" action="/cgi-bin/protected/batch/print_yellowpages.pl" method="post">
+
+<input class="small" type="submit" name="go" value="Gehen">
+
+</form>
+
+</td>
+
+<td>
+<span id="">
+</span>
+</td>
+
+<td>
+<span id="">
+</span>
+</td>
+
+<td>
+<span id="">
+</span>
+</td>
+
+<td>
+</td>
+
+</tr>
+
+</table>
+
+<div id="stats_status">
+</div>
+
+<div id="gpg_mail_status">
+</div>
+
+<div id="mail_status">
+</div>
+
+<div id="csv_status">
+</div>
+
+<div id="rss_status">
+</div>
+
+<div id="gammu_status">
+</div>
+<br/>
+
+
+<div id="fileproblems" class="smalltext">
+$$fieldsref{displaybatchfiles}
+</div>
+
+<br/>
+
+
+<table>
+
+<tr>
+
+<td>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+
+</td>
+
+</tr>
+
+</table>

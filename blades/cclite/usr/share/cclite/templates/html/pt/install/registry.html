@@ -1,0 +1,297 @@
+
+
+<form id="form"  action="/cgi-bin/protected/ccinstall.cgi" method="post">
+
+<span class="error">
+$$fieldsref{error}
+</span>
+
+<table class="pme-main" summary="om_users">
+
+<tbody class="stripy">
+
+<tr class="pme-row-0">
+
+<td title="nome do banco de dados, definindo o grupo comercial, uma palavra, sem espaços" class="pme-key-0">
+Nome de registro
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input type="hidden" name="action" value="addregistry">
+
+<input class="required" name="newregistry" size="32" maxlength="32" value="$$fieldsref{newregistry}" type="text">
+</td>
+
+</tr>
+
+<tr class="pme-row-0">
+
+<td title="breve descrição do grupo de negociação" class="pme-key-0">
+Descrição de registro
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input  class="required" name="description" size="40" maxlength="250" value="$$fieldsref{description}" type="text">
+</td>
+
+</tr>
+
+<tr title="endereço e a conta usada para enviar e-mails oficiais para este grupo" class="pme-row-0">
+
+<td class="pme-key-0">
+Gerenciador de E-mail
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input  class="required email" name="admemail" size="50"  maxlength="60" value="$$fieldsref{admemail}" type="text">
+</td>
+
+</tr>
+
+<td title="senha para a conta de e-mail do administrador" class="pme-key-0">
+Gerente de senha de E-mail
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input class="required" name="admpass" size="20" maxlength="20" value="$$fieldsref{admpass}" type="password">
+</td>
+
+</tr>
+
+<tr title="conta onde transações de e-mails são recebidas pode ser o mesmo como administrador" class="pme-row-1">
+
+<td class="pme-key-1">
+E-mail para transações de lote
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input  class="required email" name="postemail" size="50" maxlength="60" value="$$fieldsref{postemail}" type="text">
+</td>
+
+</tr>
+
+<td title="senha para a conta de email em lote" class="pme-key-0">
+Senha de Email em lote
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input class="required" name="postpass" size="20" maxlength="20" value="$$fieldsref{postpass}" type="password">
+</td>
+
+</tr>
+
+<tr title="Não usado atualmente, mas define o modelo de negociação" class="pme-row-1">
+
+<td nowrap class="pme-key-1">
+Modelo de sistema de carregamento
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="chargetype">
+<option value="equaltime">
+Igualdade
+</option>
+<option selected value="market">
+Taxas de mercado
+</option>
+</select>
+</td>
+
+</tr>
+
+<tr title="Não usado atualmente, mas define modelo de Comissão" class="pme-row-1">
+
+<td class="pme-key-1">
+Modelo de Comissão do sistema
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="commission">
+
+<option selected value="no">
+Sem Comissão
+</option>
+
+<option value="yes">
+Comissão com base em registro
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="Não usado atualmente, mas define o modelo de assinatura" class="pme-row-1">
+
+<td class="pme-key-1">
+Modelo de subscrição
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="subscription">
+
+<option selected value="no">
+Sem assinatura
+</option>
+
+<option value="yes">
+Baseado em assinatura
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="define o limite de comprometimento para todas as moedas neste registro, convertido em centavos automaticamente se decimal moeda" class="pme-row-1">
+
+<td class="pme-key-1">
+Limite do compromisso global
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="commitlimit" size="10" maxlength="10" value="$$fieldsref{commitlimit}" type="text">
+</td>
+
+</tr>
+
+<tr title="servidor de chaves usado: id de chave público para este registro atualmente para transações de e-mail somente" class="pme-row-1">
+
+<td class="pme-key-1">
+Chave id chave servidor: público
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="public_key_id" size="30" maxlength="30" value="$$fieldsref{public_key_id}" type="text">
+</td>
+
+</tr>
+
+</tr>
+
+<tr title="Não usado atualmente, mas define-se geográfica área ou interesse especial"  class="pme-row-1">
+
+<td class="pme-key-1">
+Área geográfica de capas?
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="geographic">
+
+<option selected value="yes">
+Sim
+</option>
+
+<option value="no">
+Não
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="Não usado atualmente, mas define posts ou códigos postais para que os registros públicos podem ser geocodificados e mapeada" class="pme-row-1">
+
+<td class="pme-key-1">
+Códigos postais ou Latitude, Longitude
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="postcodes" size="40" maxlength="80" value="$$fieldsref{postcodes}" type="text">
+
+</td>
+
+</tr>
+
+<tr title="usado para fornecer a chave mercante para elgg, drupal e conectores so-comércio" class="pme-row-1">
+
+<td class="pme-key-1">
+Chave mercante
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="merchant_key" size="40" maxlength="80" value="$$fieldsref{merchant_key}" type="text">
+
+</td>
+
+</tr>
+
+<tr title="usado, em princípio, para limitar os conectores para determinados ips, facilmente falsificado provavelmente" class="pme-row-1">
+
+<td class="pme-key-1">
+Permitir o comerciante de endereços IP
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="allow_ip_list" size="40" maxlength="80" value="$$fieldsref{allow_ip_list}" type="text">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!-- Este é um experimento, ficará o link config vermelho, se db senha está errada -->
+$$fieldsref{script}
+<hr class="pme-hr">
+
+<hr class="pme-hr">
+
+<table class="pme-navigation">
+
+<tbody>
+
+<tr class="pme-navigation">
+
+<td class="pme-buttons">
+
+<input class="pme-save"
+ name="saveadd" value="Ir" type="submit">
+&nbsp;
+<input
+ class="pme-cancel" name="cancel" value="Cancelar"
+type="reset">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</form>

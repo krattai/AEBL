@@ -1,0 +1,496 @@
+
+<title>
+JavaScript Form Validation
+</title>
+</head>
+
+<body bgcolor="white">
+
+<table border="0" width="625">
+<tbody>
+<tr>
+<td rowspan="6" bgcolor="#408080" width="10">
+<img src="clear.gif" height="1" width="10">
+</td>
+
+<td bgcolor="#b6dada">
+
+<font size="+3">
+Ð¡ÑÐµÐ´ÑÑÐ²Ð¾ Ð¿ÑÐ¾Ð²ÐµÑÐºÐ¸ JavaScript ÑÐ¾ÑÐ¼Ñ
+</font>
+
+<font size="+1">
+ver 2.5
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<font size="-1">
+Ð¿Ð¾ Artswork
+</font>
+<br>
+
+<font color="#ff0000" size="2">
+I must apologize for the fact that I am
+no longer able to accept email questions about my script where I would
+afford many hours to helping people properly integrate this module and
+writing additional items for anyone. This has occurred since the email
+worms of August 2003 severely compromised my email address displayed
+here attacked to where I had to deal with thousands of erroneous
+returned emails a day. I may periodically try to turn it back on so
+please return or try again after the dust settles. I also must state
+how people with our skills can ruin and incredible idea such as the
+internet for communication is disparaging. I have tried for many years
+returning contributions to others for my success working upon this
+medium. Thanks to all the interest I have received.
+</font>
+<hr size="1">
+Ð­ÑÐ¾Ñ Ð¸Ð½ÑÑÑÑÐ¼ÐµÐ½Ñ Ð¿ÑÐ¾Ð²ÐµÑÐºÐ¸ ÑÐ¾ÑÐ¼Ñ Ð¼Ð¾Ð¶Ð½Ð¾ Ð¿ÑÐ¾Ð²ÐµÑÐ¸ÑÑ
+<b>
+Ð¾Ð±ÑÐ·Ð°ÑÐµÐ»ÑÐ½ÑÐµ, ÑÐµÐ»Ð¾Ðµ, ÑÐ»ÐµÐºÑÑÐ¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾ÑÑÑ Ð¸ ÐÐ°ÑÐ° Ð¿Ð¾Ð»Ñ
+</b>
+Ð² ÑÐ¾ÑÐ¼Ð°Ñ.&#xD;Ð­ÑÐ¾ Ð»ÐµÐ³ÐºÐ¾ Ð¿ÐµÑÐµÐ½Ð¾ÑÐ¸Ð¼ÑÐ¼, ÑÑÐ¾Ð±Ñ Ð²ÑÐµ Ð²Ð°ÑÐ¸ ÑÐ¾ÑÐ¼Ñ Ð¸ Ð¿Ð¾Ð¼Ð¾Ð¶ÐµÑ ÑÐ¿Ð°ÑÑÐ¸ ÑÑÐ¾ÑÐ¾Ð½Ðµ ÑÐµÑÐ²ÐµÑÐ°&#xD;ÑÐµÑÑÑÑÑ Ð¾Ñ Ð¿ÑÐ¾Ð²ÐµÑÐºÐ¸ Ð¿Ð¾Ð»Ñ ÑÐ¾ÑÐ¼Ñ&#xD;Ð¸ ÑÑÑÐ°Ð½Ð¸ÑÐ° Ð¿ÐµÑÐµÐ·Ð°Ð³ÑÑÐ¶Ð°ÐµÑÑÑ. ÐÑÐµ ÑÐ¾Ð¾Ð±ÑÐµÐ½Ð¸Ñ Ð½Ð°ÑÑÑÐ°Ð¸Ð²Ð°ÑÑÑÑ Ð² ÑÐºÑÑÑÐ¾Ð¹ ÑÐ¾ÑÐ¼Ðµ&#xD;ÑÐ»ÐµÐ¼ÐµÐ½Ñ, Ð³Ð´Ðµ Ð²Ð°Ð¼ ÑÐ°ÐºÐ¶Ðµ Ð²ÑÐ±ÑÐ°ÑÑ ÑÑÐµÐ±Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿ÑÐ¾Ð²ÐµÑÐºÐ¸. ÐÑ Ð¼Ð¾Ð¶ÐµÑÐµ ÑÐ¼ÐµÑÐ¸Ð²Ð°ÑÑ&#xD;Ð½ÐµÐ¾Ð±ÑÐ¾Ð´Ð¸Ð¼ÑÐ¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ Ñ Ð»ÑÐ±ÑÐ¼ Ð¸Ð· Ð´ÑÑÐ³Ð¸Ñ ÑÐ»ÐµÐ¼ÐµÐ½ÑÐ¾Ð².&#xD;Ð­ÑÐ¾Ñ ÐºÐ¾Ð´ ÑÐ²Ð»ÑÐµÑÑÑ Ð¿Ð¾Ð»Ð½Ð¾ÑÑÑÑ Ð¿ÐµÑÐµÐ½Ð¾ÑÐ¸Ð¼ÑÐ¼ Ð¸ Ð¼Ð¾Ð¶ÐµÑ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÑÑÑ Ñ Ð»ÑÐ±Ð¾Ð¹ ÑÐ¾ÑÐ¼Ð¾Ð¹, Ð¿ÑÐ¾ÑÑÐ¾&#xD;ÐÐ¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ ÑÐºÑÑÑÑÑ ÑÐ»ÐµÐ¼ÐµÐ½ÑÐ¾Ð² Ð½Ð°Ð´Ð»ÐµÐ¶Ð°ÑÐ¸Ð¼ Ð¾Ð±ÑÐ°Ð·Ð¾Ð¼ Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ onClick&#xD;ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÐµ.
+<br>
+<br>
+
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#b6dada">
+<font size="+2">
+Ð¡Ð»ÐµÐ´ÑÑÑÐ¸Ðµ Ð¿ÑÐ°Ð²Ð¸Ð»Ð°.
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+1)
+</b>
+Ð§ÑÐ¾Ð±Ñ Ð·Ð°Ð´Ð°ÑÑ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¾Ð±ÑÐ·Ð°ÑÐµÐ»ÑÐ½Ð¾Ðµ Ð¿Ð¾Ð»Ðµ Ð²Ð°ÑÐµ ÑÑÑÐµÑÑÐ²ÑÑÑÐµÐµ Ð¸Ð¼Ñ Ð¿Ð¾Ð»Ñ Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð¸ÑÑ&#xD;r_ Ð² Ð½Ð°ÑÐ°Ð»Ð¾ Ð¿Ð¾Ð»Ñ Ð¸Ð¼Ñ Ð¸ ÑÐ¾Ð·Ð´Ð°ÑÑ ÑÐºÑÑÑÑÐ¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ.
+<br>
+
+<b>
+ÐÐ ÐÐÐÐ :
+</b>
+<br>
+&lt;input type="text" name="your_fieldname"&gt;
+<br>
+&lt;input type="hidden" name="r_your_fieldname" value="Required error message goes here"&gt;
+<p>
+
+<b>
+2)
+</b>
+Ð§ÑÐ¾Ð±Ñ Ð·Ð°Ð´Ð°ÑÑ ÑÐµÐ»Ð¾Ðµ Ð¿Ð¾Ð»Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·ÑÐ¹ÑÐµ Ð²Ð°ÑÐµ ÑÑÑÐµÑÑÐ²ÑÑÑÐµÐµ Ð¸Ð¼Ñ Ð¿Ð¾Ð»Ñ Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð¸ÑÑ&#xD;i_ Ð² Ð½Ð°ÑÐ°Ð»Ð¾ Ð¿Ð¾Ð»Ñ Ð¸Ð¼Ñ Ð¸ ÑÐ¾Ð·Ð´Ð°ÑÑ ÑÐºÑÑÑÑÐ¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ.
+<br>
+
+<b>
+ÐÐ ÐÐÐÐ :
+</b>
+<br>
+&lt;input type="text" name="your_fieldname"&gt;
+<br>
+&lt;input type="hidden" name="i_your_fieldname" value="Integer error message goes here"&gt;
+</p>
+<p>
+
+<b>
+3)
+</b>
+Ð§ÑÐ¾Ð±Ñ Ð·Ð°Ð´Ð°ÑÑ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ð¾Ð»Ñ Ð´Ð°ÑÑ Ð²Ð°ÑÐµ ÑÑÑÐµÑÑÐ²ÑÑÑÐµÐµ Ð¸Ð¼Ñ Ð¿Ð¾Ð»Ñ Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð¸ÑÑ&#xD;D_ Ð² Ð½Ð°ÑÐ°Ð»Ð¾ Ð¿Ð¾Ð»Ñ Ð¸Ð¼Ñ Ð¸ ÑÐ¾Ð·Ð´Ð°ÑÑ ÑÐºÑÑÑÑÐ¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ. Ð­ÑÐ¾&#xD;Ð¿Ð¾Ð»Ðµ ÐÐ°ÑÐ° Ð¿ÑÐ¸Ð½Ð¸Ð¼Ð°ÐµÑ ÑÐ¾Ð»ÑÐºÐ¾ ÑÐ¾ÑÐ¼Ð°Ñ Ð¼Ð¼/Ð´Ð´/Ð³Ð³ Ð¸Ð»Ð¸ Ð´/YY.
+<br>
+
+<b>
+ÐÐ ÐÐÐÐ :
+</b>
+<br>
+&lt;input type="text" name="your_fieldname"&gt;
+<br>
+&lt;input type="hidden" name="d_your_fieldname" value="Date error message goes here"&gt;
+<br>
+<br>
+
+<b>
+4)
+</b>
+Ð§ÑÐ¾Ð±Ñ Ð¿ÑÐ¾Ð²ÐµÑÐ¸ÑÑ Ð¿Ð¾Ð»Ðµ ÑÐ»ÐµÐºÑÑÐ¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾ÑÑÑ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÑ Ð²Ð°ÑÐµ ÑÑÑÐµÑÑÐ²ÑÑÑÐµÐµ Ð¸Ð¼Ñ Ð¿Ð¾Ð»Ñ Ð¸&#xD;ÐÐ¾Ð±Ð°Ð²ÑÑÐµ Ð² Ð½Ð°ÑÐ°Ð»Ð¾ Ð¸Ð¼ÐµÐ½Ð¸ Ð¿Ð¾Ð»Ñ e_ Ð¸ ÑÐ¾Ð·Ð´Ð°ÑÑ ÑÐºÑÑÑÑÐ¹&#xD;ÑÐ»ÐµÐ¼ÐµÐ½Ñ.
+<br>
+
+<b>
+ÐÐ ÐÐÐÐ :
+</b>
+<br>
+&lt;input type="text" name="your_fieldname"&gt;
+<br>
+&lt;input type="hidden" name="e_your_fieldname" value="The email address format is incorrect"&gt;
+<br>
+<br>
+
+</p>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#b6dada">
+
+<font size="+2">
+ÐÐ½Ð¸ÑÐ¸Ð°Ð»Ð¸Ð·Ð°ÑÐ¸Ð¸ ÑÐºÑÐ¸Ð¿ÑÐ°.
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+ÐÑ Ð´Ð¾Ð»Ð¶Ð½Ñ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÑ ÑÐ¸Ð¿ = Â«ÐºÐ½Ð¾Ð¿ÐºÐ°Â» Ð½Ðµ ÑÐ¸Ð¿ = Â«Ð¾ÑÐ¿ÑÐ°Ð²Ð¸ÑÑÂ» Ð´Ð»Ñ Ð²Ð°ÑÐµÐ¹ ÐºÐ½Ð¾Ð¿ÐºÐ¸ SUBMIT, javascript Ð¿Ð¾ÑÑÐ»Ð°ÐµÑ submit Ð´Ð»Ñ Ð²Ð°Ñ.
+<br>
+
+<font size="-1">
+<b>
+ÐÐ ÐÐÐÐ :
+</b>
+<br>
+&lt;input type=button Value="Button Message Here" onclick="check(form,form.elements.length)"&gt;
+</font>
+
+<br>
+<br>
+<hr size="1">
+
+<font size="+2">
+This sample utilizes all three validation tools in combination.
+</font>
+<p>
+
+</p>
+<form action="thanks.html">
+
+<table border="0" width="575">
+
+<tbody>
+<tr>
+<td>
+
+<b>
+Email Address:
+</b>
+
+</td>
+
+<td>
+
+<input name="email" type="text">
+
+<input name="e_email" value="Email address format is incorrect" type="hidden">
+
+<input name="r_email" value="Email address is required" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required and email validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+ÐÐ¼Ñ:
+</b>
+
+</td>
+
+<td>
+
+<input name="fname" type="text">
+
+<input name="r_fname" value="First name is required" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ:
+</b>
+
+</td>
+
+<td>
+
+<input name="lname" type="text">
+
+<input name="r_lname" value="Last name is required" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+ÐÐ´ÑÐµÑ 1:
+</b>
+
+</td>
+
+<td>
+
+<input name="address1" type="text">
+
+<input name="r_address1" value="Address is required" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+ÐÐ´ÑÐµÑ 2:
+</b>
+
+</td>
+
+<td>
+
+<input name="address2" type="text">
+
+</td>
+<td>
+<font size="-1">
+(no validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Ð¡ÐºÐ¾Ð»ÑÐºÐ¾ ÑÐµÐ±Ðµ Ð»ÐµÑ:
+</b>
+
+</td>
+
+<td>
+
+<input name="age" type="text">
+
+<input name="r_age" value="Age is required" type="hidden">
+
+<input name="i_age" value="Age must be a valid integer" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required and integer validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Years have you been scripting:
+</b>
+
+</td>
+
+<td>
+
+<input name="scripting" type="text">
+
+<!--- <input type="hidden" name="r_scripting" value="Years scripting required"> --->
+
+<input name="i_scripting" value="Years scripting must be a valid integer" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(integer validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Ð§ÑÐ¾ ÑÐ°ÐºÐ¾Ðµ ÑÐµÐ³Ð¾Ð´Ð½ÑÑÐ½ÑÑ Ð´Ð°ÑÐ°:
+</b>
+
+<font size="-1">
+(mm/dd/yy)
+</font>
+
+</td>
+
+<td>
+
+<input name="todays_dt" type="text">
+
+<!--- <input type="hidden" name="r_todays_dt" value="Today's date is required"> --->
+
+<input name="d_todays_dt" value="The date is not valid or the format is incorrect. Please format mm/dd/yy." type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(date validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+ÐÑÐ±ÐµÑÐ¸ÑÐµ ÑÐµÐ¼Ñ:
+</b>
+
+</td>
+
+<td>
+
+<select name="subject">
+<option value="">
+ÐÑÐ±ÐµÑÐ¸ÑÐµ Ð¾Ð´Ð¸Ð½
+</option>
+<option value="Javascript">
+JavaScript
+</option>
+<option value="C">
+C
+</option>
+<option value="C++">
+C
+</option>
+<option value="Visual Basic">
+Visual Basic
+</option>
+</select>
+
+<input name="r_subject" value="You must select a subject" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+ÐÑÐ±ÐµÑÐ¸ÑÐµ Ð¿ÐµÑÐµÐºÐ»ÑÑÐ°ÑÐµÐ»Ñ:
+</b>
+
+</td>
+
+<td>
+
+<input name="test" value="1" type="radio">
+ÑÐµÑÑ 1
+<input name="test" value="2" type="radio">
+ÑÐµÑÑ 2
+<input name="test" value="3" type="radio">
+ÑÐµÑÑ 3
+<input name="r_test" value="Please select a radio button 1, 2 or 3" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+ÐÑÐ±ÐµÑÐ¸ÑÐµ Ð²ÑÐµ ÑÑÐ¾ Ð¿ÑÐ¸Ð¼ÐµÐ½ÑÑÑÑÑ:
+</b>
+
+</td>
+
+<td>
+
+<input name="test1" value="1" type="checkbox">
+ÑÐµÑÑ 1
+<input name="r_test1" value="You must select checkbox test 1" type="hidden">
+
+<input name="test2" value="2" type="checkbox">
+ÑÐµÑÑ 2
+<input name="test3" value="3" type="checkbox">
+ÑÐµÑÑ 3
+</td>
+<td>
+<font size="-1">
+(required validation on box 1)
+</font>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+
+<input value="Submit this form for validation" onclick="check(form,form.elements.length)" type="button">
+
+</td>
+</tr>
+
+</tbody>
+</table>
+
+</form>
+
+<hr size="1">
+
+<center>
+<font size="-1">
+� 2004 Artswork
+</font>
+<p>
+
+<img src="/cgi-bin/counter?perflunk">
+
+</p>
+</center>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

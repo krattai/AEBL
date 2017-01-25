@@ -1,0 +1,376 @@
+
+<div class="failedcheck">
+$$fieldsref{updatemessage}
+</div>
+Abil saate sms tehinguid mitme registrite praeguses versioonis, kuid see on vaikimisi, vaadake juhendit! Selle
+<b>
+registri ja valuuta peab olemas
+</b>
+.
+<br/>
+
+<br/>
+
+Samuti peate konfigureerima
+<span class="system">
+/etc/gammu-smsdrc
+</span>
+telefoni või kasutate dongle ja sisendkausta/väljundkausta jne.Vt näiteks Euroopa
+<span class="system">
+config
+</span>
+alamkataloogi, mis on nimi = Huawei 1750 andes AT stiilis ühendus. See on praegune versioon katsetamiseks kasutatud riistvara.
+<br/>
+
+<br/>
+
+Sa pead kasutama ka
+<a title="Režiimi Lülita kasuliku" href="http://www.draisberghof.de/usb_modeswitch/">
+Režiimi Lülita kasuliku
+</a>
+Kui telefon dongle deklareerib ta toetatud
+<br/>
+
+<br/>
+
+
+<table>
+<tbody class="stripy">
+
+<form  name="installgammu" id="form" action="/cgi-bin/protected/ccinstall.cgi" method="post">
+
+<input class="small" name="saveadd"  value="Gammu konfiguratsiooni värskendamine" type="submit">
+
+<input name="action"  value="updategammuconfig" type="hidden">
+
+<input name="type"  data-simple="yes"  value="gammu" type="hidden">
+
+<tr>
+
+<td title="See on une aeg sekundites sms sõnumite lugemine ja saatmine" class="menu">
+SMS magada
+</td>
+
+<td class="pme-key-1">
+
+<input id="smssleep"  class="required" type="text" name="smssleep" size="3" value="$$fieldsref{smssleep}">
+
+</td>
+
+<td title="SMS liidese keel, ainult inglise keeles on testitud hetkel!" class="menu">
+keel
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="" name="language" size="2" value="$$fieldsref{language}">
+</td>
+
+</tr>
+
+<tr>
+<td title="1 kui readsms_from_gammu.pl on sama süsteemi nagu cclite, kui null SEEP on kasutusel, kuid see on kunagi katsetatud" class="menu">
+SMS skript on kohaliku
+</td>
+<td class="pme-key-1">
+
+<input id="smslocal"  class="required" type="text"  name="smslocal" size="1" value="$$fieldsref{smslocal}">
+
+</td>
+
+<td title="Web parooli olek, tavaliselt aktiivne" class="menu">
+Web parooli olek
+</td>
+<td class="pme-key-1">
+<input readonly id="userpasswordstatus"  class="required" type="text" readonly name="userpasswordstatus" size="6" value="active">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root inwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+SMS juure sissepoole tee
+</td>
+<td class="pme-key-1">
+
+<input type="text"   class="required" name="smsinpath" size="30" value="$$fieldsref{smsinpath}">
+
+</td>
+
+<td title="mobiilne kasutaja pin, tavapäraselt aktiivne, kui me võimaldavad olek liitub mobiiltelefonilt" class="menu">
+Kasutaja pin olek
+</td>
+<td class="pme-key-1">
+<input id="userpinstatus"  class="required" type="text" name="userpinstatus" size="8" value="$$fieldsref{userpinstatus}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root outwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+SMS juure väljaminemise tee
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smsoutpath" size="30" value="$$fieldsref{smsoutpath}">
+
+<td title="tavapäraselt aktiivne, kui me võimaldavad kasutajakirje oleku liitub mobiiltelefonilt" class="menu">
+Kasutaja staatus
+</td>
+<td class="pme-key-1">
+<input id="userstatus"  class="required" type="text" name="userstatus" size="8" value="$$fieldsref{userstatus}">
+</td>
+
+</td>
+</tr>
+
+<tr>
+<td title="Sms root sent path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+SMS juure saata sms teele
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smssentpath" size="30" value="$$fieldsref{smssentpath}">
+
+</td>
+
+<td title="märksõna pay sms sõnumeid" class="menu">
+maksma märksõna
+</td>
+<td class="pme-key-1">
+<input id="send"  class="required" type="text" name="send_key" size="8" value="$$fieldsref{send_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root error path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+SMS juur viga sms tee
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smserrorpath" size="30" value="$$fieldsref{smserrorpath}">
+
+</td>
+
+<td title="märksõna tasakaalu sms sõnumeid" class="menu">
+tasakaalu märksõna
+</td>
+<td class="pme-key-1">
+<input id="balance"  class="required" type="text" name="balance_key" size="8" value="$$fieldsref{balance_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="alus sms tehingute registri, saab praegu ainult luba ühe registri" class="menu">
+baasi register
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="registry" size="20" value="$$fieldsref{registry}">
+
+</td>
+
+<td title="märksõna liituda sms sõnumeid" class="menu">
+Liitu märksõna
+</td>
+<td class="pme-key-1">
+<input id="join"  class="required" type="text" name="join_key" size="8" value="$$fieldsref{join_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="valuuta sms tehingud, on see vaikimisi. Kui ei ole valuuta määratud" class="menu">
+vaikevaluuta
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="currency" size="20" value="$$fieldsref{currency}">
+
+</td>
+
+<td title="märksõna pin kinnitamiseks sms sõnumeid" class="menu">
+PIN-koodi kinnitada märksõna
+</td>
+<td class="pme-key-1">
+<input id="confirm"  class="required" type="text" name="confirm_key" size="8" value="$$fieldsref{confirm_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="See on vajalik, kui te ei kaasa kogu rahvusvahelise numbri maksekannete, nt 44 UK, lihtsam kasutada kasutajanimi Igatahes!" class="menu">
+riigi eesliide
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="sms_prefix" size="2" value="$$fieldsref{sms_prefix}">
+
+</td>
+
+<td title="märksõna pin muuta sms sõnumeid" class="menu">
+PIN-koodi muutmine märksõna
+</td>
+<td class="pme-key-1">
+<input id="pinchange"  class="required" type="text" name="pinchange_key" size="8" value="$$fieldsref{pinchange_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Lülitage SMS debug, 0 off, 1 kohta" class="menu">
+debug sms allsüsteem
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="debug" size="1" value="$$fieldsref{debug}">
+
+</td>
+
+<td title="märksõna passiivse konto sms sõnumeid" class="menu">
+peatada märksõna
+</td>
+<td class="pme-key-1">
+<input id="suspend"  class="required" type="text" name="suspend_key" size="8" value="$$fieldsref{suspend_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="debug failile silumiseks" class="menu">
+SMS silumislogi
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required" name="sms_debug_file" size="30" value="$$fieldsref{sms_debug_file}">
+
+</td>
+
+<td title="Muuda keel SMSe märksõna" class="menu">
+Muuda keel märksõna
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="text" name="language_key" size="8" value="$$fieldsref{language_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="esialgne makse oleku sms tehinguteks tavaliselt vastu, ei saa muuta see telefonist Praegu" class="menu">
+esialgne makse olek
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="initialpaymentstatus" size="15" value="$$fieldsref{initialpaymentstatus}">
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="lüliti on/off sponsor sõnumeid saadetud smses otsas" class="menu">
+sponsor sõnumeid
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="sponsor_message_status" size="1" value="$$fieldsref{sponsor_message_status}">
+
+</td>
+</tr>
+
+<tr>
+<td title="sms-sõnumeid, vt käsiraamatu sõnum 1 Põhja sponsor" class="menu">
+sponsor teade 1
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor1" wrap="soft" >
+$$fieldsref{sponsor1}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="SMSe, vt käsiraamatu sõnumi 2 Põhja sponsor" class="menu">
+sponsor teade 2
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor2"  wrap="soft">
+$$fieldsref{sponsor2}
+</textarea>
+
+</td>
+</tr>
+
+<tr>
+<td title="SMSe, vt käsiraamatu sõnumi 3 Põhja sponsor" class="menu">
+sponsor sõnumi 3
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor3" wrap="soft">
+$$fieldsref{sponsor3}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="SMSe, vt käsiraamatu sõnumi 4 Põhja sponsor" class="menu">
+sponsor sõnumi 4
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor4" wrap="soft">
+$$fieldsref{sponsor4}
+</textarea>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+
+</td>
+</tr>
+
+<tr>
+<td title="SMSe, vt käsiraamatu sõnumi 5 Põhja sponsor" class="menu">
+sponsor teade 5
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor5" wrap="soft">
+$$fieldsref{sponsor5}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+</tbody>
+</table>
+
+</form>

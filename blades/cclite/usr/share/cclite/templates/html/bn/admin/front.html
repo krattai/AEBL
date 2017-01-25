@@ -1,0 +1,384 @@
+
+
+<table class="front" >
+
+<tr>
+
+<td title="graphing লিপি শুরু করুন">
+Graphingচ্ছে
+</td>
+
+<td title="start accepting email input from the batch mailbox for $$fieldsref{registry} via POP">
+ই-মেইল ইনপুট
+</td>
+
+<!--
+<td title="start accepting  encrypted email input from the batch mailbox for $$fieldsref{registry} please use read_pop_mail_gpg.pl from command line, does not run from web interface">
+<del>GPG Email input</del> 
+</td>
+-->
+
+<td title="হলদে পাতাগুলো ক্ষুদ্র adsএর জন্য producing আর.এস.এস. শুরু করুন জোগান দিন">
+আর.এস.এস. জোগান দেয়
+</td>
+
+<td title="একটি স্থানীয় মোবাইল ফোন থেকে gammu হয়ে accepting ইনপুট শুরু করুন">
+Gammu ইনপুট
+</td>
+
+<td title="এবং পদ্ধতি ব্যাচ লেনদেন আপলোড করুন">
+Upload/process ব্যাচ লেনদেন
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<form id="form">
+
+<select class="small"  onchange="on_select_change('stats');" id="stats_value" >
+
+<option value="0">
+পরিসংখ্যান থামেন
+</option>
+
+<option value="5">
+প্রতি ৫min
+</option>
+
+<option value="10">
+প্রতি ১০min
+</option>
+
+<option value="30">
+প্রতি ৩০min
+</option>
+
+</select>
+
+</td>
+
+<td>
+
+<select class="small"  onchange="on_select_change('mail');" id="mail_value" >
+
+<option value="0">
+মেইল থামেন
+</option>
+
+<option value="5">
+প্রতি ৫min
+</option>
+
+<option value="10">
+প্রতি ১০min
+</option>
+
+<option value="30">
+প্রতি ৩০min
+</option>
+
+</select>
+
+</td>
+
+<!--
+<td>
+    <select onchange="on_select_change('gpg_mail');" id="gpg_mail_value" >
+	<option value="0"> Stop GPG Mail</option>
+	<option value="5">Every 5min</option>
+	<option value="10">Every 10min</option>
+	<option value="30">Every 30min</option>
+</select>
+
+    
+    </td>
+-->
+
+<td>
+
+<select class="small"  onchange="on_select_change('rss');" id="rss_value" >
+
+<option value="0">
+আর.এস.এস. থামেন
+</option>
+
+<option value="5">
+প্রতি ৫min
+</option>
+
+<option value="10">
+প্রতি ১০min
+</option>
+
+<option value="30">
+প্রতি ৩০min
+</option>
+
+</select>
+
+</td>
+
+<td>
+
+<select class="small"  onchange="on_select_change('gammu');" id="gammu_value" >
+
+<option value="0">
+এসএমএস থামেন
+</option>
+
+<option value="5">
+প্রতি ৫min
+</option>
+
+<option value="10">
+প্রতি ১০min
+</option>
+
+<option value="30">
+প্রতি ৩০min
+</option>
+
+</select>
+
+</td>
+
+<td>
+
+<div id="file-uploader" title="একটি csv ফাইল হিসেবে ব্যাচ লেনদেন পান: নিজে হাতে দেখুন">
+
+<noscript>
+
+<p>
+দয়া করে ফাইল uploader ব্যবহার করতে জাভাস্ক্রীপ্ট সক্রিয় করুন।
+</p>
+
+<!--  অথবা আপলোড এখানের জন্য একটি সহজ আকার রাখেন -->
+
+</noscript>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<span id="stats">
+অপেক্ষা করুন
+</span>
+</td>
+
+<td>
+<span id="mail">
+অপেক্ষা করুন
+</span>
+</td>
+
+<!--<td><span id="gpg_mail">Wait</span></td> -->
+
+<td>
+<span id="rss">
+অপেক্ষা করুন
+</span>
+</td>
+
+<td>
+<span id="gammu">
+অপেক্ষা করুন
+</span>
+</td>
+
+<td>
+</td>
+
+</tr>
+
+</form>
+
+</table>
+
+<table>
+
+<tr>
+
+<td class="front">
+ওপেনঅফিস বক্তব্য ডাউনলোড করুন
+<table>
+
+<tr>
+
+<td>
+মাস
+</td>
+<td>
+
+<form class="pme-form" id="form" action="/cgi-bin/protected/batch/print_statements.pl" method="post">
+
+<select class="small" name="month">
+
+<option value="1">
+১
+</option>
+
+<option value="2">
+২
+</option>
+
+<option value="3">
+৩
+</option>
+
+<option value="4">
+৪
+</option>
+
+<option value="5">
+৫
+</option>
+
+<option value="6">
+৬
+</option>
+
+<option value="7">
+৭
+</option>
+
+<option value="8">
+৮
+</option>
+
+<option value="9">
+৯
+</option>
+
+<option value="10">
+১০
+</option>
+
+<option value="11">
+১১
+</option>
+
+<option value="12">
+১২
+</option>
+
+</select>
+
+</td>
+</tr>
+
+<tr>
+<td>
+বছর
+</td>
+<td>
+<input type="text" name="year" size="4" maxlength="4">
+</td>
+</tr>
+
+<tr>
+<td>
+লগিন নাম
+</td>
+<td>
+<input type="text" name="username" size="10">
+</td>
+</tr>
+
+<tr>
+<td>
+<input type="submit" class="small" name="go" value="যান">
+</td>
+<td>
+</td>
+</tr>
+
+</form>
+</table>
+
+</td>
+
+<td class="front" valign="top">
+ওপেনঅফিস ডিরেক্টরী ডাউনলোড করুন
+<form class="pme-form" id="form" action="/cgi-bin/protected/batch/print_yellowpages.pl" method="post">
+
+<input class="small" type="submit" name="go" value="যান">
+
+</form>
+
+</td>
+
+<td>
+<span id="">
+</span>
+</td>
+
+<td>
+<span id="">
+</span>
+</td>
+
+<td>
+<span id="">
+</span>
+</td>
+
+<td>
+</td>
+
+</tr>
+
+</table>
+
+<div id="stats_status">
+</div>
+
+<div id="gpg_mail_status">
+</div>
+
+<div id="mail_status">
+</div>
+
+<div id="csv_status">
+</div>
+
+<div id="rss_status">
+</div>
+
+<div id="gammu_status">
+</div>
+<br/>
+
+
+<div id="fileproblems" class="smalltext">
+$$fieldsref{displaybatchfiles}
+</div>
+
+<br/>
+
+
+<table>
+
+<tr>
+
+<td>
+
+</td>
+
+</tr>
+<tr>
+
+<td>
+
+</td>
+
+</tr>
+
+</table>

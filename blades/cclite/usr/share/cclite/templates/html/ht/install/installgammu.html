@@ -1,0 +1,376 @@
+
+<div class="failedcheck">
+$$fieldsref{updatemessage}
+</div>
+Ou kapab itilize sms tranzaksyon yo ak plizyè registres nan Liberasyon kouran, men, sa a se par, wè Manuel a! A
+<b>
+rejis Et lajan dwe deja ekziste
+</b>
+.
+<br/>
+
+<br/>
+
+Nou bezwen to pou nou configure
+<span class="system">
+/etc/gammu-smsdrc
+</span>
+pou telefòn ou clé sa w ap itilize a ak pou réception/D' ets.Wè tankou nan a
+<span class="system">
+config
+</span>
+anyè de baz ki se pou sèvis pou = Huawei 1750 t' ap kouche stil AT yon. Sa a se tout pyès ki nan konpitè te itilize pou yo swiv lè a aktyèl vèsyon pipiti de youn.
+<br/>
+
+<br/>
+
+Ou ka bezwen to pou nou sèvi ak a
+<a title="Mòd chanjman itilite" href="http://www.draisberghof.de/usb_modeswitch/">
+Mòd chanjman itilite
+</a>
+Si yon clé telefòn déclare tèt li tankou yon depo périphérique
+<br/>
+
+<br/>
+
+
+<table>
+<tbody class="stripy">
+
+<form  name="installgammu" id="form" action="/cgi-bin/protected/ccinstall.cgi" method="post">
+
+<input class="small" name="saveadd"  value="À Gammu Configuration" type="submit">
+
+<input name="action"  value="updategammuconfig" type="hidden">
+
+<input name="type"  data-simple="yes"  value="gammu" type="hidden">
+
+<tr>
+
+<td title="se sa rele lè dòmi nan kèk segond pou devwa nan lekti ak voye mesaj sms" class="menu">
+sms dòmi
+</td>
+
+<td class="pme-key-1">
+
+<input id="smssleep"  class="required" type="text" name="smssleep" size="3" value="$$fieldsref{smssleep}">
+
+</td>
+
+<td title="sms koòdone lang, se sèl Anglè te teste konnye a li." class="menu">
+lang
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="" name="language" size="2" value="$$fieldsref{language}">
+</td>
+
+</tr>
+
+<tr>
+<td title="1 si readsms_from_gammu.pl se sou menm sistèm nan etan cclite, si zewo SAVON ki itilize sa a ki pa janm kalite tantasyon menm" class="menu">
+sms script lokal
+</td>
+<td class="pme-key-1">
+
+<input id="smslocal"  class="required" type="text"  name="smslocal" size="1" value="$$fieldsref{smslocal}">
+
+</td>
+
+<td title="Web modpas estati, nòmalman aktif" class="menu">
+Web modpas estati
+</td>
+<td class="pme-key-1">
+<input readonly id="userpasswordstatus"  class="required" type="text" readonly name="userpasswordstatus" size="6" value="active">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root inwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+D' intérieur sms rasin
+</td>
+<td class="pme-key-1">
+
+<input type="text"   class="required" name="smsinpath" size="30" value="$$fieldsref{smsinpath}">
+
+</td>
+
+<td title="se estati pou code utilisateur mobil, nòmalman aktif, si nou gen ki pèmèt nan telefòn mobil" class="menu">
+utilisateur code estati
+</td>
+<td class="pme-key-1">
+<input id="userpinstatus"  class="required" type="text" name="userpinstatus" size="8" value="$$fieldsref{userpinstatus}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root outwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+rasin sms l' accès
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smsoutpath" size="30" value="$$fieldsref{smsoutpath}">
+
+<td title="se estati pou dosye utilisateur, nòmalman aktif, si nou gen ki pèmèt nan telefòn mobil" class="menu">
+èstati kap itilize li an
+</td>
+<td class="pme-key-1">
+<input id="userstatus"  class="required" type="text" name="userstatus" size="8" value="$$fieldsref{userstatus}">
+</td>
+
+</td>
+</tr>
+
+<tr>
+<td title="Sms root sent path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+rasin voye sms sms D'
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smssentpath" size="30" value="$$fieldsref{smssentpath}">
+
+</td>
+
+<td title="mot pou peye nan mesaj sms" class="menu">
+peye mot
+</td>
+<td class="pme-key-1">
+<input id="send"  class="required" type="text" name="send_key" size="8" value="$$fieldsref{send_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root error path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+sms anrasinen erreur sms D'
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smserrorpath" size="30" value="$$fieldsref{smserrorpath}">
+
+</td>
+
+<td title="mot pou balans nan mesaj sms" class="menu">
+balans mot
+</td>
+<td class="pme-key-1">
+<input id="balance"  class="required" type="text" name="balance_key" size="8" value="$$fieldsref{balance_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="baz rejis pou sms tranzaksyon yo, kapab sèlman pèmèt yon sèl rejis konnye a" class="menu">
+baz rejis
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="registry" size="20" value="$$fieldsref{registry}">
+
+</td>
+
+<td title="mot pou antre nan mesaj sms" class="menu">
+jwenn ak mot
+</td>
+<td class="pme-key-1">
+<input id="join"  class="required" type="text" name="join_key" size="8" value="$$fieldsref{join_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="lajan pou sms tranzaksyon yo, se la defo. si pa gen lajan te espesifye" class="menu">
+monè defo
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="currency" size="20" value="$$fieldsref{currency}">
+
+</td>
+
+<td title="mot pou code konfime nan mesaj sms" class="menu">
+code konfime mot
+</td>
+<td class="pme-key-1">
+<input id="confirm"  class="required" type="text" name="confirm_key" size="8" value="$$fieldsref{confirm_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="sa bezwen pou si ou pa genyen ladan yo konte tout internation pou peye tranzaksyon yo, pa egzanp 44 pou UK, vin pi fasil pou yo itilize nom de tout fason." class="menu">
+peyi prefix
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="sms_prefix" size="2" value="$$fieldsref{sms_prefix}">
+
+</td>
+
+<td title="mot pou code chanjman nan sms mesaj" class="menu">
+code chanjman mot
+</td>
+<td class="pme-key-1">
+<input id="pinchange"  class="required" type="text" name="pinchange_key" size="8" value="$$fieldsref{pinchange_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="pase sou déboguer pou sms, 0 pou nèt, 1 pou sou" class="menu">
+déboguer sms du
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="debug" size="1" value="$$fieldsref{debug}">
+
+</td>
+
+<td title="mot pou compte suspend nan mesaj sms" class="menu">
+sispann mot
+</td>
+<td class="pme-key-1">
+<input id="suspend"  class="required" type="text" name="suspend_key" size="8" value="$$fieldsref{suspend_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="déboguer ranpli pou débogage" class="menu">
+sms déboguer journal
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required" name="sms_debug_file" size="30" value="$$fieldsref{sms_debug_file}">
+
+</td>
+
+<td title="mot pou lang chanjman nan mesaj sms" class="menu">
+chanje lang mot
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="text" name="language_key" size="8" value="$$fieldsref{language_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="inisyal estati peye pou sms tranzaksyon yo, nòmalman te asepte, ou pa ka chanje sa a nan telefòn lan konnye a" class="menu">
+kondisyon inisyal peye
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="initialpaymentstatus" size="15" value="$$fieldsref{initialpaymentstatus}">
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="pase sou/désactiver sponsor mesaj nan fen envoyé smses" class="menu">
+parenn mesaj
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="sponsor_message_status" size="1" value="$$fieldsref{sponsor_message_status}">
+
+</td>
+</tr>
+
+<tr>
+<td title="promoteur mesaj 1 pou bas de sms mesaj, voir Manuel" class="menu">
+mesaj sponsor 1
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor1" wrap="soft" >
+$$fieldsref{sponsor1}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="promoteur mesaj 2 pou bas de sms mesaj, voir Manuel" class="menu">
+mesaj sponsor 2
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor2"  wrap="soft">
+$$fieldsref{sponsor2}
+</textarea>
+
+</td>
+</tr>
+
+<tr>
+<td title="promoteur mesaj 3 pou bas de sms mesaj, voir Manuel" class="menu">
+mesaj sponsor 3
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor3" wrap="soft">
+$$fieldsref{sponsor3}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="promoteur mesaj 4 pou bas de sms mesaj, voir Manuel" class="menu">
+mesaj sponsor 4
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor4" wrap="soft">
+$$fieldsref{sponsor4}
+</textarea>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+
+</td>
+</tr>
+
+<tr>
+<td title="promoteur mesaj 5 pou bas de sms mesaj, voir Manuel" class="menu">
+mesaj sponsor 5
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor5" wrap="soft">
+$$fieldsref{sponsor5}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+</tbody>
+</table>
+
+</form>

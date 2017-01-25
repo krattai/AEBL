@@ -1,0 +1,377 @@
+
+<div class="failedcheck">
+$$fieldsref{updatemessage}
+</div>
+Bạn có thể sử dụng tin nhắn sms giao dịch với một số cơ quan đăng ký trong phiên bản hiện tại, nhưng điều này là mặc định, hãy xem hướng dẫn sử dụng! Các
+<b>
+đăng ký và tiền tệ phải đã tồn tại
+</b>
+.
+<br/>
+
+<br/>
+
+Bạn cũng cần phải cấu hình
+<span class="system">
+/etc/gammu-smsdrc
+</span>
+for the phone or dongle that you are using and for inbox/outbox etc.
+See the example in the
+<span class="system">
+cấu hình
+</span>
+thư mục con mà là cho tên = Huawei 1750 cho một kết nối phong cách AT. Điều này là phần cứng được sử dụng để thử nghiệm các phiên bản hiện tại.
+<br/>
+
+<br/>
+
+Bạn cũng có thể cần phải sử dụng các
+<a title="Chế độ chuyển đổi Tiện ích" href="http://www.draisberghof.de/usb_modeswitch/">
+Chế độ chuyển đổi Tiện ích
+</a>
+Nếu một dongle điện thoại tuyên bố chính nó như là một thiết bị lưu trữ
+<br/>
+
+<br/>
+
+
+<table>
+<tbody class="stripy">
+
+<form  name="installgammu" id="form" action="/cgi-bin/protected/ccinstall.cgi" method="post">
+
+<input class="small" name="saveadd"  value="Cập Nhật Gammu cấu hình" type="submit">
+
+<input name="action"  value="updategammuconfig" type="hidden">
+
+<input name="type"  data-simple="yes"  value="gammu" type="hidden">
+
+<tr>
+
+<td title="đây là thời gian ngủ trong giây để đọc và gửi tin nhắn sms" class="menu">
+tin nhắn SMS ngủ
+</td>
+
+<td class="pme-key-1">
+
+<input id="smssleep"  class="required" type="text" name="smssleep" size="3" value="$$fieldsref{smssleep}">
+
+</td>
+
+<td title="tin nhắn SMS giao diện ngôn ngữ, tiếng Anh duy nhất đã được thử nghiệm hiện nay!" class="menu">
+ngôn ngữ
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="" name="language" size="2" value="$$fieldsref{language}">
+</td>
+
+</tr>
+
+<tr>
+<td title="1 nếu readsms_from_gammu.pl là trên cùng một hệ thống như là cclite, nếu không xà phòng được sử dụng nhưng điều này đã không bao giờ được thử nghiệm" class="menu">
+kịch bản tin nhắn SMS là địa phương
+</td>
+<td class="pme-key-1">
+
+<input id="smslocal"  class="required" type="text"  name="smslocal" size="1" value="$$fieldsref{smslocal}">
+
+</td>
+
+<td title="tình trạng mật khẩu trang web, hoạt động bình thường" class="menu">
+web mật khẩu tình trạng
+</td>
+<td class="pme-key-1">
+<input readonly id="userpasswordstatus"  class="required" type="text" readonly name="userpasswordstatus" size="6" value="active">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root inwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+tin nhắn SMS vào bên trong đường dẫn gốc
+</td>
+<td class="pme-key-1">
+
+<input type="text"   class="required" name="smsinpath" size="30" value="$$fieldsref{smsinpath}">
+
+</td>
+
+<td title="trạng thái cho người dùng điện thoại di động pin, hoạt động bình thường, nếu chúng tôi đang cho phép tham gia từ điện thoại di động" class="menu">
+người dùng pin tình trạng
+</td>
+<td class="pme-key-1">
+<input id="userpinstatus"  class="required" type="text" name="userpinstatus" size="8" value="$$fieldsref{userpinstatus}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root outwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+đường dẫn outwards gốc tin nhắn SMS
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smsoutpath" size="30" value="$$fieldsref{smsoutpath}">
+
+<td title="trạng thái đối với hồ sơ người dùng, thường hoạt động, nếu chúng tôi đang cho phép tham gia từ điện thoại di động" class="menu">
+tình trạng người sử dụng
+</td>
+<td class="pme-key-1">
+<input id="userstatus"  class="required" type="text" name="userstatus" size="8" value="$$fieldsref{userstatus}">
+</td>
+
+</td>
+</tr>
+
+<tr>
+<td title="Sms root sent path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+đường dẫn sms gốc gửi tin nhắn SMS
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smssentpath" size="30" value="$$fieldsref{smssentpath}">
+
+</td>
+
+<td title="các từ khóa để trả tiền trong tin nhắn sms" class="menu">
+trả tiền từ khoá
+</td>
+<td class="pme-key-1">
+<input id="send"  class="required" type="text" name="send_key" size="8" value="$$fieldsref{send_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root error path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+tin nhắn SMS gốc lỗi tin nhắn sms đường dẫn
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smserrorpath" size="30" value="$$fieldsref{smserrorpath}">
+
+</td>
+
+<td title="từ khóa cho sự cân bằng trong tin nhắn sms" class="menu">
+cân bằng từ khóa
+</td>
+<td class="pme-key-1">
+<input id="balance"  class="required" type="text" name="balance_key" size="8" value="$$fieldsref{balance_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="căn cứ đăng ký cho các giao dịch tin nhắn sms, có thể chỉ cho phép đăng ký một hiện nay" class="menu">
+cơ sở đăng ký
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="registry" size="20" value="$$fieldsref{registry}">
+
+</td>
+
+<td title="từ khóa cho tham gia trong tin nhắn sms" class="menu">
+tham gia từ khóa
+</td>
+<td class="pme-key-1">
+<input id="join"  class="required" type="text" name="join_key" size="8" value="$$fieldsref{join_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="thu cho các tin nhắn sms giao dịch, điều này là mặc định. Nếu không có thu được chỉ định" class="menu">
+mặc định thu
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="currency" size="20" value="$$fieldsref{currency}">
+
+</td>
+
+<td title="từ khoá cho mã pin xác nhận trong tin nhắn sms" class="menu">
+mã pin xác nhận từ khóa
+</td>
+<td class="pme-key-1">
+<input id="confirm"  class="required" type="text" name="confirm_key" size="8" value="$$fieldsref{confirm_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Điều này cần thiết nếu bạn không bao gồm số quốc tế đầy đủ cho các giao dịch trả tiền, ví dụ: 44 cho Vương Quốc Anh, dễ dàng hơn để sử dụng tên người dùng không!" class="menu">
+tiền tố quốc gia
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="sms_prefix" size="2" value="$$fieldsref{sms_prefix}">
+
+</td>
+
+<td title="từ khóa cho pin thay đổi trong tin nhắn sms tin nhắn" class="menu">
+pin thay đổi từ khóa
+</td>
+<td class="pme-key-1">
+<input id="pinchange"  class="required" type="text" name="pinchange_key" size="8" value="$$fieldsref{pinchange_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="bật gỡ lỗi cho tin nhắn sms, 0 cho ra khỏi, 1 cho ngày" class="menu">
+gỡ lỗi hệ thống con tin nhắn sms
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="debug" size="1" value="$$fieldsref{debug}">
+
+</td>
+
+<td title="từ khóa cho đình chỉ tài khoản trong tin nhắn sms" class="menu">
+đình chỉ từ khóa
+</td>
+<td class="pme-key-1">
+<input id="suspend"  class="required" type="text" name="suspend_key" size="8" value="$$fieldsref{suspend_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="gỡ lỗi tập tin để gỡ lỗi" class="menu">
+tin nhắn SMS gỡ lỗi đăng nhập
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required" name="sms_debug_file" size="30" value="$$fieldsref{sms_debug_file}">
+
+</td>
+
+<td title="các từ khóa để thay đổi ngôn ngữ trong tin nhắn sms" class="menu">
+thay đổi ngôn ngữ từ khóa
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="text" name="language_key" size="8" value="$$fieldsref{language_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="đầu tiên tình trạng thanh toán cho các giao dịch tin nhắn sms, thông thường được chấp nhận, bạn không thể thay đổi điều này từ điện thoại hiện nay" class="menu">
+tình trạng thanh toán ban đầu
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="initialpaymentstatus" size="15" value="$$fieldsref{initialpaymentstatus}">
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="bật/tắt tài trợ tin nhắn cuối gửi smses" class="menu">
+nhà tài trợ tin nhắn
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="sponsor_message_status" size="1" value="$$fieldsref{sponsor_message_status}">
+
+</td>
+</tr>
+
+<tr>
+<td title="tài trợ thông điệp 1 cho đáy của tin nhắn sms, xem hướng dẫn sử dụng" class="menu">
+thông báo tài trợ 1
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor1" wrap="soft" >
+$$fieldsref{sponsor1}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="tài trợ thông báo 2 để dưới cùng của tin nhắn sms, xem hướng dẫn sử dụng" class="menu">
+thông báo tài trợ 2
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor2"  wrap="soft">
+$$fieldsref{sponsor2}
+</textarea>
+
+</td>
+</tr>
+
+<tr>
+<td title="tài trợ thông điệp 3 cho đáy của tin nhắn sms, xem hướng dẫn sử dụng" class="menu">
+thông báo tài trợ 3
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor3" wrap="soft">
+$$fieldsref{sponsor3}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="tài trợ thông điệp 4 cho đáy của tin nhắn sms, xem hướng dẫn sử dụng" class="menu">
+thông báo tài trợ 4
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor4" wrap="soft">
+$$fieldsref{sponsor4}
+</textarea>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+
+</td>
+</tr>
+
+<tr>
+<td title="tài trợ thông điệp 5 cho đáy của tin nhắn sms, xem hướng dẫn sử dụng" class="menu">
+thông báo tài trợ 5
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor5" wrap="soft">
+$$fieldsref{sponsor5}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+</tbody>
+</table>
+
+</form>

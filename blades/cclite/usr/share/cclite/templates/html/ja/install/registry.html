@@ -1,0 +1,297 @@
+
+
+<form id="form"  action="/cgi-bin/protected/ccinstall.cgi" method="post">
+
+<span class="error">
+$$fieldsref{error}
+</span>
+
+<table class="pme-main" summary="om_users">
+
+<tbody class="stripy">
+
+<tr class="pme-row-0">
+
+<td title="トレーディング グループ、スペースなしの 1 つの単語を定義するデータベースの名前" class="pme-key-0">
+レジストリ名
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input type="hidden" name="action" value="addregistry">
+
+<input class="required" name="newregistry" size="32" maxlength="32" value="$$fieldsref{newregistry}" type="text">
+</td>
+
+</tr>
+
+<tr class="pme-row-0">
+
+<td title="トレーディング グループの短い説明" class="pme-key-0">
+レジストリの説明
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input  class="required" name="description" size="40" maxlength="250" value="$$fieldsref{description}" type="text">
+</td>
+
+</tr>
+
+<tr title="アドレスとアカウントをこのグループの公式の電子メールを送信するために使用" class="pme-row-0">
+
+<td class="pme-key-0">
+マネージャーの電子メール
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input  class="required email" name="admemail" size="50"  maxlength="60" value="$$fieldsref{admemail}" type="text">
+</td>
+
+</tr>
+
+<td title="管理者の電子メール アカウントのパスワード" class="pme-key-0">
+マネージャーの電子メールのパスワード
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input class="required" name="admpass" size="20" maxlength="20" value="$$fieldsref{admpass}" type="password">
+</td>
+
+</tr>
+
+<tr title="メール トランザクションが受信アカウント管理者と同じをすることができます。" class="pme-row-1">
+
+<td class="pme-key-1">
+バッチ トランザクションの電子メール
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input  class="required email" name="postemail" size="50" maxlength="60" value="$$fieldsref{postemail}" type="text">
+</td>
+
+</tr>
+
+<td title="バッチ電子メール アカウント用のパスワード" class="pme-key-0">
+バッチの電子メールのパスワード
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input class="required" name="postpass" size="20" maxlength="20" value="$$fieldsref{postpass}" type="password">
+</td>
+
+</tr>
+
+<tr title="現在使用していないが、交換モデルを定義します。" class="pme-row-1">
+
+<td nowrap class="pme-key-1">
+システム充電モデル
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="chargetype">
+<option value="equaltime">
+等しいかどうか
+</option>
+<option selected value="market">
+市場金利
+</option>
+</select>
+</td>
+
+</tr>
+
+<tr title="現在使用していないが、委員会のモデルを定義します。" class="pme-row-1">
+
+<td class="pme-key-1">
+システム委員会のモデル
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="commission">
+
+<option selected value="no">
+手数料なし
+</option>
+
+<option value="yes">
+コミッションに基づくレジストリ
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="現在使用していないがサブスクリプション モデルを定義します。" class="pme-row-1">
+
+<td class="pme-key-1">
+サブスクリプション モデル
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="subscription">
+
+<option selected value="no">
+登録なし
+</option>
+
+<option value="yes">
+サブスクリプション ベース
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="このレジストリのすべての通貨の責任制限を定義する場合は 10 進数セントに自動的に変換通貨" class="pme-row-1">
+
+<td class="pme-key-1">
+世界的な責任の制限
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="commitlimit" size="10" maxlength="10" value="$$fieldsref{commitlimit}" type="text">
+</td>
+
+</tr>
+
+<tr title="使用するキーのサーバー: このレジストリ メール トランザクションのみの現在のパブリック キー id" class="pme-row-1">
+
+<td class="pme-key-1">
+鍵サーバー: 公開キー id
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="public_key_id" size="30" maxlength="30" value="$$fieldsref{public_key_id}" type="text">
+</td>
+
+</tr>
+
+</tr>
+
+<tr title="現在使用していないが、地理的かどうかを定義する領域または特別な関心"  class="pme-row-1">
+
+<td class="pme-key-1">
+地理的領域をカバーですか？
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="geographic">
+
+<option selected value="yes">
+はい
+</option>
+
+<option value="no">
+いいえ
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="現在使用してではなくできるようにパブリック レジストリのマッピングの記事または zip コードを定義します" class="pme-row-1">
+
+<td class="pme-key-1">
+郵便番号または緯度、経度
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="postcodes" size="40" maxlength="80" value="$$fieldsref{postcodes}" type="text">
+
+</td>
+
+</tr>
+
+<tr title="elgg の drupal、os-コマース コネクタ マーチャント キーを提供するために使用" class="pme-row-1">
+
+<td class="pme-key-1">
+マーチャント キー
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="merchant_key" size="40" maxlength="80" value="$$fieldsref{merchant_key}" type="text">
+
+</td>
+
+</tr>
+
+<tr title="使用される特定の ip アドレスは、おそらくは容易に偽装へのコネクタを制限する原則" class="pme-row-1">
+
+<td class="pme-key-1">
+IP アドレスからの商人を許可します。
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="allow_ip_list" size="40" maxlength="80" value="$$fieldsref{allow_ip_list}" type="text">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!-- これは実験ですが赤色に変わり-config link、db パスワードが間違っている場合 -->
+$$fieldsref{script}
+<hr class="pme-hr">
+
+<hr class="pme-hr">
+
+<table class="pme-navigation">
+
+<tbody>
+
+<tr class="pme-navigation">
+
+<td class="pme-buttons">
+
+<input class="pme-save"
+ name="saveadd" value="行く" type="submit">
+&nbsp;
+<input
+ class="pme-cancel" name="cancel" value="キャンセル"
+type="reset">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</form>

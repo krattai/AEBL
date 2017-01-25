@@ -1,0 +1,494 @@
+
+<title>
+FormularÃ¼berprÃ¼fung mit JavaScript
+</title>
+</head>
+
+<body bgcolor="white">
+
+<table border="0" width="625">
+<tbody>
+<tr>
+<td rowspan="6" bgcolor="#408080" width="10">
+<img src="clear.gif" height="1" width="10">
+</td>
+
+<td bgcolor="#b6dada">
+
+<font size="+3">
+JavaScript Form Validation Tool
+</font>
+
+<font size="+1">
+Ver 2.5
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<font size="-1">
+by Artswork
+</font>
+<br>
+
+<font color="#ff0000" size="2">
+Ich muss dafÃ¼r entschuldigen, das ich bin&#xD;nicht mehr in der Lage, e-Mail-Anfragen Ã¼ber mein Skript zu akzeptieren, wo ich wÃ¤re&#xD;leisten viele Stunden, damit Menschen, die dieses Modul ordnungsgemÃ¤Ã zu integrieren und&#xD;Schreiben Sie zusÃ¤tzliche Elemente fÃ¼r jedermann. Dies ist seit der e-Mail aufgetreten.&#xD;WÃ¼rmer vom August 2003 stark gefÃ¤hrdet meine e-Mail-Adresse angezeigt&#xD;hier, wo ich hatte Umgang mit Tausenden von fehlerhaften angegriffen&#xD;e-Mails pro Tag zurÃ¼ckgegeben. Ich kann in regelmÃ¤Ãigen AbstÃ¤nden versuchen, um es wieder einzuschalten damit&#xD;Bitte zurÃ¼ck oder versuchen Sie es erneut, nachdem der Staub gelegt hat. Ich muss auch sagen:&#xD;wie ruinieren kÃ¶nnen, unsere FÃ¤higkeiten und unglaublichen Idee wie die&#xD;Internet fÃ¼r die Kommunikation ist abschÃ¤tzig. Ich habe jahrelang versucht.&#xD;andere zurÃ¼ckzukehren BeitrÃ¤ge fÃ¼r meinen Erfolg auf das&#xD;Medium. Dank des Interesses habe ich erhalten.
+</font>
+<hr size="1">
+Dieses Formular-Validierung-Tool kann prÃ¼fen
+<b>
+Pflichtfelder, Integer, e-Mail und Datum
+</b>
+in your forms.
+It is easily portable to all your forms and will help save server side
+resources from form field validation
+and page reloads. All the messages are customized in the hidden form
+element where you also select the validation requirement. You can mix
+the required element with any of the other elements.
+This code is completely portable and can be used with any form by just
+adding your hidden elements appropriately and adding the onClick
+command to a button.
+<br>
+<br>
+
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#b6dada">
+<font size="+2">
+Nach den Regeln.
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+1)
+</b>
+To set a required field use your existing field name and add
+an r_ to the beginning of the field name and create a hidden element.
+<br>
+
+<b>
+BEISPIEL:
+</b>
+<br>
+&lt;input type="text" name="your_fieldname"&gt;
+<br>
+&lt;input type="hidden" name="r_your_fieldname" value="Required error message goes here"&gt;
+<p>
+
+<b>
+2)
+</b>
+Um eine Ganzzahl Feld verwenden Sie Ihren vorhandenen Feldnamen und fÃ¼gen&#xD;ein I_ an den Anfang des Feldes benennen und erstellen ein ausgeblendetes Element.
+<br>
+
+<b>
+BEISPIEL:
+</b>
+<br>
+&lt;input type="text" name="your_fieldname"&gt;
+<br>
+&lt;input type="hidden" name="i_your_fieldname" value="Integer error message goes here"&gt;
+</p>
+<p>
+
+<b>
+3)
+</b>
+Legen Sie ein Datum Feldeinsatz Ihre vorhandenen Feldnamen und HinzufÃ¼gen einer&#xD;D_ an den Anfang des Feldes benennen und erstellen ein ausgeblendetes Element. Dies&#xD;Feld "Datum" akzeptiert nur das Format MM/TT/JJ oder m/YY.
+<br>
+
+<b>
+BEISPIEL:
+</b>
+<br>
+&lt;input type="text" name="your_fieldname"&gt;
+<br>
+&lt;input type="hidden" name="d_your_fieldname" value="Date error message goes here"&gt;
+<br>
+<br>
+
+<b>
+4)
+</b>
+Ein e-Mail-Feld verwenden Ã¼berprÃ¼fen Ihre bestehenden Feldname und&#xD;Beginn des Feldnamens eine E_ hinzu und erstellen Sie eine versteckte&#xD;Element.
+<br>
+
+<b>
+BEISPIEL:
+</b>
+<br>
+&lt;input type="text" name="your_fieldname"&gt;
+<br>
+&lt;input type="hidden" name="e_your_fieldname" value="The email address format is incorrect"&gt;
+<br>
+<br>
+
+</p>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#b6dada">
+
+<font size="+2">
+Die Initialisierung des Skripts.
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+Sie mÃ¼ssen verwenden Sie die Type = "button" nicht den Typ = "submit" fÃ¼r den SUBMIT-Button sendet das Javascript senden fÃ¼r Sie.
+<br>
+
+<font size="-1">
+<b>
+BEISPIEL:
+</b>
+<br>
+&lt;input type=button Value="Button Message Here" onclick="check(form,form.elements.length)"&gt;
+</font>
+
+<br>
+<br>
+<hr size="1">
+
+<font size="+2">
+In diesem Beispiel nutzt alle drei Validierungs-Tools in Kombination.
+</font>
+<p>
+
+</p>
+<form action="thanks.html">
+
+<table border="0" width="575">
+
+<tbody>
+<tr>
+<td>
+
+<b>
+E-Mail-Adresse:
+</b>
+
+</td>
+
+<td>
+
+<input name="email" type="text">
+
+<input name="e_email" value="Email address format is incorrect" type="hidden">
+
+<input name="r_email" value="Email address is required" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required and email validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Vorname:
+</b>
+
+</td>
+
+<td>
+
+<input name="fname" type="text">
+
+<input name="r_fname" value="First name is required" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Nachname:
+</b>
+
+</td>
+
+<td>
+
+<input name="lname" type="text">
+
+<input name="r_lname" value="Last name is required" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Address 1:
+</b>
+
+</td>
+
+<td>
+
+<input name="address1" type="text">
+
+<input name="r_address1" value="Address is required" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Adresse 2:
+</b>
+
+</td>
+
+<td>
+
+<input name="address2" type="text">
+
+</td>
+<td>
+<font size="-1">
+(no validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Wie alt bist du:
+</b>
+
+</td>
+
+<td>
+
+<input name="age" type="text">
+
+<input name="r_age" value="Age is required" type="hidden">
+
+<input name="i_age" value="Age must be a valid integer" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required and integer validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Jahren haben Sie scripting wurde:
+</b>
+
+</td>
+
+<td>
+
+<input name="scripting" type="text">
+
+<!--- <input type="hidden" name="r_scripting" value="Years scripting required"> --->
+
+<input name="i_scripting" value="Years scripting must be a valid integer" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(integer validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+Was ist heutiges Datum:
+</b>
+
+<font size="-1">
+(mm/dd/yy)
+</font>
+
+</td>
+
+<td>
+
+<input name="todays_dt" type="text">
+
+<!--- <input type="hidden" name="r_todays_dt" value="Today's date is required"> --->
+
+<input name="d_todays_dt" value="The date is not valid or the format is incorrect. Please format mm/dd/yy." type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(date validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+WÃ¤hlen Sie einen Betreff:
+</b>
+
+</td>
+
+<td>
+
+<select name="subject">
+<option value="">
+WÃ¤hlen Sie eine
+</option>
+<option value="Javascript">
+JavaScript
+</option>
+<option value="C">
+C
+</option>
+<option value="C++">
+C++
+</option>
+<option value="Visual Basic">
+Visual Basic
+</option>
+</select>
+
+<input name="r_subject" value="You must select a subject" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+WÃ¤hlen Sie ein Optionsfeld:
+</b>
+
+</td>
+
+<td>
+
+<input name="test" value="1" type="radio">
+Test 1
+<input name="test" value="2" type="radio">
+Test 2
+<input name="test" value="3" type="radio">
+Test 3
+<input name="r_test" value="Please select a radio button 1, 2 or 3" type="hidden">
+
+</td>
+<td>
+<font size="-1">
+(required validation)
+</font>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<b>
+WÃ¤hlen Sie aus, dass alle gelten:
+</b>
+
+</td>
+
+<td>
+
+<input name="test1" value="1" type="checkbox">
+Test 1
+<input name="r_test1" value="You must select checkbox test 1" type="hidden">
+
+<input name="test2" value="2" type="checkbox">
+Test 2
+<input name="test3" value="3" type="checkbox">
+Test 3
+</td>
+<td>
+<font size="-1">
+(required validation on box 1)
+</font>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+
+<input value="Submit this form for validation" onclick="check(form,form.elements.length)" type="button">
+
+</td>
+</tr>
+
+</tbody>
+</table>
+
+</form>
+
+<hr size="1">
+
+<center>
+<font size="-1">
+� 2004 Artswork
+</font>
+<p>
+
+<img src="/cgi-bin/counter?perflunk">
+
+</p>
+</center>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
