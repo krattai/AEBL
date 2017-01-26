@@ -1,0 +1,3 @@
+AEBL is designed to ultimately be brokerless/stateless/p2p and so wouldn't generally have a primary server.  All devices would function as upstream hosts.
+
+With that ideal, a brand new network would require a primary server to bootstrap the system.  Having a process and scripts to create this will be very useful.
