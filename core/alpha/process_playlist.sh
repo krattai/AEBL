@@ -61,7 +61,9 @@ FIRST_RUN_DONE="/home/pi/.firstrundone"
 
 # If you want to switch omxplayer to something else, or add parameters, use these
 PLAYER="omxplayer"
-PLAYER_OPTIONS=""
+# PLAYER_OPTIONS=""
+# PLAYER_OPTIONS="-o hdmi"
+PLAYER_OPTIONS="-o both --vol -3000"
 
 # Where is the playlist
 PLAYLIST_FILE="${T_STO}/.playlist"
