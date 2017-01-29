@@ -7,7 +7,7 @@
 # terms of the Do What The Fuck You Want To Public License, Version 2,
 # as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 #
-# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 #
 # May 14, 2014 Larry added GPIO 23 to switch on video
 #
