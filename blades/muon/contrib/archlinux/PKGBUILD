@@ -1,0 +1,50 @@
+# Maintainer:  Xiaoxiao <i@pxx.io>
+
+pkgname=muon-git
+pkgver=r
+pkgrel=1
+pkgdesc='A fast, obscured stateless VPN'
+arch=('i686' 'x86_64' 'arm')
+url='https://github.com/XiaoxiaoPu/muon'
+license=('GPL3')
+depends=('iproute2')
+makedepends=('git')
+provides=('muon')
+source=('git+https://github.com/XiaoxiaoPu/muon.git'
+        'https://github.com/sustrik/libmill/archive/master.tar.gz')
+sha256sums=('SKIP'
+            'SKIP')
+
+pkgver() {
+    cd "${srcdir}/muon"
+    echo "r$(git rev-list --count HEAD)"
+}
+
+prepare() {
+    cd "${srcdir}"
+    rm -rf libmill
+    mv libmill-master libmill
+    cd libmill
+    ./autogen.sh
+    ./configure --enable-shared=false
+    make
+}
+
+build() {
+    cd "${srcdir}/muon"
+    autoreconf -if
+    export CPPFLAGS="-I${srcdir}/libmill"
+    export LDFLAGS="-L${srcdir}/libmill/.libs"
+    ./configure --prefix=/usr --sysconfdir=/etc
+    make
+}
+
+check() {
+    cd "${srcdir}/muon"
+    make check
+}
+
+package() {
+    cd "${srcdir}/muon"
+    make DESTDIR="${pkgdir}" install
+}
