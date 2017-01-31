@@ -1,0 +1,42 @@
+# Last Modified: Thu Jul  9 10:27:23 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-arm {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common> 
+
+  /tmp/gnunet-*-runtime/ rw,
+# /tmp/gnunet-*-runtime/gnunet-service-arm.sock rw,
+# /tmp/gnunet-*-runtime/gnunet-service-namestore.sock r,
+# /tmp/gnunet-*-runtime/gnunet-service-identity.sock r,
+# /tmp/gnunet-*-runtime/gnunet-service-gns.sock r,
+  
+  /tmp/gnunet-*-runtime/gnunet-service-*.sock rw,
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-arm mr,
+
+  @{GNUNET_PREFIX}/lib/gnunet/ r,
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/ r,
+
+  #GNUnet daemon
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-daemon-exit Px,
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-daemon-hostlist Px,
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-daemon-latency-logger Px,
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-daemon-testbed-underlay Px,
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-daemon-topology Px,
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-daemon-pt Px,
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-dns2gns Px,
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-gns-proxy Px,
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-namestore-fcfsd Px,
+
+  #GNUnet service
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-* Px,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}

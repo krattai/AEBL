@@ -1,0 +1,13 @@
+# Last Modified: Tue Jul 21 16:45:05 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-dns2gns {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-dns2gns mr,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}

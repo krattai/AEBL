@@ -1,0 +1,23 @@
+# Last Modified: Thu Jul  9 10:01:49 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-namecache {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+  #include <abstractions/gnunet-db>
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-namecache mr,
+
+  #Gnunet plugin
+# @{GNUNET_PREFIX}/lib/gnunet/libgnunet_plugin_namecache_*.la r,
+  @{GNUNET_PREFIX}/lib/gnunet/libgnunet_plugin_namecache_*.so mr,
+
+  @{GNUNET_USER}/.local/share/gnunet/namecache/ r,
+  @{GNUNET_USER}/.local/share/gnunet/namecache/*.db rwk,
+  @{GNUNET_USER}/.local/share/gnunet/namecache/*.db-journal rw,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}
+

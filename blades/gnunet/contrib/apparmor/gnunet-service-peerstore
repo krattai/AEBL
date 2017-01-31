@@ -1,0 +1,21 @@
+# Last Modified: Mon Jul 27 11:06:13 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-peerstore {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+  #include <abstractions/gnunet-db>
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-peerstore mr,
+
+  #Gnunet Plugin
+# @{GNUNET_PREFIX}/lib/gnunet/libgnunet_plugin_peerstore_*.la r,
+  @{GNUNET_PREFIX}/lib/gnunet/libgnunet_plugin_peerstore_*.so mr,
+
+  @{GNUNET_USER}/.local/share/gnunet/peerstore/*.db rwk,
+  @{GNUNET_USER}/.local/share/gnunet/peerstore/*.db-journal rw,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}

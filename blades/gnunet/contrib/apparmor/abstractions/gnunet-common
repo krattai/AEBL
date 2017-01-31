@@ -1,0 +1,12 @@
+# This files contains common permissions for gnunet
+
+  #GNUnet configuration file
+  @{GNUNET_PREFIX}/share/gnunet/config.d/       r,
+  @{GNUNET_PREFIX}/share/gnunet/config.d/*.conf r,
+  
+  /etc/gnunet.conf 		 	   r,
+  @{HOME}/.config/gnunet.conf 	   r,
+  owner @{GNUNET_USER}/.config/gnunet.conf r,
+
+  #GNUnet librairies
+  @{GNUNET_PREFIX}/lib/libgnunet*.so.* 	  mr,

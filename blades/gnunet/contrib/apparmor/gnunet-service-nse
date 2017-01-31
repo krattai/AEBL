@@ -1,0 +1,21 @@
+# Last Modified: Fri Jul  3 17:37:49 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-nse {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-nse mr,
+
+  /tmp/gnunet-system-runtime/gnunet-service-nse.sock rw,
+
+  @{HOME}/.local/share/gnunet/private_key.ecc rk,
+  owner @{HOME}/.local/share/gnunet/nse/proof.dat rw,
+
+  @{GNUNET_USER}/.local/share/gnunet/private_key.ecc rwk,
+  @{GNUNET_USER}/.local/share/gnunet/nse/proof.dat rw,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}
