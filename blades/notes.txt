@@ -1,3 +1,6 @@
+170206 - Reminder!
+- review and cull blade options as they become redundant or irrelevant
+
 http://wiki.ucis.nl/Anonet
 http://camlistore.org/
 https://github.com/jewel/clearskies
