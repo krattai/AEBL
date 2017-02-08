@@ -394,3 +394,8 @@ https://www.raspberrypi.org/forums/viewtopic.php?f=38&t=60700
 ~~~~~~~~~~~~~~~~~~~~
 
 need to further seperate alladin code from AEBL codebase
+
+~~~~~~~~~~~~~~~~~~
+
+Reminder to work out 6to4 networking if dual stack not available:
+http://backreference.org/2010/06/27/quick-and-dirty-ipv6-with-6to4/
