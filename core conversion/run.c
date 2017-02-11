@@ -1,7 +1,7 @@
 /* run.c: replacement for startup.sh and run.sh
            this is the master program that starts and manages system
 
-Copyright (C) 2014 - 17 Uvea I. S., Kevin Rattai
+Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 Date created:	October 10, 2014
 
 */
