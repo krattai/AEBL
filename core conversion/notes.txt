@@ -1,1 +1,3 @@
 Should be creating make files and other associated build scripts to do conversions, installs, upgrades, etc.
+
+Certain scripts should still be seperate from run.c, as run.c should manage system and calls, where a seperate script should manage the playback of content, regardless of what the rest of the system is doing.
