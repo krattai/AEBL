@@ -399,3 +399,8 @@ need to further seperate alladin code from AEBL codebase
 
 Reminder to work out 6to4 networking if dual stack not available:
 http://backreference.org/2010/06/27/quick-and-dirty-ipv6-with-6to4/
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+for reference, sending to tunnel channel:
+mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn tun0 $IPt0 is online." -h "ihdn.ca"
