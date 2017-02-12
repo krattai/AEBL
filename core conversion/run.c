@@ -17,6 +17,8 @@ void startup(void)
     /* What follows is the original source from the startup.sh app */
     /*   Should be part of a main.c function startup()             */
 
+
+/*
     cd $HOME
 
     cp -p /home/pi/.scripts/* /run/shm/scripts
@@ -110,6 +112,8 @@ void startup(void)
 
 }
 
+*/
+
 void main(void)
 {
     char AEBL_TEST="/home/pi/.aebltest",
@@ -138,7 +142,7 @@ void main(void)
 
     CRONCOMMFILE="${T_STO}/.tempcron"
  
-    # set to home directory
+//    # set to home directory
  
     cd $HOME
 
@@ -146,16 +150,16 @@ void main(void)
 
     while [ -f "${T_STO}/.sysrunning" ]; do
 
-        # log .id
+//        # log .id
 
-    #    cat .id >> log.txt
+//    #    cat .id >> log.txt
 
         if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
             $T_SCR/./aebl_play.sh
 
             if [ "${MACe0}" == 'b8:27:eb:37:07:5a' ] && [ -f "${AEBL_SYS}" ]; then
-    #            echo "MAC is ending :5a so touching .aeblsys_test." >> log.txt
-    #            echo $(date +"%T") >> log.txt
+//    #            echo "MAC is ending :5a so touching .aeblsys_test." >> log.txt
+//    #            echo $(date +"%T") >> log.txt
                 touch .aeblsys_test
                 touch .aebltest
                 rm ${AEBL_SYS}
@@ -171,19 +175,19 @@ void main(void)
             fi
         fi
 
-        # Check nothing new
-        # This section to watch and react to requested or auto change in system
+//        # Check nothing new
+//        # This section to watch and react to requested or auto change in system
 
 
         if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ] && [ ! -f "${NOTHING_NEW}" ]; then
-    #        echo "Setting system to not check updates with .nonew" >> log.txt
-    #        echo $(date +"%T") >> log.txt
+//    #        echo "Setting system to not check updates with .nonew" >> log.txt
+//    #        echo $(date +"%T") >> log.txt
             touch $T_STO/.nonew
         fi
 
     done
 
-    # if .sysrunning token cleared, loop back to startup.sh
+//    # if .sysrunning token cleared, loop back to startup.sh
 
     $T_SCR/./startup.sh &
 
