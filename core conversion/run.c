@@ -125,6 +125,7 @@ void main(void)
          NETWORK_SYS="${T_STO}/.network", /* will be used in conj with path */
          OFFLINE_SYS="${T_STO}/.offline"; /* will be used in conj with path */
 
+        /* This will only be necessary until full integration is complete */
 	printf("\n\nThis applications manages the system\n");
 	system("startup.sh");
 	system("run.sh");
