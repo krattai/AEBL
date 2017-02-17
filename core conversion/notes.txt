@@ -6,3 +6,10 @@ Need to review current code and determine logic and structure of conversion appl
 
 MQTT references for core conversion can be found within MQTT repositories, although specific code references can be found in noo-ebs on local drive, at:
 /home/kevin/workspace/noo-ebs/ref_code/mqtt
+
+Also, possible future for AEBL expansion, being open stack or similar:
+https://blog.hypriot.com/
+
+https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
+
+
