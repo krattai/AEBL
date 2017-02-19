@@ -12,4 +12,4 @@ https://blog.hypriot.com/
 
 https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
 
-
+This may have been mentioned in another part of AEBL project, but the AEBL project will establish a temporary server to handle messaging, etc until such a time that it is converted to P2P / cloud
