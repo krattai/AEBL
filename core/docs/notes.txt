@@ -404,3 +404,7 @@ http://backreference.org/2010/06/27/quick-and-dirty-ipv6-with-6to4/
 
 for reference, sending to tunnel channel:
 mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn tun0 $IPt0 is online." -h "ihdn.ca"
+
+~~~~~~~~~~~~~~~~~~~~
+
+For later, cloud reference, KVM exports to be able to import / migrate to openstack
