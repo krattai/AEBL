@@ -1,0 +1,1 @@
+The notes contained in this folder are intended to express setting up a host for the AEBL broker and ultimately its conversion to a p2p broker system.
