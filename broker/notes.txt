@@ -1,1 +1,13 @@
 The notes contained in this folder are intended to express setting up a host for the AEBL broker and ultimately its conversion to a p2p broker system.
+
+This may not be the best place for this, but as a reference, in the event an external drive is added to host and does not post (show), then the following may be helpful:
+https://ubuntuforums.org/showthread.php?t=1586206
++ nb: specifically regarding sudo modprobe usb_storage
+
+then mount drive:
+https://help.ubuntu.com/community/Mount/USB
+
+And share drive:
+https://ubuntuforums.org/showthread.php?t=1659816
+
+smbd may need to be started as may not be started at boot
