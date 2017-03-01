@@ -1,3 +1,7 @@
 What is a NOC?
 
 https://en.wikipedia.org/wiki/Network_operations_center
+
+I have been formally working on a technology framework for the past 5 years that began as 
+
+
