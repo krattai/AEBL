@@ -18,6 +18,9 @@
 # Useage:
 # There is no useage, this is a standalone script
 
+
+# May want to look into ensuring base dev tools for make/build/compile available
+
 LOCAL_SYS="/home/pi/.local"
 NETWORK_SYS="/home/pi/.network"
 OFFLINE_SYS="/home/pi/.offline"
