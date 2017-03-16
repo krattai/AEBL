@@ -1,7 +1,7 @@
 #!/bin/bash
 # runs on boot
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 #
 # Boot up also included the following changes from:
 # http://blog.sheasilverman.com/2013/09/adding-a-startup-movie-to-your-raspberry-pi/
@@ -58,6 +58,7 @@ case "$1" in
     fi
     echo "Could do more here"
     ;;
+# Check to see if bootup.sh continues running, as may want to stop it at startup.sh
   stop)
     echo "Stopping script bootup.sh"
     echo "Could do more here"
