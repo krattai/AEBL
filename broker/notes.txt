@@ -14,3 +14,7 @@ smbd may need to be started as may not be started at boot
 
 Also point of interest regarding running and managing multiple kvm hosts, if relevant:
 https://sandilands.info/sgordon/linux-servers-as-kvm-virtual-machines
+
+~~~~~~~~~~~
+
+set up a cloud for cdn
