@@ -18,3 +18,4 @@ https://sandilands.info/sgordon/linux-servers-as-kvm-virtual-machines
 ~~~~~~~~~~~
 
 set up a cloud for cdn
+Really need to set up nanomsg or which ever message queue capable of P2P
