@@ -24,3 +24,8 @@ http://nanomsg.org/
 
 Survey method:
 http://250bpm.com/blog:5
+
+~~~~~~~~~~~~~~
+
+check attached devices:
+nmap -sP 10.8.0.1/24
