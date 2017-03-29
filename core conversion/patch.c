@@ -29,7 +29,8 @@ void startup(void)
 
     const char NOTHING_NEW[] ="${T_STO}/.nonew";
 
-    MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
+    /*  determine proper method to get IP as done in bash */
+    const char MACe0[] = $(ip link show eth0 | awk '/ether/ {print $2}')
 
     cd $HOME
 
