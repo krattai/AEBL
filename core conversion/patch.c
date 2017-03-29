@@ -1,7 +1,7 @@
 /* patch.c: replacement for patch.sh and upgrade.sh
            this is the patching and upgrade subsystem cron job
 
-Copyright (C) 2014 Uvea I. S., Kevin Rattai
+Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 Date created:	October 10, 2014
 
 */
@@ -14,22 +14,20 @@ Date created:	October 10, 2014
 void startup(void)
 {
 
-    /* What follows is the original source from the patch.sh app */
+    const char AEBL_TEST[] = "/home/pi/.aebltest";
+    const char AEBL_SYS[] ="/home/pi/.aeblsys";
+    const char IHDN_TEST[] ="/home/pi/.ihdntest";
+    const char IHDN_SYS[] ="/home/pi/.ihdnsys";
+    const char TEMP_DIR[] ="/home/pi/tmp";
 
-    AEBL_TEST="/home/pi/.aebltest"
-    AEBL_SYS="/home/pi/.aeblsys"
-    IHDN_TEST="/home/pi/.ihdntest"
-    IHDN_SYS="/home/pi/.ihdnsys"
-    TEMP_DIR="/home/pi/tmp"
+    const char T_STO[] ="/run/shm";
+    const char T_SCR[] ="/run/shm/scripts";
 
-    T_STO="/run/shm"
-    T_SCR="/run/shm/scripts"
+    const char LOCAL_SYS[] ="${T_STO}/.local";
+    const char NETWORK_SYS[] ="${T_STO}/.network";
+    const char OFFLINE_SYS[] ="${T_STO}/.offline";
 
-    LOCAL_SYS="${T_STO}/.local"
-    NETWORK_SYS="${T_STO}/.network"
-    OFFLINE_SYS="${T_STO}/.offline"
-
-    NOTHING_NEW="${T_STO}/.nonew"
+    const char NOTHING_NEW[] ="${T_STO}/.nonew";
 
     MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
