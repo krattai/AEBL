@@ -116,14 +116,26 @@ void startup(void)
 
 void main(void)
 {
-    char AEBL_TEST="/home/pi/.aebltest",
-         AEBL_SYS="/home/pi/.aeblsys",
-         TEMP_DIR="/home/pi/tmp",
-         T_STO="/run/shm",
-         T_SCR="/run/shm/scripts",
-         LOCAL_SYS="${T_STO}/.local", /* will be used in conj with path */
-         NETWORK_SYS="${T_STO}/.network", /* will be used in conj with path */
-         OFFLINE_SYS="${T_STO}/.offline"; /* will be used in conj with path */
+    const char AEBL_TEST[] = "/home/pi/.aebltest",
+               AEBL_SYS[] = "/home/pi/.aeblsys",
+               TEMP_DIR[] = "/home/pi/tmp",
+               T_STO[] = "/run/shm",
+               T_SCR[] = "/run/shm/scripts",
+               LOCAL_SYS[] = "${T_STO}/.local", /* will be used in conj with path */
+               NETWORK_SYS[] = "${T_STO}/.network", /* will be used in conj with path */
+               OFFLINE_SYS[] = "${T_STO}/.offline"; /* will be used in conj with path */
+
+
+    const char NOTHING_NEW[] = "${T_STO}/.nonew"
+    const char NEW_PL[] = "${T_STO}/.newpl"
+    const char CRONCOMMFILE[] = "${T_STO}/.tempcron"
+
+    char IPw0[] = $(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+    char MACw0[] = $(ip link show wlan0 | awk '/ether/ {print $2}')
+    char IPe0[] = $(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+    char MACe0[] = $(ip link show eth0 | awk '/ether/ {print $2}')
+
+
 
         /* This will only be necessary until full integration is complete */
 	printf("\n\nThis applications manages the system\n");
@@ -133,15 +145,6 @@ void main(void)
     /* What follows is the original source from the run.sh app     */
     /*   Should be part of a main.c function run() or main()       */
 
-    NOTHING_NEW="${T_STO}/.nonew"
-    NEW_PL="${T_STO}/.newpl"
-
-    IPw0=$(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
-    MACw0=$(ip link show wlan0 | awk '/ether/ {print $2}')
-    IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
-    MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
-
-    CRONCOMMFILE="${T_STO}/.tempcron"
  
 //    # set to home directory
  
