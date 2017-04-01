@@ -63,6 +63,8 @@ FIRST_RUN_DONE="/home/pi/.firstrundone"
 PLAYER="omxplayer"
 # PLAYER_OPTIONS=""
 # PLAYER_OPTIONS="-o hdmi"
+# in certain situations:
+# PLAYER_OPTIONS="-o hdmi -r"
 PLAYER_OPTIONS="-o both --vol -3000"
 
 # Where is the playlist
