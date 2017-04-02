@@ -1,7 +1,7 @@
 /* l-ctrl.c: replacement for l-ctrl.sh and synfilz.sh
            this is the master cron job that handles system syncs
 
-Copyright (C) 2014 Uvea I. S., Kevin Rattai
+Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 Date created:	October 10, 2014
 
 */
@@ -13,41 +13,41 @@ Date created:	October 10, 2014
 
 void main(void)
 {
-    char AEBL_TEST="/home/pi/.aebltest",
-         AEBL_SYS="/home/pi/.aeblsys",
-         TEMP_DIR="/home/pi/tmp",
-         T_STO="/run/shm",
-         T_SCR="/run/shm/scripts",
-         LOCAL_SYS="${T_STO}/.local", /* will be used in conj with path */
-         NETWORK_SYS="${T_STO}/.network", /* will be used in conj with path */
-         OFFLINE_SYS="${T_STO}/.offline"; /* will be used in conj with path */
+    const char AEBL_TEST[] = "/home/pi/.aebltest",
+         AEBL_SYS[] = "/home/pi/.aeblsys",
+         TEMP_DIR[] = "/home/pi/tmp",
+         T_STO[] = "/run/shm",
+         T_SCR[] = "/run/shm/scripts",
+         LOCAL_SYS[] = "${T_STO}/.local", /* will be used in conj with path */
+         NETWORK_SYS[] = "${T_STO}/.network", /* will be used in conj with path */
+         OFFLINE_SYS[] = "${T_STO}/.offline"; /* will be used in conj with path */
 
 	printf("\n\nThis applications manages the system\n");
 	system("startup.sh");
 	system("run.sh");
 
+    const char AUTOOFF_CHECK_FILE[] = "/home/pi/.noauto"
+    const char FIRST_RUN_DONE[] = "/home/pi/.firstrundone"
+    const char AEBL_TEST[] = "/home/pi/.aebltest"
+    const char AEBL_SYS[] = "/home/pi/.aeblsys"
+    const char IHDN_TEST[] = "/home/pi/.ihdntest"
+    const char IHDN_SYS[] = "/home/pi/.ihdnsys"
+    const char IHDN_DET[] = "/home/pi/.ihdndet"
+    const char TEMP_DIR[] = "/home/pi/tmp"
+
+    const char T_STO[] = "/run/shm"
+    const char T_SCR[] = "/run/shm/scripts"
+
+    const char LOCAL_SYS[] = "${T_STO}/.local"
+    const char NETWORK_SYS[] = "${T_STO}/.network"
+    const char OFFLINE_SYS[] = "${T_STO}/.offline"
+
+    const char NOTHING_NEW[] = "${T_STO}/.nonew"
+    const char NEW_PL[] = "${T_STO}/.newpl"
+
+    const char MACe0[] = $(ip link show eth0 | awk '/ether/ {print $2}')
+
     /* What follows is the original source from the l-ctrl.sh app  */
-
-    AUTOOFF_CHECK_FILE="/home/pi/.noauto"
-    FIRST_RUN_DONE="/home/pi/.firstrundone"
-    AEBL_TEST="/home/pi/.aebltest"
-    AEBL_SYS="/home/pi/.aeblsys"
-    IHDN_TEST="/home/pi/.ihdntest"
-    IHDN_SYS="/home/pi/.ihdnsys"
-    IHDN_DET="/home/pi/.ihdndet"
-    TEMP_DIR="/home/pi/tmp"
-
-    T_STO="/run/shm"
-    T_SCR="/run/shm/scripts"
-
-    LOCAL_SYS="${T_STO}/.local"
-    NETWORK_SYS="${T_STO}/.network"
-    OFFLINE_SYS="${T_STO}/.offline"
-
-    NOTHING_NEW="${T_STO}/.nonew"
-    NEW_PL="${T_STO}/.newpl"
-
-    MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
     cd $HOME
 
