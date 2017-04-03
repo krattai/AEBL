@@ -200,6 +200,6 @@ void main(void)
 
 //    # if .sysrunning token cleared, loop back to startup.sh
 
-    $T_SCR/./startup.sh &
+	system("startup.sh");
 
 }
