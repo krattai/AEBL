@@ -116,6 +116,10 @@ void startup(void)
 
 void main(void)
 {
+
+/* will likely change char assignment and usage to pointer */
+/* ie. car *AEBL_TEST = "/home/pi/.aebltest"               */
+
     const char AEBL_TEST[] = "/home/pi/.aebltest",
                AEBL_SYS[] = "/home/pi/.aeblsys",
                TEMP_DIR[] = "/home/pi/tmp",
@@ -126,15 +130,16 @@ void main(void)
                OFFLINE_SYS[] = "${T_STO}/.offline"; /* will be used in conj with path */
 
 
-    const char NOTHING_NEW[] = "${T_STO}/.nonew"
-    const char NEW_PL[] = "${T_STO}/.newpl"
-    const char CRONCOMMFILE[] = "${T_STO}/.tempcron"
+    const char NOTHING_NEW[] = "${T_STO}/.nonew";
+    const char NEW_PL[] = "${T_STO}/.newpl";
+    const char CRONCOMMFILE[] = "${T_STO}/.tempcron";
 
-    char IPw0[] = $(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
-    char MACw0[] = $(ip link show wlan0 | awk '/ether/ {print $2}')
-    char IPe0[] = $(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
-    char MACe0[] = $(ip link show eth0 | awk '/ether/ {print $2}')
+    char IPw0[] = $(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1);
+    char MACw0[] = $(ip link show wlan0 | awk '/ether/ {print $2}');
+    char IPe0[] = $(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1);
+    char MACe0[] = $(ip link show eth0 | awk '/ether/ {print $2}');
 
+    int retcode;
 
 
         /* This will only be necessary until full integration is complete */
@@ -148,7 +153,9 @@ void main(void)
  
 //    # set to home directory
  
-    cd $HOME
+/*    cd $HOME */
+    retcode = chdir (getenv("HOME"));
+
 
     touch $T_STO/.sysrunning
 
