@@ -8,6 +8,11 @@ Date created: April 3, 2017
 #include <stdio.h>
 #include <stdlib.h>
 
+/* for run.c testing */
+#include <sys/types.h>
+#include <unistd.h>
+
+
 int main ()
 {
    printf("PATH : %s\n", getenv("PATH"));
