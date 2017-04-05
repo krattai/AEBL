@@ -408,3 +408,10 @@ mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn tun0 $IPt0 is online." -h "i
 ~~~~~~~~~~~~~~~~~~~~
 
 For later, cloud reference, KVM exports to be able to import / migrate to openstack
+
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+For possible future reference, country codes:
+https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+https://countrycode.org/
+
