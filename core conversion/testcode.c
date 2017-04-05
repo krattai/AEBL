@@ -30,10 +30,12 @@ int main ()
     const char NEW_PL[] = "${T_STO}/.newpl";
     const char CRONCOMMFILE[] = "${T_STO}/.tempcron";
 
+/* oops, the following need to be converted to c syntax and function
     char IPw0[] = $(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1);
     char MACw0[] = $(ip link show wlan0 | awk '/ether/ {print $2}');
     char IPe0[] = $(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1);
     char MACe0[] = $(ip link show eth0 | awk '/ether/ {print $2}');
+*/
 
     int retcode;
    printf("PATH : %s\n", getenv("PATH"));
