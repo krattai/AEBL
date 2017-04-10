@@ -4,6 +4,8 @@
 Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 Date created:	October 10, 2014
 
+Might want to daemonize this code and run at bootup, possibly in lieu of bootup.sh
+
 */
 
 #include <sys/types.h>
