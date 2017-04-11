@@ -20,6 +20,8 @@
        https://dev.eclipse.org/mhonarc/lists/mosquitto-dev/msg01248.html
    another referenec for mosquitto-dev from:
        https://github.com/jpmens/mosquitto-auth-plug/issues/27
+
+   for raspbian, libmosquitto-dev needs to be installed
 */
 
 #include <stdlib.h>
