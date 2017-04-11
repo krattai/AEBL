@@ -14,6 +14,10 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+/* krattai 2017: after installing mosquitto-dev, was able to compile with
+                                                 gcc mqtt_client.c -lmosquitto -o client.out
+*/
+
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
