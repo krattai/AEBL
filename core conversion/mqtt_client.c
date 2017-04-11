@@ -43,7 +43,7 @@
 #define KEEPALIVE_SECONDS 60
 
 /* Hostname and port for the MQTT broker. */
-#define BROKER_HOSTNAME "localhost"
+#define BROKER_HOSTNAME "ihdn.ca"
 #define BROKER_PORT 1883
 
 struct client_info {
