@@ -23,7 +23,7 @@
 #include <assert.h>
 #include <err.h>
 
-#include <mosquitto.h>
+#include "mosquitto.h"
 
 /* The linked code creates a client that connects to a broker at
  * localhost:1883, subscribes to the topics "tick", "control/#{PID}",
