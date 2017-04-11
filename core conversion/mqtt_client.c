@@ -16,6 +16,8 @@
 
 /* krattai 2017: after installing mosquitto-dev, was able to compile with
                                                  gcc mqtt_client.c -lmosquitto -o client.out
+   reference for this specific information from:
+       https://dev.eclipse.org/mhonarc/lists/mosquitto-dev/msg01248.html
 */
 
 #include <stdlib.h>
