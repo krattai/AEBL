@@ -18,6 +18,8 @@
                                                  gcc mqtt_client.c -lmosquitto -o client.out
    reference for this specific information from:
        https://dev.eclipse.org/mhonarc/lists/mosquitto-dev/msg01248.html
+   another referenec for mosquitto-dev from:
+       https://github.com/jpmens/mosquitto-auth-plug/issues/27
 */
 
 #include <stdlib.h>
