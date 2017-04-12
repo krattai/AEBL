@@ -148,8 +148,11 @@ static void on_message(struct mosquitto *m, void *udata,
 
     struct client_info *info = (struct client_info *)udata;
 
+/* getting hostname */
+    char hostname[64];
+    gethostname(hostname, 64);
 
-    const char HOSTN[] = system("cat /etc/hostname");
+    puts(hostname);
 
     if (match(msg->topic, "tick")) {
         if (0 == strncmp(msg->payload, "tick", msg->payloadlen)) {
@@ -164,7 +167,7 @@ static void on_message(struct mosquitto *m, void *udata,
             size_t payload_sz = 32;
             char payload[payload_sz];
             size_t payloadlen = 0;
-            payloadlen = snprintf(HOSTN, payload, payload_sz, "tock %s %d %d",
+            payloadlen = snprintf(payload, payload_sz, "tock %d %d",
                 info->pid, info->tick_ct);
             if (payload_sz < payloadlen) {
                 die("snprintf\n");
