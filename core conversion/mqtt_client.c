@@ -57,7 +57,11 @@
  * keep-alive messages. */
 #define KEEPALIVE_SECONDS 60
 
-/* Hostname and port for the MQTT broker. */
+/*
+   Hostname and port for the MQTT broker.
+   Want to choose better broker, perhaps existing device with static IP
+*/
+
 #define BROKER_HOSTNAME "ihdn.ca"
 #define BROKER_PORT 1883
 
