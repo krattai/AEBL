@@ -152,7 +152,10 @@ static void on_message(struct mosquitto *m, void *udata,
 
     struct client_info *info = (struct client_info *)udata;
 
-/* getting hostname - adjusted to assumed 32 from assumed 64 */
+/*
+   getting hostname - adjusted to assumed 32 from assumed 64
+   find way to dynamically size hostname based on gethostname sizeof()
+*/
     char hostname[32];
     gethostname(hostname, 32);
 
