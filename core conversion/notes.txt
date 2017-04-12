@@ -24,3 +24,8 @@ ssh kevin@192.168.3.235 -L 5901:127.0.0.1:5900
 
 should be vnc into second kvm guest:
 ssh kevin@192.168.3.235 -L 5901:127.0.0.1:5901
+
+To find os-release:
+http://raspberrypi.stackexchange.com/questions/6974/how-can-i-determine-which-os-image-i-am-running
+
+
