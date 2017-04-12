@@ -23,6 +23,8 @@
 
    associated blog post for this example:
        https://spin.atomicobject.com/2014/03/19/mqtt-protocol-ethernet/
+   repo for source is here:
+       https://github.com/silentbicycle/mqtt_demo
 
    for raspbian, libmosquitto-dev needs to be installed
 */
