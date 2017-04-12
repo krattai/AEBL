@@ -18,7 +18,7 @@
                                                  gcc mqtt_client.c -lmosquitto -o client.out
    reference for this specific information from:
        https://dev.eclipse.org/mhonarc/lists/mosquitto-dev/msg01248.html
-   another referenec for mosquitto-dev from:
+   another referene for mosquitto-dev from:
        https://github.com/jpmens/mosquitto-auth-plug/issues/27
 
    associated blog post for this example:
@@ -148,9 +148,9 @@ static void on_message(struct mosquitto *m, void *udata,
 
     struct client_info *info = (struct client_info *)udata;
 
-/* getting hostname */
-    char hostname[64];
-    gethostname(hostname, 64);
+/* getting hostname - adjusted to assumed 32 from assumed 64 */
+    char hostname[32];
+    gethostname(hostname, 32);
 
     puts(hostname);
 
@@ -164,11 +164,13 @@ static void on_message(struct mosquitto *m, void *udata,
                 die("snprintf\n");
             }
 
-            size_t payload_sz = 32;
+/* adjusted size to add hostname, doubled as original 32 */
+            size_t payload_sz = 64;
             char payload[payload_sz];
             size_t payloadlen = 0;
-            payloadlen = snprintf(payload, payload_sz, "tock %d %d",
-                info->pid, info->tick_ct);
+/* added %s from hostname to payload */
+            payloadlen = snprintf(payload, payload_sz, "tock %s %d %d",
+                hostname, info->pid, info->tick_ct);
             if (payload_sz < payloadlen) {
                 die("snprintf\n");
             }
