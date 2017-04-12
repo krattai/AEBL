@@ -21,6 +21,9 @@
    another referenec for mosquitto-dev from:
        https://github.com/jpmens/mosquitto-auth-plug/issues/27
 
+   associated blog post for this example:
+       https://spin.atomicobject.com/2014/03/19/mqtt-protocol-ethernet/
+
    for raspbian, libmosquitto-dev needs to be installed
 */
 
