@@ -133,25 +133,33 @@ fi
 #   + Keep in mind if this script will allow any input or editing of files, this will also be done as root.
 #
 # this works
-# check ihdnnet
+# check for ihdnnet
 ping -c 1 10.8.0.1
 
 if [ $? -eq 0 ]; then
     touch $VPN_SYS
-    echo "VPN available."
+#     echo "VPN available."
+    hostn=$(cat /etc/hostname)
+    mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn ihdnnet available." -h "ihdn.ca" &
 else
     rm $VPN_SYS
+    hostn=$(cat /etc/hostname)
+    mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn restarting ihdnnet." -h "ihdn.ca" &
     sudo service openvpn restart
 fi
 
-#check aeblnet
+# check for aeblnet
 ping -c 1 10.8.44.1
 
 if [ $? -eq 0 ]; then
     touch $VPN_SYS
-    echo "VPN available."
+#     echo "VPN available."
+    hostn=$(cat /etc/hostname)
+    mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn aeblnet available." -h "ihdn.ca" &
 else
     rm $VPN_SYS
+    hostn=$(cat /etc/hostname)
+    mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn restarting aeblnet." -h "ihdn.ca" &
     sudo service openvpn restart
 fi
 
