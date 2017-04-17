@@ -29,3 +29,30 @@ http://250bpm.com/blog:5
 
 check attached devices:
 nmap -sP 10.8.0.1/24
+
+~~~~~~~~~~~~~~~
+
+https://www.google.ca/search?client=ubuntu&channel=fs&q=News&ie=utf-8&oe=utf-8&gfe_rd=cr&ei=pb7zWMidOK378Afih7KABw#channel=fs&q=raspbian+openvpn+client
+https://en.wikipedia.org/wiki/Point-to-Point_Protocol_daemon
+https://wiki.freeradius.org/guide/PopTop-HOWTO
+http://stackoverflow.com/questions/10234927/config-radius-server-to-authenticate-vpn-server
+http://www.fcoos.net/index.php/10-arrowzex-sample/recent-works/14-freeradius
+http://www.fcoos.net/index.php?option=com_content&view=article&id=14
+https://www.lowendtalk.com/discussion/22426/setup-multi-protocol-vpn-server-with-freeradius-authentication
+https://kb.juniper.net/InfoCenter/index?page=content&id=KB17337&pmv=print&actp=LIST
+https://doc.pfsense.org/index.php/Using_OpenVPN_With_FreeRADIUS
+https://forums.openvpn.net/viewtopic.php?t=21619
+http://techlinux.net/2014/01/configuring-openvpn-to-authenticate-with-freeradius-part-1/
+https://linotp.org/howtos/howto-openvpn.html
+http://kernelreloaded.com/openvpn-client-on-raspberry-pi/
+http://berndknows.blogspot.ca/2013/11/configure-raspberry-pi-as-openvpn-client.html
+http://www.pivpn.io/
+https://github.com/pivpn/pivpn
+https://openvpn.net/index.php/open-source/documentation/miscellaneous/78-static-key-mini-howto.html
+https://www.google.ca/search?client=ubuntu&channel=fs&q=59&ie=utf-8&oe=utf-8&gfe_rd=cr&ei=NUL0WM3_CK_78AfxuYkg#channel=fs&q=openvpn+server+ovpn+daemon
+https://serverfault.com/questions/526078/multiple-subnets-on-openvpn
+https://openvpn.net/index.php/open-source/documentation/howto.html
+https://openvpn.net/archive/openvpn-users/2005-02/msg00244.html
+https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=106717
+https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=160088
+
