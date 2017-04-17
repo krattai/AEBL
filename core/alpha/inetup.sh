@@ -133,7 +133,19 @@ fi
 #   + Keep in mind if this script will allow any input or editing of files, this will also be done as root.
 #
 # this works
+# check ihdnnet
 ping -c 1 10.8.0.1
+
+if [ $? -eq 0 ]; then
+    touch $VPN_SYS
+    echo "VPN available."
+else
+    rm $VPN_SYS
+    sudo service openvpn restart
+fi
+
+#check aeblnet
+ping -c 1 10.8.44.1
 
 if [ $? -eq 0 ]; then
     touch $VPN_SYS
