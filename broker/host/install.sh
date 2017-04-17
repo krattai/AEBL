@@ -2,6 +2,9 @@
 # This script should install ovpn
 # Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
 #
+# get here:
+#   wget https://github.com/krattai/AEBL/raw/master/broker/host/install.sh
+#
 
 sudo apt-get install p7zip-full
 
