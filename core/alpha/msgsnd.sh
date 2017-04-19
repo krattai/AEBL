@@ -1,9 +1,10 @@
 #!/bin/bash
 # AEBL send message to MQTT broker on $hostn channel
 #
-# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2017 Uvea I. S., Kevin Rattai
 #
 
+# This script may be used temporarily, to be replaced by compiled C application
 i="0"
 
 # should modify this loop to simply ping persistently
