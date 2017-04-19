@@ -58,7 +58,7 @@ if [ -f "${OFFLINE_SYS}" ]; then
 fi
 
 # Check internet availability against master control IP
-ping -c 1 184.71.76.158
+ping -c 1 github.com
 
 if [ $? -eq 0 ]; then
     touch $NETWORK_SYS
@@ -68,14 +68,14 @@ else
 fi
 
 # Check local network availability against local server
-ping -c 1 192.168.200.6
+# ping -c 1 192.168.200.6
 
-if [[ $? -eq 0 ]]; then
-    touch $LOCAL_SYS
-    echo "Local network available."
-else
-    rm $LOCAL_SYS
-fi
+# if [[ $? -eq 0 ]]; then
+#     touch $LOCAL_SYS
+#     echo "Local network available."
+# else
+#     rm $LOCAL_SYS
+# fi
 
 if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
     touch $OFFLINE_SYS
