@@ -72,11 +72,12 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait < 10 ]; do
 done
 
 if [ ! -f "scripts/create-aebl.sh" ]; then
-    setterm -blank 1
     chmod 755 scripts/create-aebl.sh
     scripts/create-aebl.sh &
 else
     echo "Internet connection not established, install failed!"
 fi
+
+setterm -blank 1
 
 exit
