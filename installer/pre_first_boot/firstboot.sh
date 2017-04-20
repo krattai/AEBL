@@ -50,11 +50,11 @@ fi
 
 net_wait=0
 
-# Repeat for 5 minutes, or 5 cycles, until network available or still no network
+# Repeat for 5 minutes, or 10 cycles, until network available or still no network
 while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait < 10 ]; do
 
-    # is google there?
-    ping -c 1 8.8.8.8
+    # is github there?
+    ping -c 1 github.com
 
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     # use this as reference for future feature to grab install file immediately from net
@@ -70,7 +70,12 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait < 10 ]; do
 
 done
 
-chmod 755 scripts/create-aebl.sh
-scripts/create-aebl.sh &
+if [ ! -f "scripts/create-aebl.sh" ]; then
+    setterm -blank 1
+    chmod 755 scripts/create-aebl.sh
+    scripts/create-aebl.sh &
+else
+    echo "Internet connection not established, install failed!"
+fi
 
 exit
