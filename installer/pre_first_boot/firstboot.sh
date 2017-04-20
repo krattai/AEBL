@@ -71,7 +71,7 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
 
 done
 
-if [ ! -f "/home/pi/scripts/create-aebl.sh" ]; then
+if [ -f "/home/pi/scripts/create-aebl.sh" ]; then
     chmod 755 scripts/create-aebl.sh
     scripts/create-aebl.sh &
 else
