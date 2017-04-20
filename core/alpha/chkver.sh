@@ -14,40 +14,12 @@
 # Command to pull rev info, per elinux:
 # + cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//'
 
-# Try this:
+# leaving this as a reference:
 # cat /proc/cpuinfo | grep a01041
 # 
 # if [ $? -eq 0 ]; then
 #     touch .p2
 #     echo "Sony Pi 2 B."
-# fi
-
-# cat /proc/cpuinfo | grep a21041
-# 
-# if [ $? -eq 0 ]; then
-#     touch .p2
-#     echo "Embest Pi 2 B."
-# fi
-
-# cat /proc/cpuinfo | grep 900092
-
-# if [ $? -eq 0 ]; then
-#     touch .p2
-#     echo "Pi Zero."
-# fi
-
-# cat /proc/cpuinfo | grep a02082
-
-# if [ $? -eq 0 ]; then
-#     touch .p2
-#     echo "Sony Pi 3 B."
-# fi
-
-# cat /proc/cpuinfo | grep a22082
-
-# if [ $? -eq 0 ]; then
-#     touch .p2
-#     echo "Embest Pi 3 B."
 # fi
 
 ver=$(cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//')
