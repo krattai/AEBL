@@ -36,6 +36,11 @@ if [ ! "$(pgrep ctrlwtch.sh)" ]; then
     $T_SCR/./ctrlwtch.sh &
 fi
 
+# check msgrec.sh running
+if [ ! "$(pgrep msgrec.sh)" ]; then
+    $T_SCR/./msgrec.sh &
+fi
+
 # check irot or idet and remove aeblsys
 if [ -f "${IHDN_TEST}" ] ||  [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ]; then
     rm /home/pi/.aeblsys
@@ -181,6 +186,8 @@ if [ ! -f "${AUTOOFF_CHECK_FILE}" ] && [ ! "$(pgrep run.sh)" ] && [ ! "$(pgrep o
         sleep 60
         # third strike, you're out
         if [ ! "$(pgrep run.sh)" ] && [ ! "$(pgrep omxplayer.bin)" ]; then
+            hostn=$(cat /etc/hostname)
+            mosquitto_pub -d -t ihdn/alive -m "$(date) : $hostn run.sh not loaded and not playing content, so rebooting." -h "ihdn.ca"
             sudo reboot
         fi
         # apparently back up now, so carry on
