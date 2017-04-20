@@ -51,7 +51,7 @@ fi
 net_wait=0
 
 # Repeat for 5 minutes, or 10 cycles, until network available or still no network
-while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait < 10 ]; do
+while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
 
     # is github there?
     ping -c 1 github.com
@@ -71,7 +71,7 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait < 10 ]; do
 
 done
 
-if [ ! -f "scripts/create-aebl.sh" ]; then
+if [ ! -f "/home/pi/scripts/create-aebl.sh" ]; then
     chmod 755 scripts/create-aebl.sh
     scripts/create-aebl.sh &
 else
