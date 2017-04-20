@@ -11,7 +11,7 @@
 #  This bootup script provide a bootstrap to start AEBL installation
 #  runs on boot
 #
-# Copyright (C) 2014 - 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 #
 # Boot up also included the following changes from:
 # http://blog.sheasilverman.com/2013/09/adding-a-startup-movie-to-your-raspberry-pi/
@@ -53,11 +53,13 @@ case "$1" in
     sudo -u pi rm /home/pi/.optimized
     sudo -u pi rm /home/pi/.sysrunning
 
+# adjusted to ensure network up by waiting 10 seconds
+# also starting firstboot.sh which will check via github for current and appropriate versioning
     if [ ! -f "${AUTOOFF_CHECK_FILE}" ]; then
         echo "${AUTOOFF_CHECK_FILE} not found, in auto mode."
         sleep 10
         setterm -blank 1
-        sudo -u pi /home/pi/scripts/./create-aebl.sh &
+        sudo -u pi /home/pi/scripts/./firstboot.sh &
     fi
     echo "Could do more here"
     ;;
