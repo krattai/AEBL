@@ -64,6 +64,7 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait < 10 ]; do
         wget -N -nd -w 3 -P scripts --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/create-aebl.sh
     else
         rm $NETWORK_SYS
+        echo "No Internet available."
         net_wait=net_wait+1
         sleep 30
     fi
