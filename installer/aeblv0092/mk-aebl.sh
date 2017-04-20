@@ -45,11 +45,11 @@ fi
 
 net_wait=0
 
-# Repeat for 5 minutes, or 5 cycles, until network available or still no network
-while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait < 10 ]; do
+# Repeat for 5 minutes, or 10 cycles, until network available or still no network
+while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
 
-    # is google there?
-    ping -c 1 8.8.8.8
+    # is github there?
+    ping -c 1 github.com
 
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     # use this as reference for future feature to grab install file immediately from net
