@@ -181,7 +181,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     sleep 10s
 
-    sudo rpi-update
+    sudo SKIP_WARNING=1 rpi-update
 
     # running rpi-wiggle in background so script has chance to
     # end gracefully
