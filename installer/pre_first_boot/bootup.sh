@@ -58,7 +58,8 @@ case "$1" in
     if [ ! -f "${AUTOOFF_CHECK_FILE}" ]; then
         echo "${AUTOOFF_CHECK_FILE} not found, in auto mode."
         sleep 10
-        setterm -blank 1
+        # don't set to blank on install bootup
+        # setterm -blank 1
         sudo -u pi /home/pi/scripts/./firstboot.sh &
     fi
     echo "Could do more here"
