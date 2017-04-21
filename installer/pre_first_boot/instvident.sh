@@ -24,7 +24,7 @@ USER=`whoami`
 IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
-PLAYER_OPTIONS="-o both --vol -1500 -r"
+PLAYER_OPTIONS="-o both --vol -500 -r"
 
 cd $HOME
 
