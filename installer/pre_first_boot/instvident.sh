@@ -45,9 +45,9 @@ while [ $wait -lt 1 ]; do
 
     omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/Specialty%20Shots%20Video%20Promotions%20Inc%20_%20In-House%20Digital%20Network%20Inc.mp4
 
-    omxplayer ${PLAYER_OPTIONS} "http://ihdn.ca/ads/In-House%20Digital%20Network%20Inc%20Restaurant%20Promotions%20Steve's%20Bistro.mp4"
-
     omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/installvid/Sintel%20Open%20Source%20Film.mp4
+
+    omxplayer ${PLAYER_OPTIONS} "http://ihdn.ca/ads/In-House%20Digital%20Network%20Inc%20Restaurant%20Promotions%20Steve's%20Bistro.mp4"
 
     omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/installvid/Cosmos%20Laundromat.mp4
 
