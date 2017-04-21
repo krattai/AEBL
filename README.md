@@ -26,8 +26,8 @@ http://aeblm2.blogspot.ca/
 
 For those interested in trying it out, you will need a Raspberry Pi (should be the B series with 512MB) and a SD card (4GB or higher, recommend base 8GB but the larger, the better, for content storage).
 
-The current image is a ~680MB 7zip compressed file of it's original 2.7GB size, located on dropbox, here:
-https://www.dropbox.com/s/lj0r6yia4tsnz8w/140815-aeblpi.img.7z?dl=0
+The current image is a ~710MB 7zip compressed file of it's original 2.9GB size, located on dropbox, here:
+https://www.dropbox.com/s/sxm3oirk800m7d4/170420-aebl_p1.img.7z?dl=0
 
 AEBL uses IPv6 to a great extent.  Many Internet Service Providers still do not provide IPv6.  As a result, in order to access certain information for AEBL, obtaining an IPv6 internet connection will be helpful.  The following providers offer free IPv6 tunnels:
 
