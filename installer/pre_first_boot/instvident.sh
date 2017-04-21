@@ -33,6 +33,8 @@ wait=0
 # Repeat during installation
 while [ $wait -lt 1 ]; do
 
+    omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/installvid/aeblinstall.mp4
+
     omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/installvid/Caminandes%201%20Llama%20Drama.mp4
 
     omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/installvid/Caminandes%202%20Gran%20Dillama.mp4
