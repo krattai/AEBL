@@ -120,10 +120,12 @@ sudo hostname ${newhost}
 
 # set IPv6 enabled
 
-# sudo chown pi:pi /etc/modules
-# echo "ipv6" >> /etc/modules
-# sudo chown root:root /etc/modules
-# sudo modprobe ipv6
+sudo chown pi:pi /etc/modules
+echo "ipv6" >> /etc/modules
+sudo chown root:root /etc/modules
+sudo modprobe ipv6
+
+# Leave functionality for next reboot
 # sudo /etc/init.d/networking restart
 # sleep 15s
 
