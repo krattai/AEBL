@@ -59,7 +59,7 @@ rm $NETWORK_SYS
 
 net_wait=0
 
-# Repeat for 5 minutes, or 5 cycles, until network available or still no network
+# Repeat for 5 minutes, or 10 cycles, until network available or still no network
 while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
 
     # is google there?

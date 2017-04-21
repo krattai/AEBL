@@ -18,6 +18,7 @@ CTRL_DIR="/home/pi/ctrl"
 BIN_DIR="/home/pi/bin"
 SCRPT_DIR="/home/pi/.scripts"
 BKUP_DIR="/home/pi/.backup"
+T_STO="/run/shm"
 
 USER=`whoami`
 CRONLOC=/var/spool/cron/crontabs
