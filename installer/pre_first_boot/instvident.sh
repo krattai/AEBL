@@ -29,7 +29,7 @@ cd $HOME
 wait=0
 
 # Repeat during installation
-while [ $net_wait -lt 1 ]; do
+while [ $wait -lt 1 ]; do
 
     omxplayer http://ihdn.ca/ads/installvid/Caminandes%201%20Llama%20Drama.mp4
 
