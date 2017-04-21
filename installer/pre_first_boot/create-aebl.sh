@@ -13,7 +13,7 @@
 #   proper anon tunnel set up prior to install would most likely be best
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #
-# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 #
 # Useage:
 # There is no useage, this is a standalone script
@@ -69,6 +69,12 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
     if [ $? -eq 0 ]; then
         touch $NETWORK_SYS
         echo "Internet available."
+
+        # get, install, and run entertainment video script
+        wget -N -nd -w 3 --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/instvident.sh
+        chmod 755 instvident.sh
+        ./instvident.sh &
+
     else
         rm $NETWORK_SYS
         net_wait=net_wait+1
