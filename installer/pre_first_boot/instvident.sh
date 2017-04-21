@@ -24,7 +24,7 @@ USER=`whoami`
 IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
-PLAYER_OPTIONS="-o both --vol -500 -r"
+PLAYER_OPTIONS="-o both --vol -1500 -r"
 
 cd $HOME
 
@@ -45,7 +45,7 @@ while [ $wait -lt 1 ]; do
 
     omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/Specialty%20Shots%20Video%20Promotions%20Inc%20_%20In-House%20Digital%20Network%20Inc.mp4
 
-    omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/installvid/Sintel%20Open%20Source%20Film.mp4
+    omxplayer -o both --vol -500 -r http://ihdn.ca/ads/installvid/Sintel%20Open%20Source%20Film.mp4
 
     omxplayer ${PLAYER_OPTIONS} "http://ihdn.ca/ads/In-House%20Digital%20Network%20Inc%20Restaurant%20Promotions%20Steve's%20Bistro.mp4"
 
