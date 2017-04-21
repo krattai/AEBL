@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script preps the pi for use on the AEBL framework
 #
-# Copyright (C) 2015 - 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2017 Uvea I. S., Kevin Rattai
 #
 # Useage:
 
@@ -34,14 +34,33 @@ cd $HOME
 # Discover network availability
 #
 
-ping -c 1 8.8.8.8
+net_wait=0
 
-if [ $? -eq 0 ]; then
-    touch .network
-    echo "Internet available."
-else
-    rm .network
-fi
+# Repeat for 5 minutes, or 10 cycles, until network available or still no network
+while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
+
+    # is google there?
+    ping -c 1 8.8.8.8
+
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # use this as reference for future feature to grab install file immediately from net
+    if [ $? -eq 0 ]; then
+        touch $NETWORK_SYS
+        echo "Internet available."
+
+        # get, install, and run entertainment video script
+        wget -N -nd -w 3 --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/instvident.sh
+        chmod 755 instvident.sh
+        mv instvident.sh $T_STO/instvident.sh
+        $T_STO/./instvident.sh &
+
+    else
+        rm $NETWORK_SYS
+        net_wait=net_wait+1
+        sleep 30
+    fi
+
+done
 
 rm .local
 
