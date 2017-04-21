@@ -32,6 +32,7 @@ MP4_DIR="/home/pi/mp4"
 PL_DIR="/home/pi/pl"
 CTRL_DIR="/home/pi/ctrl"
 BIN_DIR="/home/pi/bin"
+T_STO="/run/shm"
 
 USER=`whoami`
 CRONLOC=/var/spool/cron/crontabs
@@ -71,10 +72,10 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
         echo "Internet available."
 
         # get, install, and run entertainment video script
-        rm instvident.sh
         wget -N -nd -w 3 --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/instvident.sh
         chmod 755 instvident.sh
-        ./instvident.sh &
+        mv instvident.sh $T_STO/instvident.sh
+        $T_STO/./instvident.sh &
 
     else
         rm $NETWORK_SYS
