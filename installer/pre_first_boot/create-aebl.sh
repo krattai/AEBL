@@ -71,6 +71,7 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
         echo "Internet available."
 
         # get, install, and run entertainment video script
+        rm instvident.sh
         wget -N -nd -w 3 --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/instvident.sh
         chmod 755 instvident.sh
         ./instvident.sh &
