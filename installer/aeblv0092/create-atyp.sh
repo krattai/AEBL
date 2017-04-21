@@ -39,8 +39,8 @@ net_wait=0
 # Repeat for 5 minutes, or 10 cycles, until network available or still no network
 while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
 
-    # is google there?
-    ping -c 1 8.8.8.8
+    # is github there?
+    ping -c 1 github.com
 
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     # use this as reference for future feature to grab install file immediately from net
@@ -49,10 +49,10 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
         echo "Internet available."
 
         # get, install, and run entertainment video script
-        wget -N -nd -w 3 --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/instvident.sh
-        chmod 755 instvident.sh
-        mv instvident.sh $T_STO/instvident.sh
-        $T_STO/./instvident.sh &
+        wget -N -nd -w 3 --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/inst_ext.sh
+        chmod 755 inst_ext.sh
+        mv inst_ext.sh $T_STO/inst_ext.sh
+        $T_STO/./inst_ext.sh &
 
     else
         rm $NETWORK_SYS
