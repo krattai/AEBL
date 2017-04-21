@@ -31,27 +31,27 @@ wait=0
 # Repeat during installation
 while [ $wait -lt 1 ]; do
 
-    omxplayer http://ihdn.ca/ads/installvid/Caminandes%201%20Llama%20Drama.mp4
+    omxplayer -o both -r http://ihdn.ca/ads/installvid/Caminandes%201%20Llama%20Drama.mp4
 
-    omxplayer http://ihdn.ca/ads/installvid/Caminandes%202%20Gran%20Dillama.mp4
+    omxplayer -o both -r http://ihdn.ca/ads/installvid/Caminandes%202%20Gran%20Dillama.mp4
 
-    omxplayer http://ihdn.ca/ads/installvid/Caminandes%203%20Llamigos.mp4
+    omxplayer -o both -r http://ihdn.ca/ads/installvid/Caminandes%203%20Llamigos.mp4
 
-    omxplayer http://ihdn.ca/ads/ihdn%20mrkt%2014051500.mp4
+    omxplayer -o both -r http://ihdn.ca/ads/ihdn%20mrkt%2014051500.mp4
 
-    omxplayer http://ihdn.ca/ads/installvid/Big%20Buck%20Bunny.mp4
+    omxplayer -o both -r http://ihdn.ca/ads/installvid/Big%20Buck%20Bunny.mp4
 
-    omxplayer http://ihdn.ca/ads/Specialty%20Shots%20Video%20Promotions%20Inc%20_%20In-House%20Digital%20Network%20Inc.mp4
+    omxplayer -o both -r http://ihdn.ca/ads/Specialty%20Shots%20Video%20Promotions%20Inc%20_%20In-House%20Digital%20Network%20Inc.mp4
 
-    omxplayer "http://ihdn.ca/ads/In-House%20Digital%20Network%20Inc%20Restaurant%20Promotions%20Steve's%20Bistro.mp4"
+    omxplayer -o both -r "http://ihdn.ca/ads/In-House%20Digital%20Network%20Inc%20Restaurant%20Promotions%20Steve's%20Bistro.mp4"
 
-    omxplayer http://ihdn.ca/ads/installvid/Sintel%20Open%20Source%20Film.mp4
+    omxplayer -o both -r http://ihdn.ca/ads/installvid/Sintel%20Open%20Source%20Film.mp4
 
-    omxplayer http://ihdn.ca/ads/installvid/Cosmos%20Laundromat.mp4
+    omxplayer -o both -r http://ihdn.ca/ads/installvid/Cosmos%20Laundromat.mp4
 
-    omxplayer http://ihdn.ca/ads/installvid/The%20Maker.mp4
+    omxplayer -o both -r http://ihdn.ca/ads/installvid/The%20Maker.mp4
 
-    omxplayer http://ihdn.ca/ads/installvid/Zero.mp4
+    omxplayer -o both -r http://ihdn.ca/ads/installvid/Zero.mp4
 
 done
 
