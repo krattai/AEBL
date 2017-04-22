@@ -32,7 +32,7 @@ MP4_DIR="/home/pi/mp4"
 PL_DIR="/home/pi/pl"
 CTRL_DIR="/home/pi/ctrl"
 BIN_DIR="/home/pi/bin"
-T_SCR="/run/shm"
+T_SCR="/run/shm/scripts"
 
 USER=`whoami`
 CRONLOC=/var/spool/cron/crontabs
@@ -46,7 +46,7 @@ MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 cd $HOME
 
 # remount /run/shm and create scripts path with -pi credentials
-mount -o exec,remount /run/shm
+sudo mount -o exec,remount /run/shm
 sudo -u pi mkdir /run/shm/scripts
 
 # set wireless first if anticipated, set token and reboot

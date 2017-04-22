@@ -18,7 +18,7 @@ CTRL_DIR="/home/pi/ctrl"
 BIN_DIR="/home/pi/bin"
 SCRPT_DIR="/home/pi/.scripts"
 BKUP_DIR="/home/pi/.backup"
-T_SCR="/run/shm"
+T_SCR="/run/shm/scripts"
 
 USER=`whoami`
 CRONLOC=/var/spool/cron/crontabs
@@ -32,7 +32,7 @@ MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 cd $HOME
 
 # remount /run/shm and create scripts path with -pi credentials
-mount -o exec,remount /run/shm
+sudo mount -o exec,remount /run/shm
 sudo -u pi mkdir /run/shm/scripts
 
 # Discover network availability
