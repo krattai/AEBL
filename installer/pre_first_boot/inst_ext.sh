@@ -18,6 +18,7 @@ MP4_DIR="/home/pi/mp4"
 PL_DIR="/home/pi/pl"
 CTRL_DIR="/home/pi/ctrl"
 BIN_DIR="/home/pi/bin"
+T_SCR="/run/shm/scripts"
 
 USER=`whoami`
 IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
@@ -47,8 +48,8 @@ while [ $net_wait -lt 10 ]; do
         # get, install, and run entertainment video script
         wget -N -nd -w 3 --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/vident.sh
         chmod 755 vident.sh
-        mv vident.sh $T_STO/vident.sh
-        $T_STO/./vident.sh &
+        mv vident.sh $T_SCR/vident.sh
+        $T_SCR/./vident.sh &
 
     else
         net_wait=net_wait+1
