@@ -32,7 +32,7 @@ MP4_DIR="/home/pi/mp4"
 PL_DIR="/home/pi/pl"
 CTRL_DIR="/home/pi/ctrl"
 BIN_DIR="/home/pi/bin"
-T_STO="/run/shm"
+T_SCR="/run/shm"
 
 USER=`whoami`
 CRONLOC=/var/spool/cron/crontabs
@@ -44,6 +44,10 @@ IPe0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 MACe0=$(ip link show eth0 | awk '/ether/ {print $2}')
 
 cd $HOME
+
+# remount /run/shm and create scripts path with -pi credentials
+mount -o exec,remount /run/shm
+sudo -u pi mkdir /run/shm/scripts
 
 # set wireless first if anticipated, set token and reboot
 if [ -f "${HOME}/scripts/interfaces" ]; then
@@ -74,8 +78,8 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
         # get, install, and run entertainment video script
         wget -N -nd -w 3 --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/instvident.sh
         chmod 755 instvident.sh
-        mv instvident.sh $T_STO/instvident.sh
-        $T_STO/./instvident.sh &
+        mv instvident.sh $T_SCR/instvident.sh
+        $T_SCR/./instvident.sh &
 
     else
         rm $NETWORK_SYS
