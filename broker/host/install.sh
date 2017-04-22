@@ -6,7 +6,7 @@
 #   wget https://github.com/krattai/AEBL/raw/master/broker/host/install.sh
 #
 
-sudo apt-get install p7zip-full
+sudo apt-get install -y p7zip-full openvpn
 
 cd tmp
 
