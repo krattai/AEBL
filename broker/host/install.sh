@@ -11,6 +11,7 @@ sudo apt-get install -y p7zip-full openvpn
 
 cd tmp
 
+# should eventually check to ensure file is downloaded (it has failed in past)
 wget https://github.com/krattai/AEBL/raw/master/broker/host/aebl44.7z
 
 7z x aebl44.7z
