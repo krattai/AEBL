@@ -37,6 +37,11 @@ sudo chmod 600 /etc/openvpn/aebl44.key
 # added this line for better, specific tun44 mmonitoring
 # mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn tun44 $IPt44 is online." -h "ihdn.ca"
 
+cd ~
+
 # need to restart ovpn after this
+sudo service openvpn restart
+
+rm install.sh
 
 exit 0
