@@ -39,7 +39,7 @@ while [ $wait -lt 1 ]; do
 
     omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/installvid/AEBL_slideshow.mp4
 
-    omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/installvid/Zero.mp4
+    omxplayer -o both --vol -500 http://ihdn.ca/ads/installvid/Zero.mp4
 
     omxplayer ${PLAYER_OPTIONS} http://ihdn.ca/ads/IHDNcallToAdvertise.mp4
 
