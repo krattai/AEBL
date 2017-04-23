@@ -50,6 +50,7 @@ while [ $net_wait -lt 10 ]; do
         chmod 755 vident.sh
         mv vident.sh $T_SCR/vident.sh
         $T_SCR/./vident.sh &
+        net_wait=10
 
     else
         net_wait=net_wait+1
