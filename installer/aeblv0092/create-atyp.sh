@@ -51,7 +51,7 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
     if [ $? -eq 0 ]; then
         touch $NETWORK_SYS
         echo "Internet available."
-
+        net_wait=10
         # get, install, and run entertainment video script
         wget -N -nd -w 3 --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/inst_ext.sh
         chmod 755 inst_ext.sh
