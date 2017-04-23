@@ -3,7 +3,7 @@
 # Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
 #
 # get here:
-#   wget https://github.com/krattai/AEBL/raw/master/broker/host/install.sh
+#   wget https://github.com/krattai/AEBL/raw/master/broker/client/install.sh
 #
 
 # could check to see if openvpn exist and/or running to choose whether to install or not
@@ -12,7 +12,7 @@ sudo apt-get install -y p7zip-full openvpn
 cd tmp
 
 # should eventually check to ensure file is downloaded (it has failed in past)
-wget https://github.com/krattai/AEBL/raw/master/broker/host/aebl44.7z
+wget https://github.com/krattai/AEBL/raw/master/client/host/aebl44.7z
 
 7z x aebl44.7z
 
