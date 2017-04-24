@@ -96,11 +96,12 @@ if [ -f "$HOME/idetsys" ]; then
     rm $HOME/idetsys
 fi
 
-if [ -f "$HOME/irotsys" ]; then
-    systype="cirot0092.sh"
-    sysloc="detrot/master/src"
-    rm $HOME/irotsys
-fi
+# irot does not exist at this time
+# if [ -f "$HOME/irotsys" ]; then
+#     systype="cirot0092.sh"
+#     sysloc="detrot/master/src"
+#     rm $HOME/irotsys
+# fi
 
 # prep file directories
 mkdir ${BKUP_DIR}
