@@ -96,6 +96,13 @@ if [ -f "$HOME/idetsys" ]; then
     rm $HOME/idetsys
 fi
 
+# should add a beta install check for install
+# if [ -f "$HOME/beta" ]; then
+#     systype="beta.sh"
+#     sysloc="AEBL/master/installer/beta"
+#     rm $HOME/beta
+# fi
+
 # irot does not exist at this time
 # if [ -f "$HOME/irotsys" ]; then
 #     systype="cirot0092.sh"
