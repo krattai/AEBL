@@ -133,6 +133,8 @@ fi
 #   + Keep in mind if this script will allow any input or editing of files, this will also be done as root.
 #
 # this works
+
+# ensure that checks are not done for non-existing networks as this will cause constant reboot
 # check for ihdnnet
 ping -c 1 10.8.0.1
 
