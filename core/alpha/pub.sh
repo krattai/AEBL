@@ -27,7 +27,7 @@ mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn tun44 $IPt44 is online." -h 
 
 # from:
 #     space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1 | cut -d "%" -f1 -`
-space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1
+space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1`
 mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn disk is $space full." -h "ihdn.ca"
 
 # i=$[$i+1]
