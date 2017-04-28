@@ -7,7 +7,15 @@ hostn=$(cat /etc/hostname)
 while [ $i -lt 1 ]
 do
 ext_ip4=$(dig +short myip.opendns.com @resolver1.opendns.com)
-ext_ip6=$(curl icanhazip.com)
+if [ $? -eq 0 ]; then
+    echo "IPV6 available."
+    ext_ip6=$(curl icanhazip.com)
+    hostn=$(cat /etc/hostname)
+    mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn IPv6 available." -h "ihdn.ca" &
+else
+    hostn=$(cat /etc/hostname)
+    mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn IPV6 NOT available." -h "ihdn.ca" &
+fi
 IPt0=$(ip addr show tun0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 IPt44=$(ip addr show tun44 | awk '/inet / {print $2}' | cut -d/ -f 1)
 
