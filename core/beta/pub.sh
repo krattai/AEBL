@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (C) 2017 Uvea I. S., Kevin Rattai
+# Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
 #
 # This script publishes device status
 #
