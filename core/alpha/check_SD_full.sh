@@ -28,6 +28,18 @@ i="0"
 #   fi
 # done
 
+# from: http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_02.html
+# This shoud work for Pi
+# space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1 | cut -d "%" -f1 -`
+# alertvalue="80"
+
+# if [ "$space" -ge "$alertvalue" ]; then
+#   echo "At least one of my disks is nearly full!" | mail -s "daily diskcheck" root
+# else
+#   echo "Disk space normal" | mail -s "daily diskcheck" root
+# fi
+
+
 
 # should modify this loop to simply ping persistently
 while [ $i -lt 9999 ]
