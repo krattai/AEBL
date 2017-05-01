@@ -75,10 +75,10 @@ fi
 export PATH=$PATH:${BIN_DIR}:$HOME/scripts
 
 # get noo-ebs installer and run it
-wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k "https://raw.githubusercontent.com/krattai/noo-ebs/master/src/install.sh"
-chmod 777 ${TEMP_DIR}/patch/install.sh
-${TEMP_DIR}/patch/./install.sh
-rm ${TEMP_DIR}/patch/install.sh
+wget -N -nd -w 3 -P ${TEMP_DIR}/patch --limit-rate=50k "https://raw.githubusercontent.com/krattai/noo-ebs/master/src/aebl.sh"
+chmod 777 ${TEMP_DIR}/patch/aebl.sh
+${TEMP_DIR}/patch/./aebl.sh
+rm ${TEMP_DIR}/patch/aebl.sh
 
 # express that AEBL device being installed
 ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
