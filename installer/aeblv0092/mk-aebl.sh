@@ -138,7 +138,7 @@ fi
 ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
 # mosquitto_pub -d -t aebl/info -m "$(date) : AEBL prepped and rebooting first time. IP is $ext_ip" -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
 
-mosquitto_pub -d -t ihdn/aebl/info -m "$(date) : AEBL prepped and rebooting first time. IP is $ext_ip" -h "ihdn.ca"
+mosquitto_pub -d -t aebl/info -m "$(date) : AEBL prepped and rebooting first time. IP is $ext_ip" -h "ihdn.ca"
 
 # system should be in timed reboot state, so clean up and exit
 
