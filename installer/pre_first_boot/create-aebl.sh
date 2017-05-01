@@ -67,7 +67,7 @@ net_wait=0
 while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
 
     # is google there?
-    ping -c 1 8.8.8.8
+    ping -c 1 github.com
 
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     # use this as reference for future feature to grab install file immediately from net
