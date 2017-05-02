@@ -1,7 +1,7 @@
 #!/bin/sh
 # This script is the AEBL content distribution network
 # 
-# Copyright (C) 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
 #
 # Useage:
 # There is no useage, this is a standalone script
@@ -36,6 +36,8 @@
 #  those files to download dir and notify specific client(s) of
 #  availability.
 # This can also be used in order to send URL for streamed content
+#
+# This could also use the current vpn that exists for the noo-ebs functionality
 
 # This will require that mkchan.sh works
 
