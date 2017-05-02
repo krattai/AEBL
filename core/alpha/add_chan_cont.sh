@@ -103,7 +103,11 @@ while IFS= read -r line
 
             # grab file
 #             echo "$line #am2p" >> "${CONTENT}"
-            wget -N -nd -w 3 -P /home/pi/ad --limit-rate=50k "http://ihdn.ca/ads/${line}"
+
+
+#           could test by putting content into ctrl directory
+#             wget -N -nd -w 3 -P /home/pi/ad --limit-rate=50k "http://ihdn.ca/ads/${line}"
+            wget -N -nd -w 3 -P /home/pi/ctrl --limit-rate=50k "http://ihdn.ca/ads/${line}"
 
 done
 
