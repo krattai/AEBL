@@ -27,8 +27,8 @@
 #   only instance where solution worked, was set in interfaces, as
 #   static config.
 
-# What does work is, overwrite resov.conf once system booted.  Will
-#   do that until more elegant solution found.
+# Overwrite resov.conf once system booted.  Will
+#   do this until more elegant solution found.
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
