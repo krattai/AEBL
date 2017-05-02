@@ -49,10 +49,13 @@ case "$1" in
     sudo -u pi mkdir /run/shm/scripts
     sudo -u pi cp -p /home/pi/.scripts/* /run/shm/scripts
     sudo -u pi /run/shm/scripts/./ctrlwtch.sh &
+# updating dns
+    /run/shm/scripts/./opennic.sh &
 
     if [ ! -f "${AUTOOFF_CHECK_FILE}" ]; then
         echo "${AUTOOFF_CHECK_FILE} not found, in auto mode."
         setterm -blank 1
+# not sure if sleep still required
         sleep 10s
         sudo -u pi /run/shm/scripts/./startup.sh &
     fi
