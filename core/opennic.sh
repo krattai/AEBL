@@ -1,6 +1,9 @@
 #!/bin/sh
 #
-# Copyright (C) 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
+#
+# Overwrite resov.conf once system booted.  Will
+#   do this until more elegant solution found.
 #
 # test opennic dns
 # hosts can be found at:
@@ -26,9 +29,6 @@
 #   resolv.conf ends up with DHCP provided DNS as primaries.  The
 #   only instance where solution worked, was set in interfaces, as
 #   static config.
-
-# Overwrite resov.conf once system booted.  Will
-#   do this until more elegant solution found.
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
