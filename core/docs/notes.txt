@@ -415,3 +415,6 @@ For possible future reference, country codes:
 https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
 https://countrycode.org/
 
+~~~~~~~~~~~~~~~~~~~~~~
+
+https://georgestefanis.com/blog/2016/04/08/remove-specific-commit-from-git.html
