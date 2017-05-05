@@ -1,0 +1,16 @@
+# Last Modified: Tue Jul 21 16:06:04 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-template {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+
+  /tmp/gnunet-system-runtime/ w,
+  /tmp/gnunet-system-runtime/gnunet-service-template.sock w,
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-template mr,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}

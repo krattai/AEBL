@@ -1,0 +1,377 @@
+
+<div class="failedcheck">
+$$fieldsref{updatemessage}
+</div>
+Anda dapat menggunakan sms transaksi dengan beberapa pendaftar di rilis saat ini, tetapi ini adalah default, lihat manual! The
+<b>
+Registry dan mata uang harus sudah ada
+</b>
+.
+<br/>
+
+<br/>
+
+Anda juga harus mengkonfigurasi
+<span class="system">
+/etc/gammu-smsdrc
+</span>
+for the phone or dongle that you are using and for inbox/outbox etc.
+See the example in the
+<span class="system">
+config
+</span>
+sub-direktori untuk nama = Huawei 1750 memberikan koneksi gaya AT. Ini adalah perangkat keras yang digunakan untuk pengujian versi saat ini.
+<br/>
+
+<br/>
+
+Anda juga mungkin perlu untuk menggunakan
+<a title="Modus switch utilitas" href="http://www.draisberghof.de/usb_modeswitch/">
+Modus Switch utilitas
+</a>
+Jika dongle telepon menyatakan dirinya sebagai perangkat penyimpanan
+<br/>
+
+<br/>
+
+
+<table>
+<tbody class="stripy">
+
+<form  name="installgammu" id="form" action="/cgi-bin/protected/ccinstall.cgi" method="post">
+
+<input class="small" name="saveadd"  value="Memperbarui konfigurasi Gammu" type="submit">
+
+<input name="action"  value="updategammuconfig" type="hidden">
+
+<input name="type"  data-simple="yes"  value="gammu" type="hidden">
+
+<tr>
+
+<td title="ini adalah waktu tidur dalam detik untuk membaca dan mengirim pesan sms" class="menu">
+SMS tidur
+</td>
+
+<td class="pme-key-1">
+
+<input id="smssleep"  class="required" type="text" name="smssleep" size="3" value="$$fieldsref{smssleep}">
+
+</td>
+
+<td title="SMS antarmuka bahasa, bahasa Inggris hanya telah diuji pada saat ini!" class="menu">
+bahasa
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="" name="language" size="2" value="$$fieldsref{language}">
+</td>
+
+</tr>
+
+<tr>
+<td title="1 jika readsms_from_gammu.pl pada sistem yang sama sebagai cclite, jika nol sabun digunakan tetapi ini telah pernah diuji" class="menu">
+SMS script lokal
+</td>
+<td class="pme-key-1">
+
+<input id="smslocal"  class="required" type="text"  name="smslocal" size="1" value="$$fieldsref{smslocal}">
+
+</td>
+
+<td title="Web sandi status, biasanya aktif" class="menu">
+Web sandi status
+</td>
+<td class="pme-key-1">
+<input readonly id="userpasswordstatus"  class="required" type="text" readonly name="userpasswordstatus" size="6" value="active">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root inwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+path ke dalam akar SMS
+</td>
+<td class="pme-key-1">
+
+<input type="text"   class="required" name="smsinpath" size="30" value="$$fieldsref{smsinpath}">
+
+</td>
+
+<td title="status pengguna mobile pin, biasanya aktif, jika kita sedang memungkinkan bergabung dari ponsel" class="menu">
+pengguna pin status
+</td>
+<td class="pme-key-1">
+<input id="userpinstatus"  class="required" type="text" name="userpinstatus" size="8" value="$$fieldsref{userpinstatus}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root outwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+SMS path akar keluar
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smsoutpath" size="30" value="$$fieldsref{smsoutpath}">
+
+<td title="status untuk catatan pengguna, biasanya aktif, jika kita sedang memungkinkan bergabung dari ponsel" class="menu">
+status pengguna
+</td>
+<td class="pme-key-1">
+<input id="userstatus"  class="required" type="text" name="userstatus" size="8" value="$$fieldsref{userstatus}">
+</td>
+
+</td>
+</tr>
+
+<tr>
+<td title="Sms root sent path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+SMS path akar yang mengirim sms
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smssentpath" size="30" value="$$fieldsref{smssentpath}">
+
+</td>
+
+<td title="kata kunci untuk membayar dalam pesan sms" class="menu">
+membayar kata kunci
+</td>
+<td class="pme-key-1">
+<input id="send"  class="required" type="text" name="send_key" size="8" value="$$fieldsref{send_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root error path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+SMS akar kesalahan sms path
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smserrorpath" size="30" value="$$fieldsref{smserrorpath}">
+
+</td>
+
+<td title="kata kunci untuk keseimbangan dalam pesan sms" class="menu">
+menyeimbangkan kata kunci
+</td>
+<td class="pme-key-1">
+<input id="balance"  class="required" type="text" name="balance_key" size="8" value="$$fieldsref{balance_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="dasar registri untuk transaksi sms, bisa hanya memungkinkan satu registri saat ini" class="menu">
+dasar registri
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="registry" size="20" value="$$fieldsref{registry}">
+
+</td>
+
+<td title="kata kunci untuk bergabung dalam pesan sms" class="menu">
+bergabung dengan kata kunci
+</td>
+<td class="pme-key-1">
+<input id="join"  class="required" type="text" name="join_key" size="8" value="$$fieldsref{join_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="mata uang transaksi sms, ini adalah default. Jika tidak ada mata uang ditetapkan" class="menu">
+default mata uang
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="currency" size="20" value="$$fieldsref{currency}">
+
+</td>
+
+<td title="konfirmasi kata kunci untuk pin di pesan sms" class="menu">
+PIN mengkonfirmasi kata kunci
+</td>
+<td class="pme-key-1">
+<input id="confirm"  class="required" type="text" name="confirm_key" size="8" value="$$fieldsref{confirm_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Hal ini diperlukan jika Anda tidak menyertakan nomor penuh internasional untuk membayar transaksi, misalnya 44 untuk UK, lebih mudah untuk menggunakan nama pengguna tetap!" class="menu">
+negara awalan
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="sms_prefix" size="2" value="$$fieldsref{sms_prefix}">
+
+</td>
+
+<td title="kata kunci untuk pin perubahan sms pesan" class="menu">
+kata kunci perubahan pin
+</td>
+<td class="pme-key-1">
+<input id="pinchange"  class="required" type="text" name="pinchange_key" size="8" value="$$fieldsref{pinchange_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="menghidupkan debug untuk sms, 0 untuk off, 1 untuk pada" class="menu">
+debug subsistem sms
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="debug" size="1" value="$$fieldsref{debug}">
+
+</td>
+
+<td title="kata kunci untuk account suspend di pesan sms" class="menu">
+menangguhkan kata kunci
+</td>
+<td class="pme-key-1">
+<input id="suspend"  class="required" type="text" name="suspend_key" size="8" value="$$fieldsref{suspend_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="file debug untuk debugging" class="menu">
+SMS debug log
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required" name="sms_debug_file" size="30" value="$$fieldsref{sms_debug_file}">
+
+</td>
+
+<td title="kata kunci untuk mengubah bahasa pesan sms" class="menu">
+mengubah bahasa kata kunci
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="text" name="language_key" size="8" value="$$fieldsref{language_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="awal status pembayaran untuk transaksi sms, biasanya diterima, Anda tidak dapat mengubah ini dari ponsel saat ini" class="menu">
+status pembayaran awal
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="initialpaymentstatus" size="15" value="$$fieldsref{initialpaymentstatus}">
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="mengaktifkan/menonaktifkan pesan sponsor di akhir mengirim SMS" class="menu">
+pesan sponsor
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="sponsor_message_status" size="1" value="$$fieldsref{sponsor_message_status}">
+
+</td>
+</tr>
+
+<tr>
+<td title="mensponsori pesan 1 untuk bawah sms pesan, lihat manual" class="menu">
+pesan sponsor 1
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor1" wrap="soft" >
+$$fieldsref{sponsor1}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="mensponsori pesan 2 untuk dasar sms pesan, lihat manual" class="menu">
+pesan sponsor 2
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor2"  wrap="soft">
+$$fieldsref{sponsor2}
+</textarea>
+
+</td>
+</tr>
+
+<tr>
+<td title="mensponsori pesan 3 untuk dasar sms pesan, lihat manual" class="menu">
+pesan sponsor 3
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor3" wrap="soft">
+$$fieldsref{sponsor3}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="mensponsori pesan 4 untuk dasar sms pesan, lihat manual" class="menu">
+pesan sponsor 4
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor4" wrap="soft">
+$$fieldsref{sponsor4}
+</textarea>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+
+</td>
+</tr>
+
+<tr>
+<td title="mensponsori pesan 5 untuk bawah sms pesan, lihat manual" class="menu">
+pesan sponsor 5
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor5" wrap="soft">
+$$fieldsref{sponsor5}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+</tbody>
+</table>
+
+</form>

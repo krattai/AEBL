@@ -1,0 +1,20 @@
+# Last Modified: Thu Jul  9 10:01:36 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-resolver {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-resolver mr,
+
+  /etc/nsswitch.conf r,
+  /etc/resolv.conf r,
+  /etc/host.conf r,
+  /etc/hosts r,
+
+  /tmp/gnunet-system-runtime/gnunet-service-resolver.sock w,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}

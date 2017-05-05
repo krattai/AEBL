@@ -1,0 +1,25 @@
+return {
+  statsfile   = "luacov.stats.out";
+  reportfile  = "luacov.report.json";
+  runreport   = false;
+  deletestats = false;
+
+  include = {
+    "/lzmq$",
+    "/lzmq/.+$",
+  };
+
+  exclude = {
+  };
+
+  coveralls = {
+
+    debug = true;
+
+    pathcorrect = {
+      {"/usr/local/share/lua/5.%d", "src/lua"};
+    };
+
+  };
+
+}

@@ -1,0 +1,30 @@
+Source: xtreemfs
+Section: utils
+Priority: optional
+Maintainer: XtreemFS Project <xtreemfs-users@googlegroups.com>
+Homepage: http://www.xtreemfs.org/
+Standards-Version: 3.7.2
+
+Package: xtreemfs-client
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, fuse-utils (>= 2.6) | fuse (>= 2.6)
+Description: XtreemFS client
+ XtreemFS is a distributed and replicated file system for the Internet. For more details, visit www.xtreemfs.org. This package contains the XtreemFS client module.
+
+Package: xtreemfs-backend
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, grep, java6-runtime-headless
+Description: XtreemFS server
+ XtreemFS is a distributed and replicated file system for the Internet. For more details, visit www.xtreemfs.org. This package contains the backend modules and libraries shared between the server and tools sub-packages.
+
+Package: xtreemfs-server
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, xtreemfs-backend (= ${binary:Version}), grep, java6-runtime-headless, uuid-runtime
+Description: XtreemFS server
+ XtreemFS is a distributed and replicated file system for the Internet. For more details, visit www.xtreemfs.org. This package contains the XtreemFS server components (DIR, MRC, OSD).
+
+Package: xtreemfs-tools
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, xtreemfs-backend (= ${binary:Version}), attr (>=2), java6-runtime-headless
+Description: XtreemFS administration tools
+ XtreemFS is a distributed and replicated file system for the Internet. For more details, visit www.xtreemfs.org. This package contains XtreemFS administration tools.

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<info>
+	<id>files_encryption</id>
+	<name>Server-side Encryption</name>
+	<description>This app encrypts and decrypts your data on the server. This means that a malicious administrator could intercept your data or encryption keys. The main purpose of server-side encryption is to encrypt files stored on externally mounted storages. The administrator of the external storage will not be able to access your encryption keys or your unencrypted data. Before you activate the app, please read up on encryption in the User and Administrator Manual</description>
+	<licence>AGPL</licence>
+	<author>Sam Tuke, Bjoern Schiessle, Florin Peter</author>
+	<requiremin>4</requiremin>
+	<shipped>true</shipped>
+	<documentation>
+		<user>http://doc.owncloud.org/server/6.0/user_manual/files/encryption.html</user>
+		<admin>http://doc.owncloud.org/server/6.0/admin_manual/configuration/configuration_encryption.html</admin>
+	</documentation>
+	<rememberlogin>false</rememberlogin>
+	<types>
+		<filesystem/>
+	</types>
+	<ocsid>166047</ocsid>
+</info>

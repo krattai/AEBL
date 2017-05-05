@@ -1,0 +1,123 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+core_usesIn core functions
+core_functions_register _bishbosh_backend_registration ncToybox
+
+core_dependency_requires '*' grep
+bishbosh_backend_ncToybox_check()
+{
+	if [ "$bishbosh_tunnel" != 'none' ]; then
+		return 1
+	fi
+	
+	if core_compatibility_whichNoOutput uname; then
+		set -- toybox toybox-"$(uname -m)"
+	else
+		set -- toybox
+	fi
+	
+	local binary
+	local toyboxName
+	for toyboxName in "$@"
+	do
+		if core_compatibility_whichNoOutput "$toyboxName"; then
+			binary="$(core_compatibility_which "$toyboxName")"
+			if "$binary" 2>/dev/null | grep -q -E '^nc$| nc | nc$'; then
+				bishbosh_backend_name=ncToybox
+				bishbosh_backend_path="$binary"
+				return 0
+			fi
+		fi
+	done
+	return 1
+}
+
+bishbosh_backend_ncToybox_checkIfNetcatVariant()
+{
+	# eg  'usage: netcat [-tu] [-lL COMMAND...] [-wpq #] [-s addr] {IPADDR PORTNUM|-f FILENAME}'
+	bishbosh_backend_netcatVariantHelpMessageLineExists '^usage: netcat \[-tu\] '
+}
+
+bishbosh_backend_ncToybox_port()
+{
+	printf '%s' 1883
+}
+
+core_usesIn core variable variable/array
+bishbosh_backend_ncToybox_start()
+{
+	local options
+	local options_initialised
+	core_variable_array_initialise options
+	
+	if [ $bishbosh_connectTimeout -ne 0 ]; then
+		core_variable_array_append options -w $bishbosh_connectTimeout
+	fi
+	
+	core_TODO 'Allow Toybox builtins to work by calling nc directly'
+	core_variable_array_append options nc
+	
+	case "$bishbosh_proxyKind" in
+		
+		SOCKS4)
+			core_exitError $core_commandLine_exitCode_CONFIG "The backend ncToybox does not support the 'SOCKS4' bishbosh_proxyKind."
+		;;
+		
+		SOCKS4a)
+			core_exitError $core_commandLine_exitCode_CONFIG "The backend ncToybox does not support the 'SOCKS4a' bishbosh_proxyKind."
+		;;
+		
+		SOCKS5)
+			core_exitError $core_commandLine_exitCode_CONFIG "The backend ncToybox does not support the 'SOCKS5' bishbosh_proxyKind."
+		;;
+		
+		HTTP)
+			core_exitError $core_commandLine_exitCode_CONFIG "The backend ncToybox does not support the 'HTTP' bishbosh_proxyKind."
+		;;
+		
+	esac
+	
+	case "$bishbosh_transport" in
+		
+		inet)
+			if core_variable_isSet bishbosh_sourceAddress; then
+				core_variable_array_append options '-s' "$bishbosh_sourceAddress"
+			fi
+
+			if core_variable_isSet bishbosh_sourcePort; then
+				core_variable_array_append options '-p' "$bishbosh_sourcePort"
+			fi
+			
+			core_variable_array_append options "$bishbosh_server"
+			
+			core_variable_array_append options "$bishbosh_port"
+		;;
+		
+		inet4)
+			core_exitError $core_commandLine_exitCode_CONFIG "The backend ncToybox does not support the 'inet4' transport explicitly."
+		;;
+		
+		inet6)
+			core_exitError $core_commandLine_exitCode_CONFIG "The backend ncToybox does not support the 'inet6' transport explicitly."
+		;;
+		
+		unix)
+			core_exitError $core_commandLine_exitCode_CONFIG "The backend ncToybox does not support the 'unix' transport."
+		;;
+		
+		serial)
+			core_variable_array_append options -f "$bishbosh_server"
+		;;
+		
+		*)
+			core_exitError $core_commandLine_exitCode_SOFTWARE "Please validate the values for bishbosh_transport ('$bishbosh_transport')"
+		;;
+		
+	esac
+	
+	bishbosh_backend_debugOptions
+	
+	core_variable_array_passToFunctionAsArguments options "$bishbosh_backend_path" <"$bishbosh_connection_toServerFifo" >"$bishbosh_connection_fromServerFifo" &
+}

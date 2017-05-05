@@ -1,0 +1,38 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+core_usesIn bishbosh/connection error
+core_dependency_requires '*' mv rm
+bishbosh_connection_read_controlpacket_PUBREC()
+{
+	bishbosh_connection_error_ifRemainingLengthNot PUBREC 2
+	
+	local packetIdentifier
+	bishbosh_connection_read_packetIdentifier
+	
+	local ourPacketIdentifierFolderPath
+	bishbosh_connection_packetIdentifier_ourPacketIdentifierFolderPath
+	
+	local unknownPacketIdentifier
+	local duplicate
+	if [ -f "$ourPacketIdentifierFolderPath"/pubrec-received ]; then
+		unknownPacketIdentifier=0
+		duplicate=1
+	elif [ -f "$ourPacketIdentifierFolderPath"/publish ]; then
+		unknownPacketIdentifier=0
+		duplicate=0
+	else
+		unknownPacketIdentifier=1
+		duplicate=0
+		
+		core_message WARN "Received a PUBREC with packet identifier '$packetIdentifier' for a PUBLISH that doesn't appear to be ours'"
+	fi
+	
+	bishbosh_connection_handler_PUBREC
+	
+	printf '' >"$ourPacketIdentifierFolderPath"/pubrec-received
+	
+	bishbosh_connection_packetIdentifier_forWriting=$packetIdentifier
+	bishbosh_connection_write_PUBREL
+}

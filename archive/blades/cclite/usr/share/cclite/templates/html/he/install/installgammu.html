@@ -1,0 +1,377 @@
+
+<div class="failedcheck">
+$$fieldsref{updatemessage}
+</div>
+באפשרותך להשתמש ב- sms עסקאות עם קבלו מספר במהדורה הנוכחית, אבל זה ברירת מחדל, עיין במדריך! את
+<b>
+רישום ומטבע חייב להיות קיים
+</b>
+.
+<br/>
+
+<br/>
+
+עליך גם לקבוע את תצורת
+<span class="system">
+/etc/gammu-smsdrc
+</span>
+for the phone or dongle that you are using and for inbox/outbox etc.
+See the example in the
+<span class="system">
+config
+</span>
+ספריית המשנה שהיא עבור שם = 1750 Huawei נותן חיבור בסגנון AT. זהו החומרה המשמשות לבדיקת הגירסה הנוכחית.
+<br/>
+
+<br/>
+
+ייתכן שתצטרך להשתמש גם
+<a title="מצב מתג השירות" href="http://www.draisberghof.de/usb_modeswitch/">
+מצב מתג השירות
+</a>
+אם הדונגל טלפון מכריזה על עצמה כהתקן אחסון
+<br/>
+
+<br/>
+
+
+<table>
+<tbody class="stripy">
+
+<form  name="installgammu" id="form" action="/cgi-bin/protected/ccinstall.cgi" method="post">
+
+<input class="small" name="saveadd"  value="לעדכן את תצורת Gammu" type="submit">
+
+<input name="action"  value="updategammuconfig" type="hidden">
+
+<input name="type"  data-simple="yes"  value="gammu" type="hidden">
+
+<tr>
+
+<td title=". זה הזמן לישון בשניות עבור קריאת ושליחת הודעות sms" class="menu">
+sms לישון
+</td>
+
+<td class="pme-key-1">
+
+<input id="smssleep"  class="required" type="text" name="smssleep" size="3" value="$$fieldsref{smssleep}">
+
+</td>
+
+<td title="sms ממשק שפה, אנגלית היחידה נבדק בזמן הנוכחי!" class="menu">
+שפה
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="" name="language" size="2" value="$$fieldsref{language}">
+</td>
+
+</tr>
+
+<tr>
+<td title="1 אם readsms_from_gammu.pl באותה מערכת כמו cclite, אם אפס סבון משמש אבל זה מעולם לא נוסה" class="menu">
+סקריפט sms הוא מקומי
+</td>
+<td class="pme-key-1">
+
+<input id="smslocal"  class="required" type="text"  name="smslocal" size="1" value="$$fieldsref{smslocal}">
+
+</td>
+
+<td title="מצב סיסמת אינטרנט, בדרך כלל פעילים" class="menu">
+מצב סיסמת אינטרנט
+</td>
+<td class="pme-key-1">
+<input readonly id="userpasswordstatus"  class="required" type="text" readonly name="userpasswordstatus" size="6" value="active">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root inwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+נתיב וכלפי פנים בזווית הבסיס sms
+</td>
+<td class="pme-key-1">
+
+<input type="text"   class="required" name="smsinpath" size="30" value="$$fieldsref{smsinpath}">
+
+</td>
+
+<td title="מצב עבור משתמש סלולרי pin, בדרך כלל פעיל, אם אנו מרשים צירופים מהטלפון הנייד" class="menu">
+מצב ה-pin משתמש
+</td>
+<td class="pme-key-1">
+<input id="userpinstatus"  class="required" type="text" name="userpinstatus" size="8" value="$$fieldsref{userpinstatus}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root outwards path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+נתיב כלפי חוץ, הבסיס sms
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smsoutpath" size="30" value="$$fieldsref{smsoutpath}">
+
+<td title="מצב עבור רשומת המשתמש, בדרך כלל פעיל, אם אנו מרשים צירופים מהטלפון הנייד" class="menu">
+מצב משתמש
+</td>
+<td class="pme-key-1">
+<input id="userstatus"  class="required" type="text" name="userstatus" size="8" value="$$fieldsref{userstatus}">
+</td>
+
+</td>
+</tr>
+
+<tr>
+<td title="Sms root sent path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+נתיב sms הבסיס שלח sms
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smssentpath" size="30" value="$$fieldsref{smssentpath}">
+
+</td>
+
+<td title="מילת מפתח עבור תשלום הודעות sms" class="menu">
+משלמים לפי מילות מפתח
+</td>
+<td class="pme-key-1">
+<input id="send"  class="required" type="text" name="send_key" size="8" value="$$fieldsref{send_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="Sms root error path, the registry [trading group] name is added to this, see note above about configuring gammu-smsrdc too" class="menu">
+sms שורש מנתיב שגיאה ב- sms
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="smserrorpath" size="30" value="$$fieldsref{smserrorpath}">
+
+</td>
+
+<td title="מילת המפתח לאיזון בהודעות sms" class="menu">
+לאזן את מילת המפתח
+</td>
+<td class="pme-key-1">
+<input id="balance"  class="required" type="text" name="balance_key" size="8" value="$$fieldsref{balance_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="בסיס הרישום עבור תנועות sms, יכול רק לאפשר רישום אחד כרגע" class="menu">
+הרישום הבסיסי
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="registry" size="20" value="$$fieldsref{registry}">
+
+</td>
+
+<td title="מילת מפתח עבור צירוף בהודעות sms" class="menu">
+כשמאלית
+</td>
+<td class="pme-key-1">
+<input id="join"  class="required" type="text" name="join_key" size="8" value="$$fieldsref{join_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="מטבע עבור תנועות sms, זוהי ברירת המחדל. אם מטבע לא צוין" class="menu">
+מטבע ברירת מחדל
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="currency" size="20" value="$$fieldsref{currency}">
+
+</td>
+
+<td title="מילת מפתח עבור פין לאשר בהודעות sms" class="menu">
+סיכת לאשר את מילת המפתח
+</td>
+<td class="pme-key-1">
+<input id="confirm"  class="required" type="text" name="confirm_key" size="8" value="$$fieldsref{confirm_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="זה דרוש אם לא תכלול מספר פחות מלא עבור תנועות תשלום, לדוגמה 44 עבור בריטניה, קל יותר להשתמש שם משתמש בכל מקרה!" class="menu">
+קידומת המדינה
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="sms_prefix" size="2" value="$$fieldsref{sms_prefix}">
+
+</td>
+
+<td title="מילת מפתח עבור פין לשנות ב- sms, הודעות" class="menu">
+מילת המפתח שינוי pin
+</td>
+<td class="pme-key-1">
+<input id="pinchange"  class="required" type="text" name="pinchange_key" size="8" value="$$fieldsref{pinchange_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="תעבור על איתור באגים ל- sms, 0 עבור כבוי, 1 עבור" class="menu">
+debug מערכת sms
+</td>
+<td class="pme-key-1">
+
+<input type="text"  class="required" name="debug" size="1" value="$$fieldsref{debug}">
+
+</td>
+
+<td title="מילת מפתח עבור חשבון מושהה בהודעות sms" class="menu">
+להשעות את מילת המפתח
+</td>
+<td class="pme-key-1">
+<input id="suspend"  class="required" type="text" name="suspend_key" size="8" value="$$fieldsref{suspend_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="איתור באגים קובץ עבור איתור באגים" class="menu">
+יומן רישום לאיתור באגים ב- sms
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required" name="sms_debug_file" size="30" value="$$fieldsref{sms_debug_file}">
+
+</td>
+
+<td title="מילת מפתח עבור שינוי שפה בהודעות sms" class="menu">
+שינוי שפה מילת מפתח
+</td>
+<td class="pme-key-1">
+<input id="language"  class="required" type="text" name="language_key" size="8" value="$$fieldsref{language_key}">
+</td>
+
+</tr>
+
+<tr>
+<td title="ראשי תיבות מצב התשלום עבור תנועות sms, בדרך כלל מתקבלת, כי לא ניתן לשנות זאת מהטלפון בזמן הנוכחי" class="menu">
+מצב התשלום הראשוני
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="initialpaymentstatus" size="15" value="$$fieldsref{initialpaymentstatus}">
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="מתג הפעלה/כיבוי הודעות חסות בסוף smses שנשלחו" class="menu">
+הודעות חסות
+</td>
+<td class="pme-key-1">
+
+<input type="text" class="required"  name="sponsor_message_status" size="1" value="$$fieldsref{sponsor_message_status}">
+
+</td>
+</tr>
+
+<tr>
+<td title="חסות הודעה 1 עבור התחתון של הודעות sms, ראה מדריך למשתמש" class="menu">
+חסות הודעה 1
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor1" wrap="soft" >
+$$fieldsref{sponsor1}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="חסות הודעה 2 עבור התחתון של הודעות sms, ראה מדריך למשתמש" class="menu">
+חסות הודעה 2
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor2"  wrap="soft">
+$$fieldsref{sponsor2}
+</textarea>
+
+</td>
+</tr>
+
+<tr>
+<td title="חסות הודעה 3 עבור התחתון של הודעות sms, ראה מדריך למשתמש" class="menu">
+חסות הודעה 3
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor3" wrap="soft">
+$$fieldsref{sponsor3}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+<tr>
+<td title="חסות הודעה 4 עבור התחתון של הודעות sms, ראה מדריך למשתמש" class="menu">
+הודעת החסות 4
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor4" wrap="soft">
+$$fieldsref{sponsor4}
+</textarea>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+
+</td>
+</tr>
+
+<tr>
+<td title="חסות מסר 5 התחתון של הודעות sms, ראה מדריך למשתמש" class="menu">
+הודעת החסות 5
+</td>
+<td class="pme-key-1">
+
+<textarea cols="15" rows="4" name="sponsor5" wrap="soft">
+$$fieldsref{sponsor5}
+</textarea>
+
+</td>
+
+<td title="" class="menu">
+</td>
+<td class="pme-key-1">
+</td>
+
+</tr>
+
+</tbody>
+</table>
+
+</form>

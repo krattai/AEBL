@@ -1,0 +1,64 @@
+# This file is part of bish-bosh. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT. No part of bish-bosh, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2014-2015 The developers of bish-bosh. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/raphaelcohn/bish-bosh/master/COPYRIGHT.
+
+
+core_usesIn bishbosh/backend gnutls openssl socat ncat nc6 nc ncBusyBox ncDebianOpenBSD ncDebianTraditional ncSolaris ncGNU ncMacOSX ncOpenBSD ncMirBSD ncToybox devtcp cryptcat
+
+bishbosh_backend_find()
+{
+	local originalIFS="$IFS"
+	local IFS=','
+	set -- $bishbosh_backends
+	local IFS="$originalIFS"
+	
+	local backendName
+	for backendName in $@
+	do
+		if bishbosh_backend_${backendName}_check; then
+			bishbosh_backend_name="$backendName"
+			if core_variable_isUnset bishbosh_port; then
+				bishbosh_port=$(bishbosh_backend_${backendName}_port)
+			fi
+			if [ -n "$bishbosh_backend_path" ]; then
+				core_message INFO "Using backend '$bishbosh_backend_name' (on path '$bishbosh_backend_path') with port '$bishbosh_port'"
+			else
+				core_message INFO "Using backend '$bishbosh_backend_name' with port '$bishbosh_port'"
+			fi
+			return 0
+		fi
+	done
+	
+	core_exitError $core_commandLine_exitCode_OSFILE "Could not find a backend to make socket connections with tunnelling '$bishbosh_tunnel' that was on the PATH '$PATH'."
+}
+
+core_dependency_oneOf '*' sed grep head
+bishbosh_backend_netcatVariantHelpMessageLineExists()
+{
+	local pattern="$1"
+
+	if core_compatibility_whichNoOutput sed; then
+		local result="$("$binary" -h 2>&1 | sed -n "/${pattern}/=")"
+		if [ "$result" = '1' ]; then
+			bishbosh_backend_path="$binary"
+			return 0
+		fi
+		return 1
+	fi
+	
+	if core_compatibility_whichNoOutput grep; then
+		if core_compatibility_whichNoOutput head; then
+			if "$binary" -h 2>&1 | head -n 1 | grep -q -E "$pattern"; then
+				bishbosh_backend_path="$binary"
+				return 0
+			fi
+		fi
+		return 1
+	fi
+	
+	core_exitError $core_commandLine_exitCode_OSFILE "Either 'sed' or 'grep' and 'head' must be present to use the 'nc' meta-backend."
+}
+
+bishbosh_backend_debugOptions()
+{
+	core_message DEBUG "Passing options to backend '$bishbosh_backend_name' using '$bishbosh_backend_path' as '$(core_variable_array_passToFunctionAsArguments options echo)' (please note spaces ARE handled correctly)"
+}

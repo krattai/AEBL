@@ -1,0 +1,40 @@
+[nat]
+AUTOSTART = @AUTOSTART@
+@UNIXONLY@ PORT = 2121
+HOSTNAME = localhost
+BINARY = gnunet-service-nat
+ACCEPT_FROM = 127.0.0.1;
+ACCEPT_FROM6 = ::1;
+UNIXPATH = $GNUNET_RUNTIME_DIR/gnunet-service-nat.sock
+UNIX_MATCH_UID = YES
+UNIX_MATCH_GID = YES
+
+# Enable UPNP by default?
+ENABLE_UPNP = YES
+
+# Disable IPv6 support
+# FIXME: move entirely to transport plugins!
+DISABLEV6 = NO
+
+# How often do we query the DNS resolver
+# for our hostname (to get our own IP)
+HOSTNAME_DNS_FREQUENCY = 20 min
+
+# How often do we iterate over our 
+# network interfaces to check for changes
+# in our IP address?
+IFC_SCAN_FREQUENCY = 15 min
+
+# How often do we query the DNS resolver
+# for our hostname (to get our own IP)
+DYNDNS_FREQUENCY = 7 min
+
+# SHOULD USE STUN ?
+USE_STUN = YES
+STUN_FREQUENCY = 5 min
+# Default list of stun servers
+STUN_SERVERS = stun.gnunet.org stun.services.mozilla.com:3478 stun.ekiga.net:3478
+
+# After how long do we consider STUN data stale?
+STUN_STALE = 60 min
+

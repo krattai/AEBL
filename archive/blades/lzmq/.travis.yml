@@ -1,0 +1,100 @@
+language: c
+
+env:
+  global:
+    - LUAROCKS=2.2.0beta1
+  matrix:
+    # You can set PERF only for luajit/ffi
+    # todo: install libffi and test ffi binding on Lua 5.1/5.2
+
+    - LUA=lua5.1 ZMQ_VER=3.2 LZMQ=lzmq    PERF="NO"
+    - LUA=lua5.1 ZMQ_VER=4.0 LZMQ=lzmq    PERF="NO"
+    - LUA=lua5.1 ZMQ_VER=4.1 LZMQ=lzmq    PERF="NO"
+    - LUA=lua5.2 ZMQ_VER=4.1 LZMQ=lzmq    PERF="NO"
+    - LUA=lua5.3 ZMQ_VER=4.1 LZMQ=lzmq    PERF="NO"
+    - LUA=luajit ZMQ_VER=4.1 LZMQ=lzmq    PERF="NO"
+    - LUA=lua5.1 ZMQ_VER=4.2 LZMQ=lzmq    PERF="NO"
+
+    - LUA=luajit ZMQ_VER=3.2 LZMQ=ffi-lua PERF="NO"
+    - LUA=luajit ZMQ_VER=4.0 LZMQ=ffi-lua PERF="NO"
+    - LUA=luajit ZMQ_VER=4.1 LZMQ=ffi-lua PERF="NO"
+    - LUA=luajit ZMQ_VER=4.2 LZMQ=ffi-lua PERF="NO"
+
+    # - LUA=luajit ZMQ_VER=3.2 LZMQ=ffi     PERF="NO"
+    # - LUA=luajit ZMQ_VER=4.0 LZMQ=ffi     PERF="NO"
+    # - LUA=luajit ZMQ_VER=4.1 LZMQ=ffi     PERF="NO"
+    # - LUA=luajit ZMQ_VER=4.2 LZMQ=ffi     PERF="NO"
+
+branches:
+  only:
+    - master
+
+before_install:
+  - bash .travis/setup_lua.sh
+  - if [ "$ZMQ_VER" == "4.1" ]; then
+      bash .travis/setup_sodium.sh;
+    fi
+  - if [ "$ZMQ_VER" == "4.2" ]; then
+      bash .travis/setup_sodium.sh;
+    fi
+  - bash .travis/setup_zmq.sh
+
+install:
+  - sudo pip install cpp-coveralls
+  - sudo luarocks install luafilesystem --from=https://rocks.moonscript.org/dev
+  - sudo luarocks install lua-path --deps-mode=none
+  - sudo luarocks install luacov-coveralls
+  - sudo luarocks install lua-llthreads2 --server=http://rocks.moonscript.org/dev
+  - sudo luarocks install https://raw.github.com/moteus/lunit/moteus-skip/rockspecs/lunitx-scm.mot.skip-0.rockspec
+
+  - if [ $LZMQ = "ffi-lua" ]; then
+      sudo luarocks install ljsyscall 0.9;
+    fi
+
+  - if [ $LZMQ = "ffi-lua" ]; then
+      sudo luarocks make rockspecs/lzmq-ffi-scm-0.rockspec;
+    else
+      sudo luarocks make rockspecs/lzmq-scm-0.rockspec  CFLAGS="-O2 -fPIC -ftest-coverage -fprofile-arcs" LIBFLAG="-shared --coverage";
+    fi
+
+script:
+  - cd test
+  - lunit.sh utest.lua
+  - lunit.sh test_proxy.lua
+  - lua -lluacov test_threads.lua
+  - lua -lluacov test_threads_arg.lua
+  - lua -lluacov test_threads_fork_arg.lua
+  - lua -lluacov test_threads_fork.lua
+  - lua -lluacov test_threads_file.lua
+  - lua -lluacov test_threads_actor.lua
+  - lua -lluacov test_threads_actor_poll.lua
+  - lua -lluacov test_threads_sync.lua
+  - lua -lluacov test_metadata.lua
+  #- if [ "$ZMQ_VER" == "libzmq" ]; then
+  #    lua test_req_relaxed.lua;
+  #  fi
+  - if [ $PERF = "YES" ]; then
+      cd $TRAVIS_BUILD_DIR;
+      mkdir ./examples/perf2/libzmq;
+      sudo cp ./libzmq/perf/inproc_lat ./examples/perf2/libzmq/;
+      sudo cp ./libzmq/perf/inproc_thr ./examples/perf2/libzmq/;
+      cd ./examples/perf2;
+      sudo luajit runner.lua;
+    fi
+
+after_success:
+  - cd $TRAVIS_BUILD_DIR
+  - cd test
+  - if [ $LZMQ = "ffi-lua" ]; then
+      luacov-coveralls -c .luacov.ffi;
+    elif [ $LZMQ = "ffi" ]; then
+      luacov-coveralls;
+    else
+      coveralls -i src -e src/lzutils.c -b .. -r .. --dump c.report.json;
+      luacov-coveralls -j c.report.json;
+    fi
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always

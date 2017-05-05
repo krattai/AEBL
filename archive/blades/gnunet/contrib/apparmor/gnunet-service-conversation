@@ -1,0 +1,19 @@
+# Last Modified: Tue Jul 21 16:53:39 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-conversation {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-conversation mr,
+
+  #GNUnet helper
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-helper-audio-playback Px,
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-helper-audio-record   Px,
+
+  @{GNUNET_USER}/.local/share/gnunet/private_key.ecc rk,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}

@@ -1,0 +1,94 @@
+
+<table class="pme-main" summary="om_users">
+
+<tbody class="stripy">
+
+<tr class="pme-row-1">
+
+<td class="pme-key-title">
+UserLogin
+</td>
+
+<!-- duserLogin 用来区分从 userLogin，一般处理 -->
+
+<td class="pme-value-0">
+$$fields{duserLogin}
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-title">
+UserEmail
+</td>
+
+<td class="pme-value-1">
+$$fields{userEmail}
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-title">
+街
+</td>
+
+<td class="pme-value-1">
+$$fields{userNameornumber} $$fields{userStreet}
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-title">
+县镇 /
+</td>
+
+<td class="pme-value-1">
+$$fields{userTown} $$fields{userArea}
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-title">
+移动电话
+</td>
+
+<td class="pme-value-1">
+$$fields{userMobile}
+</td>
+
+</tr>
+
+<tr class="pme-row-0">
+
+<td class="pme-key-title">
+名称
+</td>
+
+<td class="pme-value-0">
+$$fields{userName}
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-title">
+假期或主动
+</td>
+
+<td class="pme-value-1">
+$$fieldsref{userStatus}
+</td>
+
+</tr>
+
+</tbody>
+
+</table>

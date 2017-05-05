@@ -1,0 +1,95 @@
+PROJECT = 'lzmq'
+
+if LUA_VER == '5.3' then
+  LUA_NEED = 'lua53'
+  LUA_DIR  = ENV.LUA_DIR_5_3 or ENV.LUA_DIR
+  LUA_RUNNER = 'lua53'
+elseif LUA_VER == '5.2' then
+  LUA_NEED = 'lua52'
+  LUA_DIR  = ENV.LUA_DIR_5_2 or ENV.LUA_DIR
+  LUA_RUNNER = 'lua52'
+else
+  LUA_NEED = 'lua'
+  LUA_DIR  = ENV.LUA_DIR
+  LUA_RUNNER = 'lua'
+end
+
+ROOT    = ROOT or J(LUA_DIR,'libs',PROJECT)
+LUADIR  = LUADIR or J(ROOT, 'share')
+LIBDIR  = LIBDIR or J(ROOT, 'share')
+DYNAMIC = as_bool(DYNAMIC, false)
+
+ERR = (ERR or 'object'):upper()
+ERRORS = {
+  OBJECT = 'LUAZMQ_USE_ERR_TYPE_OBJECT',
+  OBJ    = 'LUAZMQ_USE_ERR_TYPE_OBJECT',
+  NUMBER = 'LUAZMQ_USE_ERR_TYPE_NUMBER',
+  NUM    = 'LUAZMQ_USE_ERR_TYPE_NUMBER',
+  STRING = 'LUAZMQ_USE_ERR_TYPE_STRING',
+  STR    = 'LUAZMQ_USE_ERR_TYPE_STRING',
+}
+if not ERRORS[ERR] then quit("Unknown error type!") end
+
+lzmq = c.shared{PROJECT, 
+  base     = 'src',
+  src      = '*.c',
+  exclude  = 'ztimer',
+  needs    = {LUA_NEED, 'zmq4', 'stdint'},
+  defines  = {
+    ERRORS[ERR],
+    'LUAZMQ_USE_SEND_AS_BUF',
+    'LUAZMQ_USE_TEMP_BUFFERS',
+    'LUAZMQ_TEMP_BUFFER_SIZE=64',
+    IF(DEBUG, 'LZMQ_DEBUG'),
+  },
+  dynamic  = DYNAMIC,
+  strip    = true,
+}
+
+lztimer = c.shared{'timer', 
+  base     = 'src',
+  src      = {'ztimer','lzutils'},
+  needs    = {LUA_NEED, 'stdint'},
+  defines  = {
+    IF(WINDOWS, 'USE_PERF_COUNT', 'USE_CLOCK_MONOTONIC'),
+    IF(not WINDOWS, 'USE_GETTIMEOFDAY'),
+  },
+  dynamic  = DYNAMIC,
+  strip    = true,
+}
+
+target('timer', lztimer)
+
+target('build', lzmq, lztimer)
+
+install = target('install', {
+  file.group{odir=LIBDIR;             src = lzmq                   };
+  file.group{odir=J(LIBDIR, PROJECT); src = lztimer                };
+  file.group{odir=J(LUADIR, PROJECT); src = J('src', 'lua', 'lzmq', '*.*'), recurse = true};
+
+  file.group{odir=J(ROOT, 'test'); src = J('test', '*.*')          };
+  file.group{odir=J(ROOT, 'test'); src = J('examples', 'utils.lua')};
+
+  file.group{odir=J(ROOT, 'examples');recurse = true;  src = J('examples', '*.*')};
+})
+
+target('test', install, function()
+  run_test('test.lua')
+  run_test('utest.lua')
+  run_test('test_proxy.lua')
+  run_test('test_threads.lua')
+  run_test('test_threads_arg.lua')
+  run_test('test_threads_fork.lua')
+  run_test('test_threads_fork_arg.lua')
+  run_test('test_threads_file.lua')
+  run_test('test_metadata.lua')
+  run_test('test_threads_actor.lua')
+  run_test('test_threads_actor_poll.lua')
+  run_test('test_threads_sync.lua')
+
+  if not test_summary() then
+    quit("test fail")
+  end
+end)
+
+default('build')

@@ -1,0 +1,227 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+
+<meta name="description" content="cclite community currency system" />
+
+
+<meta name="keywords" content="LETS CC" />
+
+
+<meta name="author" content="hugh barnard  / Original design: Andreas Viklund - http://andreasviklund.com/" />
+
+
+<link type="text/css" href="/styles/cc.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/styles/andreas02.css" media="screen" title="andreas02 (screen)" />
+
+
+<link rel="stylesheet" type="text/css" href="/styles/print.css" media="print" />
+
+
+<link rel="alternate" type="application/rss+xml" title="Experimentele cclite koppeling" href="http://cclite.caca-cola:83/html/en/rdf/chelsea.rdf"/>
+
+
+<title>
+Cclite $$fieldsref{version} Admin
+</title>
+!$$fieldsref{jscript}
+<script src="/javascript/prototype.js">
+</script>
+
+<script src="/javascript/scriptaculous.js">
+</script>
+
+</head>
+
+<body id="$$fieldsref{action}$$fieldsref{substyle}">
+
+<div id="toptabs">
+
+<a 
+ class="toptab" title="Vergat uw wachtwoord??"
+ href="/cgi-bin/cclite.cgi?action=template&name=forgotpass.html">
+Wachtwoord vergeten?
+</a>
+
+<a class="toptabstrikethrough" title="Deutsch"
+ href="/cgi-bin/cclite.cgi?action=lang&amp;language=de">
+Deutsch
+</a>
+
+<a 
+ class="toptabstrikethrough" title="Omzetten in Frans"
+ href="/cgi-bin/cclite.cgi?action=lang&amp;language=fr">
+Fran
+</a>
+$$fieldsref{youare} $$fieldsref{atregistry}
+<p>
+
+<a class="toptab" title="Nieuwe Account" href="/cgi-bin/cclite.cgi?action=template&amp;name=newuser.html">
+Nieuwe Account
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="toptab" title="Logout $$fieldsref{user}" href="/cgi-bin/cclite.cgi?action=logoff">
+Meld u af $$fieldsref{user}
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="toptab" title="Terug naar gebruikersmenu" href="/cgi-bin/cclite.cgi?action=template&name=logon.html">
+Gebruikersmenu
+</a>
+<span class="hide">
+|
+</span>
+
+</p>
+
+</div>
+
+<div id="container">
+
+<h1>
+Cclite $$fieldsref{version} Administratie
+</h1>
+
+<div id="navitabs">
+
+<a class="showpartnersresulthtml" title="Toon Partner registers" href="/cgi-bin/protected/ccadmin.cgi?action=showpartners">
+Toon Partners
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="templatecurrencyhtml" title="Maken van de nieuwe munt" href="/cgi-bin/protected/ccadmin.cgi?action=template&name=currency.html">
+Valuta maken
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="showcurrenciesresulthtml" title="Toon verhandeld valuta 's" href="/cgi-bin/protected/ccadmin.cgi?action=showcurrencies">
+Toon valuta
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="templatecategoryhtml" title="Maak nieuwe Ad-categorie" href="/cgi-bin/protected/ccadmin.cgi?action=template&name=category.html">
+Ad categorie maken
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="navitab" title="Gebruikersaccount wijzigen" href="/cgi-bin/cclite.cgi?action=template&amp;name=users.html">
+Een gebruikersaccount wijzigen
+</a>
+<span class="hide">
+|
+</span>
+
+<br/>
+
+
+<br/>
+
+
+<a class="showbalvolresulthtml" title="Register saldi weergeven" href="/cgi-bin/protected/ccadmin.cgi?action=showbalvol">
+Register saldi weergeven
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="navitab" title="Regel of kredietlimiet maken" href="/cgi-bin/protected/ccadmin.cgi?action=template&name=rule.html">
+Regel/kredietlimiet maken
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="navitab" title="Register Partner maken" href="/cgi-bin/protected/ccadmin.cgi?action=template&name=partners.html">
+Register Partner maken
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="navitab" title="Batch-bestand uploaden" href="/cgi-bin/protected/ccadmin.cgi?action=template&name=upload.html">
+Batchbestanden uploaden
+</a>
+<span class="hide">
+|
+</span>
+
+<br/>
+
+
+<br/>
+
+
+<a class="templateservicechghtml" title="Service Charge van toepassing op alle Accounts" href="/cgi-bin/protected/ccadmin.cgi?action=template&name=servicechg.html">
+Servicekosten toepassen
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="navitab" title="Open Office afdrukbare map maken" href="/cgi-bin/protected/ccdirectory.cgi">
+Open Office Directory
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="navitab" title="Modify $$fieldsref{registry}" href="/cgi-bin/protected/ccadmin.cgi?template=modregistry.html&id=1&subaction=om_registry&action=modify">
+Wijzigen $$fieldsref{registry}
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="navitab" title="Register en configuratie Installer" href="/cgi-bin/protected/ccinstall.cgi">
+Installateur
+</a>
+<span class="hide">
+|
+</span>
+
+<a class="toptabstrikethrough" title="Systeemstatus en statistieken" href="/">
+Systeem/gezondheidsstatistieken
+</a>
+<span class="hide">
+|
+</span>
+
+</div>
+
+<div id="main">
+!$$fieldsref{pagename}
+</div>
+
+<div id="footer">
+Cclite copyright
+<a href="http://andreasviklund.com">
+Andreas Viklund
+</a>
+.
+</div>
+
+</div>
+
+</body>
+
+</html>

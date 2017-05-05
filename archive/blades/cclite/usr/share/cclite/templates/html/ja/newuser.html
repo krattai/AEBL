@@ -1,0 +1,343 @@
+
+
+<form name="newuser" class="pme-form" id="form" action="/cgi-bin/cclite.cgi" method="post">
+<input
+ name="action" value="adduser" type="hidden">
+
+<input name="subaction"
+ value="om_users" type="hidden">
+
+<table class="pme-main" summary="om_users">
+
+<tbody class="stripy">
+
+<tr>
+
+<td class="pme-key-0">
+<br>
+
+</td>
+
+<td style="vertical-align: top;">
+<span class="errors">
+$$fields{errors}
+</span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="pme-key-0">
+Reg の名前
+<br>
+
+</td>
+
+<td style="vertical-align: top;">
+
+<!-- 注明示的なパスの cookie 設定は、それ以外の場合のパス設定は cgi-bin の -->
+
+<input type="text" class="required" id="chooseregistry" onfocus="$.cookie('registry1', null, {expires: -2});" onblur="$.cookie('registry1', this.value, {path: '/'});" name="registry">
+
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td title="3 以上の文字、文字、数字、_ だけをする必要があります。" class="pme-key-0">
+アカウント名
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input 
+ name="nuserLogin" id="nuserLogin" class="required" value="$$fieldsref{userLogin}" size="60" maxlength="255" value="" type="text">
+
+</td>
+
+</tr>
+
+<tr class="pme-row-0">
+
+<td class="pme-key-0">
+パスワード
+</td>
+
+<td class="pme-value-0">
+
+<input 
+ name="userPassword" class="required" size="32" maxlength="32" value="" type="password">
+</td>
+
+</tr>
+
+<tr class="pme-row-0">
+
+<td class="pme-key-0">
+パスワードの確認入力
+</td>
+
+<td class="pme-value-0">
+
+<input 
+ name="cuserPassword" class="required" size="32" maxlength="32" value="" type="password">
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+電子メール
+</td>
+
+<td class="pme-value-1">
+
+<input 
+ name="userEmail" id="nuserEmail" class="required email" size="50" maxlength="50" value="$$fieldsref{userEmail}" type="text">
+
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+数/住宅名
+</td>
+
+<td class="pme-value-1">
+
+<input 
+ name="userNameornumber" class="required" value="$$fieldsref{userNameornumber}" size="30" maxlength="30" type="text">
+
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+通りの名前
+</td>
+
+<td class="pme-value-1">
+
+<input 
+ name="userStreet" size="40" class="required" maxlength="40" value="$$fieldsref{userStreet}" type="text">
+
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+町
+</td>
+
+<td class="pme-value-1">
+
+<input 
+ name="userTown" class="required" size="40" maxlength="40" value="$$fieldsref{userTown}" type="text">
+
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+州/郡
+</td>
+
+<td class="pme-value-1">
+
+<input 
+ name="userArea" class="required" size="40" maxlength="40" value="$$fieldsref{userArea}" type="text">
+
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+郵便番号
+</td>
+
+<td class="pme-value-1">
+
+<input 
+ name="userPostcode" class="required" size="10" maxlength="10" value="$$fieldsref{userPostcode}" type="text">
+
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+固定電話
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1"
+ name="userTelephone" size="20" maxlength="20" value="$$fieldsref{userTelephone}" type="text">
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td  class="pme-key-0">
+携帯電話
+</td>
+
+<td class="pme-value-1">
+
+<input title="国際電話の形式 44777766666 でこの番号を入れてください。" class="pme-input-1"
+ name="userMobile" id="nuserMobile" size="20" maxlength="20" value="$$fieldsref{userMobile}" type="text">
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+携帯電話での取引のためのピン
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1"
+ name="userPin" size="6" maxlength="6" value="$$fieldsref{userPin}" type="password">
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+携帯電話取引用暗証番号を確認します。
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1"
+ name="cuserPin" size="6" maxlength="6" value="$$fieldsref{cuserPin}" type="password">
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+SMS の支払いの領収書
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1"
+ name="userSmsreceipt" type="checkbox">
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td title="これは暗号化されたトランザクションのパブリック キー id です。" class="pme-key-0">
+パブリック キー Id
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1"
+ name="userPublickeyid" size="20" maxlength="20" value="$$fieldsref{userPublickeyid}" type="text">
+</td>
+
+</tr>
+
+<tr class="pme-row-1">
+
+<td class="pme-key-0">
+言語
+</td>
+
+<td class="pme-value-1">
+
+<select class="required" name="userLang">
+
+<option value="">
+</option>
+
+<option selected value="en">
+英語
+</option>
+
+<option value="de">
+ドイツ
+</option>
+
+<option value="fr">
+フラン
+</option>
+
+</select>
+
+</td>
+
+</tr>
+
+<tr class="pme-row-0">
+
+<td class="pme-key-0">
+完全な名前
+</td>
+
+<td class="pme-value-0">
+
+<input 
+ name="userName" size="60" class="required" maxlength="255" value="$$fieldsref{userName}" type="text">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<hr class="pme-hr">
+
+<table class="pme-navigation">
+
+<tbody>
+
+<tr class="pme-navigation">
+
+<td class="pme-buttons">
+
+<!-- 我々 はここで、レジストリのクッキーを消去、それ以外の場合それクリーン ログオンが防ぐ後 -->
+
+<input class="pme-save"
+ name="saveadd" value="作成します。" onClick="eraseCookie('registry');" type="submit">
+&nbsp;
+<input class="pme-cancel"
+ name="cancel" value="クリア" type="reset">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</form>

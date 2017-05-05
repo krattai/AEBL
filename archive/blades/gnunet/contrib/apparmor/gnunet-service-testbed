@@ -1,0 +1,29 @@
+# Last Modified: Mon Jul 27 11:02:46 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-testbed {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+  #include <abstractions/gnunet-test>
+
+  /etc/gai.conf r,
+ 
+  /tmp/gnunet-system-runtime/ w,
+  /tmp/gnunet-system-runtime/gnunet-service-testbed-barrier.sock w,
+  /tmp/gnunet-system-runtime/gnunet-service-testbed.sock w,
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-* r,
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/ r,
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-arm Px,
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-testbed mr,
+
+  @{GNUNET_PREFIX}/share/gnunet/testing_hostkeys.ecc r,
+  
+  #GNUnet helper
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-helper-testbed Px,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}

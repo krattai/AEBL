@@ -1,0 +1,15 @@
+# Last Modified: Thu Jul  9 10:16:30 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-core {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+
+  @{GNUNET_USER}/.local/share/gnunet/private_key.ecc rk,
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-core mr,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}

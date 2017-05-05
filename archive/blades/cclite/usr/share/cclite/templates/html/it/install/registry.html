@@ -1,0 +1,297 @@
+
+
+<form id="form"  action="/cgi-bin/protected/ccinstall.cgi" method="post">
+
+<span class="error">
+$$fieldsref{error}
+</span>
+
+<table class="pme-main" summary="om_users">
+
+<tbody class="stripy">
+
+<tr class="pme-row-0">
+
+<td title="nome del database definendo il gruppo commerciale, una parola, senza spazi" class="pme-key-0">
+Nome del registro di sistema
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input type="hidden" name="action" value="addregistry">
+
+<input class="required" name="newregistry" size="32" maxlength="32" value="$$fieldsref{newregistry}" type="text">
+</td>
+
+</tr>
+
+<tr class="pme-row-0">
+
+<td title="breve descrizione del gruppo di trading" class="pme-key-0">
+Descrizione del Registro di sistema
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input  class="required" name="description" size="40" maxlength="250" value="$$fieldsref{description}" type="text">
+</td>
+
+</tr>
+
+<tr title="indirizzo e account utilizzato per inviare email ufficiale per questo gruppo" class="pme-row-0">
+
+<td class="pme-key-0">
+Mail Manager
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input  class="required email" name="admemail" size="50"  maxlength="60" value="$$fieldsref{admemail}" type="text">
+</td>
+
+</tr>
+
+<td title="password per l'account e-mail admin" class="pme-key-0">
+Password Email Manager
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input class="required" name="admpass" size="20" maxlength="20" value="$$fieldsref{admpass}" type="password">
+</td>
+
+</tr>
+
+<tr title="conto dove vengono ricevute le transazioni email può essere lo stesso di admin" class="pme-row-1">
+
+<td class="pme-key-1">
+E-mail per le operazioni Batch
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input  class="required email" name="postemail" size="50" maxlength="60" value="$$fieldsref{postemail}" type="text">
+</td>
+
+</tr>
+
+<td title="password per account di posta elettronica lotto" class="pme-key-0">
+Lotto E-mail Password
+<br>
+
+</td>
+
+<td class="pme-value-0">
+
+<input class="required" name="postpass" size="20" maxlength="20" value="$$fieldsref{postpass}" type="password">
+</td>
+
+</tr>
+
+<tr title="non utilizzate attualmente, ma definisce il modello commerciale" class="pme-row-1">
+
+<td nowrap class="pme-key-1">
+Sistema di carica modello
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="chargetype">
+<option value="equaltime">
+Uguaglianza
+</option>
+<option selected value="market">
+Tariffe di mercato
+</option>
+</select>
+</td>
+
+</tr>
+
+<tr title="non utilizzate attualmente, ma definisce il modello di Commissione" class="pme-row-1">
+
+<td class="pme-key-1">
+Sistema modello Commissione
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="commission">
+
+<option selected value="no">
+Nessuna Commissione
+</option>
+
+<option value="yes">
+Commissione base del registro di sistema
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="non utilizzate attualmente, ma definisce il modello di sottoscrizione" class="pme-row-1">
+
+<td class="pme-key-1">
+Modello di sottoscrizione
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="subscription">
+
+<option selected value="no">
+Senza abbonamento
+</option>
+
+<option value="yes">
+Basato su abbonamento
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="definisce il limite di impegno per tutte le valute in questo registro, convertito in centesimi automaticamente se decimale valuta" class="pme-row-1">
+
+<td class="pme-key-1">
+Limite di impegno globale
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="commitlimit" size="10" maxlength="10" value="$$fieldsref{commitlimit}" type="text">
+</td>
+
+</tr>
+
+<tr title="chiave server utilizzato: id chiave pubblica per questo registro attualmente per le transazioni di posta elettronica solo" class="pme-row-1">
+
+<td class="pme-key-1">
+Chiave id chiave Server: pubblico
+<br>
+
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="public_key_id" size="30" maxlength="30" value="$$fieldsref{public_key_id}" type="text">
+</td>
+
+</tr>
+
+</tr>
+
+<tr title="non utilizzate attualmente, ma definisce se geografica area o interesse speciale"  class="pme-row-1">
+
+<td class="pme-key-1">
+Area geografica di copertine?
+</td>
+
+<td class="pme-value-1">
+
+<select class="pme-input-1" name="geographic">
+
+<option selected value="yes">
+Sì
+</option>
+
+<option value="no">
+No
+</option>
+
+</select>
+</td>
+
+</tr>
+
+<tr title="non utilizzate attualmente, ma definisce messaggi o codici di avviamento postale in modo che registri pubblici possono essere mappate e voci" class="pme-row-1">
+
+<td class="pme-key-1">
+Codici postali o latitudine, longitudine
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="postcodes" size="40" maxlength="80" value="$$fieldsref{postcodes}" type="text">
+
+</td>
+
+</tr>
+
+<tr title="utilizzato per fornire la chiave mercantile per elgg, drupal e connettori os-commerce" class="pme-row-1">
+
+<td class="pme-key-1">
+Chiave mercantile
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="merchant_key" size="40" maxlength="80" value="$$fieldsref{merchant_key}" type="text">
+
+</td>
+
+</tr>
+
+<tr title="utilizzato, in linea di principio per limitare i connettori a determinati indirizzi IP, facilmente falsificato probabilmente" class="pme-row-1">
+
+<td class="pme-key-1">
+Consentire il mercante da indirizzi IP
+</td>
+
+<td class="pme-value-1">
+
+<input class="pme-input-1" name="allow_ip_list" size="40" maxlength="80" value="$$fieldsref{allow_ip_list}" type="text">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!-- Questo è un esperimento, diventa rosso, se la password del db è sbagliato il link config -->
+$$fieldsref{script}
+<hr class="pme-hr">
+
+<hr class="pme-hr">
+
+<table class="pme-navigation">
+
+<tbody>
+
+<tr class="pme-navigation">
+
+<td class="pme-buttons">
+
+<input class="pme-save"
+ name="saveadd" value="Vai" type="submit">
+&nbsp;
+<input
+ class="pme-cancel" name="cancel" value="Annulla"
+type="reset">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</form>

@@ -1,0 +1,18 @@
+TODO
+====
+* Add authentication to the application (mainly for being able to touch the
+  configuration maintenance)
+* Create a beautiful README.md file, with screen shots and all the usual marketing stuff
+* Add some warning explaining that you must add a radio first if you want
+to set an alarm of a radio
+* Explain what you have to do to check that a radio works properly
+and what to do if mpd hangs.
+
+
+REQUEST
+Feel free to fork the project and add all the ideas you would like to have in RaspCTL,
+even if you don't know how to impement it or you don't have the time for doing it. If
+you don't know how to fork a project, just send me and email to jcarreras@krenel.org and
+I will add the line here myself ;) I'll put an example of a Request:
+
+* Create a Hello Kitty style for RaspCtl

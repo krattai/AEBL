@@ -1,0 +1,21 @@
+#Last Modified: Fri Jul  3 14:48:33 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/bin/gnunet-arm {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+
+  @{GNUNET_PREFIX}/bin/gnunet-arm mr,
+
+  @{GNUNET_PREFIX}/lib/libgnunetarm.so.* mr,
+
+  #GNUnet service
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-service-arm Px ,
+
+  /tmp/gnunet-*-runtime/ rw,
+  /tmp/gnunet-*-runtime/gnunet-service-arm.sock rw,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}

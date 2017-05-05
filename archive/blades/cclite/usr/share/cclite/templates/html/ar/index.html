@@ -1,0 +1,385 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- تصميم قوالب CSS مجانية&#xD;	http://www.freecsstemplates.org&#xD;	أطلق سراحهم بموجب "الإبداعي العموم تحميل 2.5 رخصة" مجاناً -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+
+<title>
+ككليتي $$fieldsref{version} المستخدم
+</title>
+
+<meta name="keywords" content="" />
+
+
+<meta name="description" content="" />
+
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+
+<meta name="description" content="cclite community currency system" />
+
+
+<meta name="keywords" content="LETS CC finance currency" />
+
+
+<meta name="author" content="hugh barnard" />
+
+$$fieldsref{metarefresh}
+<!-- أوراق الأنماط -->
+
+<link href="/styles/default.css" rel="stylesheet" type="text/css" />
+
+
+<!--<link type="text/css" href="/styles/cc.css" rel="stylesheet" />-->
+
+<link rel="alternate" type="application/rss+xml" 
+	title="$$fieldsref{registry} feed" href="/out/rss/$$fieldsref{registry}/$$fieldsref{language}/all.rdf"/>
+
+
+<link rel="stylesheet" type="text/css" href="/styles/print.css" media="print" />
+
+
+<link rel="stylesheet" type="text/css" href="/javascript/jquery-autocomplete/jquery.autocomplete.css" />
+
+
+<!-- datatables في وقت لاحق -->
+
+<link rel="stylesheet" type="text/css" href="/javascript/jquery-datatables/js/css/demo_page.css" />
+
+
+<link rel="stylesheet" type="text/css" href="/javascript/jquery-datatables/js/css/demo_table.css"/>
+
+
+<!-- المكتبات جافا سكريبت، بحاجة إلى إصدارات الرواند ضغطها في مرحلة من المراحل -->
+
+<!-- البنود مسج -->
+
+<script src="/javascript/jquery-1.3.2.js">
+</script>
+
+<script src="/javascript/jquery-validation-1.5.5.js">
+</script>
+
+<script src="/javascript/jquery-cookies.js">
+</script>
+
+<script type='text/javascript' src='/javascript/jquery-autocomplete/lib/jquery.ajaxQueue.js'>
+</script>
+
+<script type='text/javascript' src='/javascript/jquery-autocomplete/jquery.autocomplete.js'>
+</script>
+
+<script type='text/javascript' src='/javascript/jquery-tooltip/jquery.qtip-1.0.0-rc3.min.js'>
+</script>
+
+<script type='text/javascript' src='/javascript/jquery-autocomplete/lib/jquery.bgiframe.min.js'>
+</script>
+
+<script type='text/javascript' src='/javascript/jquery-datatables/js/jquery.dataTables.js'>
+</script>
+
+<!-- الآخرين غير مسج -->
+
+<script type='text/javascript' src='/javascript/jshashtable-2.1.js'>
+</script>
+
+<script src="/javascript/jquery-tagsuggest.js">
+</script>
+
+<script src="/javascript/json_parse.js" type="text/javascript">
+</script>
+
+<!-- الرسوم البيانية -->
+
+<script  src="/javascript/flot/jquery.flot.js" type="text/javascript" >
+</script>
+
+<!-- specific, is cookies necessary now? -->
+
+<script src="/javascript/cookies.js" type="text/javascript">
+</script>
+
+<script src="/javascript/striper.js" type="text/javascript">
+</script>
+
+<script src="/javascript/cclite.js" charset="utf-8" type="text/javascript">
+</script>
+
+<!-- وهذا هو البرنامج النصي الذي المستخدمين بتسجيل الخروج عندما يجري أسقطت النظام -->
+
+<script type="text/javascript">
+$$fieldsref{logout_script}
+</script>
+
+</head>
+
+<body>
+
+<!-- رمز التبديل هذا تشغيل/إيقاف الأشياء النقطة العشرية -->
+
+<div id="usedecimals" class="hidden">
+$$fieldsref{usedecimals}
+</div>
+
+<!-- البحث عن المستخدمين، والحرف، وإعلان -->
+
+<br/>
+
+
+<div align="right">
+
+<form style='display:inline;' class="searchform" action="/cgi-bin/cclite.cgi" method="post">
+
+<input name="action" value="find" type="hidden">
+
+<input class="search" onfocus="if(this.value == this.defaultValue) this.value = ''" value="search" name="search_string" id="search_string"  size="10" type="text">
+
+<select id="search_type" class="small" name="search_type">
+
+<option selected value='trade'>
+المعاملات
+</option>
+
+<option value='user'>
+المستخدمين
+</option>
+
+<option value='ad'>
+الإعلانات
+</option>
+
+</select>
+
+<input value="الذهاب" class="small" type="submit" title="ابحث عن الحرف أو إعلانات أو المستخدمين">
+
+</form>
+
+<!-- نهاية مربع البحث "الإكمال التلقائي" -->
+
+<span id="status_message">
+$$fieldsref{status_message}
+</span>
+
+<!-- لغة محدد الإصدار 1 -->
+
+<select id="language_value" class="small" onchange="change_language(this);" name="language">
+
+<!--	<option value='en'>English</option>
+					<option value='ar'>Arabic</option>
+					<option value='bn'>Bengali [partial]</option>
+					<option value='zh'>Chinese</option>
+					<option value='de'>Deutsch</option>
+					<option value='nl'>Dutch</option>
+					<option value='fr'>Francais</option>
+					<option value='es'>Espagnol</option>
+					<option value='it'>Italiano</option>
+					<option value='el'>Greek</option>
+					<option value='ja'>Japanese</option>
+					<option value='ko'>Korean</option>
+					<option value='pt'>Portugese</option>
+					<option value='ro'>Romanian</option>
+					<option value='ru'>Russian</option>
+					<option value='th'>Thai</option>
+					<option value='vi'>Vietnamese</option> -->
+
+</select>
+
+<!-- لغة محدد نهاية الإصدار 1 -->
+
+<span id="logoninfo">
+$$fieldsref{youare} $$fieldsref{atregistry}
+<span >
+<a title="Logout $$fieldsref{user}" href="/cgi-bin/cclite.cgi?action=logoff">
+
+<span id="logoff">
+</span>
+</a>
+
+</span>
+</span>
+
+</div>
+
+<div id="outer">
+
+<div id="header">
+
+<h1>
+<a href="/cgi-bin/cclite.cgi">
+مستخدم ككليتي
+</a>
+</h1>
+
+</div>
+
+<div id="menu">
+
+<span class="news">
+$$fieldsref{latest_news}
+</span>
+
+<ul>
+
+<li class="first">
+<a id="adminlinkhref" title="قائمة الإدارة" href="/cgi-bin/protected/ccadmin.cgi">
+
+<span id="adminlink">
+</span>
+
+</a>
+</li>
+
+<li>
+
+<a id="adminlinkhrefnt" title="الإدارة القائمة في علامة تبويب جديدة" target="_blank" href="/cgi-bin/protected/ccadmin.cgi">
+
+<span id="adminlinknewtab">
+</span>
+
+</a>
+
+</li>
+
+<li>
+<a title="تحويل العملة أو ساعات" href="/cgi-bin/cclite.cgi?action=template&amp;name=trades.html">
+الدفع
+</a>
+</li>
+
+<li>
+<a  title="هل نسيت كلمة المرور الخاصة بك؟?" href="/cgi-bin/cclite.cgi?action=template&name=forgotpass.html">
+هل نسيت كلمة المرور؟
+</a>
+
+</li>
+
+<li>
+<a title="أضف Openid" href="/cgi-bin/cclite.cgi?action=template&name=openid.html">
+أضف Openid
+</a>
+
+</li>
+
+<li>
+<a title="قائمة أوبينيدس" href="/cgi-bin/cclite.cgi?action=showopenid">
+قائمة أوبينيدس
+</a>
+
+</li>
+
+<li>
+<a title="إنشاء حساب جديد" href="/cgi-bin/cclite.cgi?action=template&amp;name=newuser.html">
+حساب جديد
+</a>
+
+</li>
+
+<li>
+<a title="تعديل تفاصيل الحساب الخاص بك" href="/cgi-bin/cclite.cgi?action=modifyuser">
+تعديل حساب
+</a>
+</li>
+
+<li>
+<a title="تقسيم الدفع للبضائع أو الخدمات" href="/cgi-bin/cclite.cgi?action=template&amp;name=splittrade.html">
+تقسيم الدفع
+</a>
+</li>
+
+<li>
+<a title="إظهار بلدي المعاملات" href="/cgi-bin/cclite.cgi?action=showtrans">
+المعاملات
+</a>
+</li>
+
+<li>
+<a title="وتظهر أرصدة بلدي" href="/cgi-bin/cclite.cgi?action=showbalvol">
+أرصدة
+</a>
+</li>
+
+<li>
+<a title="عرض سلع وخدمات الدليل" href="/cgi-bin/cclite.cgi?action=showyellowdir1&getdetail=1">
+السلع/الخدمات
+</a>
+</li>
+
+<li>
+<a title="تظهر لي إعلانات في سلع وخدمات الدليل" href="/cgi-bin/cclite.cgi?action=showmyyellow">
+إعلاناتي
+</a>
+</li>
+
+<li>
+<a title="إنشاء صفحة لسلع وخدمات الدليل" href="/cgi-bin/cclite.cgi?action=template&name=yellowpages.html">
+مكان الإعلان
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<!-- سحابة الوسم وإحصاءات المستخدم الفردية -->
+
+<div id="content">
+
+<div id="primaryContentContainer">
+
+<div id="primaryContent">
+!$$fieldsref{pagename}
+</div>
+
+</div>
+
+<div valign="top" id="secondaryContent">
+
+<h3>
+الفئات الإعلانية
+</h3>
+$$fieldsref{righthandside}
+<br/>
+
+<br/>
+
+
+<div id="userbalances" style="width:250px;height:150px;">
+</div>
+
+<div id="graphlabel">
+</div>
+
+</div>
+
+<div class="clear">
+<div id="footer">
+
+<a href="/cgi-bin/cclite.cgi">
+الصفحة الرئيسية
+</a>
+|
+<a href="#">
+اتصل بنا
+</a>
+<br />
+
+ككليتي 
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

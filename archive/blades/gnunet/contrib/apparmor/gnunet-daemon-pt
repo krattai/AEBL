@@ -1,0 +1,13 @@
+# Last Modified: Mon Jul 20 17:48:20 2015
+#include <tunables/global>
+#include <tunables/gnunet>
+
+profile @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-daemon-pt {
+  #include <abstractions/base>
+  #include <abstractions/gnunet-common>
+
+  @{GNUNET_PREFIX}/lib/gnunet/libexec/gnunet-daemon-pt mr,
+  
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/gnunet>
+}

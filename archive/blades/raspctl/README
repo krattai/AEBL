@@ -1,0 +1,73 @@
+License
+=======
+Copyright (c) Jan Carreras Prat 2013.
+License: GPL3. See the COPYING file or take a look to http://www.gnu.org/licenses
+
+Webpage
+=======
+Official webpage:
+http://raspctl.com
+Official repository:
+https://bitbucket.org/inedit00/raspctl
+
+About
+=====
+Developed by: Jan Carreras Prata <jcarreras@krenel.org>
+Stage of developement: Beta
+Contact: Feel free to contact me if you have a request, for reporting bugs, or just to say thanks.
+
+Install
+=======
+
+PACKAGE
+RaspCTL has a debian packaged in a public repo. Follow the instructions given in the official webpage (http://raspctl.com).
+This is the BEST and easyest way of installing RaspCTL.
+
+Or you can simply try to install it by yourself manually (hard way):
+
+DEPENDENCIES
+Required system packages:
+	$ sudo aptitude install python-bottle mercurial
+
+Required if you want to use the webcam:
+	$ sudo aptitude install fswebcam
+
+USER
+This application MUST run as non-privileged user. It is possible to run it
+as root but is strongly discouraged. You can create other user different
+than "pi" if you want.
+
+GROUPS
+Make sure that you user is in the video and audio groups:
+	$ sudo adduser $USER video
+	$ sudo adduser $USER audio
+
+If you user as been added to one of this two groups, reboot the Rasberry Pi.
+
+CLONE THE PROJECT FROM REPOSITORY
+	$ hg clone https://bitbucket.org/inedit00/raspctl
+	$ hg update stable
+
+PRIVILEGED COMMANDS
+If you want to use the "services" section (start/restart/... services in /etc/init.d/*)
+you must execute the command below. For more information read the commands in the file
+itself (I strongy recommend it):
+
+sudo ./scripts/exec.sh deploy [user]
+
+Being "user" the name of the user that will execute RaspCTL. The default is "pi".
+
+STARTING THE APP
+Must be started from the root directory of the application
+	$ cd raspctl
+	$ python core.py
+
+You can now browse to http://your-rasppi-ip:8086/
+
+DETACH APP FROM CONSOLE
+If you want to execute the web application like if it were a daemon you can do:
+	$ nohup python core.py &
+
+DEVELOPERS
+If somebody is interested in modify the code just have to run the DEPENDENCIES and STARTING THE APP
+steps. If you have problems, drop me an email.

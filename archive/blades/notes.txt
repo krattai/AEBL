@@ -1,0 +1,36 @@
+170206 - Reminder!
+- review and cull blade options as they become redundant or irrelevant
+
+http://wiki.ucis.nl/Anonet
+http://camlistore.org/
+https://github.com/jewel/clearskies
+http://freedomboxfoundation.org/
+https://freenetproject.org/
+https://gnu.org/software/social/
+https://e14n.com/
+https://gnu.org/consensus
+https://gnunet.org/
+https://withknown.com/
+http://librevpn.org.ar/
+https://github.com/mail-in-a-box/mailinabox
+http://mediagoblin.org/
+https://movim.eu/
+https://github.com/OpenBazaar/OpenBazaar
+http://www.opennicproject.org/
+http://www.osiris-sps.org/
+https://pagekite.net/
+https://sudoroom.org/wiki/Mesh
+https://code.google.com/p/phantom/
+http://www.psyced.org/
+http://qmp.cat/Home
+https://github.com/Katee/quietnet
+https://redmatrix.me/&JS=1
+https://github.com/al3x/sovereign
+https://github.com/jlund/streisand
+http://syncthing.net/
+https://tent.io/
+https://github.com/urbit/urbit
+http://villagetelco.org/
+https://github.com/raybejjani/gitsync
+https://github.com/WachterJud/qaul.net
+https://github.com/nextcloud/server
