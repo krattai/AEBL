@@ -1,0 +1,23 @@
+pay attention to subnet section, especially
+ip ranges need to be appropriate for netmask or /XX assignements
+
+# Network topology
+# Should be subnet (addressing via IP)
+# unless Windows clients v2.0.9 and lower have to
+# be supported (then net30, i.e. a /30 per client)
+# Defaults to net30 (not recommended)
+;topology subnet
+topology subnet
+
+# Configure server mode and supply a VPN subnet
+# for OpenVPN to draw client addresses from.
+# The server will take 10.8.0.1 for itself,
+# the rest will be made available to clients.
+# Each client will be able to reach the server
+# on 10.8.0.1. Comment this line out if you are
+# ethernet bridging. See the man page for more info.
+;server 10.8.0.0 255.255.255.0
+# server 10.8.44.0 255.255.255.0
+# server 10.8.48.0 255.255.240.0
+server 10.8.44.0 255.255.252.0
+
