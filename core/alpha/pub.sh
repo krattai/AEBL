@@ -3,6 +3,8 @@
 #
 # This script publishes device status
 #
+# eventually, this script will be redundant, as system should publish alives at certain intervals,
+#   but otherwise will only publish if queries to it are performed
 
 VPN_SYS="${T_STO}/.vpn_on"
 
