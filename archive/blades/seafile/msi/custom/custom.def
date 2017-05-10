@@ -1,4 +1,0 @@
-LIBRARY seafile_custom
-EXPORTS
-TerminateSeafile
-RemoveSeafileAutoStart
