@@ -199,6 +199,16 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     rmdir ${TEMP_DIR}
 
+# Should install youtube downloader
+# sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+#
+# FYI: GNU Wget 1.13.4 built on linux-gnueabihf does not work due to re-direction and TLS issues
+# so, for time being, going direct to the following release works
+# sudo wget https://github.com/rg3/youtube-dl/releases/download/2017.05.09/youtube-dl -O /usr/local/bin/youtube-dl
+# sudo chmod a+rx /usr/local/bin/youtube-dl
+#
+# youtube-dl -g https://www.youtube.com/watch?v=Z_orcNZL5cg
+
 fi
 
 rm /home/pi/.scripts/asys0092.sh
