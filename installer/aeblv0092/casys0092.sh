@@ -203,11 +203,15 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 # sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
 #
 # FYI: GNU Wget 1.13.4 built on linux-gnueabihf does not work due to re-direction and TLS issues
+#      as of 17/05/10 wget does not have an upgrade, so no known resolution
 # so, for time being, going direct to the following release works
 # sudo wget https://github.com/rg3/youtube-dl/releases/download/2017.05.09/youtube-dl -O /usr/local/bin/youtube-dl
 # sudo chmod a+rx /usr/local/bin/youtube-dl
 #
 # youtube-dl -g https://www.youtube.com/watch?v=Z_orcNZL5cg
+
+    sudo wget https://github.com/rg3/youtube-dl/releases/download/2017.05.09/youtube-dl -O /usr/local/bin/youtube-dl
+    sudo chmod a+rx /usr/local/bin/youtube-dl
 
 fi
 
