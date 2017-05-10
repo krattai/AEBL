@@ -19,8 +19,13 @@ if [ $? -eq 0 ]; then
 else
     mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn IPV6 NOT available." -h "ihdn.ca" &
 fi
+
 IPt0=$(ip addr show tun0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 IPt44=$(ip addr show tun44 | awk '/inet / {print $2}' | cut -d/ -f 1)
+# added checks for local network; assuming only one of each
+eth0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+wln0=$(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+
 
 # mosquitto_pub -d -t hello/world -m "$(date) : irot LdB, online. IP is $ext_ip" -h "uveais.ca"
 # mosquitto_pub -d -t ihdn/alive -m "$(date) : rotator SIXXS device IP $ext_ip4 is online." -h "2604:8800:100:19a::2"
@@ -33,8 +38,9 @@ mosquitto_pub -d -t ihdn/alive -m "$(date) : $hostn tun0 $IPt0 is online." -h "i
 
 mosquitto_pub -d -t ihdn/alive -m "$(date) : $hostn tun44 $IPt44 is online." -h "ihdn.ca"
 
-mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn tun0 $IPt0 is online." -h "ihdn.ca"
-mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn tun44 $IPt44 is online." -h "ihdn.ca"
+mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn tun0 $IPt0 tun44 $IPt44 is online." -h "ihdn.ca"
+
+mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn eth0 $eth0 wlan0 $wln0 is online." -h "ihdn.ca"
 
 # from:
 #     space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1 | cut -d "%" -f1 -`
