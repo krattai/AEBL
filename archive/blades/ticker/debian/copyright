@@ -1,9 +1,0 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Source: native package
-
-Files: *
-Copyright: 1998-2008 Joey Hess <joeyh@debian.org>
-License: GPL-2+
- On Debian systems, the complete text of the GPL can be found in
- /usr/share/common-licenses/GPL.
-
