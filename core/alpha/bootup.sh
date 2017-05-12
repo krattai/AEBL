@@ -19,6 +19,9 @@
 # http://www.edv-huber.com/index.php/problemloesungen/15-custom-splash-screen-for-raspberry-pi-raspbian
 #
 #
+# if necessary to remove script in event not updating:
+# Traditional - Something along the lines of
+# rm /etc/rc*/*myscript
 #
 #! /bin/sh
 # /etc/init.d/blah
