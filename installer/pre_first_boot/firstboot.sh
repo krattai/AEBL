@@ -10,6 +10,9 @@
 #   proper anon tunnel set up prior to install would most likely be best
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #
+# 170513 - gogoc no longer available
+#        - also can start to streamline in prep for v0093
+#
 # Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 #
 # Useage:
