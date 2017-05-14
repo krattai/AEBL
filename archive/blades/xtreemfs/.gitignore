@@ -1,8 +1,0 @@
-/bin/xtfs_vivaldi
-/.sconsign.dblite
-/.googletest_library_already_built
-.idea
-*.iml
-/java/flease/nbproject/private/
-/java/pbrpcgen/nbproject/private/
-/java/pbrpcgen/dist/
