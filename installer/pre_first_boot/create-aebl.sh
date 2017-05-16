@@ -103,6 +103,7 @@ fi
 # change hostname, from:
 # http://pricklytech.wordpress.com/2013/04/24/ubuntu-change-hostname-permanently-using-the-command-line/
 
+# Could possibly do this assignment using a config file to increase ease of customization
 #Assign existing hostname to $hostn
 hostn=$(cat /etc/hostname)
 
