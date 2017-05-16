@@ -84,7 +84,7 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
     else
         rm $NETWORK_SYS
         net_wait=net_wait+1
-        sleep 30
+        sleep 15
     fi
 
 done
