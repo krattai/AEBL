@@ -80,7 +80,7 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
         chmod 755 instvident.sh
         mv instvident.sh $T_SCR/instvident.sh
         $T_SCR/./instvident.sh &
-
+        net_wait=10
     else
         rm $NETWORK_SYS
         net_wait=net_wait+1
