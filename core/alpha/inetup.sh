@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2015 - 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2017 Uvea I. S., Kevin Rattai
 #
 # This script is a cron job script
 # It checks for network and internet connectivity
@@ -91,6 +91,7 @@ fi
 #     kill $(pgrep ctrlwtch.sh)
 # fi
 # 
+# **** reminder that gogoc is depricated, but leaving for now as an example ****
 # with the logic and function in a form similar to:
 # if [ "$(pgrep gogoc)" ]; then
 #     sudo /etc/init.d/gogoc restart
