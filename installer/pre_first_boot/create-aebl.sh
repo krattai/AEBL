@@ -163,11 +163,20 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/core/aeblcurr
 
+    if [ ! -f "$HOME/beta" ]; then
+        wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/core/aeblcurr
+    else
+        wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/core/aeblbeta
+        mv aeblbeta aeblcurr
+    fi
+
+
     cur_file=$(cat "${TEMP_DIR}/aeblcurr" | head -n1)
 
 #     dbox_file=$(cat "${TEMP_DIR}/aeblcurr" | tail -n1)
 
 #     wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://www.dropbox.com/s/${dbox_file}/${cur_file}"
+
 
     wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://github.com/krattai/AEBL/raw/master/installer/${cur_file}"
 
