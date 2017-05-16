@@ -184,7 +184,9 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     sudo apt-get -y install fbi samba samba-common-bin libnss-mdns lsof
 
-    sudo SKIP_WARNING=1 rpi-update
+    if [ ! -f "$HOME/aeblvm" ]; then
+        sudo SKIP_WARNING=1 rpi-update
+    fi
 
     # running rpi-wiggle in background so script has chance to
     # end gracefully
