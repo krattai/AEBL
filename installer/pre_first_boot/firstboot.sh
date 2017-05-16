@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
+#
 # This script is the first run from a fresh AEBL device
 # It gets information from current host of AEBL platform for installation
 #
@@ -13,7 +15,9 @@
 # 170513 - gogoc no longer available
 #        - also can start to streamline in prep for v0093
 #
-# Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
+# 170515 - Would like minimal reboots
+#        - perhaps current is most effective, but may want to review
+#        - specifically regarding minimum code with maximum function prior to wiggle, but without bloat
 #
 # Useage:
 # There is no useage, this is a standalone script
