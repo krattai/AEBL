@@ -74,7 +74,7 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
         rm $NETWORK_SYS
         net_wait=net_wait+1
         echo "No Internet available - $net_wait of 10 attempts."
-        sleep 30
+        sleep 15
     fi
 
 done
