@@ -182,22 +182,7 @@ if [ ! -f "${OFFLINE_SYS}" ]; then
 
     sudo apt-get update
 
-#   gogoc no longer operational
-#    sudo apt-get -y install fbi samba samba-common-bin libnss-mdns lsof gogoc
     sudo apt-get -y install fbi samba samba-common-bin libnss-mdns lsof
-
-    # configure gogoc properly
-#     wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://raw.githubusercontent.com/krattai/AEBL/master/core/gogoc.conf"
-#     wget -N -nd -w 3 -P ${TEMP_DIR} --limit-rate=50k "https://raw.githubusercontent.com/krattai/AEBL/master/core/tsp-broker-list.txt"
-#     sudo rm /etc/gogoc/gogoc.conf
-#     sudo mv ${TEMP_DIR}/gogoc.conf /etc/gogoc/gogoc.conf
-#     sudo chown root:root /etc/gogoc/gogoc.conf
-#     sudo rm /var/lib/gogoc/tsp-broker-list.txt
-#     sudo mv ${TEMP_DIR}/tsp-broker-list.txt /var/lib/gogoc/tsp-broker-list.txt
-#     sudo chown root:root /var/lib/gogoc/tsp-broker-list.txt
-#     sudo service gogoc restart
-
-#     sleep 10s
 
     sudo SKIP_WARNING=1 rpi-update
 
