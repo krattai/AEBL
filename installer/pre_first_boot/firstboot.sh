@@ -69,6 +69,7 @@ while [ ! -f "${NETWORK_SYS}" ] && [ $net_wait -lt 10 ]; do
         touch $NETWORK_SYS
         echo "Internet available."
         wget -N -nd -w 3 -P scripts --limit-rate=50k https://raw.githubusercontent.com/krattai/AEBL/master/installer/pre_first_boot/create-aebl.sh
+        net_wait=10
     else
         rm $NETWORK_SYS
         net_wait=net_wait+1
