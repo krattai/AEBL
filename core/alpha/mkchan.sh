@@ -116,6 +116,8 @@ if [ ! -f "${ID_FILE}" ]; then
 
     # Change publish method from dropbox and twitter to MQTT
 #     mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn registered ID: ${U_ID} from IP $ext_ip location." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+
+    hostn=$(cat /etc/hostname)
     mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn registered ID: ${U_ID} from IP $ext_ip location." -h "ihdn.ca"
 
 else
