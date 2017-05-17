@@ -5,6 +5,8 @@
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 # This will eventually co-ordinate with Master Control.
+#
+# 170516 - placed in alpha to test removal of old channel assignments
 
 AUTOOFF_CHECK_FILE="/home/pi/.noauto"
 FIRST_RUN_DONE="/home/pi/.firstrundone"
