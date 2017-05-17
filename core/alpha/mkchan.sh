@@ -118,7 +118,8 @@ if [ ! -f "${ID_FILE}" ]; then
 #     mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn registered ID: ${U_ID} from IP $ext_ip location." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
 
     hostn=$(cat /etc/hostname)
-    mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn registered ID: ${U_ID} from IP $ext_ip location." -h "ihdn.ca"
+    ext_ip4=$(dig +short myip.opendns.com @resolver1.opendns.com)
+    mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn registered ID: ${U_ID} from IP $ext_ip4 location." -h "ihdn.ca"
 
 else
 
