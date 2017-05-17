@@ -28,11 +28,13 @@ IPt44=$(ip addr show tun44 | awk '/inet / {print $2}' | cut -d/ -f 1)
 # added checks for local network; assuming only one of each
 eth0=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
 wln0=$(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
-
+MACe0=$(ifconfig eth0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}')
 
 # mosquitto_pub -d -t hello/world -m "$(date) : irot LdB, online. IP is $ext_ip" -h "uveais.ca"
 # mosquitto_pub -d -t ihdn/alive -m "$(date) : rotator SIXXS device IP $ext_ip4 is online." -h "2604:8800:100:19a::2"
 # mosquitto_pub -d -t ihdn/alive -m "$(date) : rotator SIXXS device IP $ext_ip6 is online." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+
+mosquitto_pub -d -t uvea/$hostn -m "$(date) : $hostn MAC $MACe0" -h "ihdn.ca"
 
 mosquitto_pub -d -t ihdn/$hostn -m "$(date) : $hostn IPv4 $ext_ip4 IPv6 $ext_ip6" -h "ihdn.ca"
 
