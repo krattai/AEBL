@@ -7,6 +7,7 @@
 #
 
 # could check to see if openvpn exist and/or running to choose whether to install or not
+sudo apt-get update
 sudo apt-get install -y p7zip-full openvpn
 
 cd tmp
