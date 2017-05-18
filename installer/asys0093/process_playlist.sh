@@ -7,7 +7,7 @@
 # terms of the Do What The Fuck You Want To Public License, Version 2,
 # as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 # May 14, 2014 Larry added GPIO 23 to switch on video
 #
@@ -17,8 +17,21 @@
 # log or file to indicate that it completed successfully
 # this would be the last command before a the script exits
 # on a success rather than a fail exit
+#
+# for lack of another location to put this:
+#   can control output to tty, such as playing video, from ssh, via:
+#     omxplayer "pl/Yes-Rhythm Of Love.mp4" > /dev/tty1
+#
+#   this requires taking ownership of tty1, via:
+#     sudo chmod 666 /dev/tty1
+#
+#   and can also startx to tty1 using:
+#     startx & > /dev/tty1   
 
-sudo bash /home/pi/scripts/led_on.sh
+# In order to play content via http:
+#   omxplayer -o hdmi -r http://ihdn.ca/ads/2016NissanRogue.mp4
+
+# sudo bash /home/pi/scripts/led_on.sh
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
@@ -95,11 +108,11 @@ while [ -f "${T_STO}/.omx_playing" ]; do
         "${PLAYER}" ${PLAYER_OPTIONS} "${file}" > /dev/null
 
         if [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ] || [ -f "${IHDN_TEST}" ]; then
-            mosquitto_pub -d -t ihdn/play -m "$(date) : $hostn IP $ext_ip played: $file." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+            mosquitto_pub -d -t ihdn/play -m "$(date) : $hostn IP $ext_ip played: $file." -h "ihdn.ca"
         fi
 
         if [ -f "${AEBL_SYS}" ] || [ -f "${AEBL_TEST}" ]; then
-            mosquitto_pub -d -t aebl/play -m "$(date) : $hostn IP $ext_ip played: $file." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+            mosquitto_pub -d -t aebl/play -m "$(date) : $hostn IP $ext_ip played: $file." -h "aebl.oss"
         fi
 
         echo
