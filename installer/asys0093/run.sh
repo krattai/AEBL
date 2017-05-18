@@ -1,7 +1,7 @@
 #!/bin/bash
 # runs updates
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
 #
 # This is the functional, process control script.  It is intended to ensure
 # that system functionality and processing is ocurring.  This script does
@@ -19,6 +19,8 @@
 # Utilize good bash methodologies as per:
 # http://www.davidpashley.com/articles/writing-robust-shell-scripts/#id2382181
 #
+# Need to add code that checks whether system stable
+#   especially if /run/shm remains linked, if not, should code, pub, and reboot
 
 FIRST_RUN_DONE="/home/pi/.firstrundone"
 AEBL_TEST="/home/pi/.aebltest"
