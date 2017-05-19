@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2015 - 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2017 Uvea I. S., Kevin Rattai
 #
 # This script is a cron job script
 # It checks for network and internet connectivity
@@ -14,8 +14,8 @@
 # --tries=10
 # --timeout=20
 
-# Speaking of network, here is the proper way to set up raspbian static:
-# http://askubuntu.com/a/157192
+# restarting vpn appears not to be working
+# might want to look at method to associate easier with static network
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
@@ -58,7 +58,7 @@ if [ -f "${OFFLINE_SYS}" ]; then
 fi
 
 # Check internet availability against master control IP
-ping -c 1 184.71.76.158
+ping -c 1 github.com
 
 if [ $? -eq 0 ]; then
     touch $NETWORK_SYS
@@ -68,14 +68,14 @@ else
 fi
 
 # Check local network availability against local server
-ping -c 1 192.168.200.6
+# ping -c 1 192.168.200.6
 
-if [[ $? -eq 0 ]]; then
-    touch $LOCAL_SYS
-    echo "Local network available."
-else
-    rm $LOCAL_SYS
-fi
+# if [[ $? -eq 0 ]]; then
+#     touch $LOCAL_SYS
+#     echo "Local network available."
+# else
+#     rm $LOCAL_SYS
+# fi
 
 if [ ! -f "${LOCAL_SYS}" ] && [ ! -f "${NETWORK_SYS}" ]; then
     touch $OFFLINE_SYS
@@ -91,6 +91,7 @@ fi
 #     kill $(pgrep ctrlwtch.sh)
 # fi
 # 
+# **** reminder that gogoc is depricated, but leaving for now as an example ****
 # with the logic and function in a form similar to:
 # if [ "$(pgrep gogoc)" ]; then
 #     sudo /etc/init.d/gogoc restart
@@ -133,20 +134,36 @@ fi
 #   + Keep in mind if this script will allow any input or editing of files, this will also be done as root.
 #
 # this works
+
+# ensure that checks are not done for non-existing networks as this will cause constant reboot
+# check for ihdnnet
 ping -c 1 10.8.0.1
 
 if [ $? -eq 0 ]; then
     touch $VPN_SYS
-    echo "VPN available."
+#     echo "VPN available."
+    hostn=$(cat /etc/hostname)
+    mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn ihdnnet available." -h "ihdn.ca" &
 else
     rm $VPN_SYS
+    hostn=$(cat /etc/hostname)
+    mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn restarting ihdnnet." -h "ihdn.ca" &
     sudo service openvpn restart
 fi
 
-if [ -f "${NETWORK_SYS}" ]; then
-    if [ ! -L /sys/class/net/tun ]; then
-        sudo /etc/init.d/gogoc restart
-    fi
+# check for aeblnet
+ping -c 1 10.8.44.1
+
+if [ $? -eq 0 ]; then
+    touch $VPN_SYS
+#     echo "VPN available."
+    hostn=$(cat /etc/hostname)
+    mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn aeblnet available." -h "ihdn.ca" &
+else
+    rm $VPN_SYS
+    hostn=$(cat /etc/hostname)
+    mosquitto_pub -d -t ihdn/log -m "$(date) : $hostn restarting aeblnet." -h "ihdn.ca" &
+    sudo service openvpn restart
 fi
 
 exit
