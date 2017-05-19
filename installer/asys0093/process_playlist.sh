@@ -7,7 +7,7 @@
 # terms of the Do What The Fuck You Want To Public License, Version 2,
 # as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 #
-# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 #
 # May 14, 2014 Larry added GPIO 23 to switch on video
 #
@@ -33,6 +33,14 @@
 
 # sudo bash /home/pi/scripts/led_on.sh
 
+# Need to determine if and/or how much lag between clips
+
+# This stalled, for some reason:
+#    8450 ?        S     73:39 /bin/bash /usr/bin/omxplayer -o both --vol -3000 /home/pi/pl/The Verve - Bittersweet Symphony.mp4
+#
+# Need to update for using omxd
+
+
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
 IHDN_TEST="/home/pi/.ihdntest"
@@ -53,7 +61,11 @@ FIRST_RUN_DONE="/home/pi/.firstrundone"
 
 # If you want to switch omxplayer to something else, or add parameters, use these
 PLAYER="omxplayer"
-PLAYER_OPTIONS=""
+# PLAYER_OPTIONS=""
+# PLAYER_OPTIONS="-o hdmi"
+# in certain situations:
+# PLAYER_OPTIONS="-o hdmi -r"
+PLAYER_OPTIONS="-o both --vol -3000"
 
 # Where is the playlist
 PLAYLIST_FILE="${T_STO}/.playlist"
