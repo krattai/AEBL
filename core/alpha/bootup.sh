@@ -59,7 +59,7 @@ case "$1" in
         echo "${AUTOOFF_CHECK_FILE} not found, in auto mode."
         setterm -blank 1
 # not sure if sleep still required
-        sleep 10s
+        sleep 5s
         sudo -u pi /run/shm/scripts/./startup.sh &
     fi
     echo "Could do more here"
