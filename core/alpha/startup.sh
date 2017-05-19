@@ -139,5 +139,6 @@ fi
 rm index*
 
 $T_SCR/./run.sh &
+$T_SCR/./pub.sh &
 
 exit
