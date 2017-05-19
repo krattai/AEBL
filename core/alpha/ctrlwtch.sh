@@ -2,9 +2,11 @@
 #
 # manages ctrl folder content
 #
-# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 #
 # add omxd as a blade install
+#
+# 170518 - need to add response if "hello?" publised to broker
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
