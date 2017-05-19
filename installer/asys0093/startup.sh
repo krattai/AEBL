@@ -1,7 +1,7 @@
 #!/bin/bash
 # gets update scripts
 #
-# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2017 Uvea I. S., Kevin Rattai
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 # This is the first script from clean bootup.  It should immediately
@@ -36,6 +36,8 @@ NETWORK_SYS="${T_STO}/.network"
 OFFLINE_SYS="${T_STO}/.offline"
 
 cd $HOME
+
+sudo ntpdate pool.ntp.org
 
 cp -p /home/pi/.scripts/* /run/shm/scripts
 
@@ -137,5 +139,6 @@ fi
 rm index*
 
 $T_SCR/./run.sh &
+$T_SCR/./pub.sh &
 
 exit
