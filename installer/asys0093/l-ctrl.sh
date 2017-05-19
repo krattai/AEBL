@@ -1,10 +1,12 @@
 #!/bin/bash
 # keeps systems up to date
 #
-# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2017 Uvea I. S., Kevin Rattai
 # BSD license https://raw.githubusercontent.com/krattai/AEBL/master/LICENSE
 #
 # This will eventually co-ordinate with Master Control.
+#
+# 170516 - placed in alpha to test removal of old channel assignments
 
 AUTOOFF_CHECK_FILE="/home/pi/.noauto"
 FIRST_RUN_DONE="/home/pi/.firstrundone"
@@ -34,6 +36,11 @@ cd $HOME
 # check ctrlwtch.sh running
 if [ ! "$(pgrep ctrlwtch.sh)" ]; then
     $T_SCR/./ctrlwtch.sh &
+fi
+
+# check msgrec.sh running
+if [ ! "$(pgrep msgrec.sh)" ]; then
+    $T_SCR/./msgrec.sh &
 fi
 
 # check irot or idet and remove aeblsys
@@ -181,6 +188,8 @@ if [ ! -f "${AUTOOFF_CHECK_FILE}" ] && [ ! "$(pgrep run.sh)" ] && [ ! "$(pgrep o
         sleep 60
         # third strike, you're out
         if [ ! "$(pgrep run.sh)" ] && [ ! "$(pgrep omxplayer.bin)" ]; then
+            hostn=$(cat /etc/hostname)
+            mosquitto_pub -d -t ihdn/alive -m "$(date) : $hostn run.sh not loaded and not playing content, so rebooting." -h "ihdn.ca"
             sudo reboot
         fi
         # apparently back up now, so carry on
