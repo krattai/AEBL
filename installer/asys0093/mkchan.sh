@@ -1,8 +1,10 @@
 #!/bin/bash
 #
-# Copyright (C) 2014 - 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 #
 # make unique channel
+#
+# The unique channel ensures that no channels are the same.  It can be linked to hostname, but the unique identifier prevents cross links
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
@@ -113,7 +115,11 @@ if [ ! -f "${ID_FILE}" ]; then
 #     $HOME/tmpdir_maintenance/mod_Twitter/./tcli.sh -c statuses_update -s "automagic To @kratt, #${TYPE_SYS} channel registered ${U_ID} ${IPw0} ${IPe0} by ifTTT Tweet -> SMS."
 
     # Change publish method from dropbox and twitter to MQTT
-    mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn registered ID: ${U_ID} from IP $ext_ip location." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+#     mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn registered ID: ${U_ID} from IP $ext_ip location." -h "2001:5c0:1100:dd00:240:63ff:fefd:d3f1"
+
+    hostn=$(cat /etc/hostname)
+    ext_ip4=$(dig +short myip.opendns.com @resolver1.opendns.com)
+    mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn registered ID: ${U_ID} from IP $ext_ip4 location." -h "ihdn.ca"
 
 else
 
