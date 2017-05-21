@@ -2,8 +2,11 @@
 #
 # manages ctrl folder content
 #
-# Copyright (C) 2014 Uvea I. S., Kevin Rattai
+# Copyright (C) 2014 - 2017 Uvea I. S., Kevin Rattai
 #
+# add omxd as a blade install
+#
+# 170518 - need to add response if "hello?" publised to broker
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
@@ -34,6 +37,22 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         if [ "$(pgrep ctrlwtch.sh)" ]; then
             kill $(pgrep ctrlwtch.sh)
         fi
+    fi
+
+    # restart vpn
+    if [ -f "${HOME}/ctrl/revpn" ]; then
+        /run/shm/scripts/revpn.sh &
+        sudo chown pi:pi "${HOME}/ctrl/revpn"
+        rm "${HOME}/ctrl/revpn"
+    fi
+
+    # change device to detect out
+    if [ -f "${HOME}/ctrl/out" ]; then
+        /run/shm/scripts/revpn.sh &
+        sudo chown pi:pi "${HOME}/ctrl/out"
+        touch .out
+        rm "${HOME}/ctrl/out"
+        touch "${HOME}/ctrl/reboot"
     fi
 
     # manual patch
