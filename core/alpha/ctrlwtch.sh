@@ -349,12 +349,15 @@ done
 sudo chown pi:pi "${HOME}/ctrl/reboot"
 rm $HOME/ctrl/reboot
 
+IPt44=$(ip addr show tun44 | awk '/inet / {print $2}' | cut -d/ -f 1)
+
 if [  -f "${HOME}/ctrl/halt" ]; then
     rm "${HOME}/ctrl/halt"
-
+    mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn tun44 $IPt44 is halting" -h "ihdn.ca"
     sleep 1s
     sudo poweroff &
 else
+    mosquitto_pub -d -t aebl/alive -m "$(date) : $hostn tun44 $IPt44 is rebooting." -h "ihdn.ca"
     sleep 1s
     sudo reboot &
 fi
