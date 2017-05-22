@@ -57,6 +57,14 @@ while IFS= read -r line
               echo " "
           fi
 
+          if [[ $line = "halt" ]]; then
+              touch "${HOME}/ctrl/halt"
+          fi
+
+          if [[ $line = "reboot" ]]; then
+              touch "${HOME}/ctrl/reboot"
+          fi
+
 done
 
 exit 0
