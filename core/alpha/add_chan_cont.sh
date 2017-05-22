@@ -1,5 +1,5 @@
 #!/bin/sh
-# This script is the AEBL content distribution network
+# This script is for the distribution of AEBL framework channel content
 # 
 # Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
 #
