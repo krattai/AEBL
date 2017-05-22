@@ -51,7 +51,8 @@ while IFS= read -r line
 #           fi
 
           if [[ $line = "hello?" ]]; then
-              mosquitto_pub -d -t aebl/alive -m "$(date) : hello!  $hostn IPv4 $ext_ip4 is online." -h "ihdn.ca"
+              IPt44=$(ip addr show tun44 | awk '/inet / {print $2}' | cut -d/ -f 1)
+              mosquitto_pub -d -t aebl/alive -m "$(date) : hello! $hostn tun44 $IPt44 is online." -h "ihdn.ca"
               echo "$(date +"%T") - hello request received"
               echo " "
           fi
