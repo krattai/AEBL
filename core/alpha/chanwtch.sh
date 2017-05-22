@@ -2,7 +2,7 @@
 #
 # Need to specific /bin/bash because /bin/sh (=dash) doesn't like redirect
 
-# Copyright (C) 2015 - 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 - 2017 Uvea I. S., Kevin Rattai
 
 #
 # Element14 - SuddenImpact design challenge
@@ -49,6 +49,12 @@ while IFS= read -r line
 #               echo "$(date +"%T") - sixxs ACK"
 #               echo " "
 #           fi
+
+          if [[ $line = "sixxs alive" ]]; then
+              mosquitto_pub -d -t aebl/alive -m "$(date) : hello!  $hostn IPv4 $ext_ip4 is online." -h "ihdn.ca"
+              echo "$(date +"%T") - hello request received"
+              echo " "
+          fi
 
 done
 
