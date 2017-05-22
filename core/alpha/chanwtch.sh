@@ -50,7 +50,7 @@ while IFS= read -r line
 #               echo " "
 #           fi
 
-          if [[ $line = "sixxs alive" ]]; then
+          if [[ $line = "hello?" ]]; then
               mosquitto_pub -d -t aebl/alive -m "$(date) : hello!  $hostn IPv4 $ext_ip4 is online." -h "ihdn.ca"
               echo "$(date +"%T") - hello request received"
               echo " "
