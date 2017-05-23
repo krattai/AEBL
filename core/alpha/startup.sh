@@ -111,6 +111,7 @@ if [ -f "${NETWORK_SYS}" ]; then
     touch /home/pi/patch
 fi
 
+# should probably only do this if the uniqueid file does not exist
 if [ ! -f "${OFFLINE_SYS}" ] && [ ! -f "${IHDN_DET}" ]; then
     $T_SCR/./mkuniq.sh &
 
