@@ -291,6 +291,8 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
 # lsof "/home/pi/pl/ihdn mrkt 14051500.mp4"
 #
 # or could just use file token during download and remove once completed to initiate file move
+#
+# finally, could just leave as this apprently works, even if mv happens on fly during wget
 
     # put audio and/or video files to proper folders
     # smbstatus checks only for files being copied via samba / network file sharing
