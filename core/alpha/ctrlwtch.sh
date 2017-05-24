@@ -274,7 +274,24 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
 #     fi
     fi
 
+
+# potential references for downloading and checking file prior to moving to proper path
+# http://ihdn.ca/ads/1SeguinAD1pi.mp4
+# 
+# smbstatus | grep -i mp4
+# 
+# wget -N -nd -w 3 -P /home/pi/ctrl --limit-rate=50k "http://ihdn.ca/ads/1SeguinAD1pi.mp4" &
+# 
+# ps -ef | grep wget | grep -v grep
+# 
+# lsof /path/to/downloaded/file
+# 
+# lsof /home/pi/pl/1SeguinAD1pi.mp4
+# 
+# lsof "/home/pi/pl/ihdn mrkt 14051500.mp4"
+
     # put audio and/or video files to proper folders
+    # smbstatus checks only for files being copied via samba / network file sharing
     if ls /home/pi/ctrl/*.mp4 &> /dev/null; then
         if ! [[ `smbstatus | grep -i mp4` ]]; then
             mv /home/pi/ctrl/*.mp4 /home/pi/pl
