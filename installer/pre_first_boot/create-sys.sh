@@ -113,7 +113,7 @@ fi
 chmod 777 ${SCRPT_DIR}/${systype}
 
 # grab all new sys files prior to installing AEBL type
-sudo apt-get -y install gogoc
+# sudo apt-get -y install gogoc
 
 # set up type and end gracefully
 ${SCRPT_DIR}/./${systype} &
