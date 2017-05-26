@@ -106,6 +106,7 @@ while IFS= read -r line
 
 
 #           could test by putting content into ctrl directory
+#           could also pass/receive full URI rather than just file, specifically for AEBL
 #             wget -N -nd -w 3 -P /home/pi/ad --limit-rate=50k "http://ihdn.ca/ads/${line}"
             wget -N -nd -w 3 -P /home/pi/ctrl --limit-rate=50k "http://ihdn.ca/ads/${line}"
 
