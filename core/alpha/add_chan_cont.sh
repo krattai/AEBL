@@ -109,6 +109,8 @@ while IFS= read -r line
 #           could also pass/receive full URI rather than just file, specifically for AEBL
 #             wget -N -nd -w 3 -P /home/pi/ad --limit-rate=50k "http://ihdn.ca/ads/${line}"
             wget -N -nd -w 3 -P /home/pi/ctrl --limit-rate=50k "http://ihdn.ca/ads/${line}"
+#           should also update pl after new file add
+#           oh, and should also create script for removing content
 
 done
 
