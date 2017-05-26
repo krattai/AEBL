@@ -30,7 +30,7 @@ touch $T_STO/.mkplayrun
 
 while [ -f "${T_STO}/.mkplayrun" ]; do
 
-    # Check if not currently making playlist and newpl exists
+    # Check if not currenlty making playlist and newpl exists
 
     if [ ! -f "${T_STO}/mkpl" ] && [ -f "${T_STO}/mynew.pl" ]; then
 
