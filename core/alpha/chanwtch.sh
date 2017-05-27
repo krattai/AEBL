@@ -65,6 +65,10 @@ while IFS= read -r line
               touch "${HOME}/ctrl/reboot"
           fi
 
+          if [[ $line = "speed" ]]; then
+              touch "${HOME}/ctrl/speed"
+          fi
+
 done
 
 exit 0
