@@ -321,6 +321,11 @@ while [ ! -f "${HOME}/ctrl/reboot" ]; do
         touch "${HOME}/ctrl/reboot"
     fi
 
+    if [ -f "${HOME}/ctrl/speed" ]; then
+        $T_SCR/speed_test.sh &
+        rm "${HOME}/ctrl/speed"
+    fi
+
 # Need to be sure that ctrlwtch does not fire certain functions if
 #  it is NOT an .aebltest or .aeblsys appliance.
 
