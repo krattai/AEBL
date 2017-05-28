@@ -65,7 +65,6 @@
 #
 #         done
 
-# hostn=$(cat /etc/hostname)
 # ext_ip4=$(dig +short myip.opendns.com @resolver1.opendns.com)
 # ext_ip6=$(curl icanhazip.com)
 # mosquitto_pub -d -t hello/world -m "$(date) : irot LdB, online. IP is $ext_ip" -h "uveais.ca"
@@ -77,6 +76,8 @@
 # i=$[$i+1]
 # sleep 300
 # done
+
+hostn=$(cat /etc/hostname)
 
 # Use $hostn to watch for new content
 mosquitto_sub -h "ihdn.ca" -t "aebl/$hostn/add" |
