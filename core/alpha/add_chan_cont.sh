@@ -3,8 +3,8 @@
 # 
 # Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
 #
-# Useage:
-# There is no useage, this is a standalone script
+# Useage, from master control:
+# mosquitto_pub -d -t aebl/aebltst0/add -m "winnipeg%20food%20video.mp4" -h "ihdn.ca"
 #
 # For certain functions, use case:
 #
@@ -108,7 +108,9 @@ while IFS= read -r line
 #           could test by putting content into ctrl directory
 #           could also pass/receive full URI rather than just file, specifically for AEBL
 #             wget -N -nd -w 3 -P /home/pi/ad --limit-rate=50k "http://ihdn.ca/ads/${line}"
+            mosquitto_pub -d -t aebl/$hostn -m "$(date) : $(cat /etc/hostname) getting $line." -h "ihdn.ca" &
             wget -N -nd -w 3 -P /home/pi/ctrl --limit-rate=50k "http://ihdn.ca/ads/${line}"
+            mosquitto_pub -d -t aebl/$hostn -m "$(date) : $(cat /etc/hostname) received $line." -h "ihdn.ca" &
 #           should also update pl after new file add
 #           oh, and should also create script for removing content
 
