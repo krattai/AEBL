@@ -66,6 +66,7 @@ while IFS= read -r line
           fi
 
           if [[ $line = "speed" ]]; then
+              mosquitto_pub -d -t aebl/alive -m "$(date) : $(cat /etc/hostname) checking speed." -h "ihdn.ca"
               touch "${HOME}/ctrl/speed"
           fi
 
