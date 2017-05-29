@@ -48,6 +48,11 @@ if [ ! "$(pgrep chanwtch.sh)" ]; then
     $T_SCR/./chanwtch.sh &
 fi
 
+# check chanwtch.sh running
+if [ ! "$(pgrep chanwtch.sh)" ]; then
+    $T_SCR/./add_chan_cont.sh &
+fi
+
 # check irot or idet and remove aeblsys
 if [ -f "${IHDN_TEST}" ] ||  [ -f "${IHDN_SYS}" ] || [ -f "${IHDN_DET}" ]; then
     rm /home/pi/.aeblsys
