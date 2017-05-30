@@ -142,5 +142,6 @@ rm index*
 $T_SCR/./run.sh &
 $T_SCR/./pub.sh &
 $T_SCR/./chanwtch.sh &
+$T_SCR/./add_chan_cont.sh &
 
 exit
