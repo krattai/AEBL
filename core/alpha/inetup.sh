@@ -14,6 +14,8 @@
 # --tries=10
 # --timeout=20
 
+# 170529 - need to clean up
+
 # restarting vpn appears not to be working
 # might want to look at method to associate easier with static network
 
