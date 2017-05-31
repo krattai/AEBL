@@ -39,7 +39,7 @@ i="0"
 #   echo "Disk space normal" | mail -s "daily diskcheck" root
 # fi
 
-
+hostn=$(cat /etc/hostname)
 
 # should modify this loop to simply ping persistently
 while [ $i -lt 9999 ]
@@ -56,10 +56,10 @@ do
 
     if [ "$space" -ge "$alertvalue" ]; then
 #     echo "At least one of my disks is nearly full!" | mail -s "daily diskcheck" root
-        mosquitto_pub -d -t uvea/alive -m "!* $(date) : $hostn disk is $space% full. *!" -h "ihdn.ca"
+        mosquitto_pub -d -t uvea/alive -m "!!** $(date) : $hostn disk is $space% full. **!!" -h "ihdn.ca"
     else
 #     echo "Disk space normal" | mail -s "daily diskcheck" root
-        mosquitto_pub -d -t uvea/alive -m "!* $(date) : $hostn disk is space fine. *!" -h "ihdn.ca"
+        mosquitto_pub -d -t uvea/alive -m " $(date) : $hostn disk is space fine." -h "ihdn.ca"
 fi
 
 
