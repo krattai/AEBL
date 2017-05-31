@@ -44,15 +44,25 @@ i="0"
 # should modify this loop to simply ping persistently
 while [ $i -lt 9999 ]
 do
-ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+    ext_ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
 
 # example of message
 # mosquitto_pub -d -t hello/world -m "$(date) : irot LdB, online. IP is $ext_ip" -h "uveais.ca"
 
 # example of file
 # mosquitto_pub -d -t ihdn/alive -f xchng.sh -h "ihdn.ca"
+    space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1 | cut -d "%" -f1 -`
+    alertvalue="80"
 
-mosquitto_pub -d -t aebl/disk -m "$(date) : AEBL device from $ext_ip ping." -h "ihdn.ca"
+    if [ "$space" -ge "$alertvalue" ]; then
+#     echo "At least one of my disks is nearly full!" | mail -s "daily diskcheck" root
+        mosquitto_pub -d -t uvea/alive -m "!* $(date) : $hostn disk is $space% full. *!" -h "ihdn.ca"
+    else
+#     echo "Disk space normal" | mail -s "daily diskcheck" root
+        mosquitto_pub -d -t uvea/alive -m "!* $(date) : $hostn disk is space fine. *!" -h "ihdn.ca"
+fi
+
+
 i=$[$i+1]
 sleep 300
 done
