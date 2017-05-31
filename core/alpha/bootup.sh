@@ -30,6 +30,8 @@
 # Some things that run always
 # touch /var/lock/blah
 
+# 170530 - not sure why, but this runs as daemon and would rather have this run-once at bootup and end
+
 # Carry out specific functions when asked to by the system
 case "$1" in
   start)
