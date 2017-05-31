@@ -7,6 +7,8 @@
 # add omxd as a blade install
 #
 # 170518 - need to add response if "hello?" publised to broker
+#
+# 170531 - find way to create wget list so that if fail, will resume / restart
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
