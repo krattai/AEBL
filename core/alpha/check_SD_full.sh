@@ -38,6 +38,36 @@ i="0"
 # else
 #   echo "Disk space normal" | mail -s "daily diskcheck" root
 # fi
+#
+# the mail client above works only with ssmtp and mailutils installed from:
+# http://www.raspberry-projects.com/pi/software_utilities/email/ssmtp-to-send-emails
+#
+# sudo apt-get install ssmtp
+# sudo apt-get install mailutils
+#
+# 
+# sudo nano /etc/ssmtp/ssmtp.conf
+# 
+# It needs to include this:
+# 
+# root=postmaster
+# mailhub=smtp.gmail.com:587
+# hostname=raspberrypi ::: <--> ::: should get this from file hostname
+# AuthUser=AGmailUserName@gmail.com
+# AuthPass=TheGmailPassword
+# FromLineOverride=YES
+# UseSTARTTLS=YES
+#
+# from http://www.algissalys.com/network-security/send-email-from-raspberry-pi-command-line
+# actually found out it should rather be like this:
+# root=<guser@gmail.com>
+# mailhub=smtp.gmail.com:587
+# hostname=raspberrypi ::: <--> ::: should get this from file hostname
+# AuthUser=AGmailUserName@gmail.com
+# AuthPass=TheGmailPassword
+# FromLineOverride=YES
+# UseSTARTTLS=YES
+
 
 hostn=$(cat /etc/hostname)
 
@@ -59,7 +89,7 @@ do
         mosquitto_pub -d -t uvea/alive -m "!!** $(date) : $hostn disk is $space% full. **!!" -h "ihdn.ca"
     else
 #     echo "Disk space normal" | mail -s "daily diskcheck" root
-        mosquitto_pub -d -t uvea/alive -m " $(date) : $hostn disk is space fine." -h "ihdn.ca"
+        mosquitto_pub -d -t uvea/alive -m " $(date) : $hostn disk space is fine @ $space%." -h "ihdn.ca"
 fi
 
 
