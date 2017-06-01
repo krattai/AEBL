@@ -67,7 +67,12 @@ i="0"
 # AuthPass=TheGmailPassword
 # FromLineOverride=YES
 # UseSTARTTLS=YES
-
+#
+# NB: if using this feature, be sure to re-direct undesirable cron reports to null:
+#     */3 * * * * script.sh >/dev/null 2>&1
+#
+#     also, set "root" or default email in crontab by way of:
+#     MAILTO=user@company.com
 
 hostn=$(cat /etc/hostname)
 
