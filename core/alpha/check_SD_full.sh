@@ -93,6 +93,7 @@ do
     space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1 | cut -d "%" -f1 -`
     alertvalue="80"
 
+#   if ssmtp and mailutils installed and cron set properly, uncomment the mail tasks
     if [ "$space" -ge "$alertvalue" ]; then
 #     echo "At least one of my disks is nearly full!" | mail -s "daily diskcheck" root
         mosquitto_pub -d -t uvea/alive -m "!!** $(date) : $hostn disk is $space% full. **!!" -h "ihdn.ca"
