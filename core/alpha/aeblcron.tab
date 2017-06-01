@@ -2,6 +2,8 @@
 # 
 # added ntpdate -u for cases when ntpd is running
 #
+# fix bad cron reporting email with mailto and redirect stdout, per:
+#    https://askubuntu.com/questions/247348/stop-cron-from-mailing-the-user
 
 MAILTO=aeblmobile@gmail.com
 
