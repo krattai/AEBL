@@ -2,8 +2,11 @@
 # 
 # added ntpdate -u for cases when ntpd is running
 #
-*/3 * * * * /run/shm/scripts/inetup.sh
+
+MAILTO=aeblmobile@gmail.com
+
+*/3 * * * * /run/shm/scripts/inetup.sh >/dev/null 2>&1
 */15 * * * * /run/shm/scripts/l-ctrl.sh
 30 2 * * * /run/shm/scripts/patch.sh
 30 4 * * 3 /run/shm/scripts/upgrade.sh
-43 1 1 * * sudo ntpdate -u pool.ntp.org
+43 1 1 * * sudo ntpdate -u pool.ntp.org >/dev/null 2>&1
