@@ -73,6 +73,10 @@ i="0"
 #
 #     also, set "root" or default email in crontab by way of:
 #     MAILTO=user@company.com
+#
+#     further reading on above and null redirect:
+#     # fix bad cron reporting email with mailto and redirect stdout, per:
+#     https://askubuntu.com/questions/247348/stop-cron-from-mailing-the-user
 
 hostn=$(cat /etc/hostname)
 
