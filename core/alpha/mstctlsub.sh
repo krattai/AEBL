@@ -2,7 +2,7 @@
 #
 # Need to specific /bin/bash because /bin/sh (=dash) doesn't like redirect
 
-# Copyright (C) 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
 
 #
 # Element14 - SuddenImpact design challenge
@@ -12,6 +12,8 @@
 #
 
 # This script watches host channel for control commands
+#
+# Should be able to hook to device and channel with reduced management set, authorized by m/c
 
 #     mosquitto_sub -h uveais.ca -t "aebl/add/content" |
 #     while IFS= read -r line
