@@ -6,7 +6,8 @@
 # mkdir media
 # net usershare add documents /home/pi/media "media" everyone:F guest_ok=y
 # chmod 0777 /home/pi/media
-
+#
+# 170602 - possibly share across vpn
 
 # use hostname to determine channel to watch as initial version
 hostn=$(cat /etc/hostname)
