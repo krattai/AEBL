@@ -24,6 +24,8 @@ VPN_SYS="${T_STO}/.vpn_on"
 cd $HOME
 
 # check any mosquitto_sub
+# NB: it would be possible to differentiate between processes by checking channel subscription
+#     such as using hostname
 if [ ! "$(pgrep itto_sub)" ]; then
     echo "mosquitto_sub currently not running"
 #    $T_SCR/./ctrlwtch.sh &
