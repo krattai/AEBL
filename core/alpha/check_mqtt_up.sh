@@ -3,6 +3,8 @@
 # Copyright (C) 2016 Uvea I. S., Kevin Rattai
 #
 # This script should check if necessary mosquitto_sub(s) running
+#
+# ps ax | grep itto_sub
 
 AEBL_TEST="/home/pi/.aebltest"
 AEBL_SYS="/home/pi/.aeblsys"
@@ -21,27 +23,10 @@ VPN_SYS="${T_STO}/.vpn_on"
 
 cd $HOME
 
-if [ -f "${AEBL_TEST}" ] || [ -f "${AEBL_SYS}" ]; then
-    echo "Checking network status." >> log.txt
-    echo $(date +"%T") >> log.txt
-fi
-
-# Discover network availability
-#
-# should have a way to periodically check if no network for a long time
-# perhaps a network SHOULD be available, so attempt to establish
-# thus:
-# if inetup.sh run 4 times = 1 hour, and no network, then
-# down, then up, all network interfaces and reset ticker
-# or simply do this every time, if no network / offline
-
-if [ -f "${OFFLINE_SYS}" ]; then
-    sudo ifdown eth0
-    sudo ifdown wlan0
-    sleep 5
-    sudo ifup eth0
-    sudo ifup wlan0
-    sleep 10
+# check any mosquitto_sub
+if [ ! "$(pgrep itto_sub)" ]; then
+    echo "mosquitto_sub currently not running"
+#    $T_SCR/./ctrlwtch.sh &
 fi
 
 # Check internet availability against master control IP
