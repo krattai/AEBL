@@ -1,12 +1,18 @@
 #!/bin/sh
 # This script should remove content
 # 
-# Copyright (C) 2016 Uvea I. S., Kevin Rattai
+# Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
 #
 # Useage:
 # There is no useage, this is a standalone script
 # Most likely called from ctrlwtch.sh
 # Might want to choose between remove and archive
+#
+# This code may not actually do much other than mv or rm
+# As such, this code could ultimately be part of ctrlwtch.sh
+# although with too much going on in that script, which is supposed
+# to be realtime, spawning this function would keep ctrlwtch.sh responsive
+# to momentary events
 #
 # For certain functions, use case:
 #
