@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # This script should remove content
 # 
 # Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
@@ -84,8 +84,10 @@
 # sleep 300
 # done
 
+hostn=$(cat /etc/hostname)
+
 # Use $hostn to watch for new content
-mosquitto_sub -h "ihdn.ca" -t "aebl/$hostn/add" |
+mosquitto_sub -h "ihdn.ca" -t "aebl/$hostn/rem" |
 while IFS= read -r line
     do
 #           if [[ $line = "sixxs alive" ]]; then
@@ -109,7 +111,9 @@ while IFS= read -r line
 
             # remove file
 #             echo "$line #am2p" >> "${CONTENT}"
-            rm "/home/pi/ad/${line}"
+#           would like to relegate sub listener to single script
+#           and place function into single scripts, such as ctrlwtch.sh
+            rm "/home/pi/pl/${line}"
 
 done
 
