@@ -1,5 +1,7 @@
 This document contains random notes on performing certain function and other thoughts about past, current, or future of AEBL core.
 
+Just an overall reminder that this technology is a framework and no matter what it is capable of, it should _always_ work stand alone as a media player, while becoming aware of other functions that are available or any unique capabilities.  If the enhanced functions do not work due to loss of network or other factors, it should revert or be revertable to its base.
+
 ~~~~
 
 Boot splash screen (graphic) should include note indicating that AEBL contains Open Source software under, at least, GPLv2.0 and MIT licenses.
