@@ -5,6 +5,8 @@
 #
 # Useage:
 # There is no useage, this is a standalone script
+# Most likely called from ctrlwtch.sh
+# Might want to choose between remove and archive
 #
 # For certain functions, use case:
 #
