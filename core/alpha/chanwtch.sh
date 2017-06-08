@@ -56,7 +56,6 @@ while IFS= read -r line
 #     + nout
 #     + patch
 #     + upgrade
-#     + skip/next
 #     + change channel
 
           if [[ $line = "hello?" ]]; then
@@ -77,6 +76,10 @@ while IFS= read -r line
           if [[ $line = "speed" ]]; then
               mosquitto_pub -d -t aebl/alive -m "$(date) : $(cat /etc/hostname) checking speed." -h "ihdn.ca"
               touch "${HOME}/ctrl/speed"
+          fi
+
+          if [[ $line = "next" ]]; then
+              touch "${HOME}/ctrl/next"
           fi
 
 done
