@@ -50,6 +50,15 @@ while IFS= read -r line
 #               echo " "
 #           fi
 
+# Additional functions which might be desirable:
+#     + revpn
+#     + out
+#     + nout
+#     + patch
+#     + upgrade
+#     + skip/next
+#     + change channel
+
           if [[ $line = "hello?" ]]; then
               IPt44=$(ip addr show tun44 | awk '/inet / {print $2}' | cut -d/ -f 1)
               mosquitto_pub -d -t aebl/alive -m "$(date) : hello! $hostn tun44 $IPt44 is online." -h "ihdn.ca"
