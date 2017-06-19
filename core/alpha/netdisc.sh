@@ -21,6 +21,20 @@
 # |   FQDN: vicche0
 # |   FQDN: irotbsjr
 
+
+# example from:
+#    https://superuser.com/questions/261818/how-can-i-list-all-ips-in-the-connected-network-through-terminal-preferably
+# 
+# for ip in 192.168.0.{1..254}; do
+#   ping -c 1 -W 1 $ip | grep "64 bytes" &
+# done
+
+# This is interesting:
+#   ping 224.0.0.1
+
+# Interested in finding all subnets in private space
+
+
 VPN_SYS="${T_STO}/.vpn_on"
 
 i="0"
