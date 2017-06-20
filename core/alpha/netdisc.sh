@@ -45,7 +45,20 @@
 
 # (http://www.nta-monitor.com/tools/arp-scan/
 
+# gateway:
+# https://stackoverflow.com/questions/1204629/how-do-i-get-the-default-gateway-in-linux-given-the-destination
+# find gateway from route using default label
+# IP=$(/sbin/ip route | awk '/default/ { print $3 }')
+# echo $IP
+#
+# https://serverfault.com/questions/31170/how-to-find-the-gateway-ip-address-in-linux
+# ip route show 0.0.0.0/0 dev eth0 | cut -d\  -f3
 
+# https://www.unixmen.com/how-to-find-default-gateway-in-linux/
+
+# http://manpages.ubuntu.com/manpages/zesty/en/man1/arp-scan.1.html
+
+# https://en.wikipedia.org/wiki/Private_network
 
 VPN_SYS="${T_STO}/.vpn_on"
 
