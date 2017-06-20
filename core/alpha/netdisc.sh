@@ -34,6 +34,18 @@
 
 # Interested in finding all subnets in private space
 
+# Private networks can use IP addresses anywhere in the following ranges:
+#     192.168.0.0 - 192.168.255.255 (65,536 IP addresses)
+#     172.16.0.0 - 172.31.255.255 (1,048,576 IP addresses)
+#     10.0.0.0 - 10.255.255.255 (16,777,216 IP addresses)
+
+# sudo arp-scan 192.168.0.0/16
+# sudo arp-scan 172.16.0.0/12
+# sudo arp-scan 10.0.0.0/18
+
+# (http://www.nta-monitor.com/tools/arp-scan/
+
+
 
 VPN_SYS="${T_STO}/.vpn_on"
 
