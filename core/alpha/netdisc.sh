@@ -60,6 +60,14 @@
 
 # https://en.wikipedia.org/wiki/Private_network
 
+# additional arp-scan examples
+# sudo arp-scan --localnet --numeric --quiet --ignoredups | grep -E '([a-f0-9]{2}:){5}[a-f0-9]{2}' | awk '{print $1}'
+
+# sudo arp-scan --localnet --numeric --quiet --ignoredups
+
+# sudo arp-scan --localnet --quiet --ignoredups | gawk '/([a-f0-9]{2}:){5}[a-f0-9]{2}/ {print $1}'
+
+
 VPN_SYS="${T_STO}/.vpn_on"
 
 i="0"
