@@ -67,6 +67,9 @@
 
 # sudo arp-scan --localnet --quiet --ignoredups | gawk '/([a-f0-9]{2}:){5}[a-f0-9]{2}/ {print $1}'
 
+# arp-scan works really well for finding subnets not on current, assigned.  Seemed to have
+# some trouble traversing 10.x.x.x segments, but maybe just a volume issue
+
 
 VPN_SYS="${T_STO}/.vpn_on"
 
