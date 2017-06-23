@@ -48,8 +48,22 @@ do
   #     space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1 | cut -d "%" -f1 -`
   # following shows "current" partition for dists such as ubuntu
   #     space=`df -k . | awk '{print $5}' | grep % | grep -v Use | head -1 | cut -d "%" -f1 -`
-  space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1`
-  mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn disk is $space full." -h "ihdn.ca"
+#   space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1`
+#   mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn disk is $space full." -h "ihdn.ca"
+
+# from:
+#     space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1 | cut -d "%" -f1 -`
+space=`df -h | awk '{print $5}' | grep % | grep -v Use | head -1 | cut -d "%" -f1 -`
+alertvalue="80"
+
+if [ "$space" -ge "$alertvalue" ]; then
+    echo "At least one of my disks is $space%  full!" | mail -s "disk full" krattai@gmail.com &
+    mosquitto_pub -d -t uvea/alive -m "!!** $(date) : $hostn disk is $space% full. **!!" -h "ihdn.ca" &
+# else
+#     echo "Disk space normal" | mail -s "daily diskcheck" krattai@gmail.com &
+#     mosquitto_pub -d -t uvea/alive -m "$(date) : $hostn disk space is fine @ $space%." -h "ihdn.ca" &
+fi
+
 
   # i=$[$i+1]
   sleep 300
