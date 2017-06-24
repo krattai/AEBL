@@ -41,7 +41,7 @@
 
 # sudo arp-scan 192.168.0.0/16
 # sudo arp-scan 172.16.0.0/12
-# sudo arp-scan 10.0.0.0/18
+# sudo arp-scan 10.0.0.0/8
 
 # (http://www.nta-monitor.com/tools/arp-scan/
 
