@@ -2,5 +2,9 @@ example for installing guest from console using virt-install as combined from tw
 https://www.server-world.info/en/note?os=Ubuntu_16.04&p=kvm&f=2
 https://askubuntu.com/questions/683766/how-to-install-guest-os-ubuntu-server-in-kvm-without-vnc
 
+virt-install --name template --ram 4096 --disk path=/var/kvm/images/template.img,size=30 --vcpus 2 --os-type linux --os-variant ubuntu16.04 --network bridge=br0 --graphics none --console pty,target_type=serial --location 'http://jp.archive.ubuntu.com/ubuntu/dists/xenial/main/installer-amd64/' --extra-args 'console=ttyS0,115200n8 serial'
 
+virt-install -n test -r 1024 --vcpus=1 --os-variant=rhel5.4 --accelerate --nographics -v  --disk path=/var/lib/libvirt/shared-storage/test.img,size=20 --extra-args "console=ttyS0" --location /home/justin/Downloads/CentOS-5.7-x86_64-netinstall.iso
+
+Result of combining is as follows, as a gitlab base, for example:
 virt-install -n gitlab0 -r 2048 --disk path=/var/lib/libvirt/images/gitlab0.img,size=30 --vcpus 2 --os-type linux --os-variant ubuntu16.04 --network bridge=br0 --graphics none --console pty,target_type=serial --location 'http://jp.archive.ubuntu.com/ubuntu/dists/xenial/main/installer-amd64/' --extra-args 'console=ttyS0,115200n8 serial'
