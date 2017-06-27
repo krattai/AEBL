@@ -1,6 +1,0 @@
-#!/bin/sh
-
-set -e
-if /bin/launchctl list "org.freelan.freelan" &> /dev/null; then
-	/bin/launchctl unload "/Library/LaunchDaemons/org.freelan.freelan.plist"
-fi

@@ -1,3 +1,0 @@
-repository_version: "{{ lookup('pipe', 'git rev-parse --abbrev-ref HEAD') }}"
-sources_root: "/home/vagrant/sources"
-local_sources_root: "/vagrant"
