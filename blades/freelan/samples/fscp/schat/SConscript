@@ -1,0 +1,24 @@
+import os
+import sys
+
+
+libraries = [
+    'fscp',
+    'cryptoplus',
+    'boost_thread',
+    'boost_system',
+    'crypto',
+]
+
+if sys.platform.startswith('linux'):
+    libraries.extend([
+        'pthread',
+    ])
+
+Import('env dirs name')
+
+env = env.Clone()
+env.Append(LIBS=libraries)
+samples = env.Program(target=os.path.join(str(dirs['bin']), name), source=env.RGlob('.', ['*.cpp']))
+
+Return('samples')

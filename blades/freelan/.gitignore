@@ -1,0 +1,25 @@
+# General
+*.tar.gz
+*.deb
+*.dsc
+*.changes
+*.build
+.sconsign.dblite
+*.pyc
+
+# Build environment
+/.bash_history
+/build/
+/install/
+
+# Visual Studio
+*.suo
+*.sdf
+*.opensdf
+*.vcxproj.user
+
+# Vagrant
+.vagrant
+
+# Package files
+*.pkg
