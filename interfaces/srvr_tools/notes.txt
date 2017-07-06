@@ -1,3 +1,5 @@
+Server tools are specifically for higher level functioning of devices which are not defined to strictly work as stand alone.  And, this may also include things like being able to pick up noo-ebs and other social content
+
 mosquitto_sub -h 2001:5c0:1100:dd00:240:63ff:fefd:d3f1 -t "hello/+" -t "aebl/+" -t "ihdn/+" -t "uvea/+" 2> >(grep ACK)
 
 #!/bin/bash
