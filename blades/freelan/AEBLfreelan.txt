@@ -3,3 +3,9 @@ The goal is to utilize freelan as a method of creating a non-broker / server bas
 Until or unless this blade is removed from the AEBL repository, it is assumed that any changes to freelan code, which is under the GPL3.0 license in its current state, will be presented back to the community in accordance with the license, even though it is quite possible that changes made, necessary for AEBL functionality, would be of no value to the freelan community.
 
 It is also currently presumed that, if freelan functions as desired, no actual changes to freelan need be made, as it is expected that any software with the desired functionality, is simply a layer upon which AEBL code operates.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Notes for AEBL integration:
+
+It is intended that freelan will help create a stable, resilient, functional virtual lan for AEBL devices
