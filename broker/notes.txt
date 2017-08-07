@@ -6,6 +6,8 @@ broker that was previously in play is now down, to be presumed permanently.
 
 Need to set up new, temporary broker to be in place until p2p ready to go
 
+also need to change all scripts to reflect broker change
+
 ~~~~~~~~~~
 
 This may not be the best place for this, but as a reference, in the event an external drive is added to host and does not post (show), then the following may be helpful:
