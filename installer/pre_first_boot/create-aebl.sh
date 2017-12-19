@@ -18,6 +18,8 @@
 # Useage:
 # There is no useage, this is a standalone script
 
+# 20171219 - kr : set DNS to ensure that AEBL functionality is consistently maintained by domain
+#                 might use a current file to update DNS during install and normal function
 
 # May want to look into ensuring base dev tools for make/build/compile available
 
