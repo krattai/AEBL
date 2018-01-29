@@ -1,0 +1,174 @@
+Shell Script To Create BIND Zone Files
+in Categories Domain last updated March 24, 2009
+
+First, you need to customize configuration file as follows.
+Sample ns.profile.nixcraft.net configuration file
+
+Define your default TTL, EMAIL ID and other stuff. Also, set your mail server and nameserver IPs using bash array. Save file as follows ns.profile.nixcraft.net:
+
+
+# defaults profile for nameserver ns1.nixcraft.net
+# 
+TTL="3h"                      # Default TTL
+ATTL="3600"       # Default TTL for each DNS rec 
+EMAILID="vivek.nixcraft.in." # hostmaster email
+REFRESH="3h"                  # Refresh After 3 hours
+RETRY="1h"                    # Retry Retry after 1 hour
+EXPIER="1w"       # Expire after 1 week
+MAXNEGTIVE="1h"       # Minimum negative caching of 1 hour 
+ 
+# name server names FQDN 
+NAMESERVERS=("ns1.nixcraft.net." "ns2.nixcraft.net." "ns3.nixcraft.net.")
+ 
+# name server IPs, 
+# leave it blank if you don't need them as follows
+NAMESERVERSIP=()
+#NAMESERVERSIP=("202.54.1.10" "203.54.1.10" "204.54.1.40")
+ 
+# mail server names
+# leave it blank if you don't need them
+MAILSERVERS=("mail.nixcraft.net.")
+#MAILSERVERS=("smtp1.nixcraft.net." "smtp2.nixcraft.net.")
+ 
+################# add your own A recored here ##########################
+# You can add additonal A recs using following function
+function LoadCutomeARecords(){
+echo >/dev/null # keep this line
+# Uncomment or add A recoreds as per your requirments
+# echo "ftp $ATTL	IN	A	202.54.2.2"
+# echo "webmail $ATTL	IN	A	202.54.2.5"
+# echo "ipv6host $ATTL	IN	AAAA	2001:470:1f0e:c2::1"
+}
+
+Add additional records using LoadCutomeARecords(). You can create multiple nameserver configuration file and call it from mkzone.sh.
+
+mkzone.sh: Shell script to create BIND zone file
+
+# A Bash shell script to create BIND ZONE FILE.
+# Tested under BIND 8.x / 9.x, RHEL, DEBIAN, Fedora Linux.
+# -------------------------------------------------------------------------
+# Copyright (c) 2002,2009 Vivek Gite <vivek@nixcraft.com>
+# This script is licensed under GNU GPL version 2.0 or above
+# -------------------------------------------------------------------------
+# This script is part of nixCraft shell script collection (NSSC)
+# Visit http://bash.cyberciti.biz/ for more information.
+# -------------------------------------------------------------------------
+# Examples:
+# ./mkzone.sh example.com default-www-IP-address
+# ./mkzone.sh cyberciti.biz 74.12.5.1
+# -------------------------------------------------------------------------
+# Last updated on: Mar/24/2007 - Fixed a few bugs.
+# -------------------------------------------------------------------------
+DOMAIN="$1"
+WWWIP="$2"
+ 
+if [ $# -le 1 ]
+then
+ echo "Syntax: $(basename $0) domainname www.domain.ip.address [profile]"
+ echo "$(basename $0) example.com 1.2.3.4"
+ exit 1
+fi
+ 
+# get profile
+PROFILE="ns.profile.nixcraft.net"
+[ "$3" != "" ] && PROFILE="$3"
+ 
+SERIAL=$(date +"%Y%m%d")01                     # Serial yyyymmddnn
+ 
+# load profile
+source "$PROFILE"
+ 
+# set default ns1
+NS1=${NAMESERVERS[0]}
+ 
+###### start SOA ######
+echo "\$ORIGIN ${DOMAIN}."
+echo "\$TTL ${TTL}"
+echo "@	IN	SOA	${NS1}	${EMAILID}("
+echo " ${SERIAL}	; Serial yyyymmddnn"
+echo " ${REFRESH} ; Refresh After 3 hours"
+echo " ${RETRY} ; Retry Retry after 1 hour"
+echo " ${EXPIER} ; Expire after 1 week"
+echo " ${MAXNEGTIVE}) ; Minimum negative caching of 1 hour"
+echo ""
+ 
+###### start Name servers #######
+# Get length of an array
+tLen=${#NAMESERVERS[@]}
+ 
+# use for loop read all nameservers
+echo "; Name servers for $DOMAIN" 
+for (( i=0; i<${tLen}; i++ ));
+do
+ echo "@ ${ATTL}	IN	NS	${NAMESERVERS[$i]}"
+done
+ 
+###### start MX section #######
+# get length of an array
+tmLen=${#MAILSERVERS[@]}
+ 
+# use for loop read all mailservers 
+echo "; MX Records" 
+for (( i=0; i<${tmLen}; i++ ));
+do
+ echo "@ ${ATTL}	IN MX	$(( 10*${i} + 10 ))	${MAILSERVERS[$i]}"
+done
+ 
+ 
+###### start A pointers #######
+# A Records - Default IP for domain 
+echo '; A Records'
+echo "@ ${ATTL}	IN A	${WWWIP}"
+ 
+# Default Nameserver IPs
+# get length of an array
+ttLen=${#NAMESERVERSIP[@]}
+ 
+# make sure both nameserver and their IP match
+if [ $tLen -eq $ttLen ]
+then
+# use for loop read all nameservers IPs
+for (( i=0; i<${ttLen}; i++ ));
+do
+   thisNs="$(echo ${NAMESERVERS[$i]} | cut -d'.' -f1)"
+   
+ echo "${thisNs} ${ATTL}	IN	A	${NAMESERVERSIP[$i]}"
+done
+else
+ # if we are here means, our nameserver IPs are defined else where else...  do nothing
+ :
+fi
+ 
+echo "; CNAME Records"
+echo "www ${ATTL}	IN	CNAME	@"
+ 
+LoadCutomeARecords
+
+How do I use this script?
+
+Simply type the command as follows to create a zone file for cyberciti.com domain with 202.54.1.2 as default www IP:
+# ./mkzone.sh cyberciti.com 202.54.1.2 ns.profile.nixcraft.net
+
+Sample output:
+$ORIGIN cyberciti.com.
+$TTL 3h
+@ IN SOA ns1.nixcraft.net. vivek.nixcraft.in.(
+ 2009032401 ; Serial yyyymmddnn
+ 3h ; Refresh After 3 hours
+ 1h ; Retry Retry after 1 hour
+ 1w ; Expire after 1 week
+ 1h) ; Minimum negative caching of 1 hour
+ 
+; Name servers for cyberciti.com
+@ 3600 IN NS ns1.nixcraft.net.
+@ 3600 IN NS ns2.nixcraft.net.
+@ 3600 IN NS ns3.nixcraft.net.
+; MX Records
+@ 3600 IN MX 10 mail.nixcraft.net.
+; A Records
+@ 3600 IN A 202.54.1.2
+; CNAME Records
+www 3600 IN CNAME @
+
+To save output to a zone file called /var/named/chroot/etc/bind/master/c/cyberciti.com, type:
+# ./mkzone.sh cyberciti.com 202.54.1.2 ns.profile.nixcraft.net > /var/named/chroot/etc/bind/master/c/cyberciti.com 
