@@ -1,3 +1,8 @@
+Reference material comes from:
+https://bash.cyberciti.biz/domain/create-bind9-domain-zone-configuration-file/
+
+~~~~~~~~~~~~~~~~
+
 Shell Script To Create BIND Zone Files
 in Categories Domain last updated March 24, 2009
 
