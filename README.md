@@ -17,7 +17,7 @@ Features
 + Integrated Emergency Broadcast. 411 info, and other features
 + and Much, much more, doesn't even begin to explain it! :)
 
-AEBL Mobile Media Player, changing how we consume media. AEBL is a media player and a digital media platform in use in the IHDN XPO network media system ( http://www.ihdn.ca/Xpo_VI.html ).
+AEBL Mobile Media Player, changing how we consume media.
 
 AEBL is foremost a mobile media distribution and playback framework.  It was created to be the core technology that is used in a television ad insertion and digital sign, and further development has opened up many more applications.  It currently is designed to run on a raspberry Pi, although it is being ported to other systems.
 
