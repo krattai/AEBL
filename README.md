@@ -19,7 +19,7 @@ Features
 
 AEBL Mobile Media Player, changing how we consume media.
 
-AEBL is foremost a mobile media distribution and playback framework.  It was created to be the core technology that is used in a television ad insertion and digital sign, and further development has opened up many more applications.  It currently is designed to run on a raspberry Pi, although it is being ported to other systems.
+AEBL is foremost a mobile media distribution and playback framework.  It was originally created to be a core CDN for use in an ad insertion and digital sign, now defunct.  Further development has opened up many more applications.  It currently is designed to run on a raspberry Pi, although it is being ported to other systems.
 
 The AEBL blog is located here:
 http://aeblm2.blogspot.ca/
