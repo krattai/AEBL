@@ -29,22 +29,23 @@ For those interested in trying it out, you will need a Raspberry Pi (should be t
 The current image is a ~710MB 7zip compressed file of it's original 2.9GB size, located on dropbox, here:
 https://www.dropbox.com/s/sxm3oirk800m7d4/170420-aebl_p1.img.7z?dl=0
 
-AEBL uses IPv6 to a great extent.  Many Internet Service Providers still do not provide IPv6.  As a result, in order to access certain information for AEBL, obtaining an IPv6 internet connection will be helpful.  The following providers offer free IPv6 tunnels:
+AEBL intends to use IPv6 to a great extent.  This is becoming somewhat of a challenge as many Internet Service Providers still do not provide public IPv6 and 3rd party tunnels or brokers are closing shop in an effort to force ISPs to operate public IPV6 via public demand.  As a result, in order to access certain information for AEBL, obtaining an IPv6 internet connection will be helpful.  The following providers offer free IPv6 tunnels:
 
-(This needs to be updated, as gogo6 is defunct and sixxs is not accepting new accounts)
+(This needs to be updated, as gogo6 is defunct)
 gogo6:
 http://www.gogo6.com/profile/gogoCLIENT
 
+(This needs to be updated, as sixxs is now defunct)
 sixxs:
 https://www.sixxs.net/faq/account/?faq=10steps
 
-Hurricane Electric also provides IPv6:
+Hurricane Electric provides IPv6 tunnels (must have static, public IPv4):
 https://tunnelbroker.net/
 
 There is more and more information for IPv6 on the internet and HE.net provides a decent certifiation course for learning about IPv6 from simple to extensive:
 https://ipv6.he.net/certification/
 
-Generally gogo6 is the simplest path to IPv6 without native or dual stack configurations, followed by sixxs (a more stringent process), and finally HE.net (which requires a significant amount to networking skills).
+HE.net requires significant networking skills and completing the certification course is highly recommended.
 
 AEBL is tightly linked to the Open Information (Op_In) project:
 https://github.com/krattai/Op_In
