@@ -1,12 +1,14 @@
 <VirtualHost *:80>
 	ServerAdmin webmaster@localhost
+	ServerName aebl.asuscomm.com
+	ServerAlias www.aebl.asuscomm.com
 
-	DocumentRoot /var/www
+	DocumentRoot /var/www/aebl.ca/public_html
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride None
 	</Directory>
-	<Directory /var/www/>
+	<Directory /var/www/aebl.ca/public_html/>
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride None
 		Order allow,deny
