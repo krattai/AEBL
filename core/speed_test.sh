@@ -1,7 +1,7 @@
 #!/bin/sh
 # test internet speed for setting data txfr speeds
 #
-# Copyright (C) 2016 - 2017 Uvea I. S., Kevin Rattai
+# Copyright (C) 2016 - 2018 Uvea I. S., Kevin Rattai
 #
 # might want to perform once a week
 #
