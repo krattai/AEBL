@@ -2,6 +2,20 @@ Additional reference from below:
 https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-16-04
 https://wiki.opennic.org/opennic/t2slaved
 
+
+In named.conf.options:
+
+        recursion yes;                 # enables resursive queries
+        allow-recursion { any; };  # allows recursive queries from "any" clients
+
+sudo named-checkconf
+
+sudo service bind9 restart
+
+
+
+
+
 Systems which use resolv.conf, use /etc/resolv/resolv.conf.d/ files
 Reference:
 https://askubuntu.com/questions/130452/how-do-i-add-a-dns-server-via-resolv-conf
