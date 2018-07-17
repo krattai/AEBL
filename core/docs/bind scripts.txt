@@ -2,6 +2,9 @@ Additional reference from below:
 https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-16-04
 https://wiki.opennic.org/opennic/t2slaved
 
+Systems which use resolv.conf, use /etc/resolv/resolv.conf.d/ files
+Reference:
+https://askubuntu.com/questions/130452/how-do-i-add-a-dns-server-via-resolv-conf
 
 Reference material comes from:
 https://bash.cyberciti.biz/domain/create-bind9-domain-zone-configuration-file/
