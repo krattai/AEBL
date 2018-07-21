@@ -1,7 +1,7 @@
 $TTL	86400 ; 24 hours could have been written as 24h or 1d
 ; $TTL used for all RRs without explicit TTL value
-; $ORIGIN pir8.
-@       IN  SOA adns0.pir8.	root.pir8. (
+; $ORIGIN mine.
+@       IN  SOA adns0.mine.	root.mine. (
 			      2018072100 ; serial
 			      3H ; refresh
 			      15 ; retry
@@ -9,11 +9,10 @@ $TTL	86400 ; 24 hours could have been written as 24h or 1d
 			      3h ; nxdomain ttl
 			     )
 ;
-@       IN  NS     adns0.pir8.
+@       IN  NS     adns0.mine.
  ; in the domain
-; adns0	IN  A      199.101.56.46
-adns0   IN  A      184.67.170.30
-main    IN  A      184.67.170.30
+adns0   IN  A      x.x.x.x        ;change to public IP of domain
+main    IN  A      x.x.x.x        ;change to public IP of domain
 
 
 ;  ftp    IN  CNAME  www.example.com.  ;ftp server definition
