@@ -1,4 +1,3 @@
-cat /etc/bind/named.conf.default-zones
 // prime the server with knowledge of the root servers
 # zone "." {
 # 	type hint;
@@ -73,13 +72,13 @@ zone "dyn" in {
 	notify yes;
 	masters { opennicNS; opennicPeers; };
 };
-zone "free" in {
-	type slave;
-	file "free.zone";
-	allow-transfer { any; };
-	notify yes;
-	masters { opennicNS; opennicPeers; };
-};
+# zone "free" in {
+# 	type slave;
+# 	file "free.zone";
+# 	allow-transfer { any; };
+# 	notify yes;
+# 	masters { opennicNS; opennicPeers; };
+# };
 zone "fur" in {
 	type slave;
 	file "fur.zone";
@@ -172,8 +171,100 @@ zone "o" in {
 	masters { opennicNS; opennicPeers; };
 };
 
+// master/root for public accessable local domains
+
+zone "aebl" {
+        type master;
+        file "/etc/bind/aebl.zone";
+};
+
+zone "rat" {
+        type master;
+        file "/etc/bind/rat.zone";
+};
+
+zone "bang" {
+        type master;
+        file "/etc/bind/bang.zone";
+};
+
+zone "pir8" in {
+        type master;
+        file "/etc/bind/pir8.zone";
+};
+
+zone "free" in {
+        type master;
+        file "/etc/bind/free.zone";
+};
+
+
+// this one is if ONLY local domains
+// root as master
+// zone "." {
+//         type master;
+//         file "/etc/bind/db.root";
+// };
+
+// slave other freenic
+// zone "angel" {
+//         type slave;
+//         masters { 95.154.246.132; };
+//         file "/etc/bind/angel.zone";
+// };
+
+// zone "fem" {
+//         type slave;
+//         masters { 95.154.246.132; };
+//         file "/etc/bind/fem.zone";
+// };
+
+// zone "gris" {
+//         type slave;
+//         masters { 168.235.86.179; };
+//         file "/etc/bind/gris.zone";
+// };
+
+// zone "net" {
+//         type slave;
+//         masters { 95.154.246.132; };
+//         file "/etc/bind/net.zone";
+// };
+
+// zone "nic" {
+//         type slave;
+//         masters { 95.154.246.132; };
+//         file "/etc/bind/nic.zone";
+// };
+
+// zone "quoque" {
+//         type slave;
+//         masters { 107.161.27.137; };
+//         file "/etc/bind/quoque.zone";
+// };
+
+// zone "radio" {
+//         type slave;
+//         masters { 95.154.246.132; };
+//         file "/etc/bind/radio.zone";
+// };
+
+// zone "silicon" {
+//         type slave;
+//         masters { 95.154.246.132; };
+//         file "/etc/bind/silicon.zone";
+// };
+
+// zone "smart" {
+//         type slave;
+//         masters { 52.183.69.29; };
+//         file "/etc/bind/smart.zone";
+// };
+
 // be authoritative for the localhost forward and reverse zones, and for
 // broadcast zones as per RFC 1912
+
+// back to local
 
 zone "localhost" {
 	type master;
@@ -194,5 +285,4 @@ zone "255.in-addr.arpa" {
 	type master;
 	file "/etc/bind/db.255";
 };
-
 
