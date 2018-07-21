@@ -1,0 +1,22 @@
+$TTL	86400 ; 24 hours could have been written as 24h or 1d
+; $TTL used for all RRs without explicit TTL value
+; $ORIGIN pir8.
+@       IN  SOA adns0.pir8.	root.pir8. (
+			      2018072100 ; serial
+			      3H ; refresh
+			      15 ; retry
+			      1w ; expire
+			      3h ; nxdomain ttl
+			     )
+;
+@       IN  NS     adns0.pir8.
+ ; in the domain
+; adns0	IN  A      199.101.56.46
+adns0   IN  A      184.67.170.30
+main    IN  A      184.67.170.30
+
+
+;  ftp    IN  CNAME  www.example.com.  ;ftp server definition
+; non server domain hosts
+; bill   IN  A      192.168.0.3
+; fred   IN  A      192.168.0.4
