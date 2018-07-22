@@ -198,6 +198,15 @@ zone "free" in {
         file "/etc/bind/free.zone";
 };
 
+zone "beausejour" in {
+        type master;
+        file "/etc/bind/beausejour.zone";
+};
+
+zone "winnipeg" in {
+        type master;
+        file "/etc/bind/winnipeg.zone";
+};
 
 // this one is if ONLY local domains
 // root as master
