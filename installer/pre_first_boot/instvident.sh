@@ -7,8 +7,13 @@
 #
 # Useage:
 # There is no useage, this is a standalone script
+#
+# 20181221 - changed base URI
+#
+# todo:
+# + should probably set resolv.conf to DNS server in order to use private domains
 
-BASE_URI="184.67.170.30"
+BASE_URI="24.76.93.80"
 
 LOCAL_SYS="/home/pi/.local"
 NETWORK_SYS="/home/pi/.network"
