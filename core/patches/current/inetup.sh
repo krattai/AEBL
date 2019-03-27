@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2015 Uvea I. S., Kevin Rattai
+# Copyright (C) 2015 2019 Uvea I. S., Kevin Rattai
 #
 # This script is a cron job script
 # It checks for network and internet connectivity
@@ -27,6 +27,7 @@ LOCAL_SYS="${T_STO}/.local"
 NETWORK_SYS="${T_STO}/.network"
 OFFLINE_SYS="${T_STO}/.offline"
 
+PUB_NET="8.8.8.8"
 
 cd $HOME
 
@@ -54,7 +55,9 @@ if [ -f "${OFFLINE_SYS}" ]; then
 fi
 
 # Check internet availability against master control IP
-ping -c 1 184.71.76.158
+# ping -c 1 184.71.76.158
+# Changed to check known available IP
+ping -c 1 "${PUB_NET}"
 
 if [ $? -eq 0 ]; then
     touch $NETWORK_SYS
